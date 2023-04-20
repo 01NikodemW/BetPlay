@@ -6,8 +6,4 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\BetPlay.ApiSport.Dto\BetPlay.ApiSport.Dto.csproj" />
-    </ItemGroup>
-
 </Project>

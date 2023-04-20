@@ -17,7 +17,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\BetPlay.ApiSport.Dto\BetPlay.ApiSport.Dto.csproj" />
       <ProjectReference Include="..\BetPlay.Infrastructure.EfCore\BetPlay.Infrastructure.EfCore.csproj" />
+      <ProjectReference Include="..\BetPlay.Options\BetPlay.Options.csproj" />
       <ProjectReference Include="..\BetPlay.RequestHandlers\BetPlay.RequestHandlers.csproj" />
       <ProjectReference Include="..\BetPlay.Requests\BetPlay.Requests.csproj" />
     </ItemGroup>

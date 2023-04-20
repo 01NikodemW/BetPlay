@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\BetPlay.Domain\BetPlay.Domain.csproj" />
+      <ProjectReference Include="..\BetPlay.Dto\BetPlay.Dto.csproj" />
     </ItemGroup>
 
 </Project>

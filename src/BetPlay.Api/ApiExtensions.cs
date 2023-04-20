@@ -1,4 +1,7 @@
+using BetPlay.ApiSport.Dto;
+using BetPlay.Infrastructure.ApiSport;
 using BetPlay.Infrastructure.EfCore;
+using BetPlay.Options;
 using BetPlay.RequestHandlers.Dummy;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,17 +18,19 @@ public static class ApiExtensions
         return webApplication;
     }
 
-    public static IServiceCollection AddBetPlay(this IServiceCollection services)
+    public static IServiceCollection AddBetPlay(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
         services.AddControllers();
+        services.AddSingleton<IApiSportClient, ApiSportClient>();
+        services.AddScoped<ILeagueRepository, LeagueRepository>();
         services.AddMediatR(opt =>
         {
             opt.RegisterServicesFromAssemblies(typeof(Program).Assembly, typeof(HelloWorldRequestHandler).Assembly);
         });
         services.AddDbContext<BetPlayDbContext>(opt => { opt.UseSqlite("Data Source=BetPlay.db"); });
-
+        services.Configure<ApiSportOptions>(configuration.GetSection(ApiSportOptions.SectionName));
         return services;
     }
 }

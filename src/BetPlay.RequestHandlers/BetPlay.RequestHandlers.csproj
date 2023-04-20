@@ -7,10 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Mapster" Version="7.3.0" />
       <PackageReference Include="MediatR" Version="12.0.1" />
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\BetPlay.Infrastructure.ApiSport\BetPlay.Infrastructure.ApiSport.csproj" />
       <ProjectReference Include="..\BetPlay.Infrastructure.EfCore\BetPlay.Infrastructure.EfCore.csproj" />
       <ProjectReference Include="..\BetPlay.Requests\BetPlay.Requests.csproj" />
     </ItemGroup>

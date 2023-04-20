@@ -1,4 +1,5 @@
 using BetPlay.Domain;
+using BetPlay.Domain.League;
 
 namespace BetPlay.Responses.Leagues;
 

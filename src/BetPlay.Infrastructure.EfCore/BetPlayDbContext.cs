@@ -1,3 +1,4 @@
+using BetPlay.Domain.League;
 using Microsoft.EntityFrameworkCore;
 
 namespace BetPlay.Infrastructure.EfCore;
@@ -13,6 +14,8 @@ public class BetPlayDbContext : DbContext
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(BetPlayDbContext).Assembly);
     }
-    
-    public DbSet<Domain.TrackedLeague> TrackedLeagues { get; set; } = default!;
+
+    public DbSet<TrackedLeague> TrackedLeagues { get; set; } = default!;
+    public DbSet<League> Leagues { get; set; } = default!;
+    public DbSet<Country> Countries { get; set; } = default!;
 }

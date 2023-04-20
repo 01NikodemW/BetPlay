@@ -6,4 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\BetPlay.ApiSport.Dto\BetPlay.ApiSport.Dto.csproj" />
+      <ProjectReference Include="..\BetPlay.Infrastructure.EfCore\BetPlay.Infrastructure.EfCore.csproj" />
+    </ItemGroup>
+
 </Project>
