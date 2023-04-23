@@ -38,4 +38,13 @@ public class LeagueRepository : ILeagueRepository
 
         return league;
     }
+
+    public async Task<IEnumerable<League>> GetLeaguesByCountry(string country)
+    {
+
+        var leaguesApiDto = await _client.GetLeaguesByCountryAsync(country);
+        var leagues = leaguesApiDto.Select(x => new League(x));
+
+        return leagues;
+    }
 }

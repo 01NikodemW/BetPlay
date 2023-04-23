@@ -26,6 +26,7 @@ public static class ApiExtensions
         services.AddSingleton<IApiSportClient, ApiSportClient>();
         services.AddScoped<ILeagueRepository, LeagueRepository>();
         services.AddScoped<ITeamRepository, TeamRepository>();
+        services.AddScoped<ICountryRepository, CountryRepository>();
         services.AddMediatR(opt =>
         {
             opt.RegisterServicesFromAssemblies(typeof(Program).Assembly, typeof(HelloWorldRequestHandler).Assembly);

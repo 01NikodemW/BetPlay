@@ -11,4 +11,8 @@
       <ProjectReference Include="..\BetPlay.Dto\BetPlay.Dto.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Fixture\" />
+    </ItemGroup>
+
 </Project>

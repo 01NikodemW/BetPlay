@@ -21,4 +21,10 @@ public class LeaguesController : BetPlayControllerBase
     {
         return Ok(await Mediator.Send(request));
     }
+    
+    [HttpPost("[action]")]
+    public async Task<IActionResult> GetLeaguesByCountry([FromBody] GetLeaguesByCountryRequest request)
+    {
+        return Ok(await Mediator.Send(request));
+    }
 }

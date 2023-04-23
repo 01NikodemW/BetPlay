@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace BetPlay.ApiSport.Dto.League;
 
 public class LeagueResponseApiDto

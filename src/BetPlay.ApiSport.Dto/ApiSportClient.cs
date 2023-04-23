@@ -1,4 +1,5 @@
 using BetPlay.ApiSport.Dto.Common;
+using BetPlay.ApiSport.Dto.Country;
 using BetPlay.ApiSport.Dto.League;
 using BetPlay.ApiSport.Dto.Team;
 using BetPlay.Options;
@@ -54,6 +55,34 @@ public class ApiSportClient : IApiSportClient
         request.AddHeader("x-rapidapi-host", "v3.football.api-sports.io");
 
         var response = client.ExecuteAsync<ApiSportResponse<TeamResponseApiDto>>(request);
+
+        return Task.FromResult(response.Result.Data.Response.AsEnumerable());
+    }
+
+    public Task<IEnumerable<LeagueResponseApiDto>> GetLeaguesByCountryAsync(string country)
+    {
+        var client = new RestClient(_options.BaseUrl);
+        var request = new RestRequest("leagues");
+        request.AddQueryParameter("country", country);
+        request.AddQueryParameter("season", 2022);
+
+        request.AddHeader("x-rapidapi-key", _options.ApiKey);
+        request.AddHeader("x-rapidapi-host", "v3.football.api-sports.io");
+
+        var response = client.ExecuteAsync<ApiSportResponse<LeagueResponseApiDto>>(request);
+
+        return Task.FromResult(response.Result.Data.Response.AsEnumerable());
+    }
+
+    public Task<IEnumerable<CountryResponseApiDto>> GetCountriesAsync()
+    {
+        var client = new RestClient(_options.BaseUrl);
+        var request = new RestRequest("countries");
+
+        request.AddHeader("x-rapidapi-key", _options.ApiKey);
+        request.AddHeader("x-rapidapi-host", "v3.football.api-sports.io");
+
+        var response = client.ExecuteAsync<ApiSportResponse<CountryResponseApiDto>>(request);
 
         return Task.FromResult(response.Result.Data.Response.AsEnumerable());
     }
