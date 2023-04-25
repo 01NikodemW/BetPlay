@@ -19,7 +19,7 @@ public class GetTeamsByLeagueIdRequestHandler : IRequestHandler<GetTeamsByLeague
     public async Task<GetTeamsByLeagueIdResponse> Handle(GetTeamsByLeagueIdRequest request,
         CancellationToken cancellationToken)
     {
-        var teams = await _teamRepository.GetTeamsByLeagueId(request.LeagueId, request.Season);
+        var teams = await _teamRepository.GetTeamsByLeagueId(request.LeagueId);
 
         return new GetTeamsByLeagueIdResponse
         {

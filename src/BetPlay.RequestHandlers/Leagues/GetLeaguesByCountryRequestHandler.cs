@@ -23,7 +23,6 @@ public class
         var leagues = await _leagueRepository.GetLeaguesByCountry(request.Country);
 
 
-
         return new GetLeaguesByCountryResponse
         {
             Leagues = leagues.Adapt<IEnumerable<LeagueDto>>().ToList()

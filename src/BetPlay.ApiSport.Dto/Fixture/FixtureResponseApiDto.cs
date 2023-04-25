@@ -18,8 +18,8 @@ public class FixtureResponseApiDto
     public TeamsApiDto Teams { get; set; } = default!;
     public GoalsApiDto Goals { get; set; } = default!;
     public ScoreApiDto Score { get; set; } = default!;
-    public IEnumerable<EventApiDto> Events { get; set; } = default!;
-    public IEnumerable<LineupApiDto> Lineups { get; set; } = default!;
-    public IEnumerable<StatisticsApiDto> Statistics { get; set; } = default!;
-    public IEnumerable<PlayersApiDto> Players { get; set; } = default!;
+    public IEnumerable<EventApiDto>? Events { get; set; } = default!;
+    public IEnumerable<LineupApiDto>? Lineups { get; set; } = default!;
+    public IEnumerable<StatisticsApiDto>? Statistics { get; set; } = default!;
+    public IEnumerable<PlayersApiDto>? Players { get; set; } = default!;
 }

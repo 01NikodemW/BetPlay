@@ -6,5 +6,5 @@ public interface ITeamRepository
 {
     Task<Team> GetTeamById(int id);
 
-    Task<IEnumerable<Team>> GetTeamsByLeagueId(int id, int season);
+    Task<IEnumerable<Team>> GetTeamsByLeagueId(int id);
 }

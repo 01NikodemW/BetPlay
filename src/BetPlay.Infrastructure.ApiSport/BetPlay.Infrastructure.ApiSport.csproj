@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\BetPlay.ApiSport.Dto\BetPlay.ApiSport.Dto.csproj" />
+      <ProjectReference Include="..\BetPlay.Dto\BetPlay.Dto.csproj" />
       <ProjectReference Include="..\BetPlay.Infrastructure.EfCore\BetPlay.Infrastructure.EfCore.csproj" />
     </ItemGroup>
 

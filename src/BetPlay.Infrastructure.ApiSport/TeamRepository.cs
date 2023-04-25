@@ -38,9 +38,9 @@ public class TeamRepository : ITeamRepository
         return team;
     }
 
-    public async Task<IEnumerable<Team>> GetTeamsByLeagueId(int id, int season)
+    public async Task<IEnumerable<Team>> GetTeamsByLeagueId(int id)
     {
-        var teamsApiDto = await _client.GetTeamsByLeagueIdAsync(id, season);
+        var teamsApiDto = await _client.GetTeamsByLeagueIdAsync(id);
         var teams = teamsApiDto.Select(x => new Team(x));
 
         return teams;

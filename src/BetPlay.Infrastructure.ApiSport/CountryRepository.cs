@@ -18,6 +18,20 @@ public class CountryRepository : ICountryRepository
 
     public async Task<IEnumerable<Country>> GetCountries()
     {
+        // var countries = await _context.Countries.ToListAsync();
+        //
+        // if (countries.Count != 167 || countries.Any(c => c.IsValid() != true))
+        // {
+        //     _context.Countries.RemoveRange(countries);
+        //
+        //     var countriesApiDto = await _client.GetCountriesAsync();
+        //     countries = countriesApiDto.Select(x => new Country(x)).ToList();
+        //     _context.Countries.AddRange(countries);
+        //
+        //     await _context.SaveChangesAsync();
+        // }
+
+
         var countriesApiDto = await _client.GetCountriesAsync();
         var countries = countriesApiDto.Select(x => new Country(x));
 

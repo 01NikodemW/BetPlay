@@ -10,6 +10,7 @@ public class Country : Entity
         Name = countryApiDto.Name;
         Code = countryApiDto.Code;
         Flag = countryApiDto.Flag;
+        UpdateDate = DateTime.Now;
     }
 
     public Country(CountryResponseApiDto countryApiDto)
@@ -17,6 +18,7 @@ public class Country : Entity
         Name = countryApiDto.Name;
         Code = countryApiDto.Code;
         Flag = countryApiDto.Flag;
+        UpdateDate = DateTime.Now;
     }
 
     public Country()
@@ -26,4 +28,10 @@ public class Country : Entity
     public string Name { get; set; } = default!;
     public string Code { get; set; } = default!;
     public string Flag { get; set; } = default!;
+    public DateTime UpdateDate { get; set; }
+
+    public bool IsValid()
+    {
+        return UpdateDate.AddDays(7) > DateTime.Now;
+    }
 }
