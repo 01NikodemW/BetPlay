@@ -19,22 +19,22 @@ public class FixtureApiDto
     public StatusApiDto Status { get; set; } = default!;
 }
 
-// public class PeriodsApiDto
-// {
-//     public int First { get; set; }
-//     public int Second { get; set; }
-// }
-//
-// public class VenueApiDto
-// {
-//     public int Id { get; set; }
-//     public string Name { get; set; } = default!;
-//     public string City { get; set; } = default!;
-// }
-//
-// public class StatusApiDto
-// {
-//     public string Long { get; set; } = default!;
-//     public string Short { get; set; } = default!;
-//     public int Elapsed { get; set; }
-// }
+public class PeriodsApiDto
+{
+    public int? First { get; set; }
+    public int? Second { get; set; }
+}
+
+public class VenueApiDto
+{
+    public int Id { get; set; }
+    public string Name { get; set; } = default!;
+    public string City { get; set; } = default!;
+}
+
+public class StatusApiDto
+{
+    public string Long { get; set; } = default!;
+    public string Short { get; set; } = default!;
+    public int? Elapsed { get; set; }
+}

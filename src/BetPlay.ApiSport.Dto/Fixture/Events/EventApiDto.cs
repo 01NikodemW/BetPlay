@@ -8,5 +8,30 @@ public class EventApiDto
     public AssistApiDto Assist { get; set; } = default!;
     public string Type { get; set; } = default!;
     public string Detail { get; set; } = default!;
-    public string Comments { get; set; } = default!;
+    public string? Comments { get; set; } = default!;
+}
+
+public class TimeApiDto
+{
+    public int Elapsed { get; set; }
+    public int? Extra { get; set; }
+}
+
+public class TeamApiDto
+{
+    public int Id { get; set; }
+    public string Name { get; set; } = default!;
+    public string Logo { get; set; } = default!;
+}
+
+public class PlayerApiDto
+{
+    public int Id { get; set; }
+    public string Name { get; set; } = default!;
+}
+
+public class AssistApiDto
+{
+    public int? Id { get; set; }
+    public string? Name { get; set; }
 }
