@@ -1,6 +1,3 @@
-using BetPlay.ApiSport.Dto.Fixture.Lineups.Coach;
-using BetPlay.ApiSport.Dto.Fixture.Lineups.Team;
-
 namespace BetPlay.ApiSport.Dto.Fixture.Lineups;
 
 public class LineupApiDto

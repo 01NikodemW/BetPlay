@@ -1,16 +1,32 @@
-using BetPlay.Dto.Fixture.Events;
+using BetPlay.Dto.Fixture.FixtureObject;
+using BetPlay.Dto.Fixture.Goals;
+using BetPlay.Dto.Fixture.LeagueObject;
+using BetPlay.Dto.Fixture.Score;
+using BetPlay.Dto.Fixture.TeamsObject;
 
 namespace BetPlay.Dto.Fixture;
 
 public class FixtureDto
 {
-    // public FixtureApiDto Fixture { get; set; } = default!;
-    // public LeagueApiDto League { get; set; } = default!;
-    // public TeamsApiDto Teams { get; set; } = default!;
-    // public GoalsApiDto Goals { get; set; } = default!;
-    // public ScoreApiDto Score { get; set; } = default!;
-    public IEnumerable<EventDto> Events { get; set; } = default!;
-    // public IEnumerable<LineupApiDto>? Lineups { get; set; } = default!;
-    // public IEnumerable<StatisticsApiDto>? Statistics { get; set; } = default!;
-    // public IEnumerable<PlayersApiDto>? Players { get; set; } = default!;
+    public int FixtureId { get; set; }
+
+    public string Referee { get; set; } = default!;
+
+    public string Timezone { get; set; } = default!;
+
+    public string Date { get; set; } = default!;
+
+    public int Timestamp { get; set; }
+
+    public PeriodsDto Periods { get; set; } = default!;
+
+    public StatusDto Status { get; set; } = default!;
+
+    public VenueDto Venue { get; set; } = default!;
+
+    public LeagueDto League { get; set; } = default!;
+
+    public TeamsDto Teams { get; set; } = default!;
+    public GoalsDto Goals { get; set; } = default!;
+    public ScoreDto Score { get; set; } = default!;
 }

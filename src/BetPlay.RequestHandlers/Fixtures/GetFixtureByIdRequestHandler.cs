@@ -1,6 +1,8 @@
+using BetPlay.Dto.Fixture;
 using BetPlay.Infrastructure.ApiSport;
 using BetPlay.Requests.Fixtures;
 using BetPlay.Responses.Fixture;
+using Mapster;
 using MediatR;
 
 namespace BetPlay.RequestHandlers.Fixtures;
@@ -21,7 +23,7 @@ public class GetFixtureByIdRequestHandler : IRequestHandler<GetFixtureByIdReques
 
         return new GetFixtureByIdResponse
         {
-            Fixture = fixture
+            Fixture = fixture.Adapt<FixtureDto>()
         };
     }
 }

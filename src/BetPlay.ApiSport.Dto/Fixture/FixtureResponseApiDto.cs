@@ -1,4 +1,3 @@
-using System.Collections;
 using BetPlay.ApiSport.Dto.Fixture.Events;
 using BetPlay.ApiSport.Dto.Fixture.Fixture;
 using BetPlay.ApiSport.Dto.Fixture.Goals;

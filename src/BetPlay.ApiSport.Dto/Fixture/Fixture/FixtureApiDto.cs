@@ -17,6 +17,7 @@ public class FixtureApiDto
     public VenueApiDto Venue { get; set; } = default!;
 
     public StatusApiDto Status { get; set; } = default!;
+    public object League { get; set; }
 }
 
 public class PeriodsApiDto

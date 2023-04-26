@@ -1,5 +1,6 @@
 using BetPlay.ApiSport.Dto;
 using BetPlay.ApiSport.Dto.Fixture;
+using BetPlay.Domain.Fixture;
 using BetPlay.Dto.Fixture;
 using BetPlay.Infrastructure.EfCore;
 
@@ -16,10 +17,11 @@ public class FixtureRepository : IFixtureRepository
         _client = client;
     }
 
-    public async Task<FixtureResponseApiDto> GetFixtureById(int id)
+    public async Task<Fixture> GetFixtureById(int id)
     {
         var fixtureApiDto = await _client.GetFixtureByIdAsync(id);
+        var fixture = new Fixture(fixtureApiDto);
 
-        return fixtureApiDto;
+        return fixture;
     }
 }
