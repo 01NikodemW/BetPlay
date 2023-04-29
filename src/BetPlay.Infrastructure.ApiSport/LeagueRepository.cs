@@ -20,7 +20,7 @@ public class LeagueRepository : ILeagueRepository
     {
         var league = await _context.Leagues.Include(x => x.Country).FirstOrDefaultAsync(x => x.LeagueId == id);
 
-        if (league == null || !league.isValid())
+        if (league == null || !league.IsValid())
         {
             if (league != null)
             {
@@ -41,10 +41,23 @@ public class LeagueRepository : ILeagueRepository
 
     public async Task<IEnumerable<League>> GetLeaguesByCountry(string country)
     {
+        var leaguesByCountry = await _context.Leagues.Include(x => x.Country).Where(x => x.Country.Name == country)
+            .ToListAsync();
 
-        var leaguesApiDto = await _client.GetLeaguesByCountryAsync(country);
-        var leagues = leaguesApiDto.Select(x => new League(x));
+        if (leaguesByCountry.Count == 0 || leaguesByCountry.Count == 1 ||
+            leaguesByCountry.Any(x => x.IsValid() != true))
+        {
+            _context.Leagues.RemoveRange(leaguesByCountry);
+            _context.Countries.RemoveRange(leaguesByCountry.Select(x => x.Country));
 
-        return leagues;
+            var leaguesApiDto = await _client.GetLeaguesByCountryAsync(country);
+            leaguesByCountry = leaguesApiDto.Select(x => new League(x)).ToList();
+            _context.Leagues.AddRange(leaguesByCountry);
+
+            await _context.SaveChangesAsync();
+        }
+
+
+        return leaguesByCountry;
     }
 }

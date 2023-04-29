@@ -1,4 +1,3 @@
-using BetPlay.ApiSport.Dto.Fixture;
 using BetPlay.ApiSport.Dto.Team;
 
 namespace BetPlay.Domain.Team;
@@ -16,17 +15,9 @@ public class Venue : Entity
         Image = venueApiDto.Image;
     }
 
-    public Venue(FixtureResponseApiDto fixtureResponseApiDto)
-    {
-        VenueId = fixtureResponseApiDto.Fixture.Venue.Id;
-        Name = fixtureResponseApiDto.Fixture.Venue.Name;
-        City = fixtureResponseApiDto.Fixture.Venue.City;
-    }
-
     public Venue()
     {
     }
-
 
     public int VenueId { get; set; }
     public string Name { get; set; } = default!;

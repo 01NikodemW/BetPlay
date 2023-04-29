@@ -3,6 +3,7 @@ using System;
 using BetPlay.Infrastructure.EfCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,110 +11,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BetPlay.Infrastructure.EfCore.Migrations
 {
     [DbContext(typeof(BetPlayDbContext))]
-    partial class BetPlayDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230428171529_AddTopFiveLeaguesUpdateV9")]
+    partial class AddTopFiveLeaguesUpdateV9
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
-
-            modelBuilder.Entity("BetPlay.Domain.Fixture.Fixture", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AwayLogo")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AwayName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Date")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("Elapsed")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("FixtureId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<Guid>("FixtureLeagueId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("GoalsAwayTeam")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("GoalsHomeTeam")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("HomeLogo")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("HomeName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Long")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Referee")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Short")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Timestamp")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Timezone")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("UpdateDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("VenueId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FixtureLeagueId");
-
-                    b.HasIndex("VenueId");
-
-                    b.ToTable("Fixtures");
-                });
-
-            modelBuilder.Entity("BetPlay.Domain.Fixture.FixtureLeague", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("LeagueId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Round")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Season")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LeagueId");
-
-                    b.ToTable("FixtureLeagues");
-                });
 
             modelBuilder.Entity("BetPlay.Domain.League.Country", b =>
                 {
@@ -150,6 +55,9 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                     b.Property<Guid>("CountryId")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Flag")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("LeagueId")
                         .HasColumnType("INTEGER");
 
@@ -160,6 +68,12 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<string>("Round")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("Season")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -191,27 +105,27 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("9830df4c-53da-4f58-8315-f833fc68c91e"),
+                            Id = new Guid("3236f7f3-4273-42a6-988c-5b0c8666becf"),
                             LeagueId = 78
                         },
                         new
                         {
-                            Id = new Guid("0c65b1c7-8263-436d-8552-0ef860d61dc1"),
+                            Id = new Guid("638a020d-554e-4c40-a792-f4eca0b5139c"),
                             LeagueId = 39
                         },
                         new
                         {
-                            Id = new Guid("a7e2148c-4edb-4229-8d0f-2f0da10dfdbf"),
+                            Id = new Guid("b4bc3bc3-af36-4f9c-956d-8cae3173bf6b"),
                             LeagueId = 140
                         },
                         new
                         {
-                            Id = new Guid("ee9ab077-176b-4515-9bd5-3274e0e9906b"),
+                            Id = new Guid("9dc2d1bc-e18f-44d0-9289-bdaccc3a00b1"),
                             LeagueId = 135
                         },
                         new
                         {
-                            Id = new Guid("637c7203-bdde-4cb9-a591-dd0599241e0b"),
+                            Id = new Guid("ba662de4-d543-4709-91d4-89128dbb705e"),
                             LeagueId = 61
                         });
                 });
@@ -223,14 +137,12 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Code")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Country")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Founded")
+                    b.Property<int?>("Founded")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Logo")
@@ -241,7 +153,7 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("National")
+                    b.Property<bool?>("National")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("TeamId")
@@ -250,8 +162,11 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("VenueId")
+                    b.Property<Guid?>("VenueId")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool?>("Winner")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -297,36 +212,6 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                     b.ToTable("Venues");
                 });
 
-            modelBuilder.Entity("BetPlay.Domain.Fixture.Fixture", b =>
-                {
-                    b.HasOne("BetPlay.Domain.Fixture.FixtureLeague", "FixtureLeague")
-                        .WithMany()
-                        .HasForeignKey("FixtureLeagueId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("BetPlay.Domain.Team.Venue", "Venue")
-                        .WithMany()
-                        .HasForeignKey("VenueId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("FixtureLeague");
-
-                    b.Navigation("Venue");
-                });
-
-            modelBuilder.Entity("BetPlay.Domain.Fixture.FixtureLeague", b =>
-                {
-                    b.HasOne("BetPlay.Domain.League.League", "League")
-                        .WithMany()
-                        .HasForeignKey("LeagueId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("League");
-                });
-
             modelBuilder.Entity("BetPlay.Domain.League.League", b =>
                 {
                     b.HasOne("BetPlay.Domain.League.Country", "Country")
@@ -342,9 +227,7 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                 {
                     b.HasOne("BetPlay.Domain.Team.Venue", "Venue")
                         .WithMany()
-                        .HasForeignKey("VenueId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("VenueId");
 
                     b.Navigation("Venue");
                 });

@@ -21,4 +21,6 @@ public interface IApiSportClient
 
     //Fixtures
     Task<FixtureResponseApiDto> GetFixtureByIdAsync(int id);
+    
+    Task<VenueApiDto> GetVenueByIdAsync(int id);
 }

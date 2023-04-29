@@ -102,4 +102,19 @@ public class ApiSportClient : IApiSportClient
 
         return response.Data.Response.First();
     }
+
+    public async Task<VenueApiDto> GetVenueByIdAsync(int id)
+    {
+        var client = new RestClient(_options.BaseUrl);
+        var request = new RestRequest("venues");
+
+        request.AddQueryParameter("id", id.ToString());
+
+        request.AddHeader("x-rapidapi-key", _options.ApiKey);
+        request.AddHeader("x-rapidapi-host", "v3.football.api-sports.io");
+
+        var response = await client.ExecuteAsync<ApiSportResponse<VenueApiDto>>(request);
+
+        return response.Data.Response.First();
+    }
 }
