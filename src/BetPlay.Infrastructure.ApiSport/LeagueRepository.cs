@@ -25,14 +25,17 @@ public class LeagueRepository : ILeagueRepository
             if (league != null)
             {
                 _context.Leagues.Remove(league);
-                _context.Countries.Remove(league.Country);
             }
 
             var leagueApiDto = await _client.GetLeagueByIdAsync(id);
             league = new League(leagueApiDto);
+            var countryInDb = await _context.Countries.FirstOrDefaultAsync(x => x.Name == league.Country.Name);
+            if (countryInDb != null)
+            {
+                league.Country = countryInDb;
+            }
+
             _context.Leagues.Add(league);
-
-
             await _context.SaveChangesAsync();
         }
 

@@ -18,6 +18,7 @@ public class ApiSportClient : IApiSportClient
         _options = options.Value;
     }
 
+    //Leagues
     public async Task<LeagueResponseApiDto> GetLeagueByIdAsync(int id)
     {
         var client = new RestClient(_options.BaseUrl);
@@ -32,6 +33,22 @@ public class ApiSportClient : IApiSportClient
         return response.Data.Response.First();
     }
 
+    public async Task<IEnumerable<LeagueResponseApiDto>> GetLeaguesByCountryAsync(string country)
+    {
+        var client = new RestClient(_options.BaseUrl);
+        var request = new RestRequest("leagues");
+        request.AddQueryParameter("country", country);
+        request.AddQueryParameter("season", 2022);
+
+        request.AddHeader("x-rapidapi-key", _options.ApiKey);
+        request.AddHeader("x-rapidapi-host", "v3.football.api-sports.io");
+
+        var response = await client.ExecuteAsync<ApiSportResponse<LeagueResponseApiDto>>(request);
+
+        return response.Data.Response.AsEnumerable();
+    }
+
+    //Teams
     public async Task<TeamResponseApiDto> GetTeamByIdAsync(int id)
     {
         var client = new RestClient(_options.BaseUrl);
@@ -60,21 +77,8 @@ public class ApiSportClient : IApiSportClient
         return response.Data.Response.AsEnumerable();
     }
 
-    public async Task<IEnumerable<LeagueResponseApiDto>> GetLeaguesByCountryAsync(string country)
-    {
-        var client = new RestClient(_options.BaseUrl);
-        var request = new RestRequest("leagues");
-        request.AddQueryParameter("country", country);
-        request.AddQueryParameter("season", 2022);
 
-        request.AddHeader("x-rapidapi-key", _options.ApiKey);
-        request.AddHeader("x-rapidapi-host", "v3.football.api-sports.io");
-
-        var response = await client.ExecuteAsync<ApiSportResponse<LeagueResponseApiDto>>(request);
-
-        return response.Data.Response.AsEnumerable();
-    }
-
+    //Countries
     public async Task<IEnumerable<CountryResponseApiDto>> GetCountriesAsync()
     {
         var client = new RestClient(_options.BaseUrl);
@@ -88,6 +92,7 @@ public class ApiSportClient : IApiSportClient
         return response.Data.Response.AsEnumerable();
     }
 
+    //Fixtures
     public async Task<FixtureResponseApiDto> GetFixtureByIdAsync(int id)
     {
         var client = new RestClient(_options.BaseUrl);
@@ -103,6 +108,24 @@ public class ApiSportClient : IApiSportClient
         return response.Data.Response.First();
     }
 
+    public async Task<IEnumerable<LiveFixtureResponseApiDto>> GetLiveFixturesByLeagueIdAsync(int id)
+    {
+        var client = new RestClient(_options.BaseUrl);
+        var request = new RestRequest("fixtures");
+
+        request.AddQueryParameter("league", id.ToString());
+        request.AddQueryParameter("season", 2022);
+        request.AddQueryParameter("live", "all");
+
+        request.AddHeader("x-rapidapi-key", _options.ApiKey);
+        request.AddHeader("x-rapidapi-host", "v3.football.api-sports.io");
+
+        var response = await client.ExecuteAsync<ApiSportResponse<LiveFixtureResponseApiDto>>(request);
+
+        return response.Data.Response.AsEnumerable();
+    }
+
+    //Venues
     public async Task<VenueApiDto> GetVenueByIdAsync(int id)
     {
         var client = new RestClient(_options.BaseUrl);

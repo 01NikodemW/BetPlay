@@ -21,6 +21,7 @@ public interface IApiSportClient
 
     //Fixtures
     Task<FixtureResponseApiDto> GetFixtureByIdAsync(int id);
-    
+    Task<IEnumerable<LiveFixtureResponseApiDto>> GetLiveFixturesByLeagueIdAsync(int id);
+
     Task<VenueApiDto> GetVenueByIdAsync(int id);
 }

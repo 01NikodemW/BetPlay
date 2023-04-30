@@ -26,6 +26,27 @@ public class Fixture : Entity
         FixtureLeague = fixtureLeague;
     }
 
+    public Fixture(LiveFixtureResponseApiDto fixtureResponseApiDto, Venue venue, FixtureLeague fixtureLeague)
+    {
+        FixtureId = fixtureResponseApiDto.Fixture.Id;
+        Referee = fixtureResponseApiDto.Fixture.Referee;
+        Timezone = fixtureResponseApiDto.Fixture.Timezone;
+        Date = fixtureResponseApiDto.Fixture.Date;
+        Timestamp = fixtureResponseApiDto.Fixture.Timestamp;
+        Long = fixtureResponseApiDto.Fixture.Status.Long;
+        Short = fixtureResponseApiDto.Fixture.Status.Short;
+        Elapsed = fixtureResponseApiDto.Fixture.Status.Elapsed;
+        HomeName = fixtureResponseApiDto.Teams.Home.Name;
+        AwayName = fixtureResponseApiDto.Teams.Away.Name;
+        HomeLogo = fixtureResponseApiDto.Teams.Home.Logo;
+        AwayLogo = fixtureResponseApiDto.Teams.Away.Logo;
+        GoalsHomeTeam = fixtureResponseApiDto.Goals.Home;
+        GoalsAwayTeam = fixtureResponseApiDto.Goals.Away;
+        UpdateDate = DateTime.Now;
+        Venue = venue;
+        FixtureLeague = fixtureLeague;
+    }
+
     public Winner GetWinner()
     {
         return Short switch

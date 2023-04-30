@@ -6,7 +6,13 @@ public class FixtureLeague : Entity
 {
     public FixtureLeague(FixtureResponseApiDto fixtureResponseApiDto, League.League league)
     {
-        // FixtureId = fixtureResponseApiDto.Fixture.Id;
+        League = league;
+        Round = fixtureResponseApiDto.League.Round;
+        Season = fixtureResponseApiDto.League.Season;
+    }
+
+    public FixtureLeague(LiveFixtureResponseApiDto fixtureResponseApiDto, League.League league)
+    {
         League = league;
         Round = fixtureResponseApiDto.League.Round;
         Season = fixtureResponseApiDto.League.Season;

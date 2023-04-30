@@ -23,7 +23,6 @@ public class GetLeagueByIdRequestHandler : IRequestHandler<GetLeagueByIdRequest,
         return new GetLeagueByIdResponse
         {
             League = league.Adapt<LeagueDto>()
-            
         };
     }
 }

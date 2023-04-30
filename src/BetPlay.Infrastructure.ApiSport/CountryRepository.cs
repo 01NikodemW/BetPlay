@@ -31,9 +31,6 @@ public class CountryRepository : ICountryRepository
             await _context.SaveChangesAsync();
         }
 
-
-        // var countriesApiDto = await _client.GetCountriesAsync();
-        // var countries = countriesApiDto.Select(x => new Country(x));
         return countries;
     }
 }

@@ -46,34 +46,63 @@ public class FixtureRepository : IFixtureRepository
             var fixtureLeague =
                 await _context.FixtureLeagues.FirstOrDefaultAsync(x =>
                     x.League.LeagueId == fixtureApiDto.League.Id);
-            // var fixtureLeague = null;
-            // if (fixtureLeague == null)
-            if (true)
+            if (fixtureLeague == null)
             {
                 var league = await _leagueRepository.GetLeagueById(fixtureApiDto.League.Id);
-
-                // var league = await _context.Leagues.FirstOrDefaultAsync(x =>
-                //     x.LeagueId == fixtureApiDto.League.Id);
-                //
-                //
-                // if (league == null)
-                // {
-                //     var leagueApiDto = await _client.GetLeagueByIdAsync(fixtureApiDto.League.Id);
-                //     league = new League(leagueApiDto);
-                //     _context.Leagues.Add(league);
-                // }
-                //
                 fixtureLeague = new FixtureLeague(fixtureApiDto, league);
 
-                // _context.FixtureLeagues.Add(fixtureLeague);
-                // await _context.SaveChangesAsync();
+                _context.FixtureLeagues.Add(fixtureLeague);
+                await _context.SaveChangesAsync();
             }
 
 
             fixture = new Fixture(fixtureApiDto, venue, fixtureLeague);
+
+            _context.Fixtures.Add(fixture);
+            await _context.SaveChangesAsync();
         }
 
 
         return fixture;
+    }
+
+    public async Task<IEnumerable<Fixture>> GetLiveFixturesByLeagueId(int leagueId)
+    {
+        var liveFixturesApiDto = await _client.GetLiveFixturesByLeagueIdAsync(leagueId);
+
+        var liveFixtures = new List<Fixture>();
+        foreach (var fixtureApiDto in liveFixturesApiDto)
+        {
+            var venue = await _context.Venues.FirstOrDefaultAsync(x => x.VenueId == fixtureApiDto.Fixture.Venue.Id);
+            if (venue == null)
+            {
+                var venueApiDto = await _client.GetVenueByIdAsync(fixtureApiDto.Fixture.Venue.Id);
+                venue = new Venue(venueApiDto);
+
+                _context.Venues.Add(venue);
+                await _context.SaveChangesAsync();
+            }
+
+            var fixtureLeague =
+                await _context.FixtureLeagues.FirstOrDefaultAsync(x =>
+                    x.League.LeagueId == fixtureApiDto.League.Id);
+            if (fixtureLeague == null)
+            {
+                var league = await _leagueRepository.GetLeagueById(fixtureApiDto.League.Id);
+                fixtureLeague = new FixtureLeague(fixtureApiDto, league);
+
+                _context.FixtureLeagues.Add(fixtureLeague);
+                await _context.SaveChangesAsync();
+            }
+
+            var fixture = new Fixture(fixtureApiDto, venue, fixtureLeague);
+            liveFixtures.Add(fixture);
+
+            _context.Fixtures.Add(fixture);
+            await _context.SaveChangesAsync();
+        }
+
+
+        return liveFixtures;
     }
 }
