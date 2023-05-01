@@ -4,7 +4,7 @@ public class FixtureApiDto
 {
     public int Id { get; set; }
 
-    public string Referee { get; set; } = default!;
+    public string? Referee { get; set; }
 
     public string Timezone { get; set; } = default!;
 
@@ -28,9 +28,9 @@ public class PeriodsApiDto
 
 public class VenueApiDto
 {
-    public int Id { get; set; }
-    public string Name { get; set; } = default!;
-    public string City { get; set; } = default!;
+    public int? Id { get; set; }
+    public string? Name { get; set; } = default!;
+    public string? City { get; set; } = default!;
 }
 
 public class StatusApiDto

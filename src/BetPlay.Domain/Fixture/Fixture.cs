@@ -5,10 +5,10 @@ namespace BetPlay.Domain.Fixture;
 
 public class Fixture : Entity
 {
-    public Fixture(FixtureResponseApiDto fixtureResponseApiDto, Venue venue, FixtureLeague fixtureLeague)
+    public Fixture(FixtureResponseApiDto fixtureResponseApiDto, Venue? venue, FixtureLeague fixtureLeague)
     {
         FixtureId = fixtureResponseApiDto.Fixture.Id;
-        Referee = fixtureResponseApiDto.Fixture.Referee;
+        Referee = fixtureResponseApiDto.Fixture.Referee ?? "N/A";
         Timezone = fixtureResponseApiDto.Fixture.Timezone;
         Date = fixtureResponseApiDto.Fixture.Date;
         Timestamp = fixtureResponseApiDto.Fixture.Timestamp;
@@ -26,9 +26,10 @@ public class Fixture : Entity
         FixtureLeague = fixtureLeague;
     }
 
-    public Fixture(LiveFixtureResponseApiDto fixtureResponseApiDto, Venue venue, FixtureLeague fixtureLeague)
+    public Fixture(LiveFixtureResponseApiDto fixtureResponseApiDto, Venue? venue, FixtureLeague fixtureLeague)
     {
         FixtureId = fixtureResponseApiDto.Fixture.Id;
+        // Referee = fixtureResponseApiDto.Fixture.Referee ?? "N/A";
         Referee = fixtureResponseApiDto.Fixture.Referee;
         Timezone = fixtureResponseApiDto.Fixture.Timezone;
         Date = fixtureResponseApiDto.Fixture.Date;
@@ -62,15 +63,17 @@ public class Fixture : Entity
     }
 
     public int FixtureId { get; set; }
-    public string Referee { get; set; } = default!;
+
+    // public string Referee { get; set; } = "N/A"; // assign default value
+    public string? Referee { get; set; }
     public string Timezone { get; set; } = default!;
     public string Date { get; set; } = default!;
     public int Timestamp { get; set; }
     public string Long { get; set; } = default!;
     public string Short { get; set; } = default!;
     public int? Elapsed { get; set; }
-    public Guid VenueId { get; set; }
-    public virtual Venue Venue { get; set; } = default!;
+    public Guid? VenueId { get; set; }
+    public virtual Venue? Venue { get; set; } = default!;
     public Guid FixtureLeagueId { get; set; }
     public virtual FixtureLeague FixtureLeague { get; set; } = default!;
     public string HomeName { get; set; } = default!;
@@ -84,5 +87,10 @@ public class Fixture : Entity
     public bool IsValid()
     {
         return UpdateDate.AddDays(7) > DateTime.Now;
+    }
+    
+    public bool IsValidForLive()
+    {
+        return UpdateDate.AddSeconds(15) > DateTime.Now;
     }
 }
