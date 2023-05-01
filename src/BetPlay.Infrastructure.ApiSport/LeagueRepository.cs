@@ -51,10 +51,18 @@ public class LeagueRepository : ILeagueRepository
             leaguesByCountry.Any(x => x.IsValid() != true))
         {
             _context.Leagues.RemoveRange(leaguesByCountry);
-            _context.Countries.RemoveRange(leaguesByCountry.Select(x => x.Country));
 
             var leaguesApiDto = await _client.GetLeaguesByCountryAsync(country);
             leaguesByCountry = leaguesApiDto.Select(x => new League(x)).ToList();
+            foreach (var league in leaguesByCountry)
+            {
+                var countryInDb = await _context.Countries.FirstOrDefaultAsync(x => x.Name == league.Country.Name);
+                if (countryInDb != null)
+                {
+                    league.Country = countryInDb;
+                }
+            }
+
             _context.Leagues.AddRange(leaguesByCountry);
 
             await _context.SaveChangesAsync();

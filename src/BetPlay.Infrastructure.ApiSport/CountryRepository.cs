@@ -20,13 +20,19 @@ public class CountryRepository : ICountryRepository
     {
         var countries = await _context.Countries.ToListAsync();
 
-        if (countries.Count != 166 || countries.Any(c => c.IsValid() != true))
+        if (countries.Count != 166)
         {
-            _context.Countries.RemoveRange(countries);
-
             var countriesApiDto = await _client.GetCountriesAsync();
             countries = countriesApiDto.Where(x => !string.IsNullOrEmpty(x.Code)).Select(x => new Country(x)).ToList();
-            _context.Countries.AddRange(countries);
+            foreach (var country in countries)
+            {
+                var countryInDb = await _context.Countries.FirstOrDefaultAsync(x => x.Name == country.Name);
+                if (countryInDb == null)
+                {
+                    _context.Countries.Add(country);
+                }
+            }
+
 
             await _context.SaveChangesAsync();
         }

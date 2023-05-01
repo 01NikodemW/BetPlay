@@ -25,11 +25,17 @@ public class TeamRepository : ITeamRepository
             if (team != null)
             {
                 _context.Teams.Remove(team);
-                _context.Venues.Remove(team.Venue);
             }
 
             var teamApiDto = await _client.GetTeamByIdAsync(id);
             team = new Team(teamApiDto);
+            var venueInDb = await _context.Venues.FirstOrDefaultAsync(x => x.VenueId == team.Venue.VenueId);
+
+            if (venueInDb != null)
+            {
+                team.Venue = venueInDb;
+            }
+
             _context.Teams.Add(team);
 
             await _context.SaveChangesAsync();

@@ -32,6 +32,8 @@ public class FixtureRepository : IFixtureRepository
 
         if (fixture == null || !fixture.IsValid())
         {
+            if (fixture != null)
+                _context.Fixtures.Remove(fixture);
             var fixtureApiDto = await _client.GetFixtureByIdAsync(id);
             var venue = await _context.Venues.FirstOrDefaultAsync(x => x.VenueId == fixtureApiDto.Fixture.Venue.Id);
             if (venue == null)
@@ -43,9 +45,15 @@ public class FixtureRepository : IFixtureRepository
                 await _context.SaveChangesAsync();
             }
 
+
             var fixtureLeague =
-                await _context.FixtureLeagues.FirstOrDefaultAsync(x =>
-                    x.League.LeagueId == fixtureApiDto.League.Id);
+                await _context.FixtureLeagues
+                    .Include(x => x.League)
+                    .Include(x => x.League.Country)
+                    .FirstOrDefaultAsync(
+                        x =>
+                            x.League.LeagueId == fixtureApiDto.League.Id && x.Season == fixtureApiDto.League.Season &&
+                            x.Round == fixtureApiDto.League.Round);
             if (fixtureLeague == null)
             {
                 var league = await _leagueRepository.GetLeagueById(fixtureApiDto.League.Id);
