@@ -135,7 +135,7 @@ public class FixtureRepository : IFixtureRepository
 
 
         bool isDataValid = liveFixturesFromDb.All(f => f.IsValidForLive());
-        if (isDataValid)
+        if (isDataValid && liveFixturesFromDb.Any())
         {
             return liveFixturesFromDb;
         }

@@ -26,8 +26,8 @@ public class Country : Entity
     }
 
     public string Name { get; set; } = default!;
-    public string Code { get; set; } = default!;
-    public string Flag { get; set; } = default!;
+    public string? Code { get; set; } = default!;
+    public string? Flag { get; set; } = default!;
     public DateTime UpdateDate { get; set; }
 
     public bool IsValid()
