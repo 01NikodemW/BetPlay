@@ -178,6 +178,13 @@ public class ApiSportClient : IApiSportClient
 
         var response = await client.ExecuteAsync<ApiSportResponse<VenueApiDto>>(request);
 
-        return response.Data.Response.First();
+        try
+        {
+            return response.Data.Response.First();
+        }
+        catch (InvalidOperationException e)
+        {
+            return null;
+        }
     }
 }

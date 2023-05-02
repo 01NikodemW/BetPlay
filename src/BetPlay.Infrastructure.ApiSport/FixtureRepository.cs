@@ -155,10 +155,13 @@ public class FixtureRepository : IFixtureRepository
             if (venue == null && fixtureApiDto.Fixture.Venue.Id != null)
             {
                 var venueApiDto = await _client.GetVenueByIdAsync(fixtureApiDto.Fixture.Venue.Id);
-                venue = new Venue(venueApiDto);
+                if (venue != null)
+                {
+                    venue = new Venue(venueApiDto);
 
-                _context.Venues.Add(venue);
-                await _context.SaveChangesAsync();
+                    _context.Venues.Add(venue);
+                    await _context.SaveChangesAsync();
+                }
             }
 
 
