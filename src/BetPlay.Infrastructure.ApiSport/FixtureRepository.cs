@@ -151,17 +151,6 @@ public class FixtureRepository : IFixtureRepository
 
         foreach (var fixtureApiDto in liveFixturesApiDto)
         {
-            // var fixture = await _context.Fixtures
-            // .Include(x => x.Venue)
-            // .Include(x => x.FixtureLeague)
-            // .FirstOrDefaultAsync(x => x.FixtureId == fixtureApiDto.Fixture.Id);
-
-
-            // if (fixture == null || !fixture.IsValid())
-            // {
-            // if (fixture != null)
-            // _context.Fixtures.Remove(fixture);
-
             var venue = await _context.Venues.FirstOrDefaultAsync(x => x.VenueId == fixtureApiDto.Fixture.Venue.Id);
             if (venue == null && fixtureApiDto.Fixture.Venue.Id != null)
             {
@@ -194,11 +183,77 @@ public class FixtureRepository : IFixtureRepository
             var fixture = new Fixture(fixtureApiDto, venue, fixtureLeague);
             _context.Fixtures.Add(fixture);
             await _context.SaveChangesAsync();
-            // }
 
             liveFixtures.Add(fixture);
         }
 
         return liveFixtures;
+    }
+
+
+    public async Task<IEnumerable<Fixture>> GetFixturesByDate(DateTime date, IEnumerable<int> leaguesToDisplay)
+    {
+        var fixturesOfThatDayFromDb = await _context.Fixtures
+            .Include(x => x.Venue)
+            .Include(x => x.FixtureLeague)
+            .Where(x => x.Date.Substring(0, 10) == date.ToString("yyyy-MM-dd"))
+            .Where(x => leaguesToDisplay.Contains(x.FixtureLeague.League.LeagueId))
+            .ToListAsync();
+
+        bool isDataValid = fixturesOfThatDayFromDb.All(f => f.IsValidForNormalPreview());
+        if (isDataValid && fixturesOfThatDayFromDb.Any())
+        {
+            return fixturesOfThatDayFromDb;
+        }
+
+        _context.Fixtures.RemoveRange(fixturesOfThatDayFromDb);
+        await _context.SaveChangesAsync();
+
+        IEnumerable<Fixture> fixturesToDisplay = new List<Fixture>();
+
+        foreach (var leagueToDisplay in leaguesToDisplay)
+        {
+            var fixturesFromLeagueApiDto =
+                await _client.GetFixturesFromLeagueByDateAsync(leagueToDisplay, date);
+            foreach (var fixtureApiDto in fixturesFromLeagueApiDto)
+            {
+                var venue = await _context.Venues.FirstOrDefaultAsync(x => x.VenueId == fixtureApiDto.Fixture.Venue.Id);
+                if (venue == null && fixtureApiDto.Fixture.Venue.Id != null)
+                {
+                    var venueApiDto = await _client.GetVenueByIdAsync(fixtureApiDto.Fixture.Venue.Id);
+                    venue = new Venue(venueApiDto);
+
+                    _context.Venues.Add(venue);
+                    await _context.SaveChangesAsync();
+                }
+
+
+                var fixtureLeague =
+                    await _context.FixtureLeagues
+                        .Include(x => x.League)
+                        .Include(x => x.League.Country)
+                        .FirstOrDefaultAsync(
+                            x =>
+                                x.League.LeagueId == fixtureApiDto.League.Id &&
+                                x.Season == fixtureApiDto.League.Season &&
+                                x.Round == fixtureApiDto.League.Round);
+                if (fixtureLeague == null)
+                {
+                    var league = await _leagueRepository.GetLeagueById(fixtureApiDto.League.Id);
+                    fixtureLeague = new FixtureLeague(fixtureApiDto, league);
+
+                    _context.FixtureLeagues.Add(fixtureLeague);
+                    await _context.SaveChangesAsync();
+                }
+
+                var fixture = new Fixture(fixtureApiDto, venue, fixtureLeague);
+                _context.Fixtures.Add(fixture);
+                await _context.SaveChangesAsync();
+
+                fixturesToDisplay = fixturesToDisplay.Append(fixture);
+            }
+        }
+
+        return fixturesToDisplay;
     }
 }

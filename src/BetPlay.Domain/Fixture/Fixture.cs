@@ -91,6 +91,13 @@ public class Fixture : Entity
     
     public bool IsValidForLive()
     {
-        return UpdateDate.AddSeconds(15) > DateTime.Now;
+        return UpdateDate.AddMinutes(10) > DateTime.Now;
     }
+    
+    public bool IsValidForNormalPreview()
+    {
+        return UpdateDate.AddMinutes(30) > DateTime.Now;
+    }
+    
+    
 }

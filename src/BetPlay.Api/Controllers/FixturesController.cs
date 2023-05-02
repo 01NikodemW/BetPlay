@@ -27,4 +27,10 @@ public class FixturesController : BetPlayControllerBase
     {
         return Ok(await Mediator.Send(request));
     }
+    
+    [HttpPost("[action]")]
+    public async Task<IActionResult> GetFixturesByDate([FromBody] GetFixturesByDateRequest request)
+    {
+        return Ok(await Mediator.Send(request));
+    }
 }

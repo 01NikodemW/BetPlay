@@ -147,6 +147,23 @@ public class ApiSportClient : IApiSportClient
         return response.Data.Response.AsEnumerable();
     }
 
+    public async Task<IEnumerable<LiveFixtureResponseApiDto>> GetFixturesFromLeagueByDateAsync(int id, DateTime date)
+    {
+        var client = new RestClient(_options.BaseUrl);
+        var request = new RestRequest("fixtures");
+
+        request.AddQueryParameter("league", id.ToString());
+        request.AddQueryParameter("season", 2022);
+        request.AddQueryParameter("date", date.ToString("yyyy-MM-dd"));
+
+        request.AddHeader("x-rapidapi-key", _options.ApiKey);
+        request.AddHeader("x-rapidapi-host", "v3.football.api-sports.io");
+
+        var response = await client.ExecuteAsync<ApiSportResponse<LiveFixtureResponseApiDto>>(request);
+
+        return response.Data.Response.AsEnumerable();
+    }
+
 
     //Venues
     public async Task<VenueApiDto> GetVenueByIdAsync(int? id)
