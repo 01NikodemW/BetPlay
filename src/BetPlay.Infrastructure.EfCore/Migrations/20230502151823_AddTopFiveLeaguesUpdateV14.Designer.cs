@@ -3,6 +3,7 @@ using System;
 using BetPlay.Infrastructure.EfCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BetPlay.Infrastructure.EfCore.Migrations
 {
     [DbContext(typeof(BetPlayDbContext))]
-    partial class BetPlayDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230502151823_AddTopFiveLeaguesUpdateV14")]
+    partial class AddTopFiveLeaguesUpdateV14
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
@@ -131,9 +134,6 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                     b.Property<int?>("ExtratimeHome")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("FixtureId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int?>("FulltimeAway")
                         .HasColumnType("INTEGER");
 
@@ -231,27 +231,27 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("db56bed9-cb61-4d34-bb78-92918e352da6"),
+                            Id = new Guid("ce9c3212-69eb-43d9-b294-5e82f71843d9"),
                             LeagueId = 78
                         },
                         new
                         {
-                            Id = new Guid("00c01cdc-6f2b-481e-acc8-eae17002e854"),
+                            Id = new Guid("533829f8-80b4-4955-98e7-38382141171f"),
                             LeagueId = 39
                         },
                         new
                         {
-                            Id = new Guid("68853aaa-65f1-4bc9-8b21-77b69ea0959e"),
+                            Id = new Guid("40b92a91-9535-4084-8374-be5616f28358"),
                             LeagueId = 140
                         },
                         new
                         {
-                            Id = new Guid("dcba6ae4-18d2-4307-9b6b-0326b9f7eb82"),
+                            Id = new Guid("25d9210f-5ec1-4fce-8ad4-0255109eefcf"),
                             LeagueId = 135
                         },
                         new
                         {
-                            Id = new Guid("0f0c6ed0-eb0b-489a-86fe-91fb26afd506"),
+                            Id = new Guid("93f1c2dc-8b6d-4876-a505-37a4c19c3804"),
                             LeagueId = 61
                         });
                 });

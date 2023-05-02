@@ -5,7 +5,7 @@ namespace BetPlay.Domain.Fixture;
 
 public class Fixture : Entity
 {
-    public Fixture(FixtureResponseApiDto fixtureResponseApiDto, Venue? venue, FixtureLeague fixtureLeague)
+    public Fixture(FixtureResponseApiDto fixtureResponseApiDto, Venue? venue, FixtureLeague fixtureLeague, Score score)
     {
         FixtureId = fixtureResponseApiDto.Fixture.Id;
         Referee = fixtureResponseApiDto.Fixture.Referee ?? "N/A";
@@ -24,6 +24,7 @@ public class Fixture : Entity
         UpdateDate = DateTime.Now;
         Venue = venue;
         FixtureLeague = fixtureLeague;
+        Score = score;
     }
 
     public Fixture(LiveFixtureResponseApiDto fixtureResponseApiDto, Venue? venue, FixtureLeague fixtureLeague)
@@ -82,22 +83,23 @@ public class Fixture : Entity
     public string AwayLogo { get; set; } = default!;
     public int? GoalsHomeTeam { get; set; }
     public int? GoalsAwayTeam { get; set; }
+    public virtual Score? Score { get; set; }
+    public Guid? ScoreId { get; set; }
+
     public DateTime UpdateDate { get; set; }
 
     public bool IsValid()
     {
         return UpdateDate.AddDays(7) > DateTime.Now;
     }
-    
+
     public bool IsValidForLive()
     {
-        return UpdateDate.AddMinutes(10) > DateTime.Now;
+        return UpdateDate.AddMinutes(1) > DateTime.Now;
     }
-    
+
     public bool IsValidForNormalPreview()
     {
         return UpdateDate.AddMinutes(30) > DateTime.Now;
     }
-    
-    
 }

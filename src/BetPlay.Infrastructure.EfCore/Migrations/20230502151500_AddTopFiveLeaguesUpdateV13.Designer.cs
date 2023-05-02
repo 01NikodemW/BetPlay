@@ -3,6 +3,7 @@ using System;
 using BetPlay.Infrastructure.EfCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BetPlay.Infrastructure.EfCore.Migrations
 {
     [DbContext(typeof(BetPlayDbContext))]
-    partial class BetPlayDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230502151500_AddTopFiveLeaguesUpdateV13")]
+    partial class AddTopFiveLeaguesUpdateV13
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
@@ -65,7 +68,7 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                     b.Property<string>("Referee")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ScoreId")
+                    b.Property<Guid>("ScoreId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Short")
@@ -129,9 +132,6 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("ExtratimeHome")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("FixtureId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("FulltimeAway")
@@ -231,27 +231,27 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("db56bed9-cb61-4d34-bb78-92918e352da6"),
+                            Id = new Guid("9b74cd34-4271-4a1e-abac-7705c6070242"),
                             LeagueId = 78
                         },
                         new
                         {
-                            Id = new Guid("00c01cdc-6f2b-481e-acc8-eae17002e854"),
+                            Id = new Guid("bdcc3995-1f6c-432f-908d-fc9a82923995"),
                             LeagueId = 39
                         },
                         new
                         {
-                            Id = new Guid("68853aaa-65f1-4bc9-8b21-77b69ea0959e"),
+                            Id = new Guid("1bd2a72d-d1be-4436-8c09-8cb498bd280c"),
                             LeagueId = 140
                         },
                         new
                         {
-                            Id = new Guid("dcba6ae4-18d2-4307-9b6b-0326b9f7eb82"),
+                            Id = new Guid("eb770b36-a99a-4ce2-b84c-2b5af9d398c9"),
                             LeagueId = 135
                         },
                         new
                         {
-                            Id = new Guid("0f0c6ed0-eb0b-489a-86fe-91fb26afd506"),
+                            Id = new Guid("f7e9820d-2552-4b44-8e5a-d536402e4c49"),
                             LeagueId = 61
                         });
                 });
@@ -346,7 +346,9 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
 
                     b.HasOne("BetPlay.Domain.Fixture.Score", "Score")
                         .WithMany()
-                        .HasForeignKey("ScoreId");
+                        .HasForeignKey("ScoreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("BetPlay.Domain.Team.Venue", "Venue")
                         .WithMany()

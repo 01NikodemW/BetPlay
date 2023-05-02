@@ -22,6 +22,7 @@ public class BetPlayDbContext : DbContext
     public DbSet<Country> Countries { get; set; } = default!;
     public DbSet<Fixture> Fixtures { get; set; } = default!;
     public DbSet<FixtureLeague> FixtureLeagues { get; set; } = default!;
+    public DbSet<Score> Scores { get; set; } = default!;
 
     public DbSet<Team> Teams { get; set; } = default!;
     public DbSet<Venue> Venues { get; set; } = default!;

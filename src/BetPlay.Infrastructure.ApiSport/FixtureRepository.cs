@@ -24,13 +24,21 @@ public class FixtureRepository : IFixtureRepository
         var fixture = await _context.Fixtures
             .Include(x => x.Venue)
             .Include(x => x.FixtureLeague)
+            .Include(x => x.Score)
             .FirstOrDefaultAsync(x => x.FixtureId == id);
 
 
-        if (fixture == null || !fixture.IsValid())
+        if (fixture == null || !fixture.IsValidForLive())
         {
             if (fixture != null)
+            {
                 _context.Fixtures.Remove(fixture);
+                if (fixture.Score != null)
+                {
+                    _context.Scores.Remove(fixture.Score);
+                }
+            }
+
             var fixtureApiDto = await _client.GetFixtureByIdAsync(id);
             var venue = await _context.Venues.FirstOrDefaultAsync(x => x.VenueId == fixtureApiDto.Fixture.Venue.Id);
             if (venue == null && fixtureApiDto.Fixture.Venue.Id != null)
@@ -61,7 +69,10 @@ public class FixtureRepository : IFixtureRepository
             }
 
 
-            fixture = new Fixture(fixtureApiDto, venue, fixtureLeague);
+            var score = new Score(fixtureApiDto);
+            _context.Scores.Add(score);
+
+            fixture = new Fixture(fixtureApiDto, venue, fixtureLeague, score);
 
             _context.Fixtures.Add(fixture);
             await _context.SaveChangesAsync();
@@ -192,7 +203,6 @@ public class FixtureRepository : IFixtureRepository
 
         return liveFixtures;
     }
-
 
     public async Task<IEnumerable<Fixture>> GetFixturesByDate(DateTime date, IEnumerable<int> leaguesToDisplay)
     {

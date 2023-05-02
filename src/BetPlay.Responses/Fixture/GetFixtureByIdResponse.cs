@@ -4,5 +4,5 @@ namespace BetPlay.Responses.Fixture;
 
 public class GetFixtureByIdResponse
 {
-    public FixtureDto Fixture { get; set; } = default!;
+    public FixtureDetailsDto Fixture { get; set; } = default!;
 }
