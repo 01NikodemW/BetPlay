@@ -80,14 +80,7 @@ public class FixtureRepository : IFixtureRepository
 
             foreach (var particularEvent in fixtureApiDto.Events)
             {
-                var team = await _context.Teams.Include(x => x.Venue)
-                    .FirstOrDefaultAsync(x => x.TeamId == particularEvent.Team.Id);
-                if (team == null)
-                {
-                    team = await _teamRepository.GetTeamById(particularEvent.Team.Id);
-                }
-
-                var newEvent = new Event(fixtureApiDto.Fixture.Id, particularEvent, team);
+                var newEvent = new Event(fixtureApiDto.Fixture.Id, particularEvent);
                 events.Add(newEvent);
             }
 

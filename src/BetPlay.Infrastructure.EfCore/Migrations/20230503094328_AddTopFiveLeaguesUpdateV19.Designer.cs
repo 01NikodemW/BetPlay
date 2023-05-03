@@ -3,6 +3,7 @@ using System;
 using BetPlay.Infrastructure.EfCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BetPlay.Infrastructure.EfCore.Migrations
 {
     [DbContext(typeof(BetPlayDbContext))]
-    partial class BetPlayDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230503094328_AddTopFiveLeaguesUpdateV19")]
+    partial class AddTopFiveLeaguesUpdateV19
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
@@ -54,8 +57,7 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                     b.Property<string>("PlayerName")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("TeamName")
-                        .IsRequired()
+                    b.Property<Guid?>("TeamId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Type")
@@ -65,6 +67,8 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("FixtureId1");
+
+                    b.HasIndex("TeamId");
 
                     b.ToTable("Event");
                 });
@@ -283,27 +287,27 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ef79c2fd-04ff-4a01-9a9a-215a16b2ec80"),
+                            Id = new Guid("f35bb162-c40e-49c9-8eeb-821567c338ff"),
                             LeagueId = 78
                         },
                         new
                         {
-                            Id = new Guid("1cbb57ae-0be4-4360-a6d0-699a6dce97d8"),
+                            Id = new Guid("dc6a0d59-07d5-4ef7-8279-6a8b864a4671"),
                             LeagueId = 39
                         },
                         new
                         {
-                            Id = new Guid("a1486cc6-ab08-4639-b9cc-d595a52c695a"),
+                            Id = new Guid("9507fa77-5f43-4428-a5de-c2c484bb9055"),
                             LeagueId = 140
                         },
                         new
                         {
-                            Id = new Guid("fe82c512-2477-4272-a335-c7c59aa5c159"),
+                            Id = new Guid("8e8d04c8-4d64-4eb1-b76a-ba8876e3b0ec"),
                             LeagueId = 135
                         },
                         new
                         {
-                            Id = new Guid("ee263a4b-07bc-42ae-a838-a6ceaee319ef"),
+                            Id = new Guid("e0218581-aca7-4758-bb23-520fe0484ca3"),
                             LeagueId = 61
                         });
                 });
@@ -392,6 +396,12 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                     b.HasOne("BetPlay.Domain.Fixture.Fixture", null)
                         .WithMany("Events")
                         .HasForeignKey("FixtureId1");
+
+                    b.HasOne("BetPlay.Domain.Team.Team", "Team")
+                        .WithMany()
+                        .HasForeignKey("TeamId");
+
+                    b.Navigation("Team");
                 });
 
             modelBuilder.Entity("BetPlay.Domain.Fixture.Fixture", b =>

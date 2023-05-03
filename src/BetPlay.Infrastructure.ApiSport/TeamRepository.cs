@@ -28,17 +28,20 @@ public class TeamRepository : ITeamRepository
             }
 
             var teamApiDto = await _client.GetTeamByIdAsync(id);
-            team = new Team(teamApiDto);
-            var venueInDb = await _context.Venues.FirstOrDefaultAsync(x => x.VenueId == team.Venue.VenueId);
-
-            if (venueInDb != null)
+            if (team != null)
             {
-                team.Venue = venueInDb;
+                team = new Team(teamApiDto);
+                var venueInDb = await _context.Venues.FirstOrDefaultAsync(x => x.VenueId == team.Venue.VenueId);
+
+                if (venueInDb != null)
+                {
+                    team.Venue = venueInDb;
+                }
+
+                _context.Teams.Add(team);
+
+                await _context.SaveChangesAsync();
             }
-
-            _context.Teams.Add(team);
-
-            await _context.SaveChangesAsync();
         }
 
         return team;

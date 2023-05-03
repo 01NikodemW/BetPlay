@@ -8,12 +8,12 @@ public class Event : Entity
     {
     }
 
-    public Event(int fixtureId, EventApiDto eventApi, Team.Team team)
+    public Event(int fixtureId, EventApiDto eventApi)
     {
         FixtureId = fixtureId;
         Elapsed = eventApi.Time.Elapsed;
         Extra = eventApi.Time.Extra;
-        Team = team;
+        TeamName = eventApi.Team.Name;
         PlayerId = eventApi.Player.Id;
         PlayerName = eventApi.Player.Name;
         AssistId = eventApi.Assist.Id;
@@ -26,7 +26,7 @@ public class Event : Entity
     public int FixtureId { get; set; }
     public int Elapsed { get; set; }
     public int? Extra { get; set; }
-    public Team.Team Team { get; set; } = default!;
+    public string TeamName { get; set; } = default!;
     public int? PlayerId { get; set; }
     public string? PlayerName { get; set; } = default!;
     public int? AssistId { get; set; }

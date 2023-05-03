@@ -66,7 +66,15 @@ public class ApiSportClient : IApiSportClient
         request.AddHeader("x-rapidapi-host", "v3.football.api-sports.io");
 
         var response = await client.ExecuteAsync<ApiSportResponse<TeamResponseApiDto>>(request);
-        return response.Data.Response.First();
+        
+        try
+        {
+            return response.Data.Response.First();
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
     }
 
     public async Task<IEnumerable<TeamResponseApiDto>> GetTeamsByLeagueIdAsync(int id)
