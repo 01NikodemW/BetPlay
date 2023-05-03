@@ -3,6 +3,7 @@ using System;
 using BetPlay.Infrastructure.EfCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BetPlay.Infrastructure.EfCore.Migrations
 {
     [DbContext(typeof(BetPlayDbContext))]
-    partial class BetPlayDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230502162113_AddTopFiveLeaguesUpdateV16")]
+    partial class AddTopFiveLeaguesUpdateV16
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
@@ -284,27 +287,27 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("cde69d19-b577-46de-8aa9-83f4de995c11"),
+                            Id = new Guid("f0d2fa63-75eb-4b7f-a6d3-23433084f54e"),
                             LeagueId = 78
                         },
                         new
                         {
-                            Id = new Guid("9702bdca-d5c5-4251-9242-27ced52b40b6"),
+                            Id = new Guid("54fef358-b850-4743-8c96-9997ac093dfd"),
                             LeagueId = 39
                         },
                         new
                         {
-                            Id = new Guid("7f54ec86-1929-4fbb-8402-e7e4d6da33c6"),
+                            Id = new Guid("8a1d98f2-43a6-4786-a63e-defd1056784f"),
                             LeagueId = 140
                         },
                         new
                         {
-                            Id = new Guid("592b8dc5-e457-410a-a1ef-20b8871ab60e"),
+                            Id = new Guid("875fac56-37c2-4822-9435-57f7b08fc26c"),
                             LeagueId = 135
                         },
                         new
                         {
-                            Id = new Guid("270d50be-960b-4928-9b3f-3d82e724e8eb"),
+                            Id = new Guid("6b673bce-cd6d-4fe5-9ae5-1fb9ccebe576"),
                             LeagueId = 61
                         });
                 });
@@ -316,13 +319,14 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Code")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Country")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("Founded")
+                    b.Property<int>("Founded")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Logo")

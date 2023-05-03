@@ -22,4 +22,6 @@ public class FixtureDetailsDto
     public VenueDto Venue { get; set; } = default!;
     public FixtureLeagueDto FixtureLeague { get; set; } = default!;
     public ScoreDto Score { get; set; } = default!;
+    public IEnumerable<EventDto> Events { get; set; } = default!;
+
 }

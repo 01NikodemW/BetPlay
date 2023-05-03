@@ -5,7 +5,8 @@ namespace BetPlay.Domain.Fixture;
 
 public class Fixture : Entity
 {
-    public Fixture(FixtureResponseApiDto fixtureResponseApiDto, Venue? venue, FixtureLeague fixtureLeague, Score score)
+    public Fixture(FixtureResponseApiDto fixtureResponseApiDto, Venue? venue, FixtureLeague fixtureLeague, Score score,
+        IEnumerable<Event> events)
     {
         FixtureId = fixtureResponseApiDto.Fixture.Id;
         Referee = fixtureResponseApiDto.Fixture.Referee ?? "N/A";
@@ -24,13 +25,13 @@ public class Fixture : Entity
         UpdateDate = DateTime.Now;
         Venue = venue;
         FixtureLeague = fixtureLeague;
+        Events = events;
         Score = score;
     }
 
-    public Fixture(LiveFixtureResponseApiDto fixtureResponseApiDto, Venue? venue, FixtureLeague fixtureLeague)
+    public Fixture(LiveFixtureResponseApiDto fixtureResponseApiDto, Venue venue, FixtureLeague fixtureLeague)
     {
         FixtureId = fixtureResponseApiDto.Fixture.Id;
-        // Referee = fixtureResponseApiDto.Fixture.Referee ?? "N/A";
         Referee = fixtureResponseApiDto.Fixture.Referee;
         Timezone = fixtureResponseApiDto.Fixture.Timezone;
         Date = fixtureResponseApiDto.Fixture.Date;
@@ -85,7 +86,7 @@ public class Fixture : Entity
     public int? GoalsAwayTeam { get; set; }
     public virtual Score? Score { get; set; }
     public Guid? ScoreId { get; set; }
-
+    public virtual IEnumerable<Event>? Events { get; set; } = default!;
     public DateTime UpdateDate { get; set; }
 
     public bool IsValid()

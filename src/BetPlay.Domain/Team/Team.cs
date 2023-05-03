@@ -23,9 +23,9 @@ public class Team : Entity
 
     public int TeamId { get; set; }
     public string Name { get; set; } = default!;
-    public string Code { get; set; }
+    public string? Code { get; set; }
     public string Country { get; set; }
-    public int Founded { get; set; }
+    public int? Founded { get; set; }
     public bool National { get; set; }
     public string Logo { get; set; } = default!;
     public virtual Venue Venue { get; set; }
