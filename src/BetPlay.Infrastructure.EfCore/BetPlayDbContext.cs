@@ -15,6 +15,7 @@ public class BetPlayDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(BetPlayDbContext).Assembly);
+        
     }
 
     public DbSet<TrackedLeague> TrackedLeagues { get; set; } = default!;

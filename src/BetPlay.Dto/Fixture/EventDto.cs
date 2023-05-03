@@ -4,7 +4,7 @@ namespace BetPlay.Dto.Fixture;
 
 public class EventDto
 {
-    public int FixtureId { get; set; }
+    public Guid FixtureId { get; set; }
     public int Elapsed { get; set; }
     public int? Extra { get; set; }
     public string TeamName { get; set; } = default!;

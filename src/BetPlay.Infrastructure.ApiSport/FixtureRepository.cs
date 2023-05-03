@@ -32,7 +32,9 @@ public class FixtureRepository : IFixtureRepository
             .Include(x => x.Score)
             .Include(x => x.Events)
             .FirstOrDefaultAsync(x => x.FixtureId == id);
-        if (fixture == null || !fixture.IsValidForLive())
+
+        // if (fixture == null || !fixture.IsValidForLive())
+        if (true)
         {
             if (fixture != null)
             {
@@ -40,6 +42,7 @@ public class FixtureRepository : IFixtureRepository
                 if (fixture.Score != null)
                 {
                     _context.Scores.Remove(fixture.Score);
+                    await _context.SaveChangesAsync();
                 }
             }
 
@@ -78,13 +81,14 @@ public class FixtureRepository : IFixtureRepository
 
             var events = new List<Event>();
 
-            foreach (var particularEvent in fixtureApiDto.Events)
-            {
-                var newEvent = new Event(fixtureApiDto.Fixture.Id, particularEvent);
-                events.Add(newEvent);
-            }
 
             fixture = new Fixture(fixtureApiDto, venue, fixtureLeague, score, events);
+
+            foreach (var particularEvent in fixtureApiDto.Events)
+            {
+                var newEvent = new Event(fixture, particularEvent);
+                events.Add(newEvent);
+            }
 
             _context.Fixtures.Add(fixture);
             await _context.SaveChangesAsync();
@@ -148,6 +152,7 @@ public class FixtureRepository : IFixtureRepository
         var liveFixturesFromDb = await _context.Fixtures
             .Include(x => x.Venue)
             .Include(x => x.FixtureLeague)
+            .Include(x => x.FixtureLeague.League)
             .Where(x => x.Short == "1H"
                         || x.Short == "HT"
                         || x.Short == "2H"
@@ -167,7 +172,7 @@ public class FixtureRepository : IFixtureRepository
         var liveFixturesApiDto = await _client.GetAllLiveFixturesAsync();
         var liveFixturesIds = liveFixturesApiDto.Select(f => f.Fixture.Id).ToList();
         var fixturesToDelete = allFixtures.Where(f => liveFixturesIds.Contains(f.FixtureId)).ToList();
-        _context.Fixtures.RemoveRange(liveFixturesFromDb);
+        _context.Fixtures.RemoveRange(fixturesToDelete);
         await _context.SaveChangesAsync();
 
         var liveFixtures = new List<Fixture>();

@@ -44,9 +44,9 @@ public class PlayerWrapper
 
 public class PlayerApiDto
 {
-    public int Id { get; set; }
+    public int? Id { get; set; }
     public string Name { get; set; } = default!;
     public int Number { get; set; }
-    public string Pos { get; set; } = default!;
+    public string? Pos { get; set; } = default!;
     public string? Grid { get; set; }
 }

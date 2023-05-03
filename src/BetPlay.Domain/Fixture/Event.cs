@@ -8,9 +8,9 @@ public class Event : Entity
     {
     }
 
-    public Event(int fixtureId, EventApiDto eventApi)
+    public Event(Fixture fixture, EventApiDto eventApi)
     {
-        FixtureId = fixtureId;
+        Fixture = fixture;
         Elapsed = eventApi.Time.Elapsed;
         Extra = eventApi.Time.Extra;
         TeamName = eventApi.Team.Name;
@@ -23,7 +23,8 @@ public class Event : Entity
         Comments = eventApi.Comments;
     }
 
-    public int FixtureId { get; set; }
+    public Guid FixtureId { get; set; }
+    public virtual Fixture Fixture { get; set; } = default!;
     public int Elapsed { get; set; }
     public int? Extra { get; set; }
     public string TeamName { get; set; } = default!;
