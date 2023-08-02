@@ -3,11 +3,7 @@
   "extends": "next/core-web-vitals",
 
   "rules": {
-    // "header/header": [
-    //   2,
-    //   "block",
-    //   ["", " * Ejsak.SKS.Front", " *", " * (c) 2023 Ejsak Group", " "]
-    // ],
+
     "@next/next/no-img-element": "off",
     "jsx-a11y/alt-text": "off",
     "react/display-name": "off",
