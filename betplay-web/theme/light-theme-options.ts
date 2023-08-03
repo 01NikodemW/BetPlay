@@ -38,9 +38,9 @@ const primary = {
 //////////////////////////////
 
 const secondary = {
-  main: "#10B981",
-  light: "#3FC79A",
-  dark: "#0B815A",
+  main: "#F160D2",
+  light: "#3FC79A", //TODO: pick lighter color
+  dark: "#0B815A", //TODO: pick darker color
   contrastText: "#FFFFFF",
 };
 

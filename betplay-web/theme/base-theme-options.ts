@@ -52,7 +52,7 @@ export const baseThemeOptions: ThemeOptions = {
     button: {
       fontWeight: 500,
     },
-    fontFamily: ["Poppins", "sans-serif"].join(","),
+    fontFamily: "Poppins, sans-serif",
     body1: {
       fontSize: sizes.small,
       fontWeight: 400,

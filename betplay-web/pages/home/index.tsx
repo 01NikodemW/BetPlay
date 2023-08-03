@@ -1,9 +1,9 @@
 import { Typography } from "@mui/material";
 import { NextSeo } from "next-seo";
 import { useTranslation } from "react-i18next";
-import { DashboardLayout } from "@/components/dashboard-layout/dashboard-layout";
 import { TopSectionWrapper, YourApplicationText } from "./styles";
 import { NextPageWithLayout } from "../_app";
+import DashboardLayout from "@/components/dashboard-layout";
 
 const Index: NextPageWithLayout = () => {
   const { t } = useTranslation();
