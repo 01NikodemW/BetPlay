@@ -1,0 +1,74 @@
+{
+  "plugins": ["header", "unused-imports"],
+  "extends": "next/core-web-vitals",
+
+  "rules": {
+
+    "@next/next/no-img-element": "off",
+    "jsx-a11y/alt-text": "off",
+    "react/display-name": "off",
+    // "react/no-children-prop": "off",
+    "react/jsx-indent-props": [2, "first"],
+    "unused-imports/no-unused-imports": "warn",
+    "unused-imports/no-unused-vars": "warn",
+    "no-useless-rename": "error",
+    "react/jsx-no-useless-fragment": "warn",
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "import/no-named-default": "error",
+    "react-hooks/rules-of-hooks": "warn",
+    "react-hooks/exhaustive-deps": "warn",
+    "no-console": ["warn", { "allow": ["warn", "error", "assert"] }],
+    // "no-restricted-imports": [
+    //   "warn",
+    //   {
+    //     "patterns": ["../"]
+    //   }
+    // ],
+    // "import/order": [
+    //   "error",
+    //   {
+    //     "groups": [
+    //       ["builtin", "external"],
+    //       "internal",
+    //       ["index", "sibling", "parent"],
+    //       "object"
+    //     ],
+    //     "pathGroups": [
+    //       {
+    //         "pattern": "react",
+    //         "group": "external",
+    //         "position": "before"
+    //       }
+    //     ],
+    //     "newlines-between": "never",
+    //     "alphabetize": { "order": "asc", "caseInsensitive": true }
+    //   }
+    // ],
+    "react/jsx-sort-props": [
+      "warn",
+      {
+        "callbacksLast": true,
+        "shorthandFirst": true,
+        "shorthandLast": false,
+        "ignoreCase": true,
+        "noSortAlphabetically": false,
+        "reservedFirst": true
+      }
+    ],
+    "react/self-closing-comp": [
+      "error",
+      {
+        "component": true,
+        "html": true
+      }
+    ]
+    // "react/jsx-max-props-per-line": [
+    //   1,
+    //   {
+    //     "maximum": 2
+    //   }
+    // ]
+  }
+}
