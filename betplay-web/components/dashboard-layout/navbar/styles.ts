@@ -12,6 +12,7 @@ export const NavbarContainer = styled(Box)(({ theme }) => ({
   paddingLeft: "20px",
   paddingRight: "20px",
   width: "100%",
+  marginBottom: "24px",
 }));
 
 export const LogoWrapper = styled(Box)(() => ({
@@ -40,8 +41,25 @@ export const MenuNavigationItem = styled(Button)(({ theme }) => ({
   fontSize: rem(20),
 
   "&:hover": {
+    textDecoration: "none",
     backgroundColor: "transparent",
-    color: theme.palette.secondary.main,
+  },
+  position: "relative",
+  overflow: "hidden",
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    width: "100%",
+    height: "4px",
+    backgroundColor: theme.palette.secondary.main,
+    transform: "scaleX(0)",
+    transition: "transform .3s ease",
+    transformOrigin: "left",
+  },
+  "&:hover::after": {
+    transform: "scaleX(1)",
   },
 }));
 

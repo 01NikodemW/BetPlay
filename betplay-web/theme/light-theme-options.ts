@@ -39,7 +39,7 @@ const primary = {
 
 const secondary = {
   main: "#F160D2",
-  light: "#3FC79A", //TODO: pick lighter color
+  light: "#FF78E2", //TODO: pick lighter color
   dark: "#0B815A", //TODO: pick darker color
   contrastText: "#FFFFFF",
 };
@@ -79,7 +79,7 @@ const text = {
 };
 
 const background = {
-  default: "#F9F9F9",
+  default: "#e9e9e9",
   paper: "#FFFFFF",
 };
 
@@ -157,7 +157,7 @@ export const lightThemeOptions: ThemeOptions = {
     MuiCard: {
       styleOverrides: {
         root: {
-          border: `1px solid ${divider}`,
+          // border: `1px solid ${divider}`,
         },
       },
     },

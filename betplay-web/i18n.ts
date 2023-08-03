@@ -12,6 +12,10 @@ const resources = {
       Live: "Na żywo",
       "My club": "Mój klub",
       Bets: "Zakłady",
+      "BetPlay | All rights reserved": "BetPlay | Wszelkie prawa zastrzeżone",
+      "Contact us": "Skontaktuj się z nami",
+      "The most popular": "Najpopularniejsze",
+      All: "Wszystkie",
     },
   },
 };
