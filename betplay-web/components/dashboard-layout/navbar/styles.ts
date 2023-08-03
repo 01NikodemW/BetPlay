@@ -1,18 +1,25 @@
-import { Avatar, Box, Button, IconButton, Typography } from "@mui/material";
+import {
+  AppBar,
+  Avatar,
+  Box,
+  Button,
+  IconButton,
+  Typography,
+} from "@mui/material";
 import { styled } from "@mui/system";
 import { rem } from "@/utils/px-to-rem";
 import PersonIcon from "@mui/icons-material/Person";
 
-export const NavbarContainer = styled(Box)(({ theme }) => ({
+export const NavbarContainer = styled(AppBar)(({ theme }) => ({
   height: "100px",
   backgroundColor: theme.palette.background.paper,
   justifyContent: "space-between",
   display: "flex",
+  flexDirection: "row",
   alignItems: "center",
   paddingLeft: "20px",
   paddingRight: "20px",
   width: "100%",
-  marginBottom: "24px",
 }));
 
 export const LogoWrapper = styled(Box)(() => ({

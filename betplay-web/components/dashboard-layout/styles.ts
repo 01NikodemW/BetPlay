@@ -12,7 +12,8 @@ export const DashboardLayoutContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const ContainerWrapper = styled(Container)(() => ({
-  // paddingTop: "24px",
+  marginTop: "124px",
   display: "flex",
   flexDirection: "column",
+  marginBottom: "24px",
 }));
