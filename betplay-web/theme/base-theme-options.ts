@@ -1,5 +1,5 @@
-import { ThemeOptions } from '@mui/material';
-import { rem } from '@/utils/px-to-rem';
+import { ThemeOptions } from "@mui/material";
+import { rem } from "@/utils/px-to-rem";
 
 const sizes = {
   xxxsmall: rem(10),
@@ -14,19 +14,19 @@ const sizes = {
 };
 
 const spaces = {
-  xxxxxsmall: '2px',
-  xxxxsmall: '4px',
-  xxxsmall: '8px',
-  xxsmall: '12px',
-  xsmall: '16px',
-  small: '24px',
-  medium: '32px',
-  large: '48px',
-  xlarge: '64px',
-  xxlarge: '96px',
-  xxxlarge: '128px',
-  xxxxlarge: '192px',
-  xxxxxlarge: '256px',
+  xxxxxsmall: "2px",
+  xxxxsmall: "4px",
+  xxxsmall: "8px",
+  xxsmall: "12px",
+  xsmall: "16px",
+  small: "24px",
+  medium: "32px",
+  large: "48px",
+  xlarge: "64px",
+  xxlarge: "96px",
+  xxxlarge: "128px",
+  xxxxlarge: "192px",
+  xxxxxlarge: "256px",
 };
 
 export const baseThemeOptions: ThemeOptions = {
@@ -46,13 +46,13 @@ export const baseThemeOptions: ThemeOptions = {
     },
   },
 
-  direction: 'ltr',
+  direction: "ltr",
 
   typography: {
     button: {
       fontWeight: 500,
     },
-    fontFamily: ['Roboto', 'sans-serif'].join(','),
+    fontFamily: ["Poppins", "sans-serif"].join(","),
     body1: {
       fontSize: sizes.small,
       fontWeight: 400,
@@ -77,7 +77,7 @@ export const baseThemeOptions: ThemeOptions = {
       fontSize: sizes.xsmall,
       fontWeight: 500,
       lineHeight: 2.5,
-      textTransform: 'uppercase',
+      textTransform: "uppercase",
     },
     caption: {
       fontSize: sizes.xxsmall,
@@ -130,7 +130,7 @@ export const baseThemeOptions: ThemeOptions = {
     MuiButton: {
       styleOverrides: {
         root: {
-          textTransform: 'none',
+          textTransform: "none",
           fontSize: sizes.small,
           borderRadius: spaces.xxxsmall,
         },

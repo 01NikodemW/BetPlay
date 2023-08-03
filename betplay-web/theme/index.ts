@@ -1,7 +1,7 @@
-import type { Theme } from '@mui/material';
-import { createTheme as createMuiTheme } from '@mui/material/styles';
-import { baseThemeOptions } from './base-theme-options';
-import { lightThemeOptions } from './light-theme-options';
+import type { Theme } from "@mui/material";
+import { createTheme as createMuiTheme } from "@mui/material/styles";
+import { baseThemeOptions } from "./base-theme-options";
+import { lightThemeOptions } from "./light-theme-options";
 
 interface Neutral {
   100: string;
@@ -22,10 +22,6 @@ interface Button {
 }
 
 interface Menu {
-  main: string;
-}
-
-interface YellowAccent {
   main: string;
 }
 
@@ -57,19 +53,17 @@ interface Spaces {
   xxxxxlarge: string;
 }
 
-declare module '@mui/material/styles' {
+declare module "@mui/material/styles" {
   interface Palette {
     neutral?: Neutral;
     button: Button;
     menu: Menu;
-    yellow: YellowAccent;
   }
 
   interface PaletteOptions {
     neutral?: Neutral;
     button: Button;
     menu: Menu;
-    yellow: YellowAccent;
   }
 
   interface Theme {

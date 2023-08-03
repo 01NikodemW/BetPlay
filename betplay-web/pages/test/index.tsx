@@ -12,7 +12,7 @@ const Index: NextPageWithLayout = () => {
     <>
       <NextSeo title={`${t("Dashboard")} | BetPlay`} />
       <TopSectionWrapper>
-        <Typography variant="h2"> {t("Hello, Cinema!")}</Typography>
+        <Typography variant="h2"> {t("Live")}</Typography>
       </TopSectionWrapper>
       <YourApplicationText variant="h4">{t("Password")}</YourApplicationText>
     </>

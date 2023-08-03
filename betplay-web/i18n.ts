@@ -9,6 +9,9 @@ const resources = {
     translation: {
       Email: "Email",
       Password: "Hasło",
+      Live: "Na żywo",
+      "My club": "Mój klub",
+      Bets: "Zakłady",
     },
   },
 };
