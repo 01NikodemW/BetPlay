@@ -49,28 +49,26 @@ export const LeagueFlagBox = styled(Box)<FlagBox>(({ src, theme }) => ({
   left: "16px",
 }));
 
-export const LeagueNameButton = styled(Button)<{ selected: boolean }>(
-  ({ theme, selected }) => ({
-    "&:hover": {
-      textDecoration: "none",
-      backgroundColor: "transparent",
-    },
-    position: "relative",
-    overflow: "hidden",
-    "&::after": {
-      content: '""',
-      position: "absolute",
-      bottom: 0,
-      left: 0,
-      width: "100%",
-      height: "2px",
-      backgroundColor: theme.palette.secondary.main,
-      transform: selected ? "scaleX(1)" : "scaleX(0)",
-      transition: "transform .3s ease",
-      transformOrigin: "left",
-    },
-    "&:hover::after": {
-      transform: "scaleX(1)",
-    },
-  })
-);
+export const LeagueNameButton = styled(Button)(({ theme }) => ({
+  "&:hover": {
+    textDecoration: "none",
+    backgroundColor: "transparent",
+  },
+  position: "relative",
+  overflow: "hidden",
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    width: "100%",
+    height: "2px",
+    backgroundColor: theme.palette.secondary.main,
+    transform: "scaleX(0)",
+    transition: "transform .3s ease",
+    transformOrigin: "left",
+  },
+  "&:hover::after": {
+    transform: "scaleX(1)",
+  },
+}));

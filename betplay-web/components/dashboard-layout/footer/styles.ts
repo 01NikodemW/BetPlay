@@ -17,13 +17,29 @@ export const AllRightsReservedWrapper = styled(Box)(() => ({
 }));
 
 export const ContactUsButton = styled(Button)(({ theme }) => ({
-  border: "1.5px solid",
-  borderRadius: "16px",
-  borderColor: theme.palette.secondary.main,
-  "&:hover": {
-    borderColor: theme.palette.secondary.light,
-  },
   fontWeight: "600",
+
+  "&:hover": {
+    textDecoration: "none",
+    backgroundColor: "transparent",
+  },
+  position: "relative",
+  overflow: "hidden",
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    width: "100%",
+    height: "4px",
+    backgroundColor: theme.palette.secondary.main,
+    transform: "scaleX(0)",
+    transition: "transform .3s ease",
+    transformOrigin: "left",
+  },
+  "&:hover::after": {
+    transform: "scaleX(1)",
+  },
 }));
 
 export const SocialMediaIconsWrapper = styled(Box)(() => ({

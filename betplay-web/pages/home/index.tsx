@@ -5,6 +5,7 @@ import { NextPageWithLayout } from "../_app";
 import DashboardLayout from "@/components/dashboard-layout";
 import { Box } from "@mui/material";
 import LeagueSection from "@/components/home/league-section";
+import CenterSection from "@/components/home/center";
 
 const Index: NextPageWithLayout = () => {
   const { t } = useTranslation();
@@ -14,7 +15,7 @@ const Index: NextPageWithLayout = () => {
       <NextSeo title={`${t("Home")} | BetPlay`} />
       <HomeSectionContainer>
         <LeagueSection />
-        <Box>center</Box>
+        <CenterSection />
         <Box>right</Box>
       </HomeSectionContainer>
     </>
