@@ -13,26 +13,30 @@ import {
   LiveText,
   ScoreTypography,
 } from "./styles";
-
-import { exampleLiveFixture } from "@/pages/api/temporary-api-responses";
 import { StyledContrastOutlinedButton } from "@/components/read-to-use/styles";
+import { Fixture } from "@/types/fixture";
+import { FC } from "react";
+import { leagueWithDetailsIds } from "@/pages/api/const-values";
 
-const LiveFixture = () => {
+interface LiveFixtureProps {
+  fixture: Fixture;
+}
+
+const LiveFixture: FC<LiveFixtureProps> = ({ fixture }) => {
   const { t } = useTranslation();
 
   return (
     <FixtureCard>
       <TopSection>
         <DateAndRoundTypography variant="body2">
-          {exampleLiveFixture.fixtureLeague.league.name},{" "}
-          {exampleLiveFixture.fixtureLeague.round}
+          {fixture.fixtureLeague.league.name}, {fixture.fixtureLeague.round}
         </DateAndRoundTypography>
         <LiveDetailsBox>
           <LiveText>{t("Live")}</LiveText>
           <TimeAndShortTypography variant="body2">
-            {t(exampleLiveFixture.short)}
+            {t(fixture.short)}
             {", "}
-            {exampleLiveFixture.elapsed}
+            {fixture.elapsed}
             {"min"}
           </TimeAndShortTypography>
         </LiveDetailsBox>
@@ -40,26 +44,29 @@ const LiveFixture = () => {
       <BottomSection>
         <TeamsSection>
           <TeamContainer>
-            <TeamLogo isMarginRight={true} src={exampleLiveFixture.homeLogo} />
+            <TeamLogo isMarginRight={true} src={fixture.homeLogo} />
             <TeamNameTypography variant="h5">
-              {exampleLiveFixture.homeName}
+              {fixture.homeName}
             </TeamNameTypography>
           </TeamContainer>
 
           <ScoreTypography variant="body1">
-            {exampleLiveFixture.goalsHomeTeam} -{" "}
-            {exampleLiveFixture.goalsAwayTeam}
+            {fixture.goalsHomeTeam} - {fixture.goalsAwayTeam}
           </ScoreTypography>
           <TeamContainer>
             <TeamNameTypography variant="h5">
-              {exampleLiveFixture.awayName}
+              {fixture.awayName}
             </TeamNameTypography>
-            <TeamLogo isMarginRight={false} src={exampleLiveFixture.awayLogo} />
+            <TeamLogo isMarginRight={false} src={fixture.awayLogo} />
           </TeamContainer>
         </TeamsSection>
-        <StyledContrastOutlinedButton>
-          {t("View details")}
-        </StyledContrastOutlinedButton>
+        {leagueWithDetailsIds.includes(
+          fixture.fixtureLeague.league.leagueId
+        ) && (
+          <StyledContrastOutlinedButton>
+            {t("View details")}
+          </StyledContrastOutlinedButton>
+        )}
       </BottomSection>
     </FixtureCard>
   );

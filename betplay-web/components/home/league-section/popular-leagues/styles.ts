@@ -3,6 +3,7 @@ import { styled } from "@mui/system";
 
 export const PopularLeaguesCard = styled(Card)(() => ({
   width: "100%",
+  minHeight: "320px",
 }));
 
 export const PopularLeaguesHeader = styled(Typography)(() => ({

@@ -10,42 +10,49 @@ import {
   TimeTypography,
 } from "./styles";
 
-import { exampleFixture } from "@/pages/api/temporary-api-responses";
 import { StyledOutlinedButton } from "@/components/read-to-use/styles";
 import { getHoursAndMinutes } from "@/utils/time";
 import { Typography } from "@mui/material";
+import { Fixture } from "@/types/fixture";
+import { FC } from "react";
+import { leagueWithDetailsIds } from "@/pages/api/const-values";
 
-const Fixture = () => {
+interface FixtureProps {
+  fixture: Fixture;
+}
+
+const Fixture: FC<FixtureProps> = ({ fixture }) => {
   const { t } = useTranslation();
 
   return (
     <FixtureCard>
       <TopSection>
         <Typography variant="body2">
-          {exampleFixture.fixtureLeague.league.name},{" "}
-          {exampleFixture.fixtureLeague.round}
+          {fixture.fixtureLeague.league.name}, {fixture.fixtureLeague.round}
         </Typography>
       </TopSection>
       <BottomSection>
         <TeamsSection>
           <TeamContainer>
-            <TeamLogo isMarginRight={true} src={exampleFixture.homeLogo} />
+            <TeamLogo isMarginRight={true} src={fixture.homeLogo} />
             <TeamNameTypography variant="h5">
-              {exampleFixture.homeName}
+              {fixture.homeName}
             </TeamNameTypography>
           </TeamContainer>
           <TimeTypography variant="body2">
-            {getHoursAndMinutes(exampleFixture.date)}
+            {getHoursAndMinutes(fixture.date)}
           </TimeTypography>
           <TeamContainer>
             <TeamNameTypography variant="h5">
-              {exampleFixture.awayName}
+              {fixture.awayName}
             </TeamNameTypography>
-            <TeamLogo isMarginRight={false} src={exampleFixture.awayLogo} />
+            <TeamLogo isMarginRight={false} src={fixture.awayLogo} />
           </TeamContainer>
         </TeamsSection>
 
-        <StyledOutlinedButton>{t("View details")}</StyledOutlinedButton>
+        {leagueWithDetailsIds.includes(
+          fixture.fixtureLeague.league.leagueId
+        ) && <StyledOutlinedButton>{t("View details")}</StyledOutlinedButton>}
       </BottomSection>
     </FixtureCard>
   );
