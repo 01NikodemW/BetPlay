@@ -1,4 +1,5 @@
 using BetPlay.ApiSport.Dto;
+using BetPlay.ApiSport.Dto.Fixture;
 using BetPlay.Domain.Fixture;
 using BetPlay.Domain.Team;
 using BetPlay.Infrastructure.EfCore;
@@ -23,8 +24,11 @@ public class FixtureRepository : IFixtureRepository
         _teamRepository = teamRepository;
     }
 
-    public async Task<Fixture> GetFixtureById(int id)
+    public async Task<FixtureResponseApiDto> GetFixtureById(int id)
     {
+        var fixtureApiDtoTmp = await _client.GetFixtureByIdAsync(id);
+        return fixtureApiDtoTmp;
+
         var fixture = await _context.Fixtures
             .Include(x => x.Venue)
             .Include(x => x.FixtureLeague)
@@ -95,7 +99,7 @@ public class FixtureRepository : IFixtureRepository
         }
 
 
-        return fixture;
+        // return fixture;
     }
 
     public async Task<IEnumerable<Fixture>> GetLiveFixturesByLeagueId(int leagueId)

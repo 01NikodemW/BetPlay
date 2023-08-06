@@ -23,7 +23,7 @@ public class GetFixtureByIdRequestHandler : IRequestHandler<GetFixtureByIdReques
 
         return new GetFixtureByIdResponse
         {
-            Fixture = fixture.Adapt<FixtureDetailsDto>()
+            Fixture = fixture
         };
     }
 }
