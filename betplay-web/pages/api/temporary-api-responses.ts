@@ -2111,6 +2111,10 @@ export const exampleFixtureDetails: FixtureDetails = {
       home: null,
       away: null,
     },
+    // penalty: {
+    //   home: 1,
+    //   away: 1,
+    // },
   },
   events: [
     {

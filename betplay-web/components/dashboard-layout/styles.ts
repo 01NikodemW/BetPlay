@@ -15,4 +15,8 @@ export const ContainerWrapper = styled(Container)(() => ({
   display: "flex",
   flexDirection: "column",
   marginBottom: "24px",
+
+  "&.MuiContainer-root": {
+    padding: "0px",
+  },
 }));
