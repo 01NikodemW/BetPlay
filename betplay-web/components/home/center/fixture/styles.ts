@@ -3,7 +3,8 @@ import { styled } from "@mui/system";
 
 export const FixtureCard = styled(Card)(() => ({
   width: "100%",
-  padding: "16px 24px",
+  padding: "24px 24px",
+  paddingTop: "16px",
 }));
 
 export const TopSection = styled(Box)(() => ({

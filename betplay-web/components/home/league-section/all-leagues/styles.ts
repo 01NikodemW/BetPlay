@@ -9,7 +9,8 @@ import {
 import { styled } from "@mui/system";
 
 export const AllLeaguesCard = styled(Card)(() => ({
-  width: "100%",
+  maxHeight: "calc(100vh - 200px)",
+  overflowY: "auto",
 }));
 
 export const AllLeaguesHeader = styled(Typography)(() => ({

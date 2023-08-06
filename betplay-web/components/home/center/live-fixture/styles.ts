@@ -4,8 +4,9 @@ import { rem } from "@/utils/px-to-rem";
 
 export const FixtureCard = styled(Card)(({ theme }) => ({
   width: "100%",
-  padding: "16px 24px",
+  padding: "24px 24px",
   backgroundColor: theme.palette.contrastBackground.default,
+  paddingTop: "16px",
 }));
 
 export const TopSection = styled(Box)(() => ({

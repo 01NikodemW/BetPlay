@@ -4,7 +4,10 @@ import { styled } from "@mui/system";
 export const LeftMenuContainer = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
-  width: "25%",
+  width: "23%",
   gap: "16px",
-  height: "100%",
+  position: "sticky",
+  top: 120,
+  maxHeight: "calc(100vh - 136px)",
+  marginTop: "124px",
 }));

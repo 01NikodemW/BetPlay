@@ -2,6 +2,7 @@ import type { Theme } from "@mui/material";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import { baseThemeOptions } from "./base-theme-options";
 import { lightThemeOptions } from "./light-theme-options";
+import { darkThemeOptions } from "./dark-theme-options";
 
 interface Neutral {
   100: string;
@@ -95,7 +96,11 @@ declare module "@mui/material/styles" {
 
 // export const createTheme = (config: ThemeConfig): Theme => {
 export const createTheme = (): Theme => {
-  let theme = createMuiTheme(baseThemeOptions, lightThemeOptions);
+  const isDarkMode = false;
+  let theme = createMuiTheme(
+    baseThemeOptions,
+    isDarkMode ? darkThemeOptions : lightThemeOptions
+  );
 
   return theme;
 };

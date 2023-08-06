@@ -10,6 +10,7 @@ export const FooterContainer = styled(Box)(({ theme }) => ({
   paddingLeft: "20px",
   paddingRight: "20px",
   width: "100%",
+  zIndex: 999,
 }));
 
 export const AllRightsReservedWrapper = styled(Box)(() => ({
