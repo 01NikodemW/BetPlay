@@ -15,6 +15,7 @@ import { countries, albaniaLeagues } from "@/pages/api/temporary-api-responses";
 import { AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { FC } from "react";
+import { Country } from "@/types/country";
 
 interface AllLeaguesProps {
   selectedLeagueIds: number[];
@@ -27,20 +28,29 @@ const AllLeagues: FC<AllLeaguesProps> = ({
 }) => {
   const { t } = useTranslation();
 
+  const sortCountriesByLanguage = (countries: Country[]) => {
+    const sortedCountries = [...countries];
+
+    sortedCountries.sort((a, b) => {
+      const nameA = t(a.name);
+      const nameB = t(b.name);
+      return nameA.localeCompare(nameB);
+    });
+
+    return sortedCountries;
+  };
+
+  const sortedCountries = sortCountriesByLanguage(countries);
+
   return (
     <AllLeaguesCard>
       <AllLeaguesHeader variant="h6">{t("All")}</AllLeaguesHeader>
       <CountriesContainer>
-        {countries.map((country, index) => (
+        {sortedCountries.map((country, index) => (
           <StyledAccordion key={index}>
-            <StyledAccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              sx={{
-                backgroundColor: "transparent",
-              }}
-            >
+            <StyledAccordionSummary expandIcon={<ExpandMoreIcon />}>
               <NationFlagBox src={country.flag} />
-              <CountryNameText>{country.name}</CountryNameText>
+              <CountryNameText>{t(country.name)}</CountryNameText>
             </StyledAccordionSummary>
             <AccordionDetails>
               {country.name === "Albania" &&

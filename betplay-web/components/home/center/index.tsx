@@ -1,10 +1,12 @@
-import FixturesSection from "./fixtures-section";
+import Fixture from "./fixture";
+import LiveFixture from "./live-fixture";
 import { CenterSectionContainer } from "./styles";
 
 const CenterSection = () => {
   return (
     <CenterSectionContainer>
-      <FixturesSection />
+      <Fixture />
+      <LiveFixture />
     </CenterSectionContainer>
   );
 };

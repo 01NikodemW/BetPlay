@@ -161,7 +161,7 @@ public class ApiSportClient : IApiSportClient
         var request = new RestRequest("fixtures");
 
         request.AddQueryParameter("league", id.ToString());
-        request.AddQueryParameter("season", 2022);
+        request.AddQueryParameter("season", 2023);
         request.AddQueryParameter("date", date.ToString("yyyy-MM-dd"));
 
         request.AddHeader("x-rapidapi-key", _options.ApiKey);

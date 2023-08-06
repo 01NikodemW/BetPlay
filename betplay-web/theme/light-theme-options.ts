@@ -15,8 +15,8 @@ const neutral = {
 };
 
 const button = {
-  main: "#FF2E4F",
-  light: "#FF546F",
+  main: "#F160D2",
+  light: "#FF78E2",
   dark: "#3832A0",
   disabled: "#FF829E",
   contrastText: "#FFFFFF",
@@ -24,6 +24,11 @@ const button = {
 
 const menu = {
   main: "#393939",
+};
+
+const contrastBackground = {
+  default: "#121212",
+  paper: "#000000",
 };
 
 const divider = "#C6C6C6";
@@ -250,6 +255,7 @@ export const lightThemeOptions: ThemeOptions = {
     neutral,
     button,
     menu,
+    contrastBackground,
   },
   shadows: [
     "none",

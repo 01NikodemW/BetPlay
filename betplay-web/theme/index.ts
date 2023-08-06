@@ -53,17 +53,24 @@ interface Spaces {
   xxxxxlarge: string;
 }
 
+interface ContrastBackground {
+  default: string;
+  paper: string;
+}
+
 declare module "@mui/material/styles" {
   interface Palette {
     neutral?: Neutral;
     button: Button;
     menu: Menu;
+    contrastBackground: ContrastBackground;
   }
 
   interface PaletteOptions {
     neutral?: Neutral;
     button: Button;
     menu: Menu;
+    contrastBackground: ContrastBackground;
   }
 
   interface Theme {
