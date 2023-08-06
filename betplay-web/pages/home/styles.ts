@@ -1,19 +1,8 @@
-import { Box, Typography } from '@mui/material';
-import { styled } from '@mui/system';
+import { Box } from "@mui/material";
+import { styled } from "@mui/system";
 
-export const TopSectionWrapper = styled(Box)(() => ({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  marginBottom: '24px',
-}));
-
-export const BottomSectionWrapper = styled(Box)(() => ({
-  // Styles for the bottom section
-}));
-
-export const YourApplicationText = styled(Typography)(() => ({
-  marginBottom: '24px',
+export const HomeSectionContainer = styled(Box)(() => ({
+  display: "flex",
 }));
 
 const DashboardStyles = () => null;

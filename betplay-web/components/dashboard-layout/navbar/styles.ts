@@ -1,13 +1,21 @@
-import { Avatar, Box, Button, IconButton, Typography } from "@mui/material";
+import {
+  AppBar,
+  Avatar,
+  Box,
+  Button,
+  IconButton,
+  Typography,
+} from "@mui/material";
 import { styled } from "@mui/system";
 import { rem } from "@/utils/px-to-rem";
 import PersonIcon from "@mui/icons-material/Person";
 
-export const NavbarContainer = styled(Box)(({ theme }) => ({
+export const NavbarContainer = styled(AppBar)(({ theme }) => ({
   height: "100px",
   backgroundColor: theme.palette.background.paper,
   justifyContent: "space-between",
   display: "flex",
+  flexDirection: "row",
   alignItems: "center",
   paddingLeft: "20px",
   paddingRight: "20px",
@@ -40,8 +48,25 @@ export const MenuNavigationItem = styled(Button)(({ theme }) => ({
   fontSize: rem(20),
 
   "&:hover": {
+    textDecoration: "none",
     backgroundColor: "transparent",
-    color: theme.palette.secondary.main,
+  },
+  position: "relative",
+  overflow: "hidden",
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    width: "100%",
+    height: "4px",
+    backgroundColor: theme.palette.secondary.main,
+    transform: "scaleX(0)",
+    transition: "transform .3s ease",
+    transformOrigin: "left",
+  },
+  "&:hover::after": {
+    transform: "scaleX(1)",
   },
 }));
 

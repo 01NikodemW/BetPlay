@@ -2,6 +2,7 @@ import type { Theme } from "@mui/material";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import { baseThemeOptions } from "./base-theme-options";
 import { lightThemeOptions } from "./light-theme-options";
+import { darkThemeOptions } from "./dark-theme-options";
 
 interface Neutral {
   100: string;
@@ -53,17 +54,24 @@ interface Spaces {
   xxxxxlarge: string;
 }
 
+interface ContrastBackground {
+  default: string;
+  paper: string;
+}
+
 declare module "@mui/material/styles" {
   interface Palette {
     neutral?: Neutral;
     button: Button;
     menu: Menu;
+    contrastBackground: ContrastBackground;
   }
 
   interface PaletteOptions {
     neutral?: Neutral;
     button: Button;
     menu: Menu;
+    contrastBackground: ContrastBackground;
   }
 
   interface Theme {
@@ -88,7 +96,11 @@ declare module "@mui/material/styles" {
 
 // export const createTheme = (config: ThemeConfig): Theme => {
 export const createTheme = (): Theme => {
-  let theme = createMuiTheme(baseThemeOptions, lightThemeOptions);
+  const isDarkMode = false;
+  let theme = createMuiTheme(
+    baseThemeOptions,
+    isDarkMode ? darkThemeOptions : lightThemeOptions
+  );
 
   return theme;
 };

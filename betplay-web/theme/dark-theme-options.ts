@@ -26,11 +26,6 @@ const menu = {
   main: "#393939",
 };
 
-const contrastBackground = {
-  default: "#121212",
-  paper: "#000000",
-};
-
 const divider = "#C6C6C6";
 
 const primary = {
@@ -78,17 +73,22 @@ const info = {
 };
 
 const text = {
-  primary: "#000000",
-  secondary: "#676767",
-  disabled: "rgba(55, 65, 81, 0.48)",
+  primary: "#EDF2F7",
+  secondary: "#A0AEC0",
+  disabled: "rgba(255, 255, 255, 0.48)",
 };
 
 const background = {
+  default: "#121212",
+  paper: "#000000",
+};
+
+const contrastBackground = {
   default: "#e9e9e9",
   paper: "#FFFFFF",
 };
 
-export const lightThemeOptions: ThemeOptions = {
+export const darkThemeOptions: ThemeOptions = {
   typography: {
     body2: {
       color: text.primary,
