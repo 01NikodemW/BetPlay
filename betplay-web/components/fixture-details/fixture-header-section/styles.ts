@@ -5,12 +5,13 @@ import { rem } from "@/utils/px-to-rem";
 export const FixtureHeaderBox = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  backgroundColor: theme.palette.background.paper,
   width: "100%",
   justifyContent: "center",
   alignItems: "center",
   marginTop: "124px",
+  background: `linear-gradient(180deg, ${theme.palette.background.paper} 0%, ${theme.palette.background.paper} 60%, ${theme.palette.background.default} 100%)`,
 }));
+
 
 export const LeagueHeaderSection = styled(Box)(() => ({
   display: "flex",
@@ -29,7 +30,7 @@ export const LeagueWrapper = styled(Box)(({ theme }) => ({
 export const BottomSection = styled(Box)(() => ({
   display: "flex",
   alignItems: "top",
-  height: "70px",
+  height: "120px",
 }));
 
 export const TeamsHeaderSection = styled(Box)(() => ({

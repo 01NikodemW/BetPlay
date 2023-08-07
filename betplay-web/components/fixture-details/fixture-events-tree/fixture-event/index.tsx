@@ -9,6 +9,7 @@ import {
 } from "./styles";
 import { FixtureDetails } from "@/types/fixture-details/fixture-details";
 import { EventType } from "@/types/fixture-details/event";
+import GenerateEvent from "./generate-event";
 
 interface FixtureEventProps {
   fixture: FixtureDetails;
@@ -26,16 +27,39 @@ const FixtureEvent: FC<FixtureEventProps> = ({
 
   return (
     <FixtureEventBox>
-      <LeftSideBox />
+      <LeftSideBox>
+        {event.team.id === homeTeamId && (
+          <GenerateEvent
+            event={event}
+            eventIndex={eventIndex}
+            fixture={fixture}
+            homeOrAway={"home"}
+          />
+        )}
+      </LeftSideBox>
       <CenterElement>
         <TimeLine makeinvisible={eventIndex === 0 ? "true" : "false"} />
-        <TimeTypography>
-          {event.time.elapsed}
-          {event.time.extra && event.time.extra}
-        </TimeTypography>
+        {event.time.elapsed === 120 && event.time.extra !== null ? (
+          <TimeTypography>PEN</TimeTypography>
+        ) : (
+          <TimeTypography>
+            {event.time.elapsed}
+            {event.time.extra && "+"}
+            {event.time.extra && event.time.extra}
+          </TimeTypography>
+        )}
         <TimeLine />
       </CenterElement>
-      <RightSideBox />
+      <RightSideBox>
+        {event.team.id === awayTeamId && (
+          <GenerateEvent
+            event={event}
+            eventIndex={eventIndex}
+            fixture={fixture}
+            homeOrAway={"away"}
+          />
+        )}
+      </RightSideBox>
     </FixtureEventBox>
   );
 };

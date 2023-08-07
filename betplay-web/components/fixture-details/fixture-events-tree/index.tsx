@@ -15,9 +15,9 @@ const FixtureEventsTree: FC<FixtureEventsTreeProps> = ({ fixture }) => {
           return (
             <FixtureEvent
               key={index}
-              fixture={fixture}
               event={event}
               eventIndex={index}
+              fixture={fixture}
             />
           );
         })}

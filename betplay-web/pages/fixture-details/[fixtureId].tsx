@@ -4,7 +4,10 @@ import { NextSeo } from "next-seo";
 import { useTranslation } from "react-i18next";
 import { NextPageWithLayout } from "../_app";
 import DashboardLayout from "@/components/dashboard-layout";
-import { exampleFixtureDetails } from "../api/temporary-api-responses";
+import {
+  exampleFixtureDetails,
+  exampleFixtureWithPenalties,
+} from "../api/temporary-api-responses";
 import FixtureHeaderSection from "@/components/fixture-details/fixture-header-section";
 import FixtureEventsTree from "@/components/fixture-details/fixture-events-tree";
 
@@ -17,8 +20,8 @@ const Index: NextPageWithLayout = () => {
   return (
     <>
       <NextSeo title={`${t("Home")} | BetPlay`} />
-      <FixtureHeaderSection fixture={exampleFixtureDetails} />
-      <FixtureEventsTree fixture={exampleFixtureDetails} />
+      <FixtureHeaderSection fixture={exampleFixtureWithPenalties} />
+      <FixtureEventsTree fixture={exampleFixtureWithPenalties} />
     </>
   );
 };

@@ -9,7 +9,8 @@ export const FixtureEventBox = styled(Box)(() => ({
 
 export const LeftSideBox = styled(Box)(() => ({
   display: "flex",
-  justifyContent: "center",
+  justifyContent: "end",
+  width: "calc(50vw - 15px)",
 }));
 
 export const CenterElement = styled(Box)(() => ({
@@ -28,7 +29,7 @@ interface TimeLineProps {
 export const TimeLine = styled(Box)<TimeLineProps>(
   ({ makeinvisible, theme }) => ({
     width: "2px",
-    height: "15px",
+    height: "25px",
     backgroundColor: theme.palette.primary.main,
     visibility: makeinvisible === "true" ? "hidden" : "visible",
   })
@@ -36,5 +37,6 @@ export const TimeLine = styled(Box)<TimeLineProps>(
 
 export const RightSideBox = styled(Box)(() => ({
   display: "flex",
-  justifyContent: "center",
+  justifyContent: "start",
+  width: "calc(50vw - 15px)",
 }));
