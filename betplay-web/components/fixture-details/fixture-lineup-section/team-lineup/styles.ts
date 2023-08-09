@@ -6,7 +6,7 @@ const pitchWidth = 600;
 const goalWidth = 156;
 const goalHeight = 70;
 
-const penaltyWidth = 370;
+const penaltyWidth = 470;
 const penaltyHeight = 160;
 const centerCircle = 100;
 
@@ -40,9 +40,9 @@ export const GoalTopBox = styled(Box)({
   position: "absolute",
   border: "2px solid white",
   height: `1px`,
-  width: `${goalWidth}px`,
+  width: `${(goalWidth * 100) / pitchWidth}%`,
   bottom: `${goalHeight}px`,
-  left: `${(pitchWidth - goalWidth) / 2}px`,
+  left: `${((pitchWidth - goalWidth) / 2 / pitchWidth) * 100}%`,
 });
 
 export const GoalLeftBox = styled(Box)({
@@ -51,7 +51,7 @@ export const GoalLeftBox = styled(Box)({
   height: `${goalHeight}px`,
   width: "1px",
   bottom: "0",
-  left: `${(pitchWidth - goalWidth) / 2}px`,
+  left: `${((pitchWidth - goalWidth) / 2 / pitchWidth) * 100}%`,
 });
 
 export const GoalRightBox = styled(Box)({
@@ -60,16 +60,16 @@ export const GoalRightBox = styled(Box)({
   height: `${goalHeight}px`,
   width: "1px",
   bottom: "0",
-  right: `${(pitchWidth - goalWidth) / 2 - 4}px`,
+  left: `${((pitchWidth + goalWidth) / 2 / pitchWidth) * 100-0.75}%`,
 });
 
 export const PenaltyTopBox = styled(Box)({
   position: "absolute",
   border: "2px solid white",
   height: `1px`,
-  width: `${penaltyWidth}px`,
+  width: `${(penaltyWidth * 100) / pitchWidth}%`,
   bottom: `${penaltyHeight}px`,
-  left: `${(pitchWidth - penaltyWidth) / 2}px`,
+  left: `${((pitchWidth - penaltyWidth) / 2 / penaltyWidth) * 100}%`,
 });
 
 export const PenaltyLeftBox = styled(Box)({
@@ -78,7 +78,7 @@ export const PenaltyLeftBox = styled(Box)({
   height: `${penaltyHeight}px`,
   width: "1px",
   bottom: "0",
-  left: `${(pitchWidth - penaltyWidth) / 2}px`,
+  left: `${((pitchWidth - penaltyWidth) / 2 / pitchWidth) * 100}%`,
 });
 
 export const PenaltyRightBox = styled(Box)({
@@ -87,7 +87,7 @@ export const PenaltyRightBox = styled(Box)({
   height: `${penaltyHeight}px`,
   width: "1px",
   bottom: "0",
-  right: `${(pitchWidth - penaltyWidth) / 2 - 4}px`,
+  left: `${((pitchWidth + penaltyWidth) / 2 / pitchWidth) * 100 - 0.75}%`,
 });
 
 export const CenterCircle = styled(Box)({

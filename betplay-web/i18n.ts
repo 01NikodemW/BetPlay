@@ -200,6 +200,7 @@ const resources = {
       "Substitution 6": "Zmiana 6",
       "Goal Cancelled": "Gol anulowany",
       "Penalty Confirmed": "Karny potwierdzony",
+      Lineups: "Składy",
     },
   },
 };
