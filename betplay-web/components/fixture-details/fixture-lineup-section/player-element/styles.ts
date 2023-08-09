@@ -8,13 +8,17 @@ interface PhotoBox {
 
 const elementSize = 60;
 
-export const LineupPlayerBox = styled(Box)<PhotoBox>(({ src }) => ({
+export const PlayerBox = styled(Box)(() => ({
+  display: "flex",
+  flexDirection: "column",
+}));
+
+export const PhotoBox = styled(Box)<PhotoBox>(({ src }) => ({
   backgroundImage: `url(${src})`,
   backgroundSize: "cover",
   backgroundPosition: "center",
   width: `${elementSize}px`,
   height: `${elementSize}px`,
-  margin: "0 30px",
   borderRadius: "50%",
   zIndex: 99,
   position: "relative",
@@ -33,20 +37,13 @@ export const CapitanSign = styled(Typography)(() => ({
   bottom: 0,
 }));
 
-interface PlayerName {
-  goalkeeper: string;
-}
-
-export const PlayerName = styled(Typography)<PlayerName>(({ goalkeeper }) => ({
+export const PlayerName = styled(Typography)(() => ({
   backgroundColor: "black",
   color: "white",
   zIndex: 99,
-  position: "absolute",
   fontSize: rem(12),
-  width: `${elementSize}px`,
   padding: "2px",
-  bottom: goalkeeper === "true" ? 0 : "-30px",
   borderRadius: "12px",
-  left: goalkeeper === "true" ? `${elementSize}px` : 0,
+  marginTop: "4px",
   textAlign: "center",
 }));

@@ -9,17 +9,23 @@ interface SubstitutesSectionProps {
   fixture: FixtureDetails;
   lineup: LineupDetails[];
   homeOrAway: "home" | "away";
+  currentFilter: string;
 }
 
 const SubstitutesSection: FC<SubstitutesSectionProps> = ({
   fixture,
   homeOrAway,
   lineup,
+  currentFilter,
 }) => {
   return (
     <SubstitutesBox>
       {lineup.map((player, index) => (
-        <PlayerElement key={index} lineupPlayer={player} />
+        <PlayerElement
+          key={index}
+          currentFilter={currentFilter}
+          lineupPlayer={player}
+        />
       ))}
     </SubstitutesBox>
   );

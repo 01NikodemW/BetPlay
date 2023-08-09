@@ -18,10 +18,15 @@ interface TeamLineupProps {
   fixture: FixtureDetails;
   lineup: LineupDetails[];
   homeOrAway: "home" | "away";
+  currentFilter: string;
 }
 
-const TeamLineup: FC<TeamLineupProps> = ({ fixture, homeOrAway, lineup }) => {
-
+const TeamLineup: FC<TeamLineupProps> = ({
+  fixture,
+  homeOrAway,
+  lineup,
+  currentFilter,
+}) => {
   const formation = {
     "5:1": lineup.filter((p) => p.player.grid?.startsWith("5")),
     "4:1": lineup.filter((p) => p.player.grid?.startsWith("4")),
@@ -45,7 +50,11 @@ const TeamLineup: FC<TeamLineupProps> = ({ fixture, homeOrAway, lineup }) => {
             .slice()
             .reverse()
             .map((player, index) => (
-              <PlayerElement key={index} lineupPlayer={player} />
+              <PlayerElement
+                key={index}
+                lineupPlayer={player}
+                currentFilter={currentFilter}
+              />
             ))}
         </Line>
       ))}

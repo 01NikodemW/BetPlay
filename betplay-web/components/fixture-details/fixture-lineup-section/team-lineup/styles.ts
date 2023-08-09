@@ -26,6 +26,7 @@ export const TeamLineupBox = styled(Box)(({ theme }) => ({
 export const Line = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
+  gap: "70px",
 }));
 
 export const Player = styled(Box)(({ theme }) => ({
@@ -60,7 +61,7 @@ export const GoalRightBox = styled(Box)({
   height: `${goalHeight}px`,
   width: "1px",
   bottom: "0",
-  left: `${((pitchWidth + goalWidth) / 2 / pitchWidth) * 100-0.75}%`,
+  left: `${((pitchWidth + goalWidth) / 2 / pitchWidth) * 100 - 0.75}%`,
 });
 
 export const PenaltyTopBox = styled(Box)({
@@ -69,7 +70,7 @@ export const PenaltyTopBox = styled(Box)({
   height: `1px`,
   width: `${(penaltyWidth * 100) / pitchWidth}%`,
   bottom: `${penaltyHeight}px`,
-  left: `${((pitchWidth - penaltyWidth) / 2 / penaltyWidth) * 100}%`,
+  left: `${((pitchWidth - penaltyWidth) / 2 / pitchWidth) * 100}%`,
 });
 
 export const PenaltyLeftBox = styled(Box)({

@@ -1,36 +1,81 @@
 import React, { FC } from "react";
 import { LineupDetails } from "@/types/fixture-details/lienup-details";
-import { CapitanSign, LineupPlayerBox, PlayerName } from "./styles";
+import { CapitanSign, PhotoBox, PlayerBox, PlayerName } from "./styles";
 
 interface PlayerElementProps {
   lineupPlayer: LineupDetails | undefined;
+  currentFilter: string;
 }
 
-const PlayerElement: FC<PlayerElementProps> = ({ lineupPlayer }) => {
+const PlayerElement: FC<PlayerElementProps> = ({
+  lineupPlayer,
+  currentFilter,
+}) => {
   if (!lineupPlayer) return null;
 
-  console.log(
-    "koko ",
-    lineupPlayer.player.name,
-    " ",
-    lineupPlayer.playerDetails?.statistics[0].games?.captain
-  );
-  const checkIfGoalKeeper = () => {
-    if (lineupPlayer.player.grid === "1:1") {
-      return "true";
+  // "Rating",
+  // "Offsides",
+
+  // "Shots",
+  // "Goals",
+  // "Assists",
+  // "Saved goals",
+  // "Passes",
+  // "Tackles",
+  // "Yellow cards",
+  // "Red cards",
+  // "Fouls",
+  // "Dribbles",
+
+  const generateLabel = () => {
+    switch (currentFilter) {
+      case "Rating":
+        return lineupPlayer.playerDetails?.statistics[0].games?.rating || "N/A";
+      case "Offsides":
+        return lineupPlayer.playerDetails?.statistics[0].offsides || "0";
+      case "Shots":
+        return lineupPlayer.playerDetails?.statistics[0].shots?.total || "0";
+      case "Goals":
+        return lineupPlayer.playerDetails?.statistics[0].goals?.total || "0";
+      case "Assists":
+        return (
+          lineupPlayer.playerDetails?.statistics[0].goals?.assists || "0"
+        );
+      case "Saved goals":
+        return lineupPlayer.playerDetails?.statistics[0].goals?.saves || "0";
+      case "Passes":
+        return lineupPlayer.playerDetails?.statistics[0].passes?.total || "0";
+      case "Tackles":
+        return (
+          lineupPlayer.playerDetails?.statistics[0].tackles?.total || "0"
+        );
+      case "Yellow cards":
+        return lineupPlayer.playerDetails?.statistics[0].cards?.yellow || "0";
+      case "Red cards":
+        return lineupPlayer.playerDetails?.statistics[0].cards?.red || "0";
+      case "Fouls":
+        return (
+          lineupPlayer.playerDetails?.statistics[0].fouls?.committed || "0"
+        );
+      case "Dribbles":
+        return (
+          lineupPlayer.playerDetails?.statistics[0].dribbles?.attempts || "0"
+        );
+
+      default:
+        return lineupPlayer.player.name.split(" ").pop();
     }
-    return "false";
   };
 
   return (
-    <LineupPlayerBox src={lineupPlayer.playerDetails?.player.photo || ""}>
-      {lineupPlayer.playerDetails?.statistics[0].games?.captain && (
-        <CapitanSign>C</CapitanSign>
-      )}
-      <PlayerName goalkeeper={checkIfGoalKeeper()}>
-        {lineupPlayer.player.name.split(" ").pop()}
-      </PlayerName>
-    </LineupPlayerBox>
+    <PlayerBox>
+      <PhotoBox src={lineupPlayer.playerDetails?.player.photo || ""}>
+        {lineupPlayer.playerDetails?.statistics[0].games?.captain && (
+          <CapitanSign>C</CapitanSign>
+        )}
+      </PhotoBox>
+      <PlayerName>{generateLabel()}</PlayerName>
+    </PlayerBox>
   );
 };
 
