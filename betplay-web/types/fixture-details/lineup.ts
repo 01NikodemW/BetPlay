@@ -31,10 +31,10 @@ export type CoachApiDto = {
 };
 
 export type PlayerWrapper = {
-  player: PlayerApiDto;
+  player: LineupPlayerApiDto;
 };
 
-export type PlayerApiDto = {
+export type LineupPlayerApiDto = {
   id: number | null;
   name: string;
   number: number;

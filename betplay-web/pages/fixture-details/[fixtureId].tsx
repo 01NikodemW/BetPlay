@@ -12,12 +12,13 @@ const Index: NextPageWithLayout = () => {
   const router = useRouter();
   const { fixtureId } = router.query;
 
+
   return (
     <>
       <NextSeo title={`${fixtureId}  | BetPlay`} />
       <FixtureHeaderSection fixture={exampleFixtureWithPenalties} />
-      <FixtureEventsTree fixture={exampleFixtureWithPenalties} />
       <FixtureLineupSection fixture={exampleFixtureWithPenalties} />
+      <FixtureEventsTree fixture={exampleFixtureWithPenalties} />
     </>
   );
 };
