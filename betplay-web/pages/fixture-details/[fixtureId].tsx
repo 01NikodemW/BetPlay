@@ -13,6 +13,7 @@ import FixtureLineupSection from "@/components/fixture-details/fixture-lineup-se
 import FixtureStatsSection from "@/components/fixture-details/fixture-stats-section";
 import { FixtureDetailsBox } from "./styles";
 import Navigation from "@/components/fixture-details/navigation";
+import BetsSection from "@/components/fixture-details/bets-section";
 
 const Index: NextPageWithLayout = () => {
   const router = useRouter();
@@ -22,10 +23,11 @@ const Index: NextPageWithLayout = () => {
     <FixtureDetailsBox>
       <NextSeo title={`${fixtureId}  | BetPlay`} />
       <Navigation />
-      <FixtureHeaderSection fixture={exampleFixtureWithPenalties} />
-      <FixtureEventsTree fixture={exampleFixtureWithPenalties} />
-      <FixtureLineupSection fixture={exampleFixtureWithPenalties} />
+      {/* <FixtureHeaderSection fixture={exampleFixtureWithPenalties} /> */}
+      {/* <FixtureEventsTree fixture={exampleFixtureWithPenalties} /> */}
+      {/* <FixtureLineupSection fixture={exampleFixtureWithPenalties} /> */}
       <FixtureStatsSection fixture={exampleFixtureWithPenalties} />
+      <BetsSection fixture={exampleFixtureWithPenalties} />
     </FixtureDetailsBox>
   );
 };

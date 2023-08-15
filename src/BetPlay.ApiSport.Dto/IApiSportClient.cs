@@ -1,4 +1,5 @@
 using System.Collections;
+using BetPlay.ApiSport.Dto.Bet;
 using BetPlay.ApiSport.Dto.Country;
 using BetPlay.ApiSport.Dto.Fixture;
 using BetPlay.ApiSport.Dto.League;
@@ -26,4 +27,7 @@ public interface IApiSportClient
     Task<IEnumerable<LiveFixtureResponseApiDto>> GetFixturesFromLeagueByDateAsync(int id, DateTime date);
 
     Task<VenueApiDto> GetVenueByIdAsync(int? id);
+
+    //Bets
+    Task<BetResponseApiDto> GetBetsByFixtureIdAsync(int id);
 }

@@ -35,7 +35,7 @@ const resources = {
       "Passes accurate": "Celne podania",
       "Passes %": "Celność podań",
       expected_goals: "Oczekiwane gole",
-
+      "Match result": "Wynik meczu",
       Albania: "Albania",
       Algeria: "Algieria",
       Andorra: "Andora",
