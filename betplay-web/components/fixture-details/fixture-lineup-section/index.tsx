@@ -1,10 +1,12 @@
 import { FC, useState } from "react";
 import {
+  AwayTeamBox,
+  AwayTeamHeader,
   FixtureLineupSectionBox,
   HomeTeamBox,
+  HomeTeamHeader,
   LineupSectionHeader,
   RightSideBox,
-  SubstitutesHeader,
 } from "./styles";
 import { FixtureDetails } from "@/types/fixture-details/fixture-details";
 import TeamLineup from "./team-lineup";
@@ -23,53 +25,40 @@ const FixtureLineupSection: FC<FixtureLineupSectionProps> = ({ fixture }) => {
   const { homeXI, homeSubstitutes, awayXI, awaySubstitutes } =
     extractTeams(fixture);
 
-  const [currentFilter, setCurrentFilter] = useState<string>("");
+  const [homeTeamFilter, setHomeTeamFilter] = useState<string>("");
+  const [awayTeamFilter, setAwayTeamFilter] = useState<string>("");
 
   return (
     <FixtureLineupSectionBox>
       <LineupSectionHeader variant="h1">{t("Lineups")}</LineupSectionHeader>
+      <HomeTeamHeader variant="h2">{fixture.teams.home.name}</HomeTeamHeader>
       <HomeTeamBox>
-        <TeamLineup
-          currentFilter={currentFilter}
-          fixture={fixture}
-          homeOrAway="home"
-          lineup={homeXI}
-        />
+        <TeamLineup currentFilter={homeTeamFilter} lineup={homeXI} />
         <RightSideBox>
           <FiltersSection
-            currentFilter={currentFilter}
-            setCurrentFilter={setCurrentFilter}
+            currentFilter={homeTeamFilter}
+            setCurrentFilter={setHomeTeamFilter}
           />
-          <SubstitutesHeader variant="h2">{t("Bench")}</SubstitutesHeader>
           <SubstitutesSection
-            currentFilter={currentFilter}
-            fixture={fixture}
-            homeOrAway="home"
+            currentFilter={homeTeamFilter}
             lineup={homeSubstitutes}
           />
         </RightSideBox>
       </HomeTeamBox>
-      <HomeTeamBox>
-        <TeamLineup
-          currentFilter={currentFilter}
-          fixture={fixture}
-          homeOrAway="away"
-          lineup={awayXI}
-        />
+      <AwayTeamHeader variant="h2">{fixture.teams.away.name}</AwayTeamHeader>
+      <AwayTeamBox>
+        <TeamLineup currentFilter={awayTeamFilter} lineup={awayXI} />
         <RightSideBox>
           <FiltersSection
-            currentFilter={currentFilter}
-            setCurrentFilter={setCurrentFilter}
+            currentFilter={awayTeamFilter}
+            setCurrentFilter={setAwayTeamFilter}
           />
-          <SubstitutesHeader variant="h2">{t("Bench")}</SubstitutesHeader>
           <SubstitutesSection
-            currentFilter={currentFilter}
-            fixture={fixture}
-            homeOrAway="away"
+            currentFilter={awayTeamFilter}
             lineup={awaySubstitutes}
           />
         </RightSideBox>
-      </HomeTeamBox>
+      </AwayTeamBox>
     </FixtureLineupSectionBox>
   );
 };

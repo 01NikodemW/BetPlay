@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { FixtureDetails } from "@/types/fixture-details/fixture-details";
 import {
   TeamLineupBox,
   Line,
@@ -15,18 +14,11 @@ import { LineupDetails } from "@/types/fixture-details/lienup-details";
 import PlayerElement from "../player-element";
 
 interface TeamLineupProps {
-  fixture: FixtureDetails;
   lineup: LineupDetails[];
-  homeOrAway: "home" | "away";
   currentFilter: string;
 }
 
-const TeamLineup: FC<TeamLineupProps> = ({
-  fixture,
-  homeOrAway,
-  lineup,
-  currentFilter,
-}) => {
+const TeamLineup: FC<TeamLineupProps> = ({ lineup, currentFilter }) => {
   const formation = {
     "5:1": lineup.filter((p) => p.player.grid?.startsWith("5")),
     "4:1": lineup.filter((p) => p.player.grid?.startsWith("4")),
@@ -52,8 +44,8 @@ const TeamLineup: FC<TeamLineupProps> = ({
             .map((player, index) => (
               <PlayerElement
                 key={index}
-                lineupPlayer={player}
                 currentFilter={currentFilter}
+                lineupPlayer={player}
               />
             ))}
         </Line>

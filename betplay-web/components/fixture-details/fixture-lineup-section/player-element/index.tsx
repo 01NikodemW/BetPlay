@@ -13,20 +13,6 @@ const PlayerElement: FC<PlayerElementProps> = ({
 }) => {
   if (!lineupPlayer) return null;
 
-  // "Rating",
-  // "Offsides",
-
-  // "Shots",
-  // "Goals",
-  // "Assists",
-  // "Saved goals",
-  // "Passes",
-  // "Tackles",
-  // "Yellow cards",
-  // "Red cards",
-  // "Fouls",
-  // "Dribbles",
-
   const generateLabel = () => {
     switch (currentFilter) {
       case "Rating":
@@ -38,17 +24,13 @@ const PlayerElement: FC<PlayerElementProps> = ({
       case "Goals":
         return lineupPlayer.playerDetails?.statistics[0].goals?.total || "0";
       case "Assists":
-        return (
-          lineupPlayer.playerDetails?.statistics[0].goals?.assists || "0"
-        );
+        return lineupPlayer.playerDetails?.statistics[0].goals?.assists || "0";
       case "Saved goals":
         return lineupPlayer.playerDetails?.statistics[0].goals?.saves || "0";
       case "Passes":
         return lineupPlayer.playerDetails?.statistics[0].passes?.total || "0";
       case "Tackles":
-        return (
-          lineupPlayer.playerDetails?.statistics[0].tackles?.total || "0"
-        );
+        return lineupPlayer.playerDetails?.statistics[0].tackles?.total || "0";
       case "Yellow cards":
         return lineupPlayer.playerDetails?.statistics[0].cards?.yellow || "0";
       case "Red cards":

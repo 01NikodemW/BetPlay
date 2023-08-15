@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { FilterBox, StyledTypography } from "./styles";
-import { Grid } from "@mui/material";
+import { Grid, useTheme } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 interface FiltersSectionProps {
@@ -15,18 +15,20 @@ const FiltersSection: FC<FiltersSectionProps> = ({
   const { t } = useTranslation();
   const filters = [
     "Rating",
-    "Offsides",
     "Shots",
     "Goals",
     "Assists",
-    "Saved goals",
     "Passes",
+    "Offsides",
+    "Dribbles",
     "Tackles",
+    "Fouls",
     "Yellow cards",
     "Red cards",
-    "Fouls",
-    "Dribbles",
+    "Saved goals",
   ];
+
+  const theme = useTheme();
 
   return (
     <Grid container spacing={2}>
@@ -37,13 +39,16 @@ const FiltersSection: FC<FiltersSectionProps> = ({
           desktop={4}
           largeDesktop={3}
           style={{
-            padding: index < 3 ? "16px 0 0 0" : 0, // Apply padding-top to the first three elements
+            padding: index < 3 ? "16px 0 0 0" : 0,
           }}
           tablet={4}
         >
           <FilterBox
             sx={{
-              color: currentFilter === filter ? "red" : "black",
+              backgroundColor:
+                currentFilter === filter
+                  ? theme.palette.secondary.main
+                  : "white",
             }}
             onClick={() => {
               setCurrentFilter(currentFilter === filter ? "" : filter);

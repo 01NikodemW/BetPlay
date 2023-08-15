@@ -1,33 +1,34 @@
 import React, { FC } from "react";
-import { FixtureDetails } from "@/types/fixture-details/fixture-details";
 
 import { LineupDetails } from "@/types/fixture-details/lienup-details";
 import PlayerElement from "../player-element";
-import { SubstitutesBox } from "./styles";
+import { SubstitutesBox, SubstitutesHeader } from "./styles";
+import { Box } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 interface SubstitutesSectionProps {
-  fixture: FixtureDetails;
   lineup: LineupDetails[];
-  homeOrAway: "home" | "away";
   currentFilter: string;
 }
 
 const SubstitutesSection: FC<SubstitutesSectionProps> = ({
-  fixture,
-  homeOrAway,
   lineup,
   currentFilter,
 }) => {
+  const { t } = useTranslation();
   return (
-    <SubstitutesBox>
-      {lineup.map((player, index) => (
-        <PlayerElement
-          key={index}
-          currentFilter={currentFilter}
-          lineupPlayer={player}
-        />
-      ))}
-    </SubstitutesBox>
+    <Box>
+      <SubstitutesHeader variant="h2">{t("Bench")}</SubstitutesHeader>
+      <SubstitutesBox>
+        {lineup.map((player, index) => (
+          <PlayerElement
+            key={index}
+            currentFilter={currentFilter}
+            lineupPlayer={player}
+          />
+        ))}
+      </SubstitutesBox>
+    </Box>
   );
 };
 

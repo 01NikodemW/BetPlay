@@ -11,6 +11,7 @@ const elementSize = 60;
 export const PlayerBox = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
+  position: "relative",
 }));
 
 export const PhotoBox = styled(Box)<PhotoBox>(({ src }) => ({
@@ -46,4 +47,5 @@ export const PlayerName = styled(Typography)(() => ({
   borderRadius: "12px",
   marginTop: "4px",
   textAlign: "center",
+  opacity: 0.8,
 }));

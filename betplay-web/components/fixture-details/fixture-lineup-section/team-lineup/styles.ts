@@ -10,7 +10,7 @@ const penaltyWidth = 470;
 const penaltyHeight = 160;
 const centerCircle = 100;
 
-export const TeamLineupBox = styled(Box)(({ theme }) => ({
+export const TeamLineupBox = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
@@ -23,13 +23,13 @@ export const TeamLineupBox = styled(Box)(({ theme }) => ({
   position: "relative",
 }));
 
-export const Line = styled(Box)(({ theme }) => ({
+export const Line = styled(Box)(() => ({
   display: "flex",
   justifyContent: "center",
   gap: "70px",
 }));
 
-export const Player = styled(Box)(({ theme }) => ({
+export const Player = styled(Box)(() => ({
   margin: "0 10px",
   background: "blue",
   color: "white",

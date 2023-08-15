@@ -64,6 +64,7 @@ const resources = {
       Ecuador: "Ekwador",
       Egypt: "Egipt",
       "El-Salvador": "Salwador",
+      Bench: "Rezerwowi",
       England: "Anglia",
       Estonia: "Estonia",
       Eswatini: "Eswatini",
@@ -213,7 +214,6 @@ const resources = {
       "Red cards": "Czerwone kartki",
       Fouls: "Faule",
       Dribbles: "Dryblingi",
-
     },
   },
 };
