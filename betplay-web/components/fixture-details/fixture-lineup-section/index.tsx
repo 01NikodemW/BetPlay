@@ -10,7 +10,6 @@ import {
 import { FixtureDetails } from "@/types/fixture-details/fixture-details";
 import TeamLineup from "./team-lineup";
 import { extractTeams } from "@/utils/extract-lineups";
-import { useTranslation } from "react-i18next";
 import SubstitutesSection from "./substitutes-section";
 import FiltersSection from "./filters-section";
 
@@ -19,8 +18,6 @@ interface FixtureLineupSectionProps {
 }
 
 const FixtureLineupSection: FC<FixtureLineupSectionProps> = ({ fixture }) => {
-  const { t } = useTranslation();
-
   const { homeXI, homeSubstitutes, awayXI, awaySubstitutes } =
     extractTeams(fixture);
 
@@ -28,7 +25,7 @@ const FixtureLineupSection: FC<FixtureLineupSectionProps> = ({ fixture }) => {
   const [awayTeamFilter, setAwayTeamFilter] = useState<string>("");
 
   return (
-    <FixtureLineupSectionBox>
+    <FixtureLineupSectionBox id="lineup-section">
       <HomeTeamHeader variant="h2">{fixture.teams.home.name}</HomeTeamHeader>
       <HomeTeamBox>
         <TeamLineup currentFilter={homeTeamFilter} lineup={homeXI} />
