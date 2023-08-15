@@ -6,6 +6,7 @@ export const FixtureLineupSectionBox = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   padding: "24px",
   backgroundColor: theme.palette.background.paper,
+  margin: "24px 0px",
 }));
 
 export const HomeTeamBox = styled(Box)(() => ({
@@ -24,10 +25,6 @@ export const RightSideBox = styled(Box)(() => ({
   flexDirection: "column",
   justifyContent: "space-between",
   width: "40%",
-}));
-
-export const LineupSectionHeader = styled(Typography)(() => ({
-  marginBottom: "24px",
 }));
 
 export const HomeTeamHeader = styled(Typography)(() => ({

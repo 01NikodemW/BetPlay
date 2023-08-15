@@ -5,7 +5,6 @@ import {
   FixtureLineupSectionBox,
   HomeTeamBox,
   HomeTeamHeader,
-  LineupSectionHeader,
   RightSideBox,
 } from "./styles";
 import { FixtureDetails } from "@/types/fixture-details/fixture-details";
@@ -30,7 +29,6 @@ const FixtureLineupSection: FC<FixtureLineupSectionProps> = ({ fixture }) => {
 
   return (
     <FixtureLineupSectionBox>
-      <LineupSectionHeader variant="h1">{t("Lineups")}</LineupSectionHeader>
       <HomeTeamHeader variant="h2">{fixture.teams.home.name}</HomeTeamHeader>
       <HomeTeamBox>
         <TeamLineup currentFilter={homeTeamFilter} lineup={homeXI} />
