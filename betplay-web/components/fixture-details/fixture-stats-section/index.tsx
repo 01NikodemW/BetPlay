@@ -14,7 +14,7 @@ const FixtureStatsSection: FC<FixtureStatsSectionProps> = ({ fixture }) => {
   const extractedStats = useMemo(() => extractStats(fixture), [fixture]);
 
   return (
-    <FixtureStatsSectionBox>
+    <FixtureStatsSectionBox id="stats-section">
       <StatsContainer>
         <StatsHeader fixture={fixture} />
         {extractedStats.map((stat, index) => (
