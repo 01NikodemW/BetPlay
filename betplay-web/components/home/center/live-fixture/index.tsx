@@ -17,6 +17,7 @@ import { StyledContrastOutlinedButton } from "@/components/read-to-use/styles";
 import { Fixture } from "@/types/fixture";
 import { FC } from "react";
 import { leagueWithDetailsIds } from "@/pages/api/const-values";
+import { useRouter } from "next/router";
 
 interface LiveFixtureProps {
   fixture: Fixture;
@@ -24,6 +25,11 @@ interface LiveFixtureProps {
 
 const LiveFixture: FC<LiveFixtureProps> = ({ fixture }) => {
   const { t } = useTranslation();
+  const router = useRouter();
+
+  const handleButtonClick = () => {
+    router.push(`/fixture-details/${fixture.fixtureId}`);
+  };
 
   return (
     <FixtureCard>
@@ -44,26 +50,26 @@ const LiveFixture: FC<LiveFixtureProps> = ({ fixture }) => {
       <BottomSection>
         <TeamsSection>
           <TeamContainer>
-            <TeamLogo isMarginRight={true} src={fixture.homeLogo} />
             <TeamNameTypography variant="h5">
               {fixture.homeName}
             </TeamNameTypography>
+            <TeamLogo isMarginRight={false} src={fixture.homeLogo} />
           </TeamContainer>
 
           <ScoreTypography variant="body1">
             {fixture.goalsHomeTeam} - {fixture.goalsAwayTeam}
           </ScoreTypography>
           <TeamContainer>
+            <TeamLogo isMarginRight={true} src={fixture.awayLogo} />
             <TeamNameTypography variant="h5">
               {fixture.awayName}
             </TeamNameTypography>
-            <TeamLogo isMarginRight={false} src={fixture.awayLogo} />
           </TeamContainer>
         </TeamsSection>
         {leagueWithDetailsIds.includes(
           fixture.fixtureLeague.league.leagueId
         ) && (
-          <StyledContrastOutlinedButton>
+          <StyledContrastOutlinedButton onClick={handleButtonClick}>
             {t("View details")}
           </StyledContrastOutlinedButton>
         )}

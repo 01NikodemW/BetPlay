@@ -23,7 +23,7 @@ const Navbar = () => {
         <PlayText variant="h2">Play</PlayText>
       </LogoWrapper>
       <MenuNavigationWrapper>
-        <MenuNavigationItem onClick={() => router.push("/")}>
+        <MenuNavigationItem onClick={() => router.push("/home")}>
           {t("Home")}
         </MenuNavigationItem>
         <MenuNavigationItem onClick={() => router.push("/live")}>

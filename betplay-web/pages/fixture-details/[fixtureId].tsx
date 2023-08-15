@@ -1,19 +1,28 @@
 import { useRouter } from "next/router";
 
 import { NextSeo } from "next-seo";
-import { useTranslation } from "react-i18next";
 import { NextPageWithLayout } from "../_app";
 import DashboardLayout from "@/components/dashboard-layout";
+import {
+  exampleFixtureWithPenalties,
+  exampleFixtureDetails,
+} from "../api/temporary-api-responses";
+import FixtureHeaderSection from "@/components/fixture-details/fixture-header-section";
+import FixtureEventsTree from "@/components/fixture-details/fixture-events-tree";
+import FixtureLineupSection from "@/components/fixture-details/fixture-lineup-section";
+import FixtureStatsSection from "@/components/fixture-details/fixture-stats-section";
 
 const Index: NextPageWithLayout = () => {
-  const { t } = useTranslation();
   const router = useRouter();
   const { fixtureId } = router.query;
 
   return (
     <>
-      <NextSeo title={`${t("Home")} | BetPlay`} />
-      <h1>{fixtureId}</h1>
+      <NextSeo title={`${fixtureId}  | BetPlay`} />
+      <FixtureHeaderSection fixture={exampleFixtureDetails} />
+      <FixtureEventsTree fixture={exampleFixtureDetails} />
+      <FixtureLineupSection fixture={exampleFixtureDetails} />
+      <FixtureStatsSection fixture={exampleFixtureDetails} />
     </>
   );
 };

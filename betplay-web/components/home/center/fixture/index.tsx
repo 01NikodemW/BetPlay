@@ -16,6 +16,7 @@ import { Typography } from "@mui/material";
 import { Fixture } from "@/types/fixture";
 import { FC } from "react";
 import { leagueWithDetailsIds } from "@/pages/api/const-values";
+import { useRouter } from "next/router";
 
 interface FixtureProps {
   fixture: Fixture;
@@ -23,6 +24,11 @@ interface FixtureProps {
 
 const Fixture: FC<FixtureProps> = ({ fixture }) => {
   const { t } = useTranslation();
+  const router = useRouter();
+
+  const handleButtonClick = () => {
+    router.push(`/fixture-details/${fixture.fixtureId}`);
+  };
 
   return (
     <FixtureCard>
@@ -34,25 +40,29 @@ const Fixture: FC<FixtureProps> = ({ fixture }) => {
       <BottomSection>
         <TeamsSection>
           <TeamContainer>
-            <TeamLogo isMarginRight={true} src={fixture.homeLogo} />
             <TeamNameTypography variant="h5">
               {fixture.homeName}
             </TeamNameTypography>
+            <TeamLogo isMarginRight={false} src={fixture.homeLogo} />
           </TeamContainer>
           <TimeTypography variant="body2">
             {getHoursAndMinutes(fixture.date)}
           </TimeTypography>
           <TeamContainer>
+          <TeamLogo isMarginRight={true} src={fixture.awayLogo} />
             <TeamNameTypography variant="h5">
               {fixture.awayName}
             </TeamNameTypography>
-            <TeamLogo isMarginRight={false} src={fixture.awayLogo} />
           </TeamContainer>
         </TeamsSection>
 
         {leagueWithDetailsIds.includes(
           fixture.fixtureLeague.league.leagueId
-        ) && <StyledOutlinedButton>{t("View details")}</StyledOutlinedButton>}
+        ) && (
+          <StyledOutlinedButton onClick={handleButtonClick}>
+            {t("View details")}
+          </StyledOutlinedButton>
+        )}
       </BottomSection>
     </FixtureCard>
   );
