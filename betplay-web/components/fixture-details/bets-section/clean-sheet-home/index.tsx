@@ -8,14 +8,14 @@ import { extractParticularBet } from "@/utils/extract-particular-bet";
 import { UserBet } from "@/types/user-bet";
 import { FixtureDetails } from "@/types/fixture-details/fixture-details";
 
-interface AllMatchProps {
+interface CleanSheetHomeProps {
   bets: BetsResponse;
   selectedBets: UserBet[];
   setSelectedBets: (bets: UserBet[]) => void;
   fixture: FixtureDetails;
 }
 
-const AllMatch: FC<AllMatchProps> = ({
+const CleanSheetHome: FC<CleanSheetHomeProps> = ({
   bets,
   fixture,
   selectedBets,
@@ -23,10 +23,12 @@ const AllMatch: FC<AllMatchProps> = ({
 }) => {
   const { t } = useTranslation();
 
-  const bet = extractParticularBet(bets, "Match Winner");
+  const bet = extractParticularBet(bets, "Clean Sheet - Home");
   return (
-    <BetContainer id="bets-section">
-      <BetHeader variant="h5">{t("Match result")}</BetHeader>
+    <BetContainer>
+      <BetHeader variant="h5">
+        {t("Clean sheet") + ": " + fixture.teams.home.name}
+      </BetHeader>
       <BetOptionsBox>
         {bet?.values.map((value, index) => (
           <BetWithName
@@ -47,4 +49,4 @@ const AllMatch: FC<AllMatchProps> = ({
   );
 };
 
-export default AllMatch;
+export default CleanSheetHome;

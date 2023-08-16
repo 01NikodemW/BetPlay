@@ -5,7 +5,7 @@ import { NextPageWithLayout } from "../_app";
 import DashboardLayout from "@/components/dashboard-layout";
 import {
   exampleFixtureWithPenalties,
-  exampleFixtureDetails,
+  // exampleFixtureDetails,
 } from "../api/temporary-api-responses";
 import FixtureHeaderSection from "@/components/fixture-details/fixture-header-section";
 import FixtureEventsTree from "@/components/fixture-details/fixture-events-tree";
@@ -23,9 +23,9 @@ const Index: NextPageWithLayout = () => {
     <FixtureDetailsBox>
       <NextSeo title={`${fixtureId}  | BetPlay`} />
       <Navigation />
-      {/* <FixtureHeaderSection fixture={exampleFixtureWithPenalties} /> */}
-      {/* <FixtureEventsTree fixture={exampleFixtureWithPenalties} /> */}
-      {/* <FixtureLineupSection fixture={exampleFixtureWithPenalties} /> */}
+      <FixtureHeaderSection fixture={exampleFixtureWithPenalties} />
+      <FixtureEventsTree fixture={exampleFixtureWithPenalties} />
+      <FixtureLineupSection fixture={exampleFixtureWithPenalties} />
       <FixtureStatsSection fixture={exampleFixtureWithPenalties} />
       <BetsSection fixture={exampleFixtureWithPenalties} />
     </FixtureDetailsBox>

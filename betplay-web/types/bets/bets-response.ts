@@ -33,7 +33,7 @@ export type Bet = {
   values: BetValue[];
 };
 
-type BetValue = {
+export type BetValue = {
   value: string | number;
   odd: string;
 };

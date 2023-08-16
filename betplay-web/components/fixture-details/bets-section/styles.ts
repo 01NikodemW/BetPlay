@@ -18,5 +18,5 @@ export const BetHeader = styled(Typography)(() => ({
 }));
 
 export const BetContainer = styled(Box)(() => ({
-
+  marginBottom: "16px",
 }));

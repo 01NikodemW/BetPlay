@@ -1,4 +1,4 @@
-import { BetsResponse } from "@/types/bets-response";
+import { BetsResponse } from "@/types/bets/bets-response";
 import { Fixture } from "@/types/fixture";
 import { FixtureDetails } from "@/types/fixture-details/fixture-details";
 

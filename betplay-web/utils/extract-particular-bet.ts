@@ -1,4 +1,4 @@
-import { Bet, BetsResponse } from "@/types/bets-response";
+import { Bet, BetsResponse } from "@/types/bets/bets-response";
 
 export const extractParticularBet = (
   betObject: BetsResponse,
