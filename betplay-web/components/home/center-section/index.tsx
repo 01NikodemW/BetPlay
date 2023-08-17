@@ -8,12 +8,12 @@ import React from "react";
 const CenterSection = () => {
   return (
     <CenterSectionContainer>
-      {leagueFixtures.map((fixture) => (
+      {/* {leagueFixtures.map((fixture) => (
         <React.Fragment key={fixture.fixtureId}>
           {checkIfFixtureIsLive(fixture) && <LiveFixture fixture={fixture} />}
           {!checkIfFixtureIsLive(fixture) && <Fixture fixture={fixture} />}
         </React.Fragment>
-      ))}
+      ))} */}
     </CenterSectionContainer>
   );
 };

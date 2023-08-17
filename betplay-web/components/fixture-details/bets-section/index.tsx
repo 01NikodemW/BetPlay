@@ -10,13 +10,16 @@ import CleanSheetHome from "./clean-sheet-home";
 import CleanSheetAway from "./clean-sheet-away";
 import BothTeamsScore from "./both-teams-score";
 import ExactScore from "./exact-score";
+import { useUserBets } from "@/context/user-bets-context";
 
 interface BetsSectionProps {
   fixture: FixtureDetails;
 }
 
 const BetsSection: FC<BetsSectionProps> = ({ fixture }) => {
-  const [selectedBets, setSelectedBets] = useState<UserBet[]>([]);
+  // const [selectedBets, setSelectedBets] = useState<UserBet[]>([]);
+
+  const { selectedBets, setSelectedBets } = useUserBets();
 
   return (
     <FixtureStatsSectionBox id="bets-section">

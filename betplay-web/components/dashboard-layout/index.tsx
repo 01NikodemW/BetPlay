@@ -3,7 +3,7 @@ import Footer from "./footer";
 import Navbar from "./navbar";
 import { ContainerWrapper, DashboardLayoutContainer } from "./styles";
 import { Box } from "@mui/material";
-import BetCard from "./bet-card";
+import BetCard from "../read-to-use/bet-card";
 
 interface DashboardLayoutProps {
   children?: ReactNode;
