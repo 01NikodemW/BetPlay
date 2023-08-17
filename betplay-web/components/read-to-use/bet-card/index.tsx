@@ -1,5 +1,7 @@
 import React, { useMemo, useState } from "react";
 import {
+  BetBottomBox,
+  BetBox,
   BetContainer,
   BetDetailsContainer,
   FirstTextBox,
@@ -7,12 +9,14 @@ import {
   SecondTextBox,
   StyledButton,
   StyledTextField,
+  TopTypography,
 } from "./styles";
 import { useUserBets } from "@/context/user-bets-context";
 import { useTranslation } from "react-i18next";
 import { Button, InputAdornment, Typography } from "@mui/material";
 import { UserBet } from "@/types/user-bet";
 import { testIfPositiveInteger } from "@/utils/input-validators";
+import { isMatchResult } from "@/utils/bets";
 
 // Moved outside of the component
 const calculateTotalOdds = (bets: UserBet[]) => {
@@ -50,6 +54,21 @@ const BetCard = () => {
     }
   };
 
+  const generateValue = (bet: UserBet) => {
+    switch (bet.value) {
+      case "Home":
+        return bet.homeTeam as string;
+      case "Away":
+        return bet.awayTeam as string;
+      default:
+        return bet.value as string;
+    }
+  };
+
+  if (betCount === 0) {
+    return null;
+  }
+
   return (
     <BetContainer expanded={isExpanded ? "true" : "false"}>
       <HeaderTypography variant="h6">
@@ -58,10 +77,24 @@ const BetCard = () => {
         {betCount === 0 && `(${t("No bets")})`}
       </HeaderTypography>
       <BetDetailsContainer expanded={isExpanded ? "true" : "false"}>
-        da
+        {selectedBets.map((bet, index) => (
+          <BetBox key={index} last={index === betCount - 1 ? "true" : "false"}>
+            <TopTypography variant="h6">
+              {bet.homeTeam + " - " + bet.awayTeam}
+            </TopTypography>
+            <BetBottomBox>
+              <Typography variant="subtitle2">{t(bet.betType)}</Typography>
+              <Typography variant="subtitle2">
+                {isMatchResult(bet.value as string)
+                  ? bet.value
+                  : t(generateValue(bet))}
+              </Typography>
+            </BetBottomBox>
+          </BetBox>
+        ))}
       </BetDetailsContainer>
       <StyledButton variant="outlined" onClick={handleClick}>
-        {t("Show my bets")}
+        {isExpanded ? t("Show less") : t("Show my bets")}
       </StyledButton>
 
       <StyledTextField

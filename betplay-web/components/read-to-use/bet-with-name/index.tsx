@@ -6,6 +6,7 @@ import { FixtureDetails } from "@/types/fixture-details/fixture-details";
 import {
   checkIfContainsBet,
   checkIfContainsBetOfParticularType,
+  isMatchResult,
   onBetButtonClick,
 } from "@/utils/bets";
 import { Typography } from "@mui/material";
@@ -48,9 +49,9 @@ const BetWithName: FC<BetWithNameProps> = ({
     );
   };
 
-  const isMatchResult = (str: string) => {
-    return str.length <= 5 && str.includes(":");
-  };
+  // const isMatchResult = (str: string) => {
+  //   return str.length <= 5 && str.includes(":");
+  // };
 
   return (
     <BetWithNameButton

@@ -1,10 +1,9 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 
 import { FixtureDetails } from "@/types/fixture-details/fixture-details";
 import { BetsContainer, FixtureStatsSectionBox } from "./styles";
 import { exampleBets } from "@/pages/api/temporary-api-responses";
 import AllMatch from "./all-match";
-import { UserBet } from "@/types/user-bet";
 import GoalsOverUnder from "./goals-over-under";
 import CleanSheetHome from "./clean-sheet-home";
 import CleanSheetAway from "./clean-sheet-away";
@@ -17,9 +16,9 @@ interface BetsSectionProps {
 }
 
 const BetsSection: FC<BetsSectionProps> = ({ fixture }) => {
-  // const [selectedBets, setSelectedBets] = useState<UserBet[]>([]);
-
   const { selectedBets, setSelectedBets } = useUserBets();
+
+  console.log("selectedBets", selectedBets);
 
   return (
     <FixtureStatsSectionBox id="bets-section">

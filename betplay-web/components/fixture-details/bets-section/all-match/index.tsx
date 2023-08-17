@@ -35,6 +35,8 @@ const AllMatch: FC<AllMatchProps> = ({
             selectedBets={selectedBets}
             setSelectedBets={setSelectedBets}
             userBet={{
+              homeTeam: fixture.teams.home.name,
+              awayTeam: fixture.teams.away.name,
               fixtureId: fixture.fixture.id,
               betType: bet.name,
               value: value.value,

@@ -66,6 +66,8 @@ const ExactScore: FC<ExactScoreProps> = ({
                       selectedBets={selectedBets}
                       setSelectedBets={setSelectedBets}
                       userBet={{
+                        homeTeam: "",
+                        awayTeam: "",
                         fixtureId: 0,
                         betType: "",
                         value: "",
@@ -81,6 +83,8 @@ const ExactScore: FC<ExactScoreProps> = ({
                     selectedBets={selectedBets}
                     setSelectedBets={setSelectedBets}
                     userBet={{
+                      homeTeam: fixture.teams.home.name,
+                      awayTeam: fixture.teams.away.name,
                       fixtureId: fixture.fixture.id,
                       betType: refactoredBet.name,
                       value: betValue.value,

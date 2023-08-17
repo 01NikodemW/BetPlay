@@ -6,6 +6,8 @@ import { UserBet } from "@/types/user-bet";
 export const checkIfContainsBet = (userBets: UserBet[], bet: UserBet) => {
   return userBets.some(
     (userBet) =>
+      userBet.homeTeam === bet.homeTeam &&
+      userBet.awayTeam === bet.awayTeam &&
       userBet.fixtureId === bet.fixtureId &&
       userBet.betType === bet.betType &&
       userBet.value === bet.value &&
@@ -34,6 +36,8 @@ export const onBetButtonClick = (
     setSelectedBets(
       selectedBets.filter(
         (bet) =>
+          bet.homeTeam !== userBet.homeTeam ||
+          bet.awayTeam !== userBet.awayTeam ||
           bet.fixtureId !== userBet.fixtureId ||
           bet.betType !== userBet.betType ||
           bet.value !== userBet.value ||
@@ -129,4 +133,10 @@ export const refactorExactScoreBets = (
   // For example, you can sort by odds, or by the actual scores.
 
   return refactoredObj;
+};
+
+
+
+export const isMatchResult = (str: string) => {
+  return str.length <= 5 && str.includes(":");
 };

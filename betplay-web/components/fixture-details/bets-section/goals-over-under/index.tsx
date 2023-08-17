@@ -47,6 +47,8 @@ const GoalsOverUnder: FC<GoalsOverUnderProps> = ({
                 selectedBets={selectedBets}
                 setSelectedBets={setSelectedBets}
                 userBet={{
+                  homeTeam: fixture.teams.home.name,
+                  awayTeam: fixture.teams.away.name,
                   fixtureId: fixture.fixture.id,
                   betType: refactoredBet.name,
                   value: overValue.value,
@@ -58,6 +60,8 @@ const GoalsOverUnder: FC<GoalsOverUnderProps> = ({
                 selectedBets={selectedBets}
                 setSelectedBets={setSelectedBets}
                 userBet={{
+                  homeTeam: fixture.teams.home.name,
+                  awayTeam: fixture.teams.away.name,
                   fixtureId: fixture.fixture.id,
                   betType: refactoredBet.name,
                   value: refactoredBet.underValues[index].value,

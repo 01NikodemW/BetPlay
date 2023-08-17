@@ -45,6 +45,7 @@ export const StyledButton = styled(Button)(() => ({
 export const BetDetailsContainer = styled(Box)<{ expanded: string }>(
   ({ theme, expanded }) => ({
     height: expanded === "true" ? "200px" : 0,
+    overflow: "scroll",
     transition: "height 0.3s ease-in-out",
     backgroundColor: theme.palette.background.paper,
     flexDirection: "column",
@@ -52,3 +53,24 @@ export const BetDetailsContainer = styled(Box)<{ expanded: string }>(
     visibility: expanded === "true" ? "visible" : "hidden",
   })
 );
+
+export const BetBox = styled(Box)<{ last: string }>(({ theme, last }) => ({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
+  borderBottom:
+    last === "true"
+      ? `8px solid transparent`
+      : `1px solid ${theme.palette.secondary.main}}`,
+  marginTop: "8px",
+}));
+
+export const BetBottomBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "space-between",
+  marginBottom: "8px",
+}));
+
+export const TopTypography = styled(Typography)(({ theme }) => ({
+  marginTop: "8px",
+}));
