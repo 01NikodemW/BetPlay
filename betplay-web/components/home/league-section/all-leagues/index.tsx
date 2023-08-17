@@ -58,7 +58,9 @@ const AllLeagues: FC<AllLeaguesProps> = ({
                   <LeagueWrapper key={league.id}>
                     <LeagueFlagBox src={league.logo} />
                     <LeagueNameButton
-                      selected={selectedLeagueIds.includes(league.id)}
+                      isselected={
+                        selectedLeagueIds.includes(league.id) ? "true" : "false"
+                      }
                       onClick={handleLeagueClick(league.id)}
                     >
                       {league.name}

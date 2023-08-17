@@ -8,5 +8,6 @@ export const CenterSectionContainer = styled(Box)(() => ({
   gap: "16px",
   height: "100%",
   marginLeft: "16px",
+  marginRight: "16px",
   marginTop: "124px",
 }));

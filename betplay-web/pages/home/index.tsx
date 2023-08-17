@@ -6,6 +6,7 @@ import DashboardLayout from "@/components/dashboard-layout";
 import { Box } from "@mui/material";
 import LeagueSection from "@/components/home/league-section";
 import CenterSection from "@/components/home/center";
+import BetCard from "@/components/dashboard-layout/bet-card";
 
 const Index: NextPageWithLayout = () => {
   const { t } = useTranslation();
@@ -16,7 +17,7 @@ const Index: NextPageWithLayout = () => {
       <HomeSectionContainer>
         <LeagueSection />
         <CenterSection />
-        <Box>right</Box>
+        <BetCard />
       </HomeSectionContainer>
     </>
   );

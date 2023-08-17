@@ -10,4 +10,5 @@ export const LeftMenuContainer = styled(Box)(() => ({
   top: 120,
   maxHeight: "calc(100vh - 136px)",
   marginTop: "124px",
+  marginLeft: "16px",
 }));

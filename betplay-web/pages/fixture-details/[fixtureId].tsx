@@ -23,6 +23,7 @@ const Index: NextPageWithLayout = () => {
     <FixtureDetailsBox>
       <NextSeo title={`${fixtureId}  | BetPlay`} />
       <Navigation />
+
       <FixtureHeaderSection fixture={exampleFixtureWithPenalties} />
       <FixtureEventsTree fixture={exampleFixtureWithPenalties} />
       <FixtureLineupSection fixture={exampleFixtureWithPenalties} />

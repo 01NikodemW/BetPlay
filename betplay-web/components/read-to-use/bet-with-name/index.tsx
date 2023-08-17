@@ -54,7 +54,7 @@ const BetWithName: FC<BetWithNameProps> = ({
 
   return (
     <BetWithNameButton
-      selected={checkIfContainsBet(selectedBets, userBet) ? "true" : "false"}
+      isselected={checkIfContainsBet(selectedBets, userBet) ? "true" : "false"}
       sx={{
         visibility: invisible ? "hidden" : "visible",
       }}

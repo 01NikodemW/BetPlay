@@ -34,7 +34,9 @@ const PopularLeagues: FC<PopularLeaguesProps> = ({
             <LeagueFlagBox src={league.logo} />
           </FlagBoxWrapper>
           <LeagueNameButton
-            selected={selectedLeagueIds.includes(league.id)}
+            isselected={
+              selectedLeagueIds.includes(league.id) ? "true" : "false"
+            }
             onClick={handleLeagueClick(league.id)}
           >
             {league.name}
