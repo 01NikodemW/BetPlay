@@ -1,18 +1,35 @@
 import { Box, Button, Card, TextField, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
+// export const BetContainer = styled(Card)<{ expanded: string }>(
+//   ({ theme, expanded }) => ({
+//     height: expanded === "true" ? "500px" : "300px",
+//     transition: "height 0.3s ease-in-out",
+//     backgroundColor: theme.palette.background.paper,
+//     flexDirection: "column",
+//     display: "flex",
+//     position: "sticky",
+//     width: "22%",
+//     top: 120,
+//     marginTop: "124px",
+//     borderRadius: "16px",
+//   })
+// );
+
 export const BetContainer = styled(Card)<{ expanded: string }>(
   ({ theme, expanded }) => ({
-    height: expanded === "true" ? "500px" : "300px",
+    height: expanded === "true" ? "450px" : "300px",
     transition: "height 0.3s ease-in-out",
     backgroundColor: theme.palette.background.paper,
     flexDirection: "column",
     display: "flex",
+    justifyContent: "end",
     position: "sticky",
     width: "22%",
-    top: 120,
-    marginTop: "124px",
+    top: 320,
     borderRadius: "16px",
+    alignSelf: "flex-end",
+    zIndex: 100,
   })
 );
 

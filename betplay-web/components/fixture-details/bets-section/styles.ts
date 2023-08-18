@@ -7,10 +7,13 @@ export const FixtureStatsSectionBox = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   backgroundColor: theme.palette.background.paper,
   margin: "24px 0px",
+  width: "50%",
+  alignSelf: "center",
+  borderRadius: "16px",
 }));
 
 export const BetsContainer = styled(Box)(() => ({
-  width: "50%",
+  width: "100%",
 }));
 
 export const BetHeader = styled(Typography)(() => ({

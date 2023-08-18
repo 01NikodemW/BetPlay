@@ -7,6 +7,7 @@ export const FixtureStatsSectionBox = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   backgroundColor: theme.palette.background.paper,
   margin: "24px 0px",
+  borderRadius: "16px",
 }));
 
 export const StatsContainer = styled(Box)(() => ({
