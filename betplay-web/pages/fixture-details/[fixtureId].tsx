@@ -14,7 +14,6 @@ import FixtureStatsSection from "@/components/fixture-details/fixture-stats-sect
 import { FixtureDetailsBox } from "./styles";
 import Navigation from "@/components/fixture-details/navigation";
 import BetsSection from "@/components/fixture-details/bets-section";
-import BetCard from "@/components/read-to-use/bet-card";
 
 const Index: NextPageWithLayout = () => {
   const router = useRouter();
@@ -26,9 +25,8 @@ const Index: NextPageWithLayout = () => {
       <Navigation />
       <FixtureHeaderSection fixture={exampleFixtureWithPenalties} />
       <FixtureEventsTree fixture={exampleFixtureWithPenalties} />
-      <FixtureStatsSection fixture={exampleFixtureWithPenalties} />
       <FixtureLineupSection fixture={exampleFixtureWithPenalties} />
-      <BetCard />
+      <FixtureStatsSection fixture={exampleFixtureWithPenalties} />
       <BetsSection fixture={exampleFixtureWithPenalties} />
     </FixtureDetailsBox>
   );

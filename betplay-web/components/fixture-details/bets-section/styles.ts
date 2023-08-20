@@ -1,19 +1,22 @@
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
-export const FixtureStatsSectionBox = styled(Box)(({ theme }) => ({
-  padding: "24px",
+export const FixtureStatsSectionBox = styled(Box)(() => ({
   display: "flex",
-  justifyContent: "center",
-  backgroundColor: theme.palette.background.paper,
+  justifyContent: "start",
   margin: "24px 0px",
-  width: "50%",
-  alignSelf: "center",
-  borderRadius: "16px",
+  position: "relative",
 }));
 
-export const BetsContainer = styled(Box)(() => ({
-  width: "100%",
+export const EmptyCard = styled(Box)(() => ({
+  width: "25%",
+}));
+
+export const BetsContainer = styled(Box)(({ theme }) => ({
+  width: "50%",
+  borderRadius: "16px",
+  padding: "24px",
+  backgroundColor: theme.palette.background.paper,
 }));
 
 export const BetHeader = styled(Typography)(() => ({

@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 import { FixtureDetails } from "@/types/fixture-details/fixture-details";
-import { BetsContainer, FixtureStatsSectionBox } from "./styles";
+import { BetsContainer, EmptyCard, FixtureStatsSectionBox } from "./styles";
 import { exampleBets } from "@/pages/api/temporary-api-responses";
 import AllMatch from "./all-match";
 import GoalsOverUnder from "./goals-over-under";
@@ -10,6 +10,7 @@ import CleanSheetAway from "./clean-sheet-away";
 import BothTeamsScore from "./both-teams-score";
 import ExactScore from "./exact-score";
 import { useUserBets } from "@/context/user-bets-context";
+import BetCard from "@/components/read-to-use/bet-card";
 
 interface BetsSectionProps {
   fixture: FixtureDetails;
@@ -18,10 +19,9 @@ interface BetsSectionProps {
 const BetsSection: FC<BetsSectionProps> = ({ fixture }) => {
   const { selectedBets, setSelectedBets } = useUserBets();
 
-  console.log("selectedBets", selectedBets);
-
   return (
     <FixtureStatsSectionBox id="bets-section">
+      <EmptyCard />
       <BetsContainer>
         <AllMatch
           bets={exampleBets}
@@ -60,6 +60,7 @@ const BetsSection: FC<BetsSectionProps> = ({ fixture }) => {
           setSelectedBets={setSelectedBets}
         />
       </BetsContainer>
+      <BetCard mainPage={false} />
     </FixtureStatsSectionBox>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { FC, useMemo, useState } from "react";
 import {
   BetBottomBox,
   BetBox,
@@ -28,10 +28,14 @@ const calculateTotalStake = (bets: UserBet[], stake: number) => {
   return (stake * Number(calculateTotalOdds(bets))).toFixed(2);
 };
 
-const BetCard = () => {
+interface BetCardProps {
+  mainPage: boolean;
+}
+
+const BetCard: FC<BetCardProps> = ({ mainPage }) => {
   const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const { stake, setStake, selectedBets, setSelectedBets } = useUserBets();
+  const { stake, setStake, selectedBets } = useUserBets();
   const betCount = selectedBets.length;
   const totalOdds = useMemo(
     () => calculateTotalOdds(selectedBets),
@@ -70,7 +74,10 @@ const BetCard = () => {
   }
 
   return (
-    <BetContainer expanded={isExpanded ? "true" : "false"}>
+    <BetContainer
+      expanded={isExpanded ? "true" : "false"}
+      mainpage={mainPage ? "true" : "false"}
+    >
       <HeaderTypography variant="h6">
         {t("My coupon")}{" "}
         {betCount > 0 && `(${betCount} ${t(betCount > 1 ? "bets" : "bet")})`}

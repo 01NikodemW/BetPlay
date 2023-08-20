@@ -3,7 +3,6 @@ import Footer from "./footer";
 import Navbar from "./navbar";
 import { ContainerWrapper, DashboardLayoutContainer } from "./styles";
 import { Box } from "@mui/material";
-import BetCard from "../read-to-use/bet-card";
 
 interface DashboardLayoutProps {
   children?: ReactNode;
@@ -16,10 +15,8 @@ const DashboardLayout: FC<DashboardLayoutProps> = (props) => {
     <DashboardLayoutContainer>
       <Box>
         <Navbar />
-
         <ContainerWrapper maxWidth="xl">{children}</ContainerWrapper>
       </Box>
-
       <Footer />
     </DashboardLayoutContainer>
   );

@@ -16,7 +16,7 @@ const Index: NextPageWithLayout = () => {
       <HomeSectionContainer>
         <LeagueSection />
         <CenterSection />
-        <BetCard />
+        <BetCard mainPage={true} />
       </HomeSectionContainer>
     </>
   );

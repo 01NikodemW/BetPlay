@@ -1,37 +1,23 @@
 import { Box, Button, Card, TextField, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
-// export const BetContainer = styled(Card)<{ expanded: string }>(
-//   ({ theme, expanded }) => ({
-//     height: expanded === "true" ? "500px" : "300px",
-//     transition: "height 0.3s ease-in-out",
-//     backgroundColor: theme.palette.background.paper,
-//     flexDirection: "column",
-//     display: "flex",
-//     position: "sticky",
-//     width: "22%",
-//     top: 120,
-//     marginTop: "124px",
-//     borderRadius: "16px",
-//   })
-// );
-
-export const BetContainer = styled(Card)<{ expanded: string }>(
-  ({ theme, expanded }) => ({
-    height: expanded === "true" ? "450px" : "300px",
-    transition: "height 0.3s ease-in-out",
-    backgroundColor: theme.palette.background.paper,
-    flexDirection: "column",
-    display: "flex",
-    justifyContent: "end",
-    position: "sticky",
-    width: "22%",
-    top: 320,
-    borderRadius: "16px",
-    alignSelf: "flex-end",
-    zIndex: 100,
-  })
-);
+export const BetContainer = styled(Card)<{
+  expanded: string;
+  mainpage: string;
+}>(({ theme, expanded, mainpage }) => ({
+  height: expanded === "true" ? "450px" : "300px",
+  transition: "height 0.3s ease-in-out",
+  backgroundColor: theme.palette.background.paper,
+  flexDirection: "column",
+  display: "flex",
+  position: "sticky",
+  width: "22%",
+  top: mainpage === "true" ? 120 : 320,
+  marginLeft: mainpage === "true" ? 0 : "16px",
+  borderRadius: "16px",
+  marginTop: mainpage === "true" ? "124px" : "16",
+  zIndex: 100,
+}));
 
 export const HeaderTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary,
@@ -82,12 +68,12 @@ export const BetBox = styled(Box)<{ last: string }>(({ theme, last }) => ({
   marginTop: "8px",
 }));
 
-export const BetBottomBox = styled(Box)(({ theme }) => ({
+export const BetBottomBox = styled(Box)(() => ({
   display: "flex",
   justifyContent: "space-between",
   marginBottom: "8px",
 }));
 
-export const TopTypography = styled(Typography)(({ theme }) => ({
+export const TopTypography = styled(Typography)(() => ({
   marginTop: "8px",
 }));
