@@ -1,3 +1,4 @@
+using BetPlay.ApiSport.Dto.Bet;
 using BetPlay.ApiSport.Dto.Common;
 using BetPlay.ApiSport.Dto.Country;
 using BetPlay.ApiSport.Dto.Fixture;
@@ -66,7 +67,7 @@ public class ApiSportClient : IApiSportClient
         request.AddHeader("x-rapidapi-host", "v3.football.api-sports.io");
 
         var response = await client.ExecuteAsync<ApiSportResponse<TeamResponseApiDto>>(request);
-        
+
         try
         {
             return response.Data.Response.First();
@@ -106,6 +107,24 @@ public class ApiSportClient : IApiSportClient
 
         return response.Data.Response.AsEnumerable();
     }
+
+    //Bets
+    public async Task<BetResponseApiDto> GetBetsByFixtureIdAsync(int id)
+    {
+        var client = new RestClient(_options.BaseUrl);
+        var request = new RestRequest("odds");
+
+        request.AddQueryParameter("fixture", id.ToString());
+        request.AddQueryParameter("bookmaker", "8");
+
+        request.AddHeader("x-rapidapi-key", _options.ApiKey);
+        request.AddHeader("x-rapidapi-host", "v3.football.api-sports.io");
+
+        var response = await client.ExecuteAsync<ApiSportResponse<BetResponseApiDto>>(request);
+
+        return response.Data.Response.First();
+    }
+
 
     //Fixtures
     public async Task<FixtureResponseApiDto> GetFixtureByIdAsync(int id)

@@ -3,9 +3,9 @@ import { useTranslation } from "react-i18next";
 import { HomeSectionContainer } from "./styles";
 import { NextPageWithLayout } from "../_app";
 import DashboardLayout from "@/components/dashboard-layout";
-import { Box } from "@mui/material";
 import LeagueSection from "@/components/home/league-section";
-import CenterSection from "@/components/home/center";
+import CenterSection from "@/components/home/center-section";
+import BetCard from "@/components/read-to-use/bet-card";
 
 const Index: NextPageWithLayout = () => {
   const { t } = useTranslation();
@@ -16,7 +16,7 @@ const Index: NextPageWithLayout = () => {
       <HomeSectionContainer>
         <LeagueSection />
         <CenterSection />
-        <Box>right</Box>
+        <BetCard mainPage={true} />
       </HomeSectionContainer>
     </>
   );

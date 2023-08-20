@@ -1,3 +1,4 @@
+import { BetsResponse } from "@/types/bets/bets-response";
 import { Fixture } from "@/types/fixture";
 import { FixtureDetails } from "@/types/fixture-details/fixture-details";
 
@@ -9511,6 +9512,2994 @@ export const exampleFixtureWithPenalties = {
                 missed: 0,
                 saved: null,
               },
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+export const exampleBets: BetsResponse = {
+  league: {
+    id: 140,
+    name: "La Liga",
+    country: "Spain",
+    logo: "https://media-2.api-sports.io/football/leagues/140.png",
+    flag: "https://media-3.api-sports.io/flags/es.svg",
+    season: 2023,
+  },
+  fixture: {
+    id: 1037963,
+    timezone: "UTC",
+    date: "2023-08-20T19:30:00+02:00",
+    timestamp: 1692552600,
+  },
+  update: "2023-08-15T04:45:21+02:00",
+  bookmakers: [
+    {
+      id: 8,
+      name: "Bet365",
+      bets: [
+        {
+          id: 1,
+          name: "Match Winner",
+          values: [
+            {
+              value: "Home",
+              odd: "1.20",
+            },
+            {
+              value: "Draw",
+              odd: "6.50",
+            },
+            {
+              value: "Away",
+              odd: "12.00",
+            },
+          ],
+        },
+        {
+          id: 2,
+          name: "Home/Away",
+          values: [
+            {
+              value: "Home",
+              odd: "1.06",
+            },
+            {
+              value: "Away",
+              odd: "10.00",
+            },
+          ],
+        },
+        {
+          id: 3,
+          name: "Second Half Winner",
+          values: [
+            {
+              value: "Home",
+              odd: "1.44",
+            },
+            {
+              value: "Draw",
+              odd: "3.20",
+            },
+            {
+              value: "Away",
+              odd: "9.00",
+            },
+          ],
+        },
+        {
+          id: 4,
+          name: "Asian Handicap",
+          values: [
+            {
+              value: "Home -0.25",
+              odd: "1.14",
+            },
+            {
+              value: "Away -0.25",
+              odd: "5.75",
+            },
+            {
+              value: "Home -0.5",
+              odd: "1.21",
+            },
+            {
+              value: "Away -0.5",
+              odd: "4.25",
+            },
+            {
+              value: "Home -0.75",
+              odd: "1.25",
+            },
+            {
+              value: "Away -0.75",
+              odd: "3.80",
+            },
+            {
+              value: "Home -1",
+              odd: "1.30",
+            },
+            {
+              value: "Away -1",
+              odd: "3.45",
+            },
+            {
+              value: "Home -1.5",
+              odd: "1.65",
+            },
+            {
+              value: "Away -1.5",
+              odd: "2.20",
+            },
+            {
+              value: "Home -1.25",
+              odd: "1.48",
+            },
+            {
+              value: "Away -1.25",
+              odd: "2.60",
+            },
+            {
+              value: "Home -1.75",
+              odd: "1.86",
+            },
+            {
+              value: "Away -1.75",
+              odd: "2.04",
+            },
+            {
+              value: "Home -2",
+              odd: "2.08",
+            },
+            {
+              value: "Away -2",
+              odd: "1.73",
+            },
+            {
+              value: "Home -3",
+              odd: "4.00",
+            },
+            {
+              value: "Away -3",
+              odd: "1.23",
+            },
+            {
+              value: "Home -2.5",
+              odd: "2.60",
+            },
+            {
+              value: "Away -2.5",
+              odd: "1.48",
+            },
+            {
+              value: "Home -2.25",
+              odd: "2.35",
+            },
+            {
+              value: "Away -2.25",
+              odd: "1.58",
+            },
+            {
+              value: "Home -2.75",
+              odd: "3.10",
+            },
+            {
+              value: "Away -2.75",
+              odd: "1.35",
+            },
+            {
+              value: "Home -3.25",
+              odd: "4.40",
+            },
+            {
+              value: "Away -3.25",
+              odd: "1.20",
+            },
+            {
+              value: "Home -3.75",
+              odd: "6.25",
+            },
+            {
+              value: "Away -3.75",
+              odd: "1.12",
+            },
+            {
+              value: "Home -3.5",
+              odd: "4.80",
+            },
+            {
+              value: "Away -3.5",
+              odd: "1.18",
+            },
+          ],
+        },
+        {
+          id: 5,
+          name: "Goals Over/Under",
+          values: [
+            {
+              value: "Over 3.5",
+              odd: "2.38",
+            },
+            {
+              value: "Under 3.5",
+              odd: "1.57",
+            },
+            {
+              value: "Over 1.5",
+              odd: "1.17",
+            },
+            {
+              value: "Under 1.5",
+              odd: "5.00",
+            },
+            {
+              value: "Over 4.5",
+              odd: "4.33",
+            },
+            {
+              value: "Under 4.5",
+              odd: "1.22",
+            },
+            {
+              value: "Over 2.5",
+              odd: "1.57",
+            },
+            {
+              value: "Under 2.5",
+              odd: "2.38",
+            },
+            {
+              value: "Over 0.5",
+              odd: "1.03",
+            },
+            {
+              value: "Under 0.5",
+              odd: "17.00",
+            },
+            {
+              value: "Over 5.5",
+              odd: "8.00",
+            },
+            {
+              value: "Under 5.5",
+              odd: "1.08",
+            },
+            {
+              value: "Over 2.25",
+              odd: "1.40",
+            },
+            {
+              value: "Under 2.25",
+              odd: "2.85",
+            },
+            {
+              value: "Over 3.25",
+              odd: "2.15",
+            },
+            {
+              value: "Under 3.25",
+              odd: "1.68",
+            },
+            {
+              value: "Over 2.75",
+              odd: "1.70",
+            },
+            {
+              value: "Under 2.75",
+              odd: "2.10",
+            },
+            {
+              value: "Over 1.25",
+              odd: "1.10",
+            },
+            {
+              value: "Under 1.25",
+              odd: "7.00",
+            },
+            {
+              value: "Over 4.25",
+              odd: "3.80",
+            },
+            {
+              value: "Under 4.25",
+              odd: "1.25",
+            },
+            {
+              value: "Over 1.75",
+              odd: "1.20",
+            },
+            {
+              value: "Under 1.75",
+              odd: "4.40",
+            },
+            {
+              value: "Over 3.75",
+              odd: "2.75",
+            },
+            {
+              value: "Under 3.75",
+              odd: "1.43",
+            },
+            {
+              value: "Over 4.75",
+              odd: "5.50",
+            },
+            {
+              value: "Under 4.75",
+              odd: "1.15",
+            },
+            {
+              value: "Over 6.5",
+              odd: "17.00",
+            },
+            {
+              value: "Under 6.5",
+              odd: "1.03",
+            },
+            {
+              value: "Over 7.5",
+              odd: "29.00",
+            },
+            {
+              value: "Under 7.5",
+              odd: "1.01",
+            },
+            {
+              value: "Over 3.0",
+              odd: "1.97",
+            },
+            {
+              value: "Under 3.0",
+              odd: "1.93",
+            },
+            {
+              value: "Over 2.0",
+              odd: "1.24",
+            },
+            {
+              value: "Under 2.0",
+              odd: "3.90",
+            },
+            {
+              value: "Over 4.0",
+              odd: "3.55",
+            },
+            {
+              value: "Under 4.0",
+              odd: "1.28",
+            },
+          ],
+        },
+        {
+          id: 6,
+          name: "Goals Over/Under First Half",
+          values: [
+            {
+              value: "Over 3.5",
+              odd: "15.00",
+            },
+            {
+              value: "Under 3.5",
+              odd: "1.03",
+            },
+            {
+              value: "Over 1.5",
+              odd: "2.25",
+            },
+            {
+              value: "Under 1.5",
+              odd: "1.57",
+            },
+            {
+              value: "Over 2.5",
+              odd: "5.50",
+            },
+            {
+              value: "Under 2.5",
+              odd: "1.14",
+            },
+            {
+              value: "Over 0.5",
+              odd: "1.29",
+            },
+            {
+              value: "Under 0.5",
+              odd: "3.50",
+            },
+            {
+              value: "Over 2.25",
+              odd: "4.65",
+            },
+            {
+              value: "Under 2.25",
+              odd: "1.18",
+            },
+            {
+              value: "Over 1.25",
+              odd: "1.98",
+            },
+            {
+              value: "Under 1.25",
+              odd: "1.88",
+            },
+            {
+              value: "Over 1.75",
+              odd: "2.85",
+            },
+            {
+              value: "Under 1.75",
+              odd: "1.40",
+            },
+            {
+              value: "Over 0.75",
+              odd: "1.38",
+            },
+            {
+              value: "Under 0.75",
+              odd: "3.00",
+            },
+            {
+              value: "Over 2.0",
+              odd: "4.10",
+            },
+            {
+              value: "Under 2.0",
+              odd: "1.23",
+            },
+            {
+              value: "Over 1.0",
+              odd: "1.55",
+            },
+            {
+              value: "Under 1.0",
+              odd: "2.38",
+            },
+          ],
+        },
+        {
+          id: 26,
+          name: "Goals Over/Under - Second Half",
+          values: [
+            {
+              value: "Over 3.5",
+              odd: "8.00",
+            },
+            {
+              value: "Under 3.5",
+              odd: "1.08",
+            },
+            {
+              value: "Over 1.5",
+              odd: "1.80",
+            },
+            {
+              value: "Under 1.5",
+              odd: "1.91",
+            },
+            {
+              value: "Over 4.5",
+              odd: "21.00",
+            },
+            {
+              value: "Under 4.5",
+              odd: "1.02",
+            },
+            {
+              value: "Over 2.5",
+              odd: "3.50",
+            },
+            {
+              value: "Under 2.5",
+              odd: "1.29",
+            },
+            {
+              value: "Over 0.5",
+              odd: "1.17",
+            },
+            {
+              value: "Under 0.5",
+              odd: "5.00",
+            },
+          ],
+        },
+        {
+          id: 7,
+          name: "HT/FT Double",
+          values: [
+            {
+              value: "Home/Draw",
+              odd: "21.00",
+            },
+            {
+              value: "Home/Away",
+              odd: "51.00",
+            },
+            {
+              value: "Draw/Away",
+              odd: "23.00",
+            },
+            {
+              value: "Draw/Draw",
+              odd: "9.00",
+            },
+            {
+              value: "Home/Home",
+              odd: "1.73",
+            },
+            {
+              value: "Draw/Home",
+              odd: "3.75",
+            },
+            {
+              value: "Away/Home",
+              odd: "19.00",
+            },
+            {
+              value: "Away/Draw",
+              odd: "23.00",
+            },
+            {
+              value: "Away/Away",
+              odd: "21.00",
+            },
+          ],
+        },
+        {
+          id: 27,
+          name: "Clean Sheet - Home",
+          values: [
+            {
+              value: "Yes",
+              odd: "1.73",
+            },
+            {
+              value: "No",
+              odd: "2.00",
+            },
+          ],
+        },
+        {
+          id: 28,
+          name: "Clean Sheet - Away",
+          values: [
+            {
+              value: "Yes",
+              odd: "10.00",
+            },
+            {
+              value: "No",
+              odd: "1.06",
+            },
+          ],
+        },
+        {
+          id: 8,
+          name: "Both Teams Score",
+          values: [
+            {
+              value: "Yes",
+              odd: "2.20",
+            },
+            {
+              value: "No",
+              odd: "1.62",
+            },
+          ],
+        },
+        {
+          id: 9,
+          name: "Handicap Result",
+          values: [
+            {
+              value: "Home -1",
+              odd: "1.67",
+            },
+            {
+              value: "Away -1",
+              odd: "4.33",
+            },
+            {
+              value: "Draw -1",
+              odd: "4.00",
+            },
+            {
+              value: "Home +1",
+              odd: "1.05",
+            },
+            {
+              value: "Away +1",
+              odd: "29.00",
+            },
+            {
+              value: "Draw +1",
+              odd: "13.00",
+            },
+            {
+              value: "Home -2",
+              odd: "2.63",
+            },
+            {
+              value: "Draw -2",
+              odd: "4.00",
+            },
+            {
+              value: "Away -2",
+              odd: "2.20",
+            },
+            {
+              value: "Home -3",
+              odd: "4.75",
+            },
+            {
+              value: "Draw -3",
+              odd: "5.00",
+            },
+            {
+              value: "Away -3",
+              odd: "1.44",
+            },
+            {
+              value: "Home -4",
+              odd: "10.00",
+            },
+            {
+              value: "Away -4",
+              odd: "1.17",
+            },
+            {
+              value: "Draw -4",
+              odd: "8.00",
+            },
+          ],
+        },
+        {
+          id: 10,
+          name: "Exact Score",
+          values: [
+            {
+              value: "1:0",
+              odd: "7.50",
+            },
+            {
+              value: "2:0",
+              odd: "6.00",
+            },
+            {
+              value: "2:1",
+              odd: "9.50",
+            },
+            {
+              value: "3:0",
+              odd: "7.00",
+            },
+            {
+              value: "3:1",
+              odd: "11.00",
+            },
+            {
+              value: "3:2",
+              odd: "29.00",
+            },
+            {
+              value: "4:0",
+              odd: "11.00",
+            },
+            {
+              value: "4:1",
+              odd: "17.00",
+            },
+            {
+              value: "4:2",
+              odd: "41.00",
+            },
+            {
+              value: "4:3",
+              odd: "101.00",
+            },
+            {
+              value: "5:0",
+              odd: "21.00",
+            },
+            {
+              value: "5:1",
+              odd: "29.00",
+            },
+            {
+              value: "5:2",
+              odd: "51.00",
+            },
+            {
+              value: "5:3",
+              odd: "201.00",
+            },
+            {
+              value: "6:0",
+              odd: "41.00",
+            },
+            {
+              value: "6:1",
+              odd: "51.00",
+            },
+            {
+              value: "6:2",
+              odd: "101.00",
+            },
+            {
+              value: "0:0",
+              odd: "15.00",
+            },
+            {
+              value: "1:1",
+              odd: "13.00",
+            },
+            {
+              value: "2:2",
+              odd: "29.00",
+            },
+            {
+              value: "3:3",
+              odd: "81.00",
+            },
+            {
+              value: "4:4",
+              odd: "501.00",
+            },
+            {
+              value: "0:1",
+              odd: "23.00",
+            },
+            {
+              value: "0:2",
+              odd: "51.00",
+            },
+            {
+              value: "0:3",
+              odd: "151.00",
+            },
+            {
+              value: "1:2",
+              odd: "29.00",
+            },
+            {
+              value: "1:3",
+              odd: "81.00",
+            },
+            {
+              value: "1:4",
+              odd: "351.00",
+            },
+            {
+              value: "2:3",
+              odd: "67.00",
+            },
+            {
+              value: "2:4",
+              odd: "301.00",
+            },
+            {
+              value: "3:4",
+              odd: "351.00",
+            },
+            {
+              value: "6:3",
+              odd: "401.00",
+            },
+            {
+              value: "7:0",
+              odd: "67.00",
+            },
+            {
+              value: "7:1",
+              odd: "101.00",
+            },
+            {
+              value: "7:2",
+              odd: "251.00",
+            },
+            {
+              value: "8:0",
+              odd: "151.00",
+            },
+            {
+              value: "8:1",
+              odd: "201.00",
+            },
+            {
+              value: "9:0",
+              odd: "451.00",
+            },
+          ],
+        },
+        {
+          id: 11,
+          name: "Highest Scoring Half",
+          values: [
+            {
+              value: "Draw",
+              odd: "3.75",
+            },
+            {
+              value: "1st Half",
+              odd: "3.00",
+            },
+            {
+              value: "2nd Half",
+              odd: "2.00",
+            },
+          ],
+        },
+        {
+          id: 31,
+          name: "Correct Score - First Half",
+          values: [
+            {
+              value: "1:0",
+              odd: "3.20",
+            },
+            {
+              value: "2:0",
+              odd: "5.50",
+            },
+            {
+              value: "2:1",
+              odd: "17.00",
+            },
+            {
+              value: "3:0",
+              odd: "13.00",
+            },
+            {
+              value: "3:1",
+              odd: "41.00",
+            },
+            {
+              value: "3:2",
+              odd: "126.00",
+            },
+            {
+              value: "4:0",
+              odd: "41.00",
+            },
+            {
+              value: "4:1",
+              odd: "81.00",
+            },
+            {
+              value: "4:2",
+              odd: "351.00",
+            },
+            {
+              value: "5:0",
+              odd: "81.00",
+            },
+            {
+              value: "5:1",
+              odd: "251.00",
+            },
+            {
+              value: "6:0",
+              odd: "351.00",
+            },
+            {
+              value: "0:0",
+              odd: "3.50",
+            },
+            {
+              value: "1:1",
+              odd: "10.00",
+            },
+            {
+              value: "2:2",
+              odd: "67.00",
+            },
+            {
+              value: "0:1",
+              odd: "11.00",
+            },
+            {
+              value: "0:2",
+              odd: "51.00",
+            },
+            {
+              value: "0:3",
+              odd: "301.00",
+            },
+            {
+              value: "1:2",
+              odd: "51.00",
+            },
+            {
+              value: "1:3",
+              odd: "251.00",
+            },
+            {
+              value: "2:3",
+              odd: "401.00",
+            },
+          ],
+        },
+        {
+          id: 12,
+          name: "Double Chance",
+          values: [
+            {
+              value: "Home/Draw",
+              odd: "1.05",
+            },
+            {
+              value: "Home/Away",
+              odd: "1.11",
+            },
+            {
+              value: "Draw/Away",
+              odd: "4.33",
+            },
+          ],
+        },
+        {
+          id: 13,
+          name: "First Half Winner",
+          values: [
+            {
+              value: "Home",
+              odd: "1.62",
+            },
+            {
+              value: "Draw",
+              odd: "2.75",
+            },
+            {
+              value: "Away",
+              odd: "10.00",
+            },
+          ],
+        },
+        {
+          id: 14,
+          name: "Team To Score First",
+          values: [
+            {
+              value: "Home",
+              odd: "1.17",
+            },
+            {
+              value: "Draw",
+              odd: "15.00",
+            },
+            {
+              value: "Away",
+              odd: "5.50",
+            },
+          ],
+        },
+        {
+          id: 15,
+          name: "Team To Score Last",
+          values: [
+            {
+              value: "Home",
+              odd: "1.17",
+            },
+            {
+              value: "Draw",
+              odd: "15.00",
+            },
+            {
+              value: "Away",
+              odd: "5.50",
+            },
+          ],
+        },
+        {
+          id: 32,
+          name: "Win Both Halves",
+          values: [
+            {
+              value: "Home",
+              odd: "2.50",
+            },
+            {
+              value: "Away",
+              odd: "51.00",
+            },
+          ],
+        },
+        {
+          id: 16,
+          name: "Total - Home",
+          values: [
+            {
+              value: "Over 3.5",
+              odd: "3.50",
+            },
+            {
+              value: "Under 3.5",
+              odd: "1.29",
+            },
+            {
+              value: "Over 1.5",
+              odd: "1.33",
+            },
+            {
+              value: "Under 1.5",
+              odd: "3.25",
+            },
+            {
+              value: "Over 4.5",
+              odd: "8.00",
+            },
+            {
+              value: "Under 4.5",
+              odd: "1.08",
+            },
+            {
+              value: "Over 2.5",
+              odd: "2.00",
+            },
+            {
+              value: "Under 2.5",
+              odd: "1.73",
+            },
+            {
+              value: "Over 5.5",
+              odd: "17.00",
+            },
+            {
+              value: "Under 5.5",
+              odd: "1.03",
+            },
+            {
+              value: "Over 6.5",
+              odd: "34.00",
+            },
+            {
+              value: "Under 6.5",
+              odd: "1.01",
+            },
+          ],
+        },
+        {
+          id: 17,
+          name: "Total - Away",
+          values: [
+            {
+              value: "Over 1.5",
+              odd: "7.00",
+            },
+            {
+              value: "Under 1.5",
+              odd: "1.10",
+            },
+            {
+              value: "Over 2.5",
+              odd: "26.00",
+            },
+            {
+              value: "Under 2.5",
+              odd: "1.01",
+            },
+          ],
+        },
+        {
+          id: 18,
+          name: "Handicap Result - First Half",
+          values: [
+            {
+              value: "Home -1",
+              odd: "3.40",
+            },
+            {
+              value: "Away -1",
+              odd: "2.20",
+            },
+            {
+              value: "Draw -1",
+              odd: "2.75",
+            },
+            {
+              value: "Home +1",
+              odd: "1.03",
+            },
+            {
+              value: "Away +1",
+              odd: "41.00",
+            },
+            {
+              value: "Draw +1",
+              odd: "10.00",
+            },
+            {
+              value: "Home -2",
+              odd: "9.00",
+            },
+            {
+              value: "Draw -2",
+              odd: "4.75",
+            },
+            {
+              value: "Away -2",
+              odd: "1.25",
+            },
+            {
+              value: "Home -3",
+              odd: "26.00",
+            },
+            {
+              value: "Draw -3",
+              odd: "12.00",
+            },
+            {
+              value: "Away -3",
+              odd: "1.06",
+            },
+          ],
+        },
+        {
+          id: 19,
+          name: "Asian Handicap First Half",
+          values: [
+            {
+              value: "Home +0",
+              odd: "1.12",
+            },
+            {
+              value: "Away +0",
+              odd: "6.40",
+            },
+            {
+              value: "Home -0.25",
+              odd: "1.38",
+            },
+            {
+              value: "Away -0.25",
+              odd: "3.00",
+            },
+            {
+              value: "Home -0.5",
+              odd: "1.63",
+            },
+            {
+              value: "Away -0.5",
+              odd: "2.25",
+            },
+            {
+              value: "Home -0.75",
+              odd: "1.93",
+            },
+            {
+              value: "Away -0.75",
+              odd: "1.93",
+            },
+            {
+              value: "Home -1",
+              odd: "2.43",
+            },
+            {
+              value: "Away -1",
+              odd: "1.53",
+            },
+            {
+              value: "Home -1.5",
+              odd: "3.45",
+            },
+            {
+              value: "Away -1.5",
+              odd: "1.30",
+            },
+            {
+              value: "Home -1.25",
+              odd: "3.00",
+            },
+            {
+              value: "Away -1.25",
+              odd: "1.38",
+            },
+            {
+              value: "Home -1.75",
+              odd: "4.50",
+            },
+            {
+              value: "Away -1.75",
+              odd: "1.19",
+            },
+          ],
+        },
+        {
+          id: 20,
+          name: "Double Chance - First Half",
+          values: [
+            {
+              value: "Home/Draw",
+              odd: "1.03",
+            },
+            {
+              value: "Home/Away",
+              odd: "1.40",
+            },
+            {
+              value: "Draw/Away",
+              odd: "2.20",
+            },
+          ],
+        },
+        {
+          id: 34,
+          name: "Both Teams Score - First Half",
+          values: [
+            {
+              value: "Yes",
+              odd: "5.50",
+            },
+            {
+              value: "No",
+              odd: "1.14",
+            },
+          ],
+        },
+        {
+          id: 35,
+          name: "Both Teams To Score - Second Half",
+          values: [
+            {
+              value: "Yes",
+              odd: "4.00",
+            },
+            {
+              value: "No",
+              odd: "1.22",
+            },
+          ],
+        },
+        {
+          id: 36,
+          name: "Win To Nil",
+          values: [
+            {
+              value: "Home",
+              odd: "1.83",
+            },
+            {
+              value: "Away",
+              odd: "19.00",
+            },
+          ],
+        },
+        {
+          id: 21,
+          name: "Odd/Even",
+          values: [
+            {
+              value: "Odd",
+              odd: "1.95",
+            },
+            {
+              value: "Even",
+              odd: "1.90",
+            },
+          ],
+        },
+        {
+          id: 22,
+          name: "Odd/Even - First Half",
+          values: [
+            {
+              value: "Odd",
+              odd: "2.00",
+            },
+            {
+              value: "Even",
+              odd: "1.80",
+            },
+          ],
+        },
+        {
+          id: 39,
+          name: "To Win Either Half",
+          values: [
+            {
+              value: "Home",
+              odd: "1.13",
+            },
+            {
+              value: "Away",
+              odd: "5.00",
+            },
+          ],
+        },
+        {
+          id: 40,
+          name: "Home Team Exact Goals Number",
+          values: [
+            {
+              value: 2,
+              odd: "3.40",
+            },
+            {
+              value: 1,
+              odd: "4.33",
+            },
+            {
+              value: 0,
+              odd: "10.00",
+            },
+            {
+              value: "more 3",
+              odd: "2.00",
+            },
+          ],
+        },
+        {
+          id: 41,
+          name: "Away Team Exact Goals Number",
+          values: [
+            {
+              value: 2,
+              odd: "8.00",
+            },
+            {
+              value: 1,
+              odd: "2.63",
+            },
+            {
+              value: 0,
+              odd: "1.73",
+            },
+            {
+              value: "more 3",
+              odd: "26.00",
+            },
+          ],
+        },
+        {
+          id: 24,
+          name: "Results/Both Teams Score",
+          values: [
+            {
+              value: "Home/Yes",
+              odd: "3.00",
+            },
+            {
+              value: "Draw/Yes",
+              odd: "8.50",
+            },
+            {
+              value: "Away/Yes",
+              odd: "21.00",
+            },
+            {
+              value: "Home/No",
+              odd: "1.83",
+            },
+            {
+              value: "Draw/No",
+              odd: "15.00",
+            },
+            {
+              value: "Away/No",
+              odd: "19.00",
+            },
+          ],
+        },
+        {
+          id: 25,
+          name: "Result/Total Goals",
+          values: [
+            {
+              value: "Home/Over 2.5",
+              odd: "1.73",
+            },
+            {
+              value: "Draw/Over 2.5",
+              odd: "23.00",
+            },
+            {
+              value: "Away/Over 2.5",
+              odd: "19.00",
+            },
+            {
+              value: "Home/Under 2.5",
+              odd: "3.50",
+            },
+            {
+              value: "Draw/Under 2.5",
+              odd: "7.50",
+            },
+            {
+              value: "Away/Under 2.5",
+              odd: "19.00",
+            },
+          ],
+        },
+        {
+          id: 43,
+          name: "Home Team Score a Goal",
+          values: [
+            {
+              value: "Yes",
+              odd: "1.06",
+            },
+            {
+              value: "No",
+              odd: "10.00",
+            },
+          ],
+        },
+        {
+          id: 44,
+          name: "Away Team Score a Goal",
+          values: [
+            {
+              value: "Yes",
+              odd: "2.00",
+            },
+            {
+              value: "No",
+              odd: "1.73",
+            },
+          ],
+        },
+        {
+          id: 54,
+          name: "First 10 min Winner",
+          values: [
+            {
+              value: "Home",
+              odd: "4.75",
+            },
+            {
+              value: "Draw",
+              odd: "1.18",
+            },
+            {
+              value: "Away",
+              odd: "17.00",
+            },
+          ],
+        },
+        {
+          id: 45,
+          name: "Corners Over Under",
+          values: [
+            {
+              value: "Over 9.5",
+              odd: "1.91",
+            },
+            {
+              value: "Under 9.5",
+              odd: "1.80",
+            },
+          ],
+        },
+        {
+          id: 47,
+          name: "Winning Margin",
+          values: [
+            {
+              value: "Draw",
+              odd: "15.00",
+            },
+            {
+              value: "1 by 1",
+              odd: "4.00",
+            },
+            {
+              value: "2 by 1",
+              odd: "13.00",
+            },
+            {
+              value: "1 by 2",
+              odd: "4.00",
+            },
+            {
+              value: "2 by 2",
+              odd: "41.00",
+            },
+            {
+              value: "1 by 3",
+              odd: "5.00",
+            },
+            {
+              value: "2 by 3",
+              odd: "101.00",
+            },
+            {
+              value: "1 by 4+",
+              odd: "4.75",
+            },
+            {
+              value: "2 by 4+",
+              odd: "401.00",
+            },
+            {
+              value: "Score Draw",
+              odd: "9.00",
+            },
+          ],
+        },
+        {
+          id: 48,
+          name: "To Score In Both Halves By Teams",
+          values: [
+            {
+              value: "Home",
+              odd: "1.83",
+            },
+            {
+              value: "Away",
+              odd: "11.00",
+            },
+          ],
+        },
+        {
+          id: 49,
+          name: "Total Goals/Both Teams To Score",
+          values: [
+            {
+              value: "o/yes 2.5",
+              odd: "2.50",
+            },
+            {
+              value: "o/no 2.5",
+              odd: "3.40",
+            },
+            {
+              value: "u/yes 2.5",
+              odd: "13.00",
+            },
+            {
+              value: "u/no 2.5",
+              odd: "2.75",
+            },
+          ],
+        },
+        {
+          id: 91,
+          name: "Total Goals (3 way)",
+          values: [
+            {
+              value: "Under 2 ",
+              odd: "5.00",
+            },
+            {
+              value: "2 Or 3 ",
+              odd: "2.10",
+            },
+            {
+              value: "Over 3 ",
+              odd: "2.38",
+            },
+          ],
+        },
+        {
+          id: 50,
+          name: "Goal Line",
+          values: [
+            {
+              value: "Over 3.5",
+              odd: "2.38",
+            },
+            {
+              value: "Under 3.5",
+              odd: "1.55",
+            },
+            {
+              value: "Over 1.5",
+              odd: "1.18",
+            },
+            {
+              value: "Under 1.5",
+              odd: "4.80",
+            },
+            {
+              value: "Over 4.5",
+              odd: "4.15",
+            },
+            {
+              value: "Under 4.5",
+              odd: "1.22",
+            },
+            {
+              value: "Over 2.5",
+              odd: "1.55",
+            },
+            {
+              value: "Under 2.5",
+              odd: "2.38",
+            },
+            {
+              value: "Over 2",
+              odd: "1.24",
+            },
+            {
+              value: "Under 2",
+              odd: "3.90",
+            },
+            {
+              value: "Over 3",
+              odd: "1.97",
+            },
+            {
+              value: "Under 3",
+              odd: "1.93",
+            },
+            {
+              value: "Over 4",
+              odd: "3.55",
+            },
+            {
+              value: "Under 4",
+              odd: "1.28",
+            },
+            {
+              value: "Over 2.25",
+              odd: "1.40",
+            },
+            {
+              value: "Under 2.25",
+              odd: "2.85",
+            },
+            {
+              value: "Over 3.25",
+              odd: "2.15",
+            },
+            {
+              value: "Under 3.25",
+              odd: "1.68",
+            },
+            {
+              value: "Over 2.75",
+              odd: "1.70",
+            },
+            {
+              value: "Under 2.75",
+              odd: "2.10",
+            },
+            {
+              value: "Over 1.25",
+              odd: "1.10",
+            },
+            {
+              value: "Under 1.25",
+              odd: "7.00",
+            },
+            {
+              value: "Over 4.25",
+              odd: "3.80",
+            },
+            {
+              value: "Under 4.25",
+              odd: "1.25",
+            },
+            {
+              value: "Over 1.75",
+              odd: "1.20",
+            },
+            {
+              value: "Under 1.75",
+              odd: "4.40",
+            },
+            {
+              value: "Over 3.75",
+              odd: "2.75",
+            },
+            {
+              value: "Under 3.75",
+              odd: "1.43",
+            },
+            {
+              value: "Over 4.75",
+              odd: "5.50",
+            },
+            {
+              value: "Under 4.75",
+              odd: "1.15",
+            },
+          ],
+        },
+        {
+          id: 72,
+          name: "Goal Line (1st Half)",
+          values: [
+            {
+              value: "Over 1.5",
+              odd: "2.30",
+            },
+            {
+              value: "Under 1.5",
+              odd: "1.60",
+            },
+            {
+              value: "Over 2.5",
+              odd: "5.50",
+            },
+            {
+              value: "Under 2.5",
+              odd: "1.15",
+            },
+            {
+              value: "Over 0.5",
+              odd: "1.28",
+            },
+            {
+              value: "Under 0.5",
+              odd: "3.55",
+            },
+            {
+              value: "Over 2",
+              odd: "4.10",
+            },
+            {
+              value: "Under 2",
+              odd: "1.23",
+            },
+            {
+              value: "Over 2.25",
+              odd: "4.65",
+            },
+            {
+              value: "Under 2.25",
+              odd: "1.18",
+            },
+            {
+              value: "Over 1.25",
+              odd: "1.98",
+            },
+            {
+              value: "Under 1.25",
+              odd: "1.88",
+            },
+            {
+              value: "Over 1.75",
+              odd: "2.85",
+            },
+            {
+              value: "Under 1.75",
+              odd: "1.40",
+            },
+            {
+              value: "Over 1",
+              odd: "1.55",
+            },
+            {
+              value: "Under 1",
+              odd: "2.38",
+            },
+            {
+              value: "Over 0.75",
+              odd: "1.38",
+            },
+            {
+              value: "Under 0.75",
+              odd: "3.00",
+            },
+          ],
+        },
+        {
+          id: 97,
+          name: "First Goal Method",
+          values: [
+            {
+              value: "Shot",
+              odd: "1.44",
+            },
+            {
+              value: "Header",
+              odd: "6.00",
+            },
+            {
+              value: "Penalty",
+              odd: "7.00",
+            },
+            {
+              value: "FreeKick",
+              odd: "21.00",
+            },
+            {
+              value: "OwnGoal",
+              odd: "26.00",
+            },
+            {
+              value: "Draw",
+              odd: "15.00",
+            },
+          ],
+        },
+        {
+          id: 52,
+          name: "Halftime Result/Both Teams Score",
+          values: [
+            {
+              value: "Home/Yes",
+              odd: "12.00",
+            },
+            {
+              value: "Draw/Yes",
+              odd: "9.50",
+            },
+            {
+              value: "Away/Yes",
+              odd: "41.00",
+            },
+            {
+              value: "Home/No",
+              odd: "1.83",
+            },
+            {
+              value: "Draw/No",
+              odd: "3.50",
+            },
+            {
+              value: "Away/No",
+              odd: "10.00",
+            },
+          ],
+        },
+        {
+          id: 59,
+          name: "Own Goal",
+          values: [
+            {
+              value: "Yes",
+              odd: "10.00",
+            },
+            {
+              value: "No",
+              odd: "1.06",
+            },
+          ],
+        },
+        {
+          id: 92,
+          name: "Anytime Goal Scorer",
+          values: [
+            {
+              value: "Oriol Romeu",
+              odd: "8.00",
+            },
+            {
+              value: "Marcos Alonso",
+              odd: "11.00",
+            },
+            {
+              value: "Andreas Christensen",
+              odd: "15.00",
+            },
+            {
+              value: "Ilkay Gundogan",
+              odd: "4.50",
+            },
+            {
+              value: "Raphael Raphinha",
+              odd: "2.40",
+            },
+            {
+              value: "Jorge Mere",
+              odd: "34.00",
+            },
+            {
+              value: "Robert Lewandowski",
+              odd: "1.67",
+            },
+            {
+              value: "Gonzalo Escalante",
+              odd: "9.00",
+            },
+            {
+              value: "Luis Hernandez",
+              odd: "67.00",
+            },
+            {
+              value: "Javier Hernandez",
+              odd: "13.00",
+            },
+            {
+              value: "Youba Diarra",
+              odd: "19.00",
+            },
+            {
+              value: "Awer Mabil",
+              odd: "9.00",
+            },
+            {
+              value: "Ruben Alcaraz",
+              odd: "9.00",
+            },
+            {
+              value: "Fede San Emeterio",
+              odd: "19.00",
+            },
+            {
+              value: "Chris Ramos",
+              odd: "7.50",
+            },
+            {
+              value: "Tomas Alarcon",
+              odd: "19.00",
+            },
+            {
+              value: "Milutin Osmajic",
+              odd: "5.00",
+            },
+            {
+              value: "Victor Chust",
+              odd: "29.00",
+            },
+            {
+              value: "Alvaro Negredo",
+              odd: "6.00",
+            },
+            {
+              value: "Ruben Sobrino",
+              odd: "11.00",
+            },
+            {
+              value: "Ivan Alejo",
+              odd: "13.00",
+            },
+            {
+              value: "Jose Mari",
+              odd: "15.00",
+            },
+            {
+              value: "Fernandez Alex",
+              odd: "11.00",
+            },
+            {
+              value: "Isaac Carcelen",
+              odd: "23.00",
+            },
+            {
+              value: "Rafael Fali",
+              odd: "23.00",
+            },
+            {
+              value: "Inigo Martinez",
+              odd: "8.00",
+            },
+            {
+              value: "Darwin Machis",
+              odd: "6.00",
+            },
+            {
+              value: "Jules Kounde",
+              odd: "19.00",
+            },
+            {
+              value: "Joseba Zaldua",
+              odd: "34.00",
+            },
+            {
+              value: "Anssumane Fati",
+              odd: "2.25",
+            },
+            {
+              value: "Pablo Martin Gavi",
+              odd: "5.00",
+            },
+            {
+              value: "Carnicer Sergi Roberto",
+              odd: "4.75",
+            },
+            {
+              value: "Frenkie De Jong",
+              odd: "6.50",
+            },
+            {
+              value: "Sergino Dest",
+              odd: "10.00",
+            },
+            {
+              value: "Alex Balde",
+              odd: "8.00",
+            },
+            {
+              value: "Clement Lenglet",
+              odd: "10.00",
+            },
+            {
+              value: "Eric Garcia",
+              odd: "10.00",
+            },
+            {
+              value: "Marti Roger",
+              odd: "7.50",
+            },
+            {
+              value: "Ronald Araujo",
+              odd: "11.00",
+            },
+            {
+              value: "Abdessamad Ezzalzouli",
+              odd: "3.00",
+            },
+            {
+              value: "Ferran Torres",
+              odd: "3.00",
+            },
+            {
+              value: "Pedro Gonzalez",
+              odd: "4.75",
+            },
+            {
+              value: "Silva Lucas Pires",
+              odd: "23.00",
+            },
+            {
+              value: "Momo Mbaye",
+              odd: "23.00",
+            },
+            {
+              value: "Marc Casado",
+              odd: "6.50",
+            },
+            {
+              value: "Angel Alarcon",
+              odd: "3.00",
+            },
+            {
+              value: "Lamine Yamal",
+              odd: "2.75",
+            },
+            {
+              value: "Jose Antonio De La Rosa",
+              odd: "9.00",
+            },
+            {
+              value: "Fermin Lopez",
+              odd: "3.00",
+            },
+            {
+              value: "Mikayil Faye",
+              odd: "8.00",
+            },
+          ],
+        },
+        {
+          id: 93,
+          name: "First Goal Scorer",
+          values: [
+            {
+              value: "No Goalscorer",
+              odd: "15.00",
+            },
+            {
+              value: "Oriol Romeu",
+              odd: "21.00",
+            },
+            {
+              value: "Marcos Alonso",
+              odd: "29.00",
+            },
+            {
+              value: "Andreas Christensen",
+              odd: "41.00",
+            },
+            {
+              value: "Ilkay Gundogan",
+              odd: "11.00",
+            },
+            {
+              value: "Raphael Raphinha",
+              odd: "5.50",
+            },
+            {
+              value: "Jorge Mere",
+              odd: "101.00",
+            },
+            {
+              value: "Robert Lewandowski",
+              odd: "3.20",
+            },
+            {
+              value: "Gonzalo Escalante",
+              odd: "23.00",
+            },
+            {
+              value: "Luis Hernandez",
+              odd: "201.00",
+            },
+            {
+              value: "Javier Hernandez",
+              odd: "34.00",
+            },
+            {
+              value: "Youba Diarra",
+              odd: "51.00",
+            },
+            {
+              value: "Awer Mabil",
+              odd: "23.00",
+            },
+            {
+              value: "Ruben Alcaraz",
+              odd: "23.00",
+            },
+            {
+              value: "Fede San Emeterio",
+              odd: "51.00",
+            },
+            {
+              value: "Chris Ramos",
+              odd: "19.00",
+            },
+            {
+              value: "Tomas Alarcon",
+              odd: "51.00",
+            },
+            {
+              value: "Milutin Osmajic",
+              odd: "13.00",
+            },
+            {
+              value: "Victor Chust",
+              odd: "81.00",
+            },
+            {
+              value: "Alvaro Negredo",
+              odd: "15.00",
+            },
+            {
+              value: "Ruben Sobrino",
+              odd: "29.00",
+            },
+            {
+              value: "Ivan Alejo",
+              odd: "34.00",
+            },
+            {
+              value: "Jose Mari",
+              odd: "41.00",
+            },
+            {
+              value: "Fernandez Alex",
+              odd: "29.00",
+            },
+            {
+              value: "Isaac Carcelen",
+              odd: "67.00",
+            },
+            {
+              value: "Rafael Fali",
+              odd: "67.00",
+            },
+            {
+              value: "Inigo Martinez",
+              odd: "21.00",
+            },
+            {
+              value: "Darwin Machis",
+              odd: "15.00",
+            },
+            {
+              value: "Jules Kounde",
+              odd: "51.00",
+            },
+            {
+              value: "Joseba Zaldua",
+              odd: "101.00",
+            },
+            {
+              value: "Anssumane Fati",
+              odd: "5.00",
+            },
+            {
+              value: "Pablo Martin Gavi",
+              odd: "13.00",
+            },
+            {
+              value: "Carnicer Sergi Roberto",
+              odd: "12.00",
+            },
+            {
+              value: "Frenkie De Jong",
+              odd: "17.00",
+            },
+            {
+              value: "Sergino Dest",
+              odd: "26.00",
+            },
+            {
+              value: "Alex Balde",
+              odd: "21.00",
+            },
+            {
+              value: "Clement Lenglet",
+              odd: "26.00",
+            },
+            {
+              value: "Eric Garcia",
+              odd: "26.00",
+            },
+            {
+              value: "Marti Roger",
+              odd: "19.00",
+            },
+            {
+              value: "Ronald Araujo",
+              odd: "29.00",
+            },
+            {
+              value: "Abdessamad Ezzalzouli",
+              odd: "7.00",
+            },
+            {
+              value: "Ferran Torres",
+              odd: "7.00",
+            },
+            {
+              value: "Pedro Gonzalez",
+              odd: "12.00",
+            },
+            {
+              value: "Silva Lucas Pires",
+              odd: "67.00",
+            },
+            {
+              value: "Momo Mbaye",
+              odd: "67.00",
+            },
+            {
+              value: "Marc Casado",
+              odd: "17.00",
+            },
+            {
+              value: "Angel Alarcon",
+              odd: "7.00",
+            },
+            {
+              value: "Lamine Yamal",
+              odd: "6.50",
+            },
+            {
+              value: "Jose Antonio De La Rosa",
+              odd: "23.00",
+            },
+            {
+              value: "Fermin Lopez",
+              odd: "7.00",
+            },
+            {
+              value: "Mikayil Faye",
+              odd: "21.00",
+            },
+          ],
+        },
+        {
+          id: 94,
+          name: "Last Goal Scorer",
+          values: [
+            {
+              value: "No Goalscorer",
+              odd: "15.00",
+            },
+            {
+              value: "Oriol Romeu",
+              odd: "21.00",
+            },
+            {
+              value: "Marcos Alonso",
+              odd: "29.00",
+            },
+            {
+              value: "Andreas Christensen",
+              odd: "41.00",
+            },
+            {
+              value: "Ilkay Gundogan",
+              odd: "11.00",
+            },
+            {
+              value: "Raphael Raphinha",
+              odd: "5.50",
+            },
+            {
+              value: "Jorge Mere",
+              odd: "101.00",
+            },
+            {
+              value: "Robert Lewandowski",
+              odd: "3.20",
+            },
+            {
+              value: "Gonzalo Escalante",
+              odd: "23.00",
+            },
+            {
+              value: "Luis Hernandez",
+              odd: "201.00",
+            },
+            {
+              value: "Javier Hernandez",
+              odd: "34.00",
+            },
+            {
+              value: "Youba Diarra",
+              odd: "51.00",
+            },
+            {
+              value: "Awer Mabil",
+              odd: "23.00",
+            },
+            {
+              value: "Ruben Alcaraz",
+              odd: "23.00",
+            },
+            {
+              value: "Fede San Emeterio",
+              odd: "51.00",
+            },
+            {
+              value: "Chris Ramos",
+              odd: "19.00",
+            },
+            {
+              value: "Tomas Alarcon",
+              odd: "51.00",
+            },
+            {
+              value: "Milutin Osmajic",
+              odd: "13.00",
+            },
+            {
+              value: "Victor Chust",
+              odd: "81.00",
+            },
+            {
+              value: "Alvaro Negredo",
+              odd: "15.00",
+            },
+            {
+              value: "Ruben Sobrino",
+              odd: "29.00",
+            },
+            {
+              value: "Ivan Alejo",
+              odd: "34.00",
+            },
+            {
+              value: "Jose Mari",
+              odd: "41.00",
+            },
+            {
+              value: "Fernandez Alex",
+              odd: "29.00",
+            },
+            {
+              value: "Isaac Carcelen",
+              odd: "67.00",
+            },
+            {
+              value: "Rafael Fali",
+              odd: "67.00",
+            },
+            {
+              value: "Inigo Martinez",
+              odd: "21.00",
+            },
+            {
+              value: "Darwin Machis",
+              odd: "15.00",
+            },
+            {
+              value: "Jules Kounde",
+              odd: "51.00",
+            },
+            {
+              value: "Joseba Zaldua",
+              odd: "101.00",
+            },
+            {
+              value: "Anssumane Fati",
+              odd: "5.00",
+            },
+            {
+              value: "Pablo Martin Gavi",
+              odd: "13.00",
+            },
+            {
+              value: "Carnicer Sergi Roberto",
+              odd: "12.00",
+            },
+            {
+              value: "Frenkie De Jong",
+              odd: "17.00",
+            },
+            {
+              value: "Sergino Dest",
+              odd: "26.00",
+            },
+            {
+              value: "Alex Balde",
+              odd: "21.00",
+            },
+            {
+              value: "Clement Lenglet",
+              odd: "26.00",
+            },
+            {
+              value: "Eric Garcia",
+              odd: "26.00",
+            },
+            {
+              value: "Marti Roger",
+              odd: "19.00",
+            },
+            {
+              value: "Ronald Araujo",
+              odd: "29.00",
+            },
+            {
+              value: "Abdessamad Ezzalzouli",
+              odd: "7.00",
+            },
+            {
+              value: "Ferran Torres",
+              odd: "7.00",
+            },
+            {
+              value: "Pedro Gonzalez",
+              odd: "12.00",
+            },
+            {
+              value: "Silva Lucas Pires",
+              odd: "67.00",
+            },
+            {
+              value: "Momo Mbaye",
+              odd: "67.00",
+            },
+            {
+              value: "Marc Casado",
+              odd: "17.00",
+            },
+            {
+              value: "Angel Alarcon",
+              odd: "7.00",
+            },
+            {
+              value: "Lamine Yamal",
+              odd: "6.50",
+            },
+            {
+              value: "Jose Antonio De La Rosa",
+              odd: "23.00",
+            },
+            {
+              value: "Fermin Lopez",
+              odd: "7.00",
+            },
+            {
+              value: "Mikayil Faye",
+              odd: "21.00",
+            },
+          ],
+        },
+        {
+          id: 95,
+          name: "To Score Two or More Goals",
+          values: [
+            {
+              value: "Oriol Romeu",
+              odd: "101.00",
+            },
+            {
+              value: "Marcos Alonso",
+              odd: "101.00",
+            },
+            {
+              value: "Andreas Christensen",
+              odd: "126.00",
+            },
+            {
+              value: "Ilkay Gundogan",
+              odd: "29.00",
+            },
+            {
+              value: "Raphael Raphinha",
+              odd: "8.50",
+            },
+            {
+              value: "Jorge Mere",
+              odd: "401.00",
+            },
+            {
+              value: "Robert Lewandowski",
+              odd: "3.75",
+            },
+            {
+              value: "Gonzalo Escalante",
+              odd: "101.00",
+            },
+            {
+              value: "Luis Hernandez",
+              odd: "501.00",
+            },
+            {
+              value: "Javier Hernandez",
+              odd: "126.00",
+            },
+            {
+              value: "Youba Diarra",
+              odd: "151.00",
+            },
+            {
+              value: "Awer Mabil",
+              odd: "101.00",
+            },
+            {
+              value: "Ruben Alcaraz",
+              odd: "101.00",
+            },
+            {
+              value: "Fede San Emeterio",
+              odd: "151.00",
+            },
+            {
+              value: "Chris Ramos",
+              odd: "81.00",
+            },
+            {
+              value: "Tomas Alarcon",
+              odd: "151.00",
+            },
+            {
+              value: "Milutin Osmajic",
+              odd: "41.00",
+            },
+            {
+              value: "Victor Chust",
+              odd: "301.00",
+            },
+            {
+              value: "Alvaro Negredo",
+              odd: "51.00",
+            },
+            {
+              value: "Ruben Sobrino",
+              odd: "101.00",
+            },
+            {
+              value: "Ivan Alejo",
+              odd: "126.00",
+            },
+            {
+              value: "Jose Mari",
+              odd: "126.00",
+            },
+            {
+              value: "Fernandez Alex",
+              odd: "101.00",
+            },
+            {
+              value: "Isaac Carcelen",
+              odd: "201.00",
+            },
+            {
+              value: "Rafael Fali",
+              odd: "201.00",
+            },
+            {
+              value: "Inigo Martinez",
+              odd: "101.00",
+            },
+            {
+              value: "Darwin Machis",
+              odd: "51.00",
+            },
+            {
+              value: "Jules Kounde",
+              odd: "151.00",
+            },
+            {
+              value: "Joseba Zaldua",
+              odd: "401.00",
+            },
+            {
+              value: "Anssumane Fati",
+              odd: "7.50",
+            },
+            {
+              value: "Pablo Martin Gavi",
+              odd: "41.00",
+            },
+            {
+              value: "Carnicer Sergi Roberto",
+              odd: "34.00",
+            },
+            {
+              value: "Frenkie De Jong",
+              odd: "67.00",
+            },
+            {
+              value: "Sergino Dest",
+              odd: "101.00",
+            },
+            {
+              value: "Alex Balde",
+              odd: "101.00",
+            },
+            {
+              value: "Clement Lenglet",
+              odd: "101.00",
+            },
+            {
+              value: "Eric Garcia",
+              odd: "101.00",
+            },
+            {
+              value: "Marti Roger",
+              odd: "81.00",
+            },
+            {
+              value: "Ronald Araujo",
+              odd: "101.00",
+            },
+            {
+              value: "Abdessamad Ezzalzouli",
+              odd: "13.00",
+            },
+            {
+              value: "Ferran Torres",
+              odd: "13.00",
+            },
+            {
+              value: "Pedro Gonzalez",
+              odd: "34.00",
+            },
+            {
+              value: "Silva Lucas Pires",
+              odd: "201.00",
+            },
+            {
+              value: "Momo Mbaye",
+              odd: "201.00",
+            },
+            {
+              value: "Marc Casado",
+              odd: "67.00",
+            },
+            {
+              value: "Angel Alarcon",
+              odd: "13.00",
+            },
+            {
+              value: "Lamine Yamal",
+              odd: "12.00",
+            },
+            {
+              value: "Jose Antonio De La Rosa",
+              odd: "101.00",
+            },
+            {
+              value: "Fermin Lopez",
+              odd: "13.00",
+            },
+            {
+              value: "Mikayil Faye",
+              odd: "101.00",
+            },
+          ],
+        },
+        {
+          id: 96,
+          name: "Last Goal Scorer",
+          values: [
+            {
+              value: "Oriol Romeu",
+              odd: "301.00",
+            },
+            {
+              value: "Marcos Alonso",
+              odd: "501.00",
+            },
+            {
+              value: "Andreas Christensen",
+              odd: "501.00",
+            },
+            {
+              value: "Ilkay Gundogan",
+              odd: "101.00",
+            },
+            {
+              value: "Raphael Raphinha",
+              odd: "34.00",
+            },
+            {
+              value: "Jorge Mere",
+              odd: "501.00",
+            },
+            {
+              value: "Robert Lewandowski",
+              odd: "11.00",
+            },
+            {
+              value: "Gonzalo Escalante",
+              odd: "401.00",
+            },
+            {
+              value: "Luis Hernandez",
+              odd: "501.00",
+            },
+            {
+              value: "Javier Hernandez",
+              odd: "501.00",
+            },
+            {
+              value: "Youba Diarra",
+              odd: "501.00",
+            },
+            {
+              value: "Awer Mabil",
+              odd: "401.00",
+            },
+            {
+              value: "Ruben Alcaraz",
+              odd: "401.00",
+            },
+            {
+              value: "Fede San Emeterio",
+              odd: "501.00",
+            },
+            {
+              value: "Chris Ramos",
+              odd: "251.00",
+            },
+            {
+              value: "Tomas Alarcon",
+              odd: "501.00",
+            },
+            {
+              value: "Milutin Osmajic",
+              odd: "126.00",
+            },
+            {
+              value: "Victor Chust",
+              odd: "501.00",
+            },
+            {
+              value: "Alvaro Negredo",
+              odd: "151.00",
+            },
+            {
+              value: "Ruben Sobrino",
+              odd: "501.00",
+            },
+            {
+              value: "Ivan Alejo",
+              odd: "501.00",
+            },
+            {
+              value: "Jose Mari",
+              odd: "501.00",
+            },
+            {
+              value: "Fernandez Alex",
+              odd: "501.00",
+            },
+            {
+              value: "Isaac Carcelen",
+              odd: "501.00",
+            },
+            {
+              value: "Rafael Fali",
+              odd: "501.00",
+            },
+            {
+              value: "Inigo Martinez",
+              odd: "301.00",
+            },
+            {
+              value: "Darwin Machis",
+              odd: "151.00",
+            },
+            {
+              value: "Jules Kounde",
+              odd: "501.00",
+            },
+            {
+              value: "Joseba Zaldua",
+              odd: "501.00",
+            },
+            {
+              value: "Anssumane Fati",
+              odd: "29.00",
+            },
+            {
+              value: "Pablo Martin Gavi",
+              odd: "126.00",
+            },
+            {
+              value: "Carnicer Sergi Roberto",
+              odd: "126.00",
+            },
+            {
+              value: "Frenkie De Jong",
+              odd: "201.00",
+            },
+            {
+              value: "Sergino Dest",
+              odd: "501.00",
+            },
+            {
+              value: "Alex Balde",
+              odd: "301.00",
+            },
+            {
+              value: "Clement Lenglet",
+              odd: "501.00",
+            },
+            {
+              value: "Eric Garcia",
+              odd: "501.00",
+            },
+            {
+              value: "Marti Roger",
+              odd: "251.00",
+            },
+            {
+              value: "Ronald Araujo",
+              odd: "501.00",
+            },
+            {
+              value: "Abdessamad Ezzalzouli",
+              odd: "67.00",
+            },
+            {
+              value: "Ferran Torres",
+              odd: "67.00",
+            },
+            {
+              value: "Pedro Gonzalez",
+              odd: "126.00",
+            },
+            {
+              value: "Silva Lucas Pires",
+              odd: "501.00",
+            },
+            {
+              value: "Momo Mbaye",
+              odd: "501.00",
+            },
+            {
+              value: "Marc Casado",
+              odd: "201.00",
+            },
+            {
+              value: "Angel Alarcon",
+              odd: "67.00",
+            },
+            {
+              value: "Lamine Yamal",
+              odd: "51.00",
+            },
+            {
+              value: "Jose Antonio De La Rosa",
+              odd: "401.00",
+            },
+            {
+              value: "Fermin Lopez",
+              odd: "67.00",
+            },
+            {
+              value: "Mikayil Faye",
+              odd: "301.00",
+            },
+          ],
+        },
+        {
+          id: 85,
+          name: "Total Corners (3 way)",
+          values: [
+            {
+              value: "Over 9",
+              odd: "1.91",
+            },
+            {
+              value: "Under 9",
+              odd: "2.38",
+            },
+            {
+              value: "Exactly 9",
+              odd: "8.00",
+            },
+          ],
+        },
+        {
+          id: 73,
+          name: "Both Teams to Score 1st Half - 2nd Half",
+          values: [
+            {
+              value: "Yes/Yes",
+              odd: "21.00",
+            },
+            {
+              value: "Yes/No",
+              odd: "6.50",
+            },
+            {
+              value: "No/Yes",
+              odd: "4.50",
+            },
+            {
+              value: "No/No",
+              odd: "1.44",
+            },
+          ],
+        },
+        {
+          id: 74,
+          name: "10 Over/Under",
+          values: [
+            {
+              value: "Over 0.5",
+              odd: "4.00",
+            },
+            {
+              value: "Under 0.5",
+              odd: "1.22",
+            },
+          ],
+        },
+        {
+          id: 78,
+          name: "RTG_H1",
+          values: [
+            {
+              value: "Home/Over 1.5",
+              odd: "3.00",
+            },
+            {
+              value: "Away/Over 1.5",
+              odd: "29.00",
+            },
+            {
+              value: "Draw/Over 1.5",
+              odd: "10.00",
+            },
+            {
+              value: "Draw/Under 1.5",
+              odd: "3.50",
+            },
+            {
+              value: "Home/Under 1.5",
+              odd: "3.20",
+            },
+            {
+              value: "Away/Under 1.5",
+              odd: "11.00",
+            },
+          ],
+        },
+        {
+          id: 99,
+          name: "To Score A Penalty",
+          values: [
+            {
+              value: "Home",
+              odd: "3.50",
+            },
+            {
+              value: "Away",
+              odd: "13.00",
+            },
+          ],
+        },
+        {
+          id: 100,
+          name: "To Miss A Penalty",
+          values: [
+            {
+              value: "Home",
+              odd: "11.00",
+            },
+            {
+              value: "Away",
+              odd: "29.00",
             },
           ],
         },

@@ -50,8 +50,12 @@ export const LeagueFlagBox = styled(Box)<FlagBox>(({ src, theme }) => ({
   left: "16px",
 }));
 
-export const LeagueNameButton = styled(Button)<{ selected: boolean }>(
-  ({ theme, selected }) => ({
+interface LeagueNameButtonProps {
+  isselected: string;
+}
+
+export const LeagueNameButton = styled(Button)<LeagueNameButtonProps>(
+  ({ isselected, theme }) => ({
     "&:hover": {
       textDecoration: "none",
       backgroundColor: "transparent",
@@ -66,7 +70,7 @@ export const LeagueNameButton = styled(Button)<{ selected: boolean }>(
       width: "100%",
       height: "2px",
       backgroundColor: theme.palette.secondary.main,
-      transform: selected ? "scaleX(1)" : "scaleX(0)",
+      transform: isselected === "true" ? "scaleX(1)" : "scaleX(0)",
       transition: "transform .3s ease",
       transformOrigin: "left",
     },

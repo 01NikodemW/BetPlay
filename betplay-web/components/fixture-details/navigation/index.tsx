@@ -3,6 +3,7 @@ import { FixtureNavigationBox, StyledIconButton } from "./styles";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import GroupsIcon from "@mui/icons-material/Groups";
 import SportsSoccerIcon from "@mui/icons-material/SportsSoccer";
+import CasinoIcon from "@mui/icons-material/Casino";
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState<string | null>(null);
@@ -19,7 +20,12 @@ const Navigation = () => {
   };
 
   const handleScroll = () => {
-    const sections = ["event-tree-section", "lineup-section", "stats-section"];
+    const sections = [
+      "event-tree-section",
+      "lineup-section",
+      "stats-section",
+      "bets-section",
+    ];
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
     for (let section of sections) {
@@ -65,6 +71,12 @@ const Navigation = () => {
         onClick={handleButtonClick("stats-section")}
       >
         <BarChartIcon />
+      </StyledIconButton>
+      <StyledIconButton
+        visible={activeSection === "bets-section" ? "true" : "false"}
+        onClick={handleButtonClick("bets-section")}
+      >
+        <CasinoIcon />
       </StyledIconButton>
     </FixtureNavigationBox>
   );

@@ -5,7 +5,7 @@ import { NextPageWithLayout } from "../_app";
 import DashboardLayout from "@/components/dashboard-layout";
 import {
   exampleFixtureWithPenalties,
-  exampleFixtureDetails,
+  // exampleFixtureDetails,
 } from "../api/temporary-api-responses";
 import FixtureHeaderSection from "@/components/fixture-details/fixture-header-section";
 import FixtureEventsTree from "@/components/fixture-details/fixture-events-tree";
@@ -13,6 +13,7 @@ import FixtureLineupSection from "@/components/fixture-details/fixture-lineup-se
 import FixtureStatsSection from "@/components/fixture-details/fixture-stats-section";
 import { FixtureDetailsBox } from "./styles";
 import Navigation from "@/components/fixture-details/navigation";
+import BetsSection from "@/components/fixture-details/bets-section";
 
 const Index: NextPageWithLayout = () => {
   const router = useRouter();
@@ -26,6 +27,7 @@ const Index: NextPageWithLayout = () => {
       <FixtureEventsTree fixture={exampleFixtureWithPenalties} />
       <FixtureLineupSection fixture={exampleFixtureWithPenalties} />
       <FixtureStatsSection fixture={exampleFixtureWithPenalties} />
+      <BetsSection fixture={exampleFixtureWithPenalties} />
     </FixtureDetailsBox>
   );
 };

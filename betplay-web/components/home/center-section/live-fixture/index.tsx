@@ -53,14 +53,14 @@ const LiveFixture: FC<LiveFixtureProps> = ({ fixture }) => {
             <TeamNameTypography variant="h5">
               {fixture.homeName}
             </TeamNameTypography>
-            <TeamLogo isMarginRight={false} src={fixture.homeLogo} />
+            <TeamLogo ismarginright="false" src={fixture.homeLogo} />
           </TeamContainer>
 
           <ScoreTypography variant="body1">
             {fixture.goalsHomeTeam} - {fixture.goalsAwayTeam}
           </ScoreTypography>
           <TeamContainer>
-            <TeamLogo isMarginRight={true} src={fixture.awayLogo} />
+            <TeamLogo ismarginright="true" src={fixture.awayLogo} />
             <TeamNameTypography variant="h5">
               {fixture.awayName}
             </TeamNameTypography>

@@ -43,13 +43,13 @@ const Fixture: FC<FixtureProps> = ({ fixture }) => {
             <TeamNameTypography variant="h5">
               {fixture.homeName}
             </TeamNameTypography>
-            <TeamLogo isMarginRight={false} src={fixture.homeLogo} />
+            <TeamLogo ismarginright="false" src={fixture.homeLogo} />
           </TeamContainer>
           <TimeTypography variant="body2">
             {getHoursAndMinutes(fixture.date)}
           </TimeTypography>
           <TeamContainer>
-          <TeamLogo isMarginRight={true} src={fixture.awayLogo} />
+            <TeamLogo ismarginright="true" src={fixture.awayLogo} />
             <TeamNameTypography variant="h5">
               {fixture.awayName}
             </TeamNameTypography>

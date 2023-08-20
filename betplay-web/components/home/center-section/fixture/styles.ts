@@ -31,16 +31,18 @@ export const TeamContainer = styled(Box)(() => ({
 
 interface FlagBox {
   src: string;
-  isMarginRight?: boolean;
+  ismarginright?: string;
 }
 
-export const TeamLogo = styled(Box)<FlagBox>(({ src, isMarginRight }) => ({
+export const TeamLogo = styled(Box)<FlagBox>(({ src, ismarginright }) => ({
   backgroundImage: `url(${src})`,
   backgroundSize: "cover",
   backgroundPosition: "center",
   width: "20px",
   height: "20px",
-  ...(isMarginRight ? { marginRight: "8px" } : { marginLeft: "8px" }),
+  ...(ismarginright === "true"
+    ? { marginRight: "8px" }
+    : { marginLeft: "8px" }),
 }));
 
 export const TeamNameTypography = styled(Typography)(() => ({}));

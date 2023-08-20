@@ -17,7 +17,6 @@ const DashboardLayout: FC<DashboardLayoutProps> = (props) => {
         <Navbar />
         <ContainerWrapper maxWidth="xl">{children}</ContainerWrapper>
       </Box>
-
       <Footer />
     </DashboardLayoutContainer>
   );

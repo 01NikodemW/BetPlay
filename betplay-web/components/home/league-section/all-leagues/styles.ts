@@ -93,8 +93,8 @@ export const LeagueWrapper = styled(Box)(() => ({
   alignItems: "center",
 }));
 
-export const LeagueNameButton = styled(Button)<{ selected: boolean }>(
-  ({ theme, selected }) => ({
+export const LeagueNameButton = styled(Button)<{ isselected: string }>(
+  ({ theme, isselected }) => ({
     "&:hover": {
       textDecoration: "none",
       backgroundColor: "transparent",
@@ -109,7 +109,7 @@ export const LeagueNameButton = styled(Button)<{ selected: boolean }>(
       width: "100%",
       height: "2px",
       backgroundColor: theme.palette.secondary.main,
-      transform: selected ? "scaleX(1)" : "scaleX(0)",
+      transform: isselected === "true" ? "scaleX(1)" : "scaleX(0)",
       transition: "transform .3s ease",
       transformOrigin: "left",
     },

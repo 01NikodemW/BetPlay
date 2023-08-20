@@ -7,6 +7,7 @@ export const FixtureLineupSectionBox = styled(Box)(({ theme }) => ({
   padding: "24px",
   backgroundColor: theme.palette.background.paper,
   margin: "24px 0px",
+  borderRadius: "16px",
 }));
 
 export const HomeTeamBox = styled(Box)(() => ({

@@ -2,7 +2,7 @@ import { rem } from "@/utils/px-to-rem";
 import { Box, IconButton } from "@mui/material";
 import { styled } from "@mui/system";
 
-export const FixtureNavigationBox = styled(Box)(({ theme }) => ({
+export const FixtureNavigationBox = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
   position: "fixed",
