@@ -3,6 +3,7 @@ using System;
 using BetPlay.Infrastructure.EfCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BetPlay.Infrastructure.EfCore.Migrations
 {
     [DbContext(typeof(BetPlayDbContext))]
-    partial class BetPlayDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230820201355_add-user-and-bets")]
+    partial class adduserandbets
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
@@ -357,27 +360,27 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("acd08af2-130b-4f48-90aa-1b3e927d0ada"),
+                            Id = new Guid("0db010b1-9687-417d-94ea-e158dbf316cb"),
                             LeagueId = 78
                         },
                         new
                         {
-                            Id = new Guid("8c4174ac-ca3a-40f5-8ce6-d4279f7e53bb"),
+                            Id = new Guid("1adb3f62-e9a2-48c8-9b85-20099712c69c"),
                             LeagueId = 39
                         },
                         new
                         {
-                            Id = new Guid("a5f5e2f7-9606-4cd1-b0ae-7d8d26202f71"),
+                            Id = new Guid("86283507-b1a9-4f5f-adc8-01840dbf5f52"),
                             LeagueId = 140
                         },
                         new
                         {
-                            Id = new Guid("9c97de7f-85e4-4697-99ca-8bc3c0819437"),
+                            Id = new Guid("01727197-0f7f-4f4a-a54f-353b891c2e46"),
                             LeagueId = 135
                         },
                         new
                         {
-                            Id = new Guid("ee97b77c-25cc-490d-8ef6-085c4c915c02"),
+                            Id = new Guid("38cf973a-fefe-4bb7-9309-c9f3df1463b4"),
                             LeagueId = 61
                         });
                 });
@@ -486,16 +489,6 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("d0df033d-4ff4-426b-a219-92641baf8fe4"),
-                            Email = "user@gmail.com",
-                            Name = "User",
-                            Password = "@Haslo123",
-                            Surname = "User"
-                        });
                 });
 
             modelBuilder.Entity("BetPlay.Domain.BettingSlip", b =>

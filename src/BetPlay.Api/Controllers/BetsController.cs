@@ -13,7 +13,13 @@ public class BetsController : BetPlayControllerBase
 
 
     [HttpPost("[action]")]
-    public async Task<IActionResult> GetFixtureById([FromBody] GetBetsByFixtureIdRequest request)
+    public async Task<IActionResult> CreateBettingSlip([FromBody] CreateBettingSlipRequest request)
+    {
+        return Ok(await Mediator.Send(request));
+    }
+
+    [HttpPost("[action]")]
+    public async Task<IActionResult> VerifyBettingSlip([FromBody] VerifyBettingSlipRequest request)
     {
         return Ok(await Mediator.Send(request));
     }

@@ -29,6 +29,7 @@ public static class ApiExtensions
         services.AddScoped<ICountryRepository, CountryRepository>();
         services.AddScoped<IFixtureRepository, FixtureRepository>();
         services.AddScoped<IBetRepository, BetRepository>();
+        services.AddScoped<IBettingSlipRepository, BettingSlipRepository>();
         services.AddMediatR(opt =>
         {
             opt.RegisterServicesFromAssemblies(typeof(Program).Assembly, typeof(HelloWorldRequestHandler).Assembly);
