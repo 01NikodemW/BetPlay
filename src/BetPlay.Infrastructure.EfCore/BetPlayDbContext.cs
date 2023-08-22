@@ -1,3 +1,4 @@
+using BetPlay.Domain;
 using BetPlay.Domain.Fixture;
 using BetPlay.Domain.League;
 using BetPlay.Domain.Team;
@@ -15,7 +16,6 @@ public class BetPlayDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(BetPlayDbContext).Assembly);
-        
     }
 
     public DbSet<TrackedLeague> TrackedLeagues { get; set; } = default!;
@@ -27,4 +27,9 @@ public class BetPlayDbContext : DbContext
 
     public DbSet<Team> Teams { get; set; } = default!;
     public DbSet<Venue> Venues { get; set; } = default!;
+
+    public DbSet<Bet> Bets { get; set; } = default!;
+    public DbSet<BettingSlip> BettingSlips { get; set; } = default!;
+    public DbSet<BettingSlipBet> BettingSlipBets { get; set; } = default!;
+    public DbSet<User> Users { get; set; } = default!;
 }
