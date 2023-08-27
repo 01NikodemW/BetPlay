@@ -1,9 +1,13 @@
+using System.Security.Claims;
+using Auth0.AspNetCore.Authentication;
 using BetPlay.ApiSport.Dto;
 using BetPlay.Infrastructure.ApiSport;
 using BetPlay.Infrastructure.EfCore;
 using BetPlay.Options;
 using BetPlay.RequestHandlers.Dummy;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace BetPlay.Api;
 
@@ -14,6 +18,8 @@ public static class ApiExtensions
         webApplication.UseSwagger();
         webApplication.UseSwaggerUI();
         webApplication.UseHttpsRedirection();
+        webApplication.UseAuthentication();
+        webApplication.UseAuthorization();
         webApplication.MapControllers();
         return webApplication;
     }
@@ -36,6 +42,12 @@ public static class ApiExtensions
         });
         services.AddDbContext<BetPlayDbContext>(opt => { opt.UseSqlite("Data Source=BetPlay.db"); });
         services.Configure<ApiSportOptions>(configuration.GetSection(ApiSportOptions.SectionName));
+        services.AddAuth0WebAppAuthentication(options =>
+        {
+            options.Domain = configuration["Auth0:Domain"];
+            options.ClientId = configuration["Auth0:ClientId"];
+        });
+
         return services;
     }
 }

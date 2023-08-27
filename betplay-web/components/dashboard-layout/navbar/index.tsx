@@ -10,12 +10,16 @@ import {
   StyledAvatarIcon,
   StyledIconButton,
 } from "./styles";
+import { useAuth0 } from "@auth0/auth0-react";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
 
 const Navbar = () => {
   const { t } = useTranslation();
   const router = useRouter();
+
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
+  console.log("isauthenticated", isAuthenticated);
   return (
     <NavbarContainer>
       <LogoWrapper>
@@ -36,8 +40,19 @@ const Navbar = () => {
           {t("My club")}
         </MenuNavigationItem>
       </MenuNavigationWrapper>
+      <StyledIconButton
+        onClick={() => {
+          logout();
+        }}
+      >
+        logout
+      </StyledIconButton>
       <StyledAvatar>
-        <StyledIconButton>
+        <StyledIconButton
+          onClick={() => {
+            loginWithRedirect();
+          }}
+        >
           <StyledAvatarIcon />
         </StyledIconButton>
       </StyledAvatar>
