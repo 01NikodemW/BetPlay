@@ -36,16 +36,24 @@ public static class ApiExtensions
         services.AddScoped<IFixtureRepository, FixtureRepository>();
         services.AddScoped<IBetRepository, BetRepository>();
         services.AddScoped<IBettingSlipRepository, BettingSlipRepository>();
+        services.AddScoped<IAccountRepository, AccountRepository>();
+        services.AddHttpContextAccessor();
         services.AddMediatR(opt =>
         {
             opt.RegisterServicesFromAssemblies(typeof(Program).Assembly, typeof(HelloWorldRequestHandler).Assembly);
         });
         services.AddDbContext<BetPlayDbContext>(opt => { opt.UseSqlite("Data Source=BetPlay.db"); });
         services.Configure<ApiSportOptions>(configuration.GetSection(ApiSportOptions.SectionName));
-        services.AddAuth0WebAppAuthentication(options =>
+
+        services.AddAuthentication(options =>
         {
-            options.Domain = configuration["Auth0:Domain"];
-            options.ClientId = configuration["Auth0:ClientId"];
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        }).AddJwtBearer(options =>
+        {
+            options.Authority =
+                configuration["Auth0:Authority"];
+            options.Audience = configuration["Auth0:Audience"];
         });
 
         return services;

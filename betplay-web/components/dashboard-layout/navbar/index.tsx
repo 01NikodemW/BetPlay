@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   NavbarContainer,
   PlayText,
@@ -19,7 +19,26 @@ const Navbar = () => {
   const router = useRouter();
   const tabs = ["home", "live", "bets", "my-club"];
 
-  const { loginWithRedirect } = useAuth0();
+  const {
+    loginWithRedirect,
+    logout,
+    user,
+    isAuthenticated,
+    getAccessTokenSilently,
+  } = useAuth0();
+  console.log("isAuthenticated ", isAuthenticated);
+
+  console.log("getAccessTokenSilently ", getAccessTokenSilently());
+
+  useEffect(() => {
+    if (user != null) {
+      if (isAuthenticated) {
+        const token = getAccessTokenSilently().then((x) => {
+          localStorage.setItem("accessToken", x);
+        });
+      }
+    }
+  }, []);
 
   const checkCurrentPage = (page: string) => {
     const path = router.pathname;
@@ -56,13 +75,13 @@ const Navbar = () => {
           </MenuNavigationItem>
         ))}
       </MenuNavigationWrapper>
-      {/* <StyledIconButton
+      <StyledIconButton
         onClick={() => {
           logout();
         }}
       >
         logout
-      </StyledIconButton> */}
+      </StyledIconButton>
       <StyledAvatar>
         <StyledIconButton
           onClick={() => {

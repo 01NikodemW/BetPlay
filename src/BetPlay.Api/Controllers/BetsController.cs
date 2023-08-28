@@ -1,6 +1,7 @@
 using BetPlay.Requests.Bets;
 using BetPlay.Requests.Fixtures;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BetPlay.Api.Controllers;
@@ -12,6 +13,7 @@ public class BetsController : BetPlayControllerBase
     }
 
 
+    [Authorize]
     [HttpPost("[action]")]
     public async Task<IActionResult> CreateBettingSlip([FromBody] CreateBettingSlipRequest request)
     {

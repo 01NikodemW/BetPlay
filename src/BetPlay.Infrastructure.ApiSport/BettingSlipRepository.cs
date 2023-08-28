@@ -1,9 +1,11 @@
 using System.Globalization;
+using System.Security.Claims;
 using System.Text.RegularExpressions;
 using BetPlay.ApiSport.Dto.Fixture;
 using BetPlay.Domain;
 using BetPlay.Dto.Bets;
 using BetPlay.Infrastructure.EfCore;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace BetPlay.Infrastructure.ApiSport;
@@ -12,16 +14,21 @@ public class BettingSlipRepository : IBettingSlipRepository
 {
     private readonly BetPlayDbContext _context;
     private readonly IFixtureRepository _fixtureRepository;
+    private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public BettingSlipRepository(BetPlayDbContext context, IFixtureRepository fixtureRepository)
+    public BettingSlipRepository(BetPlayDbContext context, IFixtureRepository fixtureRepository
+        , IHttpContextAccessor httpContextAccessor)
     {
         _context = context;
         _fixtureRepository = fixtureRepository;
+        _httpContextAccessor = httpContextAccessor;
     }
 
     public async Task CreateBettingSlip(IEnumerable<CreateBet> bets)
     {
-        var user = await _context.Users.FindAsync(Guid.Parse("d0df033d-4ff4-426b-a219-92641baf8fe4"));
+        var userAuth0Id = _httpContextAccessor.HttpContext?.User.Claims
+            .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+        var user = await _context.Users.FirstOrDefaultAsync(x => x.Auth0Id == userAuth0Id);
         if (user == null)
             throw new InvalidOperationException("User not found.");
 
