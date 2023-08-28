@@ -10,12 +10,51 @@ import {
   StyledAvatarIcon,
   StyledIconButton,
 } from "./styles";
+import { useAuth0 } from "@auth0/auth0-react";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
 
 const Navbar = () => {
   const { t } = useTranslation();
   const router = useRouter();
+  const tabs = ["home", "live", "bets", "my-club"];
+
+  const {
+    loginWithRedirect,
+    logout,
+    // user,
+    // isAuthenticated,
+    // getAccessTokenSilently,
+  } = useAuth0();
+
+  // useEffect(() => {
+  //   if (user != null) {
+  //     if (isAuthenticated) {
+  //       const token = getAccessTokenSilently().then((x) => {
+  //         localStorage.setItem("accessToken", x);
+  //       });
+  //     }
+  //   }
+  // }, []);
+
+  const checkCurrentPage = (page: string) => {
+    const path = router.pathname;
+    return path.includes(page) ? "true" : "false";
+  };
+  const getValue = (value: string) => {
+    switch (value) {
+      case "home":
+        return "Home";
+      case "live":
+        return "Live";
+      case "bets":
+        return "Bets";
+      case "my-club":
+        return "My club";
+      default:
+        return "Home";
+    }
+  };
   return (
     <NavbarContainer>
       <LogoWrapper>
@@ -23,21 +62,29 @@ const Navbar = () => {
         <PlayText variant="h2">Play</PlayText>
       </LogoWrapper>
       <MenuNavigationWrapper>
-        <MenuNavigationItem onClick={() => router.push("/home")}>
-          {t("Home")}
-        </MenuNavigationItem>
-        <MenuNavigationItem onClick={() => router.push("/live")}>
-          {t("Live")}
-        </MenuNavigationItem>
-        <MenuNavigationItem onClick={() => router.push("/bets")}>
-          {t("Bets")}
-        </MenuNavigationItem>
-        <MenuNavigationItem onClick={() => router.push("/my-club")}>
-          {t("My club")}
-        </MenuNavigationItem>
+        {tabs.map((tab) => (
+          <MenuNavigationItem
+            key={tab}
+            current={checkCurrentPage(tab)}
+            onClick={() => router.push(`/${tab}`)}
+          >
+            {t(getValue(tab))}
+          </MenuNavigationItem>
+        ))}
       </MenuNavigationWrapper>
+      <StyledIconButton
+        onClick={() => {
+          logout();
+        }}
+      >
+        logout
+      </StyledIconButton>
       <StyledAvatar>
-        <StyledIconButton>
+        <StyledIconButton
+          onClick={() => {
+            loginWithRedirect();
+          }}
+        >
           <StyledAvatarIcon />
         </StyledIconButton>
       </StyledAvatar>

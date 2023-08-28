@@ -41,34 +41,37 @@ export const MenuNavigationWrapper = styled(Box)(() => ({
   width: "40%",
 }));
 
-export const MenuNavigationItem = styled(Button)(({ theme }) => ({
-  textTransform: "uppercase",
-  cursor: "pointer",
-  fontWeight: "600",
-  fontSize: rem(20),
+export const MenuNavigationItem = styled(Button)<{ current: string }>(
+  ({ theme, current }) => ({
+    textTransform: "uppercase",
+    cursor: "pointer",
+    fontWeight: "600",
+    fontSize: rem(20),
 
-  "&:hover": {
-    textDecoration: "none",
-    backgroundColor: "transparent",
-  },
-  position: "relative",
-  overflow: "hidden",
-  "&::after": {
-    content: '""',
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    width: "100%",
-    height: "4px",
-    backgroundColor: theme.palette.secondary.main,
-    transform: "scaleX(0)",
-    transition: "transform .3s ease",
-    transformOrigin: "left",
-  },
-  "&:hover::after": {
-    transform: "scaleX(1)",
-  },
-}));
+    "&:hover": {
+      textDecoration: "none",
+      backgroundColor: "transparent",
+    },
+    position: "relative",
+    overflow: "hidden",
+    "&::after": {
+      content: '""',
+      position: "absolute",
+      bottom: 0,
+      left: 0,
+      width: "100%",
+      height: "4px",
+      backgroundColor: theme.palette.secondary.main,
+      // transform: "scaleX(0)",
+      transition: "transform .3s ease",
+      transformOrigin: "left",
+      transform: current === "true" ? "scaleX(1)" : "scaleX(0)",
+    },
+    "&:hover::after": {
+      transform: "scaleX(1)",
+    },
+  })
+);
 
 export const StyledAvatar = styled(Avatar)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,

@@ -1,4 +1,5 @@
 import { BetsResponse } from "@/types/bets/bets-response";
+import { BettingSlip } from "@/types/bets/betting-slip";
 import { Fixture } from "@/types/fixture";
 import { FixtureDetails } from "@/types/fixture-details/fixture-details";
 
@@ -12504,6 +12505,39 @@ export const exampleBets: BetsResponse = {
           ],
         },
       ],
+    },
+  ],
+};
+
+export const exampleBettingSlip: BettingSlip = {
+  id: "1",
+  totalStake: 100,
+  totalOdds: 3,
+  status: "Pending",
+  bets: [
+    {
+      id: "1",
+      name: "Match Winner",
+      value: "Home",
+      odd: 1.5,
+      fixtureId: 1037963,
+      status: "Penging",
+    },
+    {
+      id: "2",
+      name: "Match Winner",
+      value: "Away",
+      odd: 2,
+      fixtureId: 1037963,
+      status: "Won",
+    },
+    {
+      id: "3",
+      name: "Match Winner",
+      value: "Away",
+      odd: 2,
+      fixtureId: 1037963,
+      status: "Lost",
     },
   ],
 };
