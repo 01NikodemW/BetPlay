@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   NavbarContainer,
   PlayText,
@@ -22,23 +22,20 @@ const Navbar = () => {
   const {
     loginWithRedirect,
     logout,
-    user,
-    isAuthenticated,
-    getAccessTokenSilently,
+    // user,
+    // isAuthenticated,
+    // getAccessTokenSilently,
   } = useAuth0();
-  console.log("isAuthenticated ", isAuthenticated);
 
-  console.log("getAccessTokenSilently ", getAccessTokenSilently());
-
-  useEffect(() => {
-    if (user != null) {
-      if (isAuthenticated) {
-        const token = getAccessTokenSilently().then((x) => {
-          localStorage.setItem("accessToken", x);
-        });
-      }
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (user != null) {
+  //     if (isAuthenticated) {
+  //       const token = getAccessTokenSilently().then((x) => {
+  //         localStorage.setItem("accessToken", x);
+  //       });
+  //     }
+  //   }
+  // }, []);
 
   const checkCurrentPage = (page: string) => {
     const path = router.pathname;

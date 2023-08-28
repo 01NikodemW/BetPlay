@@ -40,7 +40,7 @@ export const BettingSlipTypography = styled(Typography)<{
   borderRadius: "4px",
 }));
 
-export const BottomSectionBox = styled(Box)(({ theme }) => ({
+export const BottomSectionBox = styled(Box)(() => ({
   padding: "0 16px",
 }));
 
