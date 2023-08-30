@@ -23,18 +23,18 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <I18nextProvider i18n={i18n}>
       <UserBetsProvider>
-        <Auth0Provider
+        {/* <Auth0Provider
           authorizationParams={{
             redirect_uri: "http://localhost:3000/home",
             audience: "https://betplay-api.com",
           }}
           clientId="mfEZx3cM04vvGSRolHLFMYplGGb1LkkS"
           domain="dev-c4ln1ujdm122wn5m.us.auth0.com"
-        >
+        > */}
           <ThemeProvider theme={createTheme()}>
             {getLayout(<Component {...pageProps} />)}
           </ThemeProvider>
-        </Auth0Provider>
+        {/* </Auth0Provider> */}
       </UserBetsProvider>
     </I18nextProvider>
   );

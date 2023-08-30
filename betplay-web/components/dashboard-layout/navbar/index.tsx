@@ -17,7 +17,7 @@ import { useRouter } from "next/router";
 const Navbar = () => {
   const { t } = useTranslation();
   const router = useRouter();
-  const tabs = ["home", "live", "bets", "my-club"];
+  const tabs = ["home", "live", "bets"];
 
   const {
     loginWithRedirect,
@@ -72,13 +72,6 @@ const Navbar = () => {
           </MenuNavigationItem>
         ))}
       </MenuNavigationWrapper>
-      <StyledIconButton
-        onClick={() => {
-          logout();
-        }}
-      >
-        logout
-      </StyledIconButton>
       <StyledAvatar>
         <StyledIconButton
           onClick={() => {
