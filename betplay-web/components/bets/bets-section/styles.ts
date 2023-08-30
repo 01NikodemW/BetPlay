@@ -4,10 +4,13 @@ import { styled } from "@mui/system";
 
 export const BetsSectionContainer = styled(Box)(({ theme }) => ({
   width: "50%",
-  minWidth: "720px",
   borderRadius: "16px",
   padding: "24px",
   backgroundColor: theme.palette.background.paper,
+  [theme.breakpoints.down("smallTablet")]: {
+    width: "100%",
+    margin: "0px 16px",
+  },
 }));
 
 export const StyledTab = styled(Tab)(() => ({

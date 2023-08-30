@@ -12,7 +12,7 @@ const Index: NextPageWithLayout = () => {
     <>
       <NextSeo title={`${t("Bets")} | BetPlay`} />
       <BetsSectionContainer>
-        {/* <BetsSection /> */}
+        <BetsSection />
       </BetsSectionContainer>
     </>
   );
