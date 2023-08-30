@@ -7,5 +7,5 @@ export const FixtureEventsBox = styled(Box)(() => ({
   width: "100%",
   justifyContent: "center",
   alignItems: "center",
-  margin: "24px 0px",
+  padding: "24px 8px",
 }));

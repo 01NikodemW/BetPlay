@@ -11,6 +11,7 @@ export const LeftSideBox = styled(Box)(() => ({
   display: "flex",
   justifyContent: "end",
   width: "calc(50vw - 15px)",
+  paddingLeft: "8px",
 }));
 
 export const CenterElement = styled(Box)(() => ({
@@ -32,6 +33,9 @@ export const TimeLine = styled(Box)<TimeLineProps>(
     height: "25px",
     backgroundColor: theme.palette.primary.main,
     visibility: makeinvisible === "true" ? "hidden" : "visible",
+    [theme.breakpoints.down("phone")]: {
+      height: "30px",
+    },
   })
 );
 
@@ -39,4 +43,5 @@ export const RightSideBox = styled(Box)(() => ({
   display: "flex",
   justifyContent: "start",
   width: "calc(50vw - 15px)",
+  paddingRight: "8px",
 }));

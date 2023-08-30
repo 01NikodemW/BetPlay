@@ -37,6 +37,7 @@ export const baseThemeOptions: ThemeOptions = {
       md: 992,
       lg: 1200,
       xl: 1920,
+      extraSmallPhone: 320,
       smallPhone: 420,
       phone: 576,
       smallTablet: 768,

@@ -1,4 +1,4 @@
-import { AppBar, Box, Button } from "@mui/material";
+import { AppBar, Button } from "@mui/material";
 import { styled } from "@mui/system";
 import { rem } from "@/utils/px-to-rem";
 

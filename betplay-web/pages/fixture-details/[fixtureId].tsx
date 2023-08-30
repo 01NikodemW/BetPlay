@@ -22,12 +22,12 @@ const Index: NextPageWithLayout = () => {
   return (
     <FixtureDetailsBox>
       <NextSeo title={`${fixtureId}  | BetPlay`} />
-      <Navigation />
+      {/* <Navigation /> */}
       <FixtureHeaderSection fixture={exampleFixtureWithPenalties} />
       <FixtureEventsTree fixture={exampleFixtureWithPenalties} />
-      <FixtureLineupSection fixture={exampleFixtureWithPenalties} />
+      {/* <FixtureLineupSection fixture={exampleFixtureWithPenalties} />
       <FixtureStatsSection fixture={exampleFixtureWithPenalties} />
-      <BetsSection fixture={exampleFixtureWithPenalties} />
+      <BetsSection fixture={exampleFixtureWithPenalties} /> */}
     </FixtureDetailsBox>
   );
 };
