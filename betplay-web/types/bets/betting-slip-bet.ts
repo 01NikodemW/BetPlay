@@ -5,4 +5,6 @@ export type BettingSlipBet = {
   odd: number;
   fixtureId: number;
   status: string;
+  homeTeam: string;
+  awayTeam: string;
 };

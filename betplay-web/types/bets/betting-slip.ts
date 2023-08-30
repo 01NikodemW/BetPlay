@@ -6,4 +6,5 @@ export type BettingSlip = {
   totalOdds: number;
   status: string;
   bets: BettingSlipBet[];
+  date: string;
 };

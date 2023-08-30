@@ -48,6 +48,9 @@ const resources = {
       "Total odds": "Kurs całkowity",
       "Potential prize": "Możliwa wygrana",
       "Make a bet": "Postaw zakład",
+      "No betting slips": "Brak kuponów",
+      "Go to fixture details to make a bet":
+        "Przejdź do szczegółów meczu, aby postawić zakład",
       Stake: "Stawka",
       Odd: "Kurs",
       "Show my bets": "Pokaż moje zakłady",

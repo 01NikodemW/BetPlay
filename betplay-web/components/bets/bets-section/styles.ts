@@ -1,5 +1,5 @@
 import { rem } from "@/utils/px-to-rem";
-import { Box, Tab } from "@mui/material";
+import { Box, Tab, Tabs } from "@mui/material";
 import { styled } from "@mui/system";
 
 export const BetsSectionContainer = styled(Box)(({ theme }) => ({
@@ -14,4 +14,8 @@ export const StyledTab = styled(Tab)(() => ({
   fontSize: rem(16),
   fontWeight: 700,
   textTransform: "none",
+}));
+
+export const StyledTabs = styled(Tabs)(() => ({
+  marginBottom: "16px",
 }));
