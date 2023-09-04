@@ -8,8 +8,11 @@ export const FixtureStatsSectionBox = styled(Box)(() => ({
   position: "relative",
 }));
 
-export const EmptyCard = styled(Box)(() => ({
+export const EmptyCard = styled(Box)(({ theme }) => ({
   width: "25%",
+  [theme.breakpoints.down("tablet")]: {
+    display: "none",
+  },
 }));
 
 export const BetsContainer = styled(Box)(({ theme }) => ({
@@ -17,6 +20,10 @@ export const BetsContainer = styled(Box)(({ theme }) => ({
   borderRadius: "16px",
   padding: "24px",
   backgroundColor: theme.palette.background.paper,
+
+  [theme.breakpoints.down("tablet")]: {
+    width: "100%",
+  },
 }));
 
 export const BetHeader = styled(Typography)(() => ({

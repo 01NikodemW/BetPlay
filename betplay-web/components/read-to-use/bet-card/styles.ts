@@ -10,13 +10,29 @@ export const BetContainer = styled(Card)<{
   backgroundColor: theme.palette.background.paper,
   flexDirection: "column",
   display: "flex",
-  position: "sticky",
   width: "22%",
   top: mainpage === "true" ? 120 : 320,
   marginLeft: mainpage === "true" ? 0 : "16px",
   borderRadius: "16px",
   marginTop: mainpage === "true" ? "124px" : "16",
   zIndex: 100,
+
+  [theme.breakpoints.down("tablet")]: {
+    position: "fixed",
+    width: "50%",
+    zIndex: 1000,
+    margin: 0,
+    right: 0,
+    top: "auto",
+    bottom: 110,
+  },
+  [theme.breakpoints.down("smallTablet")]: {
+    width: "70%",
+    bottom: 60,
+  },
+  [theme.breakpoints.down("phone")]: {
+    width: "100%",
+  },
 }));
 
 export const HeaderTypography = styled(Typography)(({ theme }) => ({
@@ -77,3 +93,4 @@ export const BetBottomBox = styled(Box)(() => ({
 export const TopTypography = styled(Typography)(() => ({
   marginTop: "8px",
 }));
+

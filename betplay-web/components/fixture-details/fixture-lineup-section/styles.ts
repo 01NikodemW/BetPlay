@@ -19,10 +19,13 @@ export const HomeTeamBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const AwayTeamBox = styled(Box)(() => ({
+export const AwayTeamBox = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row-reverse",
   gap: "36px",
+  [theme.breakpoints.down("tablet")]: {
+    flexDirection: "column",
+  },
 }));
 export const RightSideBox = styled(Box)(({ theme }) => ({
   display: "flex",
