@@ -40,7 +40,7 @@ const FixtureLineupSection: FC<FixtureLineupSectionProps> = ({ fixture }) => {
           />
         </RightSideBox>
       </HomeTeamBox>
-      <AwayTeamHeader variant="h2">{fixture.teams.away.name}</AwayTeamHeader>
+      {/* <AwayTeamHeader variant="h2">{fixture.teams.away.name}</AwayTeamHeader>
       <AwayTeamBox>
         <TeamLineup currentFilter={awayTeamFilter} lineup={awayXI} />
         <RightSideBox>
@@ -53,7 +53,7 @@ const FixtureLineupSection: FC<FixtureLineupSectionProps> = ({ fixture }) => {
             lineup={awaySubstitutes}
           />
         </RightSideBox>
-      </AwayTeamBox>
+      </AwayTeamBox> */}
     </FixtureLineupSectionBox>
   );
 };

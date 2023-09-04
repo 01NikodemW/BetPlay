@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 import { LineupDetails } from "@/types/fixture-details/lienup-details";
 import PlayerElement from "../player-element";
-import { SubstitutesBox, SubstitutesHeader } from "./styles";
+import { StyledBox, SubstitutesBox, SubstitutesHeader } from "./styles";
 import { Box } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
@@ -17,7 +17,7 @@ const SubstitutesSection: FC<SubstitutesSectionProps> = ({
 }) => {
   const { t } = useTranslation();
   return (
-    <Box>
+    <StyledBox>
       <SubstitutesHeader variant="h2">{t("Bench")}</SubstitutesHeader>
       <SubstitutesBox>
         {lineup.map((player, index) => (
@@ -28,7 +28,7 @@ const SubstitutesSection: FC<SubstitutesSectionProps> = ({
           />
         ))}
       </SubstitutesBox>
-    </Box>
+    </StyledBox>
   );
 };
 

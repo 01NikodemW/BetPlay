@@ -2,13 +2,17 @@ import { rem } from "@/utils/px-to-rem";
 import { Box, IconButton } from "@mui/material";
 import { styled } from "@mui/system";
 
-export const FixtureNavigationBox = styled(Box)(() => ({
+export const FixtureNavigationBox = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   position: "fixed",
   right: 0,
   top: "124px",
   zIndex: 101,
+
+  [theme.breakpoints.down("tablet")]: {
+    display: "none",
+  },
 }));
 
 interface IconButtonProps {
