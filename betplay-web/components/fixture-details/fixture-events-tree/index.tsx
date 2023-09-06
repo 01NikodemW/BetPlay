@@ -3,7 +3,6 @@ import { FixtureEventsBox } from "./styles";
 import { FixtureDetails } from "@/types/fixture-details/fixture-details";
 import FixtureEvent from "./fixture-event";
 
-
 interface FixtureEventsTreeProps {
   fixture: FixtureDetails;
 }

@@ -4,8 +4,11 @@ import {
   BetBox,
   BetContainer,
   BetDetailsContainer,
+  CloseBetContainerButton,
   FirstTextBox,
+  HeaderBox,
   HeaderTypography,
+  MobileBetButton,
   SecondTextBox,
   StyledButton,
   StyledTextField,
@@ -13,10 +16,17 @@ import {
 } from "./styles";
 import { useUserBets } from "@/context/user-bets-context";
 import { useTranslation } from "react-i18next";
-import { Button, InputAdornment, Typography } from "@mui/material";
+import {
+  Button,
+  InputAdornment,
+  Theme,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { UserBet } from "@/types/user-bet";
 import { testIfPositiveInteger } from "@/utils/input-validators";
 import { isMatchResult } from "@/utils/bets";
+import CloseIcon from "@mui/icons-material/Close";
 
 // Moved outside of the component
 const calculateTotalOdds = (bets: UserBet[]) => {
@@ -35,6 +45,7 @@ interface BetCardProps {
 const BetCard: FC<BetCardProps> = ({ mainPage }) => {
   const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const [circleIconClicked, setCircleIconClicked] = useState<boolean>(false);
   const { stake, setStake, selectedBets } = useUserBets();
   const betCount = selectedBets.length;
   const totalOdds = useMemo(
@@ -68,21 +79,52 @@ const BetCard: FC<BetCardProps> = ({ mainPage }) => {
         return bet.value as string;
     }
   };
+  const isSmallerScreen = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down("tablet")
+  );
 
   if (betCount === 0) {
     return null;
   }
 
+  if (
+    mainPage === false &&
+    isSmallerScreen &&
+    betCount > 0 &&
+    !circleIconClicked
+  ) {
+    return (
+      <MobileBetButton
+        onClick={() => {
+          setCircleIconClicked(true);
+        }}
+      >
+        {betCount}
+      </MobileBetButton>
+    );
+  }
+
   return (
     <BetContainer
+      circleiconclicked={circleIconClicked ? "true" : "false"}
       expanded={isExpanded ? "true" : "false"}
       mainpage={mainPage ? "true" : "false"}
     >
-      <HeaderTypography variant="h6">
-        {t("My coupon")}{" "}
-        {betCount > 0 && `(${betCount} ${t(betCount > 1 ? "bets" : "bet")})`}
-        {betCount === 0 && `(${t("No bets")})`}
-      </HeaderTypography>
+      <HeaderBox>
+        <HeaderTypography variant="h6">
+          {t("My coupon")}{" "}
+          {betCount > 0 && `(${betCount} ${t(betCount > 1 ? "bets" : "bet")})`}
+          {betCount === 0 && `(${t("No bets")})`}
+        </HeaderTypography>
+        <CloseBetContainerButton
+          onClick={() => {
+            setCircleIconClicked(false);
+          }}
+        >
+          <CloseIcon />
+        </CloseBetContainerButton>
+      </HeaderBox>
+
       <BetDetailsContainer expanded={isExpanded ? "true" : "false"}>
         {selectedBets.map((bet, index) => (
           <BetBox key={index} last={index === betCount - 1 ? "true" : "false"}>

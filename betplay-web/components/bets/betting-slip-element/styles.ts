@@ -94,11 +94,16 @@ export const SingleBetBottomBox = styled(Box)(() => ({
   display: "flex",
   justifyContent: "space-between",
   marginBottom: "8px",
+  alignItems: "center",
 }));
 
-export const OddTypeBox = styled(Box)(() => ({
+export const OddTypeBox = styled(Box)(({ theme }) => ({
   display: "flex",
   gap: "8px",
+  [theme.breakpoints.down("smallPhone")]: {
+    flexDirection: "column",
+    gap: "0px",
+  },
 }));
 
 export const OddValueTypography = styled(Typography)<{

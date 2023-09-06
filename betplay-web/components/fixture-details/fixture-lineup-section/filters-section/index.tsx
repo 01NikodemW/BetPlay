@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { FilterBox, StyledTypography } from "./styles";
+import { FilterBox, StyledGrid, StyledTypography } from "./styles";
 import { Grid, useTheme } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
@@ -33,15 +33,17 @@ const FiltersSection: FC<FiltersSectionProps> = ({
   return (
     <Grid container spacing={2}>
       {filters.map((filter, index) => (
-        <Grid
+     
+        <StyledGrid
           key={filter}
           item
           desktop={4}
+          index={index.toString()}
           largeDesktop={3}
-          style={{
-            padding: index < 3 ? "16px 0 0 0" : 0,
-          }}
-          tablet={4}
+          phone={3}
+          smallTablet={3}
+          tablet={3}
+          xs={4}
         >
           <FilterBox
             sx={{
@@ -56,7 +58,7 @@ const FiltersSection: FC<FiltersSectionProps> = ({
           >
             <StyledTypography>{t(filter)}</StyledTypography>
           </FilterBox>
-        </Grid>
+        </StyledGrid>
       ))}
     </Grid>
   );

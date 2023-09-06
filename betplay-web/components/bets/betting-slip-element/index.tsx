@@ -118,8 +118,7 @@ const BettingSlipElement: FC<BettingSlipElementProps> = ({ bettingSlip }) => {
             </SingleBetTopTypography>
             <SingleBetBottomBox>
               <OddTypeBox>
-                <Typography variant="subtitle2">{t(bet.name)}</Typography>
-                <Typography variant="subtitle2">{"-"}</Typography>
+                <Typography variant="subtitle2">{t(bet.name) + ":"}</Typography>
                 <OddValueTypography
                   status={bet.status.toLocaleLowerCase()}
                   variant="subtitle2"
@@ -156,7 +155,8 @@ const BettingSlipElement: FC<BettingSlipElementProps> = ({ bettingSlip }) => {
       </BottomSectionBox>
       <DateBox onClick={handleClick}>
         <Typography variant="caption">
-          {getBettingSlipDate(bettingSlip.date)}
+          {/* {getBettingSlipDate(bettingSlip.date)} */}
+          {"30.08.2023 - 17:27"}
         </Typography>
       </DateBox>
     </BettingSlipBox>

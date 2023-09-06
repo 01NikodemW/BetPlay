@@ -10,22 +10,32 @@ export const FixtureLineupSectionBox = styled(Box)(({ theme }) => ({
   borderRadius: "16px",
 }));
 
-export const HomeTeamBox = styled(Box)(() => ({
+export const HomeTeamBox = styled(Box)(({ theme }) => ({
   display: "flex",
   gap: "36px",
   marginBottom: "36px",
+  [theme.breakpoints.down("tablet")]: {
+    flexDirection: "column",
+  },
 }));
 
-export const AwayTeamBox = styled(Box)(() => ({
+export const AwayTeamBox = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row-reverse",
   gap: "36px",
+  [theme.breakpoints.down("tablet")]: {
+    flexDirection: "column",
+  },
 }));
-export const RightSideBox = styled(Box)(() => ({
+export const RightSideBox = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
   width: "40%",
+  [theme.breakpoints.down("tablet")]: {
+    flexDirection: "column-reverse",
+    width: "100%",
+  },
 }));
 
 export const HomeTeamHeader = styled(Typography)(() => ({

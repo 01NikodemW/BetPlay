@@ -5,6 +5,8 @@ import {
   AllRightsReservedWrapper,
   ContactUsButton,
   StyledIconButton,
+  MobileWrapper,
+  DesktopWrapper,
 } from "./styles";
 import { useTranslation } from "react-i18next";
 import { Typography } from "@mui/material";
@@ -18,13 +20,30 @@ const Footer = () => {
   const { t } = useTranslation();
   return (
     <FooterContainer>
-      <AllRightsReservedWrapper>
-        <Typography variant="body1">
-          {t("BetPlay | All rights reserved")}
-        </Typography>
-      </AllRightsReservedWrapper>
+      <DesktopWrapper>
+        <AllRightsReservedWrapper>
+          <Typography variant="body1">
+            {t("BetPlay | All rights reserved")}
+          </Typography>
+        </AllRightsReservedWrapper>
 
-      <ContactUsButton>{t("Contact us")}</ContactUsButton>
+        <ContactUsButton>{t("Contact us")}</ContactUsButton>
+      </DesktopWrapper>
+
+      <MobileWrapper>
+        <AllRightsReservedWrapper>
+          <Typography
+            sx={{
+              textAlign: "center",
+            }}
+            variant="body1"
+          >
+            {t("BetPlay | All rights reserved")}
+          </Typography>
+        </AllRightsReservedWrapper>
+
+        <ContactUsButton>{t("Contact us")}</ContactUsButton>
+      </MobileWrapper>
 
       <SocialMediaIconsWrapper>
         <StyledIconButton>

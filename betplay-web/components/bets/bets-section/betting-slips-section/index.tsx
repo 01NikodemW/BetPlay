@@ -10,7 +10,6 @@ interface BettingSlipsSectionProps {
 const BettingSlipsSection: FC<BettingSlipsSectionProps> = ({
   bettingSlips,
 }) => {
-  console.log("bettingSlips ", bettingSlips);
   return (
     <Box>
       {bettingSlips.map((bettingSlip) => (

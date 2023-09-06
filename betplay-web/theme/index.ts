@@ -85,6 +85,7 @@ declare module "@mui/material/styles" {
   }
 
   interface BreakpointOverrides {
+    extraSmallPhone: true;
     smallPhone: true;
     phone: true;
     smallTablet: true;

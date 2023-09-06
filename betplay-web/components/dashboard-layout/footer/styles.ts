@@ -7,14 +7,43 @@ export const FooterContainer = styled(Box)(({ theme }) => ({
   justifyContent: "space-between",
   display: "flex",
   alignItems: "center",
-  paddingLeft: "20px",
-  paddingRight: "20px",
+  padding: "0 20px",
   width: "100%",
   zIndex: 999,
+
+  [theme.breakpoints.down("smallTablet")]: {
+    marginBottom: "50px",
+    flexDirection: "column",
+    justifyContent: "center",
+    height: "auto",
+    padding: "10px 20px",
+  },
 }));
 
 export const AllRightsReservedWrapper = styled(Box)(() => ({
   display: "flex",
+}));
+
+export const DesktopWrapper = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  [theme.breakpoints.down("smallTablet")]: {
+    display: "none",
+  },
+}));
+
+export const MobileWrapper = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  width: "100%",
+  [theme.breakpoints.down("phone")]: {
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  [theme.breakpoints.up("smallTablet")]: {
+    display: "none",
+  },
 }));
 
 export const ContactUsButton = styled(Button)(({ theme }) => ({
@@ -43,9 +72,15 @@ export const ContactUsButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-export const SocialMediaIconsWrapper = styled(Box)(() => ({
+export const SocialMediaIconsWrapper = styled(Box)(({ theme }) => ({
   display: "flex",
   gap: "8px",
+  [theme.breakpoints.down("smallTablet")]: {
+    alignSelf: "end",
+  },
+  [theme.breakpoints.down("phone")]: {
+    alignSelf: "center",
+  },
 }));
 
 export const StyledIconButton = styled(IconButton)(({ theme }) => ({

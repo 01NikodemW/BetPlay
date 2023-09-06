@@ -20,10 +20,17 @@ export const NavbarContainer = styled(AppBar)(({ theme }) => ({
   paddingLeft: "20px",
   paddingRight: "20px",
   width: "100%",
+  [theme.breakpoints.down("smallTablet")]: {
+    height: "60px",
+  },
 }));
 
-export const LogoWrapper = styled(Box)(() => ({
+export const LogoWrapper = styled(Box)(({ theme }) => ({
   display: "flex",
+  width: "100px",
+  [theme.breakpoints.down("smallTablet")]: {
+    width: "auto",
+  },
 }));
 
 export const BetText = styled(Typography)(({ theme }) => ({
@@ -35,10 +42,13 @@ export const PlayText = styled(Typography)(({ theme }) => ({
   fontStyle: "italic",
 }));
 
-export const MenuNavigationWrapper = styled(Box)(() => ({
+export const MenuNavigationWrapper = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
-  width: "40%",
+  gap: "16px",
+  [theme.breakpoints.down("smallTablet")]: {
+    display: "none",
+  },
 }));
 
 export const MenuNavigationItem = styled(Button)<{ current: string }>(
@@ -75,6 +85,10 @@ export const MenuNavigationItem = styled(Button)<{ current: string }>(
 
 export const StyledAvatar = styled(Avatar)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
+  width: "100px",
+  [theme.breakpoints.down("smallTablet")]: {
+    width: "auto",
+  },
 }));
 
 export const StyledAvatarIcon = styled(PersonIcon)(({ theme }) => ({

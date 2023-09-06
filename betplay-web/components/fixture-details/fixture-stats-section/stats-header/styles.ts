@@ -15,7 +15,11 @@ export const TeamBox = styled(Box)(() => ({
   alignItems: "center",
 }));
 
-export const TeamTypography = styled(Typography)(() => ({}));
+export const TeamTypography = styled(Typography)(({ theme }) => ({
+  [theme.breakpoints.down("phone")]: {
+    display: "none",
+  },
+}));
 
 interface FlagBox {
   src: string;
