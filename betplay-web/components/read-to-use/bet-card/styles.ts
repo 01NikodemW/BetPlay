@@ -1,16 +1,25 @@
-import { Box, Button, Card, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  IconButton,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { styled } from "@mui/system";
 
 export const BetContainer = styled(Card)<{
   expanded: string;
   mainpage: string;
-}>(({ theme, expanded, mainpage }) => ({
-  height: expanded === "true" ? "450px" : "300px",
+  circleiconclicked: string;
+}>(({ theme, expanded, mainpage, circleiconclicked }) => ({
+  height: expanded === "true" ? "450px" : "320px",
   transition: "height 0.3s ease-in-out",
   backgroundColor: theme.palette.background.paper,
   flexDirection: "column",
   display: "flex",
   width: "22%",
+  position: "sticky",
   top: mainpage === "true" ? 120 : 320,
   marginLeft: mainpage === "true" ? 0 : "16px",
   borderRadius: "16px",
@@ -25,6 +34,7 @@ export const BetContainer = styled(Card)<{
     right: 0,
     top: "auto",
     bottom: 110,
+    display: circleiconclicked === "true" ? "flex" : "none",
   },
   [theme.breakpoints.down("smallTablet")]: {
     width: "70%",
@@ -35,9 +45,23 @@ export const BetContainer = styled(Card)<{
   },
 }));
 
+export const HeaderBox = styled(Box)(() => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  marginBottom: "16px",
+}));
+
 export const HeaderTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary,
-  marginBottom: "16px",
+}));
+
+export const CloseBetContainerButton = styled(IconButton)(({ theme }) => ({
+  display: "none",
+
+  [theme.breakpoints.down("tablet")]: {
+    display: "flex",
+  },
 }));
 
 export const FirstTextBox = styled(Box)(() => ({
@@ -94,3 +118,18 @@ export const TopTypography = styled(Typography)(() => ({
   marginTop: "8px",
 }));
 
+export const MobileBetButton = styled(Button)(({ theme }) => ({
+  borderRadius: "50%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  backgroundColor: theme.palette.secondary.main,
+  border: `4px solid ${theme.palette.text.primary}`,
+  fontWeight: "bold",
+  width: "64px",
+  height: "64px",
+  position: "fixed",
+  right: "16px",
+  bottom: "64px",
+  zIndex: 2000,
+}));
