@@ -61,7 +61,7 @@ const LiveFixture: FC<LiveFixtureProps> = ({ fixture }) => {
           </ScoreTypography>
           <TeamContainer>
             <TeamLogo ismarginright="true" src={fixture.awayLogo} />
-            <TeamNameTypography variant="h5">
+            <TeamNameTypography isawayteam="true" variant="h5">
               {fixture.awayName}
             </TeamNameTypography>
           </TeamContainer>

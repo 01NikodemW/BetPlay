@@ -14,7 +14,7 @@ export const PlayerBox = styled(Box)(() => ({
   position: "relative",
 }));
 
-export const PhotoBox = styled(Box)<PhotoBox>(({ src, theme }) => ({
+export const PhotoBox = styled(Box)<PhotoBox>(({ src }) => ({
   backgroundImage: `url(${src})`,
   backgroundSize: "cover",
   backgroundPosition: "center",

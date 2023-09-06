@@ -26,6 +26,10 @@ export const BetContainer = styled(Card)<{
   marginTop: mainpage === "true" ? "124px" : "16",
   zIndex: 100,
 
+  [theme.breakpoints.down("desktop")]: {
+    display: mainpage === "true" ? "none" : "flex",
+  },
+
   [theme.breakpoints.down("tablet")]: {
     position: "fixed",
     width: "50%",
