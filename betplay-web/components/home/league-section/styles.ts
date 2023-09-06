@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { styled } from "@mui/system";
 
-export const LeftMenuContainer = styled(Box)(() => ({
+export const LeftMenuContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   width: "23%",
@@ -11,4 +11,7 @@ export const LeftMenuContainer = styled(Box)(() => ({
   maxHeight: "calc(100vh - 136px)",
   marginTop: "124px",
   marginLeft: "16px",
+  [theme.breakpoints.down("desktop")]: {
+    display: "none",
+  },
 }));

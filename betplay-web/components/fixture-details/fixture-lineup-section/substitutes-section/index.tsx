@@ -3,7 +3,6 @@ import React, { FC } from "react";
 import { LineupDetails } from "@/types/fixture-details/lienup-details";
 import PlayerElement from "../player-element";
 import { StyledBox, SubstitutesBox, SubstitutesHeader } from "./styles";
-import { Box } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 interface SubstitutesSectionProps {
