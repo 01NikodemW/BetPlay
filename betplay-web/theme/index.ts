@@ -56,6 +56,7 @@ interface Spaces {
 
 interface ContrastBackground {
   default: string;
+  weak: string;
   paper: string;
 }
 

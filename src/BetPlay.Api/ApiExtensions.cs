@@ -21,6 +21,9 @@ public static class ApiExtensions
         webApplication.UseAuthentication();
         webApplication.UseAuthorization();
         webApplication.MapControllers();
+      
+        webApplication.UseCors(p => p.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+
         return webApplication;
     }
 
@@ -55,6 +58,8 @@ public static class ApiExtensions
                 configuration["Auth0:Authority"];
             options.Audience = configuration["Auth0:Audience"];
         });
+        
+
 
         return services;
     }

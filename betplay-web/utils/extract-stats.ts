@@ -1,11 +1,89 @@
 import { ExtractedStats } from "@/types/extracted-stats";
 import { FixtureDetails } from "@/types/fixture-details/fixture-details";
 
+const emptyStats = [
+  {
+    type: "Ball Possession",
+    homeValue: "0",
+    awayValue: "0",
+  },
+  {
+    type: "expected_goals",
+    homeValue: "0",
+    awayValue: "0",
+  },
+  {
+    type: "Total Shots",
+    homeValue: "0",
+    awayValue: "0",
+  },
+  {
+    type: "Shots on Goal",
+    homeValue: "0",
+    awayValue: "0",
+  },
+  {
+    type: "Shots off Goal",
+    homeValue: "0",
+    awayValue: "0",
+  },
+  {
+    type: "Blocked Shots",
+    homeValue: "0",
+    awayValue: "0",
+  },
+  {
+    type: "Total passes",
+    homeValue: "0",
+    awayValue: "0",
+  },
+  {
+    type: "Passes accurate",
+    homeValue: "0",
+    awayValue: "0",
+  },
+  {
+    type: "Passes %",
+    homeValue: "0",
+    awayValue: "0",
+  },
+  {
+    type: "Corner Kicks",
+    homeValue: "0",
+    awayValue: "0",
+  },
+  {
+    type: "Fouls",
+    homeValue: "0",
+    awayValue: "0",
+  },
+  {
+    type: "Yellow Cards",
+    homeValue: "0",
+    awayValue: "0",
+  },
+  {
+    type: "Red Cards",
+    homeValue: "0",
+    awayValue: "0",
+  },
+  {
+    type: "Goalkeeper Saves",
+    homeValue: "0",
+    awayValue: "0",
+  },
+  {
+    type: "Offsides",
+    homeValue: "0",
+    awayValue: "0",
+  },
+];
+
 export const extractStats = (
   fixtureDetails: FixtureDetails
 ): ExtractedStats[] => {
   if (!fixtureDetails.statistics || fixtureDetails.statistics.length !== 2) {
-    throw new Error("Expected two statistics arrays for home and away");
+    return emptyStats;
   }
 
   const homeStats = fixtureDetails.statistics[0].statistics;

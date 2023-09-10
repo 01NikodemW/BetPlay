@@ -28,6 +28,7 @@ const menu = {
 
 const contrastBackground = {
   default: "#121212",
+  weak: "#444",
   paper: "#000000",
 };
 

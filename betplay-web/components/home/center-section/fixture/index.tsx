@@ -34,14 +34,14 @@ const Fixture: FC<FixtureProps> = ({ fixture }) => {
     <FixtureCard>
       <TopSection>
         <Typography variant="body2">
-          {fixture.fixtureLeague.league.name}, {fixture.fixtureLeague.round}
+          {fixture.fixtureLeague.league?.name}, {fixture.fixtureLeague.round}
         </Typography>
       </TopSection>
       <BottomSection>
         <TeamsSection>
           <TeamContainer>
             <TeamNameTypography variant="h5">
-              {fixture.homeName}
+              {t(fixture.homeName)}
             </TeamNameTypography>
             <TeamLogo ismarginright="false" src={fixture.homeLogo} />
           </TeamContainer>
@@ -51,18 +51,18 @@ const Fixture: FC<FixtureProps> = ({ fixture }) => {
           <TeamContainer>
             <TeamLogo ismarginright="true" src={fixture.awayLogo} />
             <TeamNameTypography isawayteam="true" variant="h5">
-              {fixture.awayName}
+              {t(fixture.awayName)}
             </TeamNameTypography>
           </TeamContainer>
         </TeamsSection>
 
-        {leagueWithDetailsIds.includes(
+        {/* {leagueWithDetailsIds.includes(
           fixture.fixtureLeague.league.leagueId
-        ) && (
-          <StyledOutlinedButton onClick={handleButtonClick}>
-            {t("View details")}
-          </StyledOutlinedButton>
-        )}
+        ) && ( */}
+        <StyledOutlinedButton onClick={handleButtonClick}>
+          {t("View details")}
+        </StyledOutlinedButton>
+        {/* )} */}
       </BottomSection>
     </FixtureCard>
   );

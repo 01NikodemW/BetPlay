@@ -38,7 +38,7 @@ const FixtureHeaderSection: FC<FixtureHeaderSectionProps> = ({ fixture }) => {
       </LeagueHeaderSection>
       <TeamsHeaderSection>
         <HomeTeamBox>
-          <TeamTypography>{fixture.teams.home.name}</TeamTypography>
+          <TeamTypography>{t(fixture.teams.home.name)}</TeamTypography>
           <TeamLogo marginrightorleft="left" src={fixture.teams.home.logo} />
         </HomeTeamBox>
         <ScoreTypography>
@@ -46,7 +46,7 @@ const FixtureHeaderSection: FC<FixtureHeaderSectionProps> = ({ fixture }) => {
         </ScoreTypography>
         <AwayTeamBox>
           <TeamLogo marginrightorleft="right" src={fixture.teams.away.logo} />
-          <TeamTypography>{fixture.teams.away.name}</TeamTypography>
+          <TeamTypography>{t(fixture.teams.away.name)}</TeamTypography>
         </AwayTeamBox>
       </TeamsHeaderSection>
       <BottomSection>
