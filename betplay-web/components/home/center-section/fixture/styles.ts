@@ -33,7 +33,7 @@ export const TeamContainer = styled(Box)(() => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  width: "100%",
+  // width: "100%",
 }));
 
 interface FlagBox {
@@ -69,9 +69,9 @@ export const TeamNameTypography = styled(Typography)<{
   textAlign: isawayteam === "true" ? "right" : "left",
   [theme.breakpoints.down("phone")]: {
     fontSize: rem(16),
-    wordWrap: "break-word", // 1
-    overflowWrap: "break-word", // 2
-    hyphens: "auto", // 4 - Note: browser support varies
+    // wordWrap: "break-word", 
+    // overflowWrap: "break-word",
+    // hyphens: "auto",
   },
 }));
 

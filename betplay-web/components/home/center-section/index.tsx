@@ -17,9 +17,12 @@ import { getFixturesByDateAndLeagueIds } from "@/api/fixtures/api";
 import LoadingInfo from "@/components/read-to-use/loading-info";
 
 const CenterSection = () => {
-  const [date, setDate] = useState<string>(dayjs().toISOString());
+  const [date, setDate] = useState<string>(
+    dayjs().subtract(0, "day").toISOString()
+  );
+
   const { t } = useTranslation();
-  const leagueIds = [960];
+  const leagueIds = [960, 39];
 
   const generateDate = (date: string) => {
     const formattedDate = dayjs(date).format("DD-MM-YYYY");

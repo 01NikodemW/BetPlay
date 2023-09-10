@@ -11,11 +11,9 @@ import {
 } from "./styles";
 
 import { StyledOutlinedButton } from "@/components/read-to-use/styles";
-import { getHoursAndMinutes } from "@/utils/time";
 import { Typography } from "@mui/material";
 import { Fixture } from "@/types/fixture";
 import { FC } from "react";
-import { leagueWithDetailsIds } from "@/pages/api/const-values";
 import { useRouter } from "next/router";
 
 interface FixtureProps {
@@ -30,11 +28,21 @@ const Fixture: FC<FixtureProps> = ({ fixture }) => {
     router.push(`/fixture-details/${fixture.fixtureId}`);
   };
 
+  function convertToUserTimezone(dateString: string) {
+    const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    return new Date(dateString).toLocaleString("en-US", {
+      timeZone: userTimeZone,
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    });
+  }
+
   return (
     <FixtureCard>
       <TopSection>
         <Typography variant="body2">
-          {fixture.fixtureLeague.league?.name}, {fixture.fixtureLeague.round}
+          {t(fixture.fixtureLeague.league?.name)}, {t(fixture.fixtureLeague.round)}
         </Typography>
       </TopSection>
       <BottomSection>
@@ -46,7 +54,7 @@ const Fixture: FC<FixtureProps> = ({ fixture }) => {
             <TeamLogo ismarginright="false" src={fixture.homeLogo} />
           </TeamContainer>
           <TimeTypography variant="body2">
-            {getHoursAndMinutes(fixture.date)}
+            {convertToUserTimezone(fixture.date)}
           </TimeTypography>
           <TeamContainer>
             <TeamLogo ismarginright="true" src={fixture.awayLogo} />

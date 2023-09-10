@@ -4,8 +4,8 @@ import { FixtureDetails } from "@/types/fixture-details/fixture-details";
 const emptyStats = [
   {
     type: "Ball Possession",
-    homeValue: "0",
-    awayValue: "0",
+    homeValue: "50%",
+    awayValue: "50%",
   },
   {
     type: "expected_goals",
@@ -44,8 +44,8 @@ const emptyStats = [
   },
   {
     type: "Passes %",
-    homeValue: "0",
-    awayValue: "0",
+    homeValue: "0%",
+    awayValue: "0%",
   },
   {
     type: "Corner Kicks",

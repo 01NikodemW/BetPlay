@@ -27,7 +27,7 @@ const Index: NextPageWithLayout = () => {
   const { fixtureId } = router.query;
 
   const { data: fixture, isFetching } = useQuery({
-    queryKey: [queryKeys.getFixturesById],
+    queryKey: [queryKeys.getFixturesById, fixtureId],
     queryFn: () => getFixturesById(Number(fixtureId)),
     enabled: Boolean(fixtureId),
   });
