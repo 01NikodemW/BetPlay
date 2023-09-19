@@ -29,7 +29,26 @@ export const BetWithNameButton = styled(Button)<{
   },
 }));
 
-export const BottomTypography = styled(Typography)(() => ({
-  fontSize: rem(12),
-  fontWeight: 700,
-}));
+export const TopTypography = styled(Typography)<{ selected: string }>(
+  ({ theme, selected }) => ({
+    color:
+      theme.palette.background.default !== "#2a2a2a" && selected === "true"
+        ? theme.palette.primary.contrastText
+        : theme.palette.background.default !== "#2a2a2a" && selected === "false"
+        ? theme.palette.text.primary
+        : theme.palette.primary.contrastText,
+  })
+);
+
+export const BottomTypography = styled(Typography)<{ selected: string }>(
+  ({ theme, selected }) => ({
+    fontSize: rem(12),
+    fontWeight: 700,
+    color:
+      theme.palette.background.default !== "#2a2a2a" && selected === "true"
+        ? theme.palette.primary.contrastText
+        : theme.palette.background.default !== "#2a2a2a" && selected === "false"
+        ? theme.palette.text.primary
+        : theme.palette.primary.contrastText,
+  })
+);

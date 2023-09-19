@@ -29,11 +29,11 @@ const FiltersSection: FC<FiltersSectionProps> = ({
   ];
 
   const theme = useTheme();
+  
 
   return (
     <Grid container spacing={2}>
       {filters.map((filter, index) => (
-     
         <StyledGrid
           key={filter}
           item
@@ -50,13 +50,17 @@ const FiltersSection: FC<FiltersSectionProps> = ({
               backgroundColor:
                 currentFilter === filter
                   ? theme.palette.secondary.main
-                  : "white",
+                  : theme.palette.background.paper,
             }}
             onClick={() => {
               setCurrentFilter(currentFilter === filter ? "" : filter);
             }}
           >
-            <StyledTypography>{t(filter)}</StyledTypography>
+            <StyledTypography
+              selected={currentFilter === filter ? "true" : "false"}
+            >
+              {t(filter)}
+            </StyledTypography>
           </FilterBox>
         </StyledGrid>
       ))}

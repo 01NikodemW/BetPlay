@@ -64,6 +64,8 @@ export const LeagueLogo = styled(Box)<{
 }));
 
 export const LeagueTypography = styled(Typography)(({ theme }) => ({
+
+  color: theme.palette.primary.contrastText,
   fontSize: rem(16),
   [theme.breakpoints.down("smallPhone")]: {
     fontSize: rem(14),

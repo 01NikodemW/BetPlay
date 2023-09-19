@@ -15,61 +15,61 @@ const neutral = {
 };
 
 const button = {
-  main: "#F160D2",
-  light: "#FF78E2",
+  main: "#d5ff3f",
+  light: "#d4f55d",
   dark: "#3832A0",
   disabled: "#FF829E",
-  contrastText: "#FFFFFF",
+  contrastText: "#151515",
 };
 
 const menu = {
-  main: "#393939",
+  main: "#EDF2F7",
 };
 
 const divider = "#C6C6C6";
 
 const primary = {
-  main: "#393939",
+  main: "#EDF2F7",
   light: "#828DF8",
   dark: "#3832A0",
-  contrastText: "#FFFFFF",
+  contrastText: "#151515",
 };
 
 //////////////////////////////
 
 const secondary = {
-  main: "#F160D2",
-  light: "#FF78E2", //TODO: pick lighter color
+  main: "#d5ff3f",
+  light: "#d4f55d", //TODO: pick lighter color
   dark: "#0B815A", //TODO: pick darker color
-  contrastText: "#FFFFFF",
+  contrastText: "#151515",
 };
 
 const success = {
   main: "#2E7D32",
   light: "#43C6B7",
   dark: "#0E8074",
-  contrastText: "#FFFFFF",
+  contrastText: "#151515",
 };
 
 const error = {
   main: "#D3302F",
   light: "#DA6868",
   dark: "#922E2E",
-  contrastText: "#FFFFFF",
+  contrastText: "#151515",
 };
 
 const warning = {
   main: "#ED6C03",
   light: "#FFBF4C",
   dark: "#B27B16",
-  contrastText: "#FFFFFF",
+  contrastText: "#151515",
 };
 
 const info = {
   main: "#0188D1",
   light: "#64B6F7",
   dark: "#0B79D0",
-  contrastText: "#FFFFFF",
+  contrastText: "#151515",
 };
 
 const text = {
@@ -79,17 +79,48 @@ const text = {
 };
 
 const background = {
-  default: "#121212",
-  paper: "#000000",
+  default: "#2a2a2a",
+  paper: "#151515",
+
+  // paper: "#2a2a2a",
+  // default: "#151515",
 };
 
 const contrastBackground = {
   default: "#e9e9e9",
+  weak: "#444",
   paper: "#FFFFFF",
 };
 
 export const darkThemeOptions: ThemeOptions = {
   typography: {
+    h1: {
+      color: text.primary,
+    },
+    h2: {
+      color: text.primary,
+    },
+    h3: {
+      color: text.primary,
+    },
+    h4: {
+      color: text.primary,
+    },
+    h5: {
+      color: text.primary,
+    },
+    h6: {
+      color: text.primary,
+    },
+    subtitle1: {
+      color: text.primary,
+    },
+    subtitle2: {
+      color: text.primary,
+    },
+    body1: {
+      color: text.primary,
+    },
     body2: {
       color: text.primary,
     },

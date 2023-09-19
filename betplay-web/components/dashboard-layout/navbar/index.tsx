@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   NavbarContainer,
   PlayText,
@@ -13,6 +13,7 @@ import {
 import { useAuth0 } from "@auth0/auth0-react";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
+import { Button } from "@mui/material";
 
 const Navbar = () => {
   const { t } = useTranslation();
@@ -22,20 +23,24 @@ const Navbar = () => {
   const {
     loginWithRedirect,
     logout,
-    // user,
-    // isAuthenticated,
-    // getAccessTokenSilently,
+    user,
+    isAuthenticated,
+    getAccessTokenSilently,
   } = useAuth0();
 
-  // useEffect(() => {
-  //   if (user != null) {
-  //     if (isAuthenticated) {
-  //       const token = getAccessTokenSilently().then((x) => {
-  //         localStorage.setItem("accessToken", x);
-  //       });
-  //     }
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (user != null) {
+      console.log("here")
+      if (isAuthenticated) {
+        const token = getAccessTokenSilently().then((x) => {
+          localStorage.setItem("betPlayToken", x);
+          console.log("x", x);
+        });
+      }
+    }
+  }, [user, isAuthenticated]);
+
+  console.log("user", user);
 
   const checkCurrentPage = (page: string) => {
     const path = router.pathname;
@@ -72,6 +77,13 @@ const Navbar = () => {
           </MenuNavigationItem>
         ))}
       </MenuNavigationWrapper>
+      <Button
+        onClick={() => {
+          logout();
+        }}
+      >
+        logout
+      </Button>
       <StyledAvatar>
         <StyledIconButton
           onClick={() => {
