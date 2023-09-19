@@ -230,6 +230,7 @@ public class FixtureRepository : IFixtureRepository
         var fixturesOfThatDayFromDb = await _context.Fixtures
             .Include(x => x.Venue)
             .Include(x => x.FixtureLeague)
+            .ThenInclude(fl => fl.League)
             .Where(x => x.Date.Substring(0, 10) == date.ToString("yyyy-MM-dd"))
             .Where(x => leaguesToDisplay.Contains(x.FixtureLeague.League.LeagueId))
             .ToListAsync();

@@ -26,10 +26,7 @@ const menu = {
   main: "#393939",
 };
 
-const contrastBackground = {
-  default: "#121212",
-  paper: "#000000",
-};
+
 
 const divider = "#C6C6C6";
 
@@ -86,6 +83,12 @@ const text = {
 const background = {
   default: "#e9e9e9",
   paper: "#FFFFFF",
+};
+
+const contrastBackground = {
+  default: "#2a2a2a",
+  weak: "#444",
+  paper: "#151515",
 };
 
 export const lightThemeOptions: ThemeOptions = {

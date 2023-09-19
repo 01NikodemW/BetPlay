@@ -101,6 +101,6 @@ public class Fixture : Entity
 
     public bool IsValidForNormalPreview()
     {
-        return UpdateDate.AddMinutes(30) > DateTime.Now;
+        return UpdateDate.AddMinutes(10) > DateTime.Now;
     }
 }

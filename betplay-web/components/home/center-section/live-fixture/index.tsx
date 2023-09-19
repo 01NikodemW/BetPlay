@@ -35,7 +35,7 @@ const LiveFixture: FC<LiveFixtureProps> = ({ fixture }) => {
     <FixtureCard>
       <TopSection>
         <DateAndRoundTypography variant="body2">
-          {fixture.fixtureLeague.league.name}, {fixture.fixtureLeague.round}
+          {fixture.fixtureLeague.league?.name}, {fixture.fixtureLeague.round}
         </DateAndRoundTypography>
         <LiveDetailsBox>
           <LiveText>{t("Live")}</LiveText>
@@ -51,7 +51,7 @@ const LiveFixture: FC<LiveFixtureProps> = ({ fixture }) => {
         <TeamsSection>
           <TeamContainer>
             <TeamNameTypography variant="h5">
-              {fixture.homeName}
+              {t(fixture.homeName)}
             </TeamNameTypography>
             <TeamLogo ismarginright="false" src={fixture.homeLogo} />
           </TeamContainer>
@@ -62,17 +62,17 @@ const LiveFixture: FC<LiveFixtureProps> = ({ fixture }) => {
           <TeamContainer>
             <TeamLogo ismarginright="true" src={fixture.awayLogo} />
             <TeamNameTypography isawayteam="true" variant="h5">
-              {fixture.awayName}
+              {t(fixture.awayName)}
             </TeamNameTypography>
           </TeamContainer>
         </TeamsSection>
-        {leagueWithDetailsIds.includes(
+        {/* {leagueWithDetailsIds.includes(
           fixture.fixtureLeague.league.leagueId
-        ) && (
+        ) && ( */}
           <StyledContrastOutlinedButton onClick={handleButtonClick}>
             {t("View details")}
           </StyledContrastOutlinedButton>
-        )}
+         {/* )} */}
       </BottomSection>
     </FixtureCard>
   );

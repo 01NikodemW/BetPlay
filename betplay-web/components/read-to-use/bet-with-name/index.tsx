@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { BetWithNameButton, BottomTypography } from "./styles";
+import { BetWithNameButton, BottomTypography, TopTypography } from "./styles";
 import { UserBet } from "@/types/user-bet";
 import { FixtureDetails } from "@/types/fixture-details/fixture-details";
 import {
@@ -61,12 +61,19 @@ const BetWithName: FC<BetWithNameProps> = ({
       }}
       onClick={handleClick}
     >
-      <Typography variant="body1">
+      <TopTypography
+        variant="body1"
+        selected={checkIfContainsBet(selectedBets, userBet) ? "true" : "false"}
+      >
         {isMatchResult(userBet.value as string)
           ? userBet.value
           : t(generateValue())}
-      </Typography>
-      <BottomTypography>{userBet.odd}</BottomTypography>
+      </TopTypography>
+      <BottomTypography
+        selected={checkIfContainsBet(selectedBets, userBet) ? "true" : "false"}
+      >
+        {userBet.odd}
+      </BottomTypography>
     </BetWithNameButton>
   );
 };

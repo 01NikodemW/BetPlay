@@ -56,6 +56,7 @@ interface Spaces {
 
 interface ContrastBackground {
   default: string;
+  weak: string;
   paper: string;
 }
 
@@ -77,6 +78,7 @@ declare module "@mui/material/styles" {
   interface Theme {
     sizes: Sizes;
     spaces: Spaces;
+    
   }
 
   interface ThemeOptions {
@@ -95,12 +97,15 @@ declare module "@mui/material/styles" {
   }
 }
 
-// export const createTheme = (config: ThemeConfig): Theme => {
-export const createTheme = (): Theme => {
-  const isDarkMode = false;
+interface ThemeConfig {
+  mode: "light" | "dark";
+  locale: string;
+}
+
+export const createTheme = (config: ThemeConfig): Theme => {
   let theme = createMuiTheme(
     baseThemeOptions,
-    isDarkMode ? darkThemeOptions : lightThemeOptions
+    config.mode === "dark" ? darkThemeOptions : lightThemeOptions
   );
 
   return theme;

@@ -1,3 +1,4 @@
+import { darkThemeOptions } from "@/theme/dark-theme-options";
 import { rem } from "@/utils/px-to-rem";
 import { Box, Grid, Typography } from "@mui/material";
 import { styled } from "@mui/system";
@@ -24,26 +25,28 @@ export const FilterBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const StyledTypography = styled(Typography)(({ theme }) => ({
-  fontSize: rem(20),
-  fontWeight: 600,
-  [theme.breakpoints.down("phone")]: {
-    fontSize: rem(16),
-  },
-  [theme.breakpoints.down("smallPhone")]: {
-    fontSize: rem(14),
-  },
-}));
+export const StyledTypography = styled(Typography)<{ selected: string }>(
+  ({ theme, selected }) => ({
+    color:
+      theme.palette.background.default === "#2a2a2a" && selected === "true"
+        ? theme.palette.primary.contrastText
+        : theme.palette.background.default !== "#2a2a2a" && selected === "true"
+        ? theme.palette.text.primary
+        :    theme.palette.text.primary,
+    fontSize: rem(20),
+    fontWeight: 600,
+    [theme.breakpoints.down("phone")]: {
+      fontSize: rem(16),
+    },
+    [theme.breakpoints.down("smallPhone")]: {
+      fontSize: rem(14),
+    },
+  })
+);
 
 export const StyledGrid = styled(Grid)<{
   index?: string;
 }>(({ theme, index }) => ({
-  // color: "red",
-
-  [theme.breakpoints.down("tablet")]: {
-    // color: "blue",
-  },
-
   "&.MuiGrid-item": {
     padding: Number(index) < 4 ? "16px 0 0 0" : 0,
     [theme.breakpoints.down("largeDesktop")]: {

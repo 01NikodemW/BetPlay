@@ -36,6 +36,7 @@ export const CapitanSign = styled(Typography)(() => ({
   textAlign: "center",
   right: 0,
   bottom: 0,
+  color: "black",
 }));
 
 export const PlayerName = styled(Typography)(() => ({

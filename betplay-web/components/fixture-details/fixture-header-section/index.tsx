@@ -16,6 +16,7 @@ import {
 } from "./styles";
 import { useTranslation } from "react-i18next";
 import { FixtureDetails } from "@/types/fixture-details/fixture-details";
+import { checkIfBeforeFixtureStart } from "@/utils/check-fixture-status";
 
 interface FixtureHeaderSectionProps {
   fixture: FixtureDetails;
@@ -38,15 +39,17 @@ const FixtureHeaderSection: FC<FixtureHeaderSectionProps> = ({ fixture }) => {
       </LeagueHeaderSection>
       <TeamsHeaderSection>
         <HomeTeamBox>
-          <TeamTypography>{fixture.teams.home.name}</TeamTypography>
+          <TeamTypography>{t(fixture.teams.home.name)}</TeamTypography>
           <TeamLogo marginrightorleft="left" src={fixture.teams.home.logo} />
         </HomeTeamBox>
         <ScoreTypography>
-          {fixture.goals.home}:{fixture.goals.away}
+          {checkIfBeforeFixtureStart(fixture)
+            ? "0:0"
+            : `${fixture.goals.home} : ${fixture.goals.away}`}
         </ScoreTypography>
         <AwayTeamBox>
           <TeamLogo marginrightorleft="right" src={fixture.teams.away.logo} />
-          <TeamTypography>{fixture.teams.away.name}</TeamTypography>
+          <TeamTypography>{t(fixture.teams.away.name)}</TeamTypography>
         </AwayTeamBox>
       </TeamsHeaderSection>
       <BottomSection>

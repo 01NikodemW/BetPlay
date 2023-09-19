@@ -38,12 +38,16 @@ export const BetStatusIcon = styled(Box)<{
 
 export const BettingSlipTypography = styled(Typography)<{
   status: string;
-}>(({ status }) => ({
+}>(({ status, theme }) => ({
   backgroundColor:
     status === "won" ? "#4caf50" : status === "lost" ? "#f44336" : "#ffc107",
   padding: "0px 4px",
   fontWeight: "700",
   borderRadius: "4px",
+  color:
+    theme.palette.background.default === "#2a2a2a"
+      ? theme.palette.primary.contrastText
+      : theme.palette.text.primary,
 }));
 
 export const BottomSectionBox = styled(Box)<{ expanded: string }>(
