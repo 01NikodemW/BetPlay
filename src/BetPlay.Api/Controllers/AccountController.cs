@@ -1,9 +1,7 @@
-using System.Security.Claims;
-using Auth0.AspNetCore.Authentication;
 using BetPlay.Infrastructure.ApiSport;
 using BetPlay.Requests.Account;
+using BetPlay.Requests.Bets;
 using MediatR;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +20,13 @@ public class AccountController : BetPlayControllerBase
     [Authorize]
     [HttpPost("login")]
     public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest request)
+    {
+        return Ok(await Mediator.Send(request));
+    }
+
+    [Authorize]
+    [HttpPost("[action]")]
+    public async Task<IActionResult> GetUserData([FromBody] GetUserDataRequest request)
     {
         return Ok(await Mediator.Send(request));
     }

@@ -7,4 +7,5 @@ public interface IBettingSlipRepository
 {
     Task CreateBettingSlip(IEnumerable<CreateBet> bets);
     Task VerifyBettingSlip(Guid id);
+    Task<IEnumerable<BettingSlip>> GetUserBettingSlips();
 }

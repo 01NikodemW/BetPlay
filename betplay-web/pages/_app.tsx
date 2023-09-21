@@ -36,7 +36,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
             domain="dev-c4ln1ujdm122wn5m.us.auth0.com"
           >
             <ThemeProvider theme={createTheme({
-              mode: "light",
+              mode: "dark",
               locale: "en",
             })}>
               {getLayout(<Component {...pageProps} />)}

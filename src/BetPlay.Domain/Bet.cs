@@ -15,14 +15,14 @@ public class Bet : Entity
         Value = createBet.Value;
         Odd = createBet.Odd;
         FixtureId = createBet.FixtureId;
-        Status = BetStatus.Pending;
+        Status = (Dto.Bets.BetStatus)BetStatus.Pending;
     }
 
     public string Name { get; set; } = default!;
     public string Value { get; set; } = default!;
     public float Odd { get; set; }
     public int FixtureId { get; set; }
-    public BetStatus Status { get; set; }
+    public Dto.Bets.BetStatus Status { get; set; }
 
     public virtual IEnumerable<BettingSlipBet> BettingSlips { get; set; }
 }

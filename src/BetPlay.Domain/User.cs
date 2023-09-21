@@ -7,6 +7,6 @@ public class User : Entity
     }
 
     public string Auth0Id { get; set; } = default!;
-
     public IEnumerable<BettingSlip> BettingSlips { get; set; } = default!;
+    public float Balance { get; set; }
 }
