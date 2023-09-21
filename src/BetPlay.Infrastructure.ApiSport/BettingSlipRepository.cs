@@ -27,7 +27,8 @@ public class BettingSlipRepository : IBettingSlipRepository
         _httpContextAccessor = httpContextAccessor;
     }
 
-    public async Task CreateBettingSlip(IEnumerable<CreateBet> bets)
+
+    public async Task CreateBettingSlip(float stake, IEnumerable<BetToCreateDto> bets)
     {
         var userAuth0Id = _httpContextAccessor.HttpContext?.User.Claims
             .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
@@ -42,7 +43,7 @@ public class BettingSlipRepository : IBettingSlipRepository
         await _context.SaveChangesAsync();
         var bettingSlip = new BettingSlip
         {
-            TotalStake = 10,
+            Stake = stake,
             TotalOdds = betsToCreate.Aggregate(1f, (acc, bet) => acc * bet.Odd),
             Status = BettingSlipStatus.Pending,
             Date = DateTime.Now,

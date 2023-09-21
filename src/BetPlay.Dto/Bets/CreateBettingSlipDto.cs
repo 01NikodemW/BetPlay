@@ -1,6 +1,6 @@
 // namespace BetPlay.Dto.Bets;
 //
-// public class CreateBet
+// public class CreateBettingSlipDto
 // {
 //     public float Stake { get; set; }
 //

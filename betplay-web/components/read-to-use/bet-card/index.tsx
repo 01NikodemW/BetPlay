@@ -27,6 +27,10 @@ import { UserBet } from "@/types/user-bet";
 import { testIfPositiveInteger } from "@/utils/input-validators";
 import { isMatchResult } from "@/utils/bets";
 import CloseIcon from "@mui/icons-material/Close";
+import { CreateBettingSlipRequest } from "@/types/api/bets/create-betting-slip-request";
+import { useMutation } from "@tanstack/react-query";
+import { createBettingSlip } from "@/api/bets/api";
+import toast from "react-hot-toast";
 
 // Moved outside of the component
 const calculateTotalOdds = (bets: UserBet[]) => {
@@ -82,6 +86,32 @@ const BetCard: FC<BetCardProps> = ({ mainPage }) => {
   const isSmallerScreen = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down("tablet")
   );
+
+  const createBettingSlipMutation = useMutation(
+    (values: CreateBettingSlipRequest) => createBettingSlip(values),
+    {
+      onSuccess: () => {
+        toast.success(t("Betting slip successfully created"));
+      },
+    }
+  );
+
+  const handleCreateBettingSlip = () => {
+    const bets = selectedBets.map((bet) => {
+      return {
+        fixtureId: bet.fixtureId,
+        name: bet.betType,
+        value: bet.value.toString(),
+        odd: Number(bet.odd),
+      };
+    });
+    const values: CreateBettingSlipRequest = {
+      bets: bets,
+      stake: stake,
+    };
+
+    createBettingSlipMutation.mutate(values);
+  };
 
   if (betCount === 0) {
     return null;
@@ -162,7 +192,9 @@ const BetCard: FC<BetCardProps> = ({ mainPage }) => {
         <Typography variant="subtitle1">{t("Potential prize")}</Typography>
         <Typography variant="subtitle1">{totalStake}</Typography>
       </SecondTextBox>
-      <Button variant="contained">{t("Make a bet")}</Button>
+      <Button variant="contained" onClick={handleCreateBettingSlip}>
+        {t("Make a bet")}
+      </Button>
     </BetContainer>
   );
 };

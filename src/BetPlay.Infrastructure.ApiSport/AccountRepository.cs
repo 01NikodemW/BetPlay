@@ -59,7 +59,7 @@ public class AccountRepository : IAccountRepository
             BettingSlips = user.BettingSlips.Select(bs => new BettingSlipDto
             {
                 // Id = bs.Id,
-                TotalStake = bs.TotalStake,
+                TotalStake = bs.Stake,
                 TotalOdds = bs.TotalOdds,
                 Status = bs.Status,
                 Date = bs.Date,

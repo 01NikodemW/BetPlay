@@ -7,7 +7,7 @@ public class BettingSlip : Entity
         Bets = new List<BettingSlipBet>();
     }
 
-    public float TotalStake { get; set; }
+    public float Stake { get; set; }
     public float TotalOdds { get; set; }
     public Dto.Bets.BettingSlipStatus Status { get; set; }
     public DateTime Date { get; set; }

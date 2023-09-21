@@ -9,7 +9,7 @@ public class Bet : Entity
         BettingSlips = new List<BettingSlipBet>();
     }
 
-    public Bet(CreateBet createBet)
+    public Bet(BetToCreateDto createBet)
     {
         Name = createBet.Name;
         Value = createBet.Value;

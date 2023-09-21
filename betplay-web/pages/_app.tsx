@@ -11,6 +11,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { UserBetsProvider } from "@/context/user-bets-context";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { queryClient } from "@/api/queryClient";
+import { Toaster } from "react-hot-toast";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -35,10 +36,22 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
             clientId="mfEZx3cM04vvGSRolHLFMYplGGb1LkkS"
             domain="dev-c4ln1ujdm122wn5m.us.auth0.com"
           >
-            <ThemeProvider theme={createTheme({
-              mode: "dark",
-              locale: "en",
-            })}>
+            <ThemeProvider
+              theme={createTheme({
+                mode: "dark",
+                locale: "en",
+              })}
+            >
+              <Toaster
+                position="bottom-center"
+                toastOptions={{
+                  className: "toaster",
+                  style: {
+                    fontFamily: "Roboto , sans-serif",
+                    padding: 0,
+                  },
+                }}
+              />
               {getLayout(<Component {...pageProps} />)}
             </ThemeProvider>
           </Auth0Provider>

@@ -15,6 +15,7 @@ import { useQuery } from "@tanstack/react-query";
 import { queryKeys } from "@/api/queryKeys";
 import { getFixturesByDateAndLeagueIds } from "@/api/fixtures/api";
 import LoadingInfo from "@/components/read-to-use/loading-info";
+import { getUserData } from "@/api/user/api";
 
 const CenterSection = () => {
   const [date, setDate] = useState<string>(
@@ -50,6 +51,13 @@ const CenterSection = () => {
       data: [],
     },
   });
+
+  const { data: userData, isFetching: isUserDataFetching } = useQuery({
+    queryKey: [queryKeys.getUsersData],
+    queryFn: () => getUserData(),
+  });
+
+  console.log("userData", userData);
 
   return (
     <CenterSectionContainer>

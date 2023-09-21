@@ -5,7 +5,7 @@ namespace BetPlay.Infrastructure.ApiSport;
 
 public interface IBettingSlipRepository
 {
-    Task CreateBettingSlip(IEnumerable<CreateBet> bets);
+    Task CreateBettingSlip(float stake, IEnumerable<BetToCreateDto> bets);
     Task VerifyBettingSlip(Guid id);
     Task<IEnumerable<BettingSlip>> GetUserBettingSlips();
 }
