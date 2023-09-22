@@ -37,9 +37,9 @@ const BetsSection = () => {
       case 0:
         return "Pending";
       case 1:
-        return "Lost";
-      case 2:
         return "Won";
+      case 2:
+        return "Lost";
       default:
         return ""; // Or throw an error or any default value you prefer
     }

@@ -20,8 +20,15 @@ public class BetsController : BetPlayControllerBase
         return Ok(await Mediator.Send(request));
     }
 
+
     [HttpPost("[action]")]
-    public async Task<IActionResult> VerifyBettingSlip([FromBody] VerifyBettingSlipRequest request)
+    public async Task<IActionResult> GetBetsByFixtureId([FromBody] GetBetsByFixtureIdRequest request)
+    {
+        return Ok(await Mediator.Send(request));
+    }
+
+    [HttpPost("[action]")]
+    public async Task<IActionResult> VerifyUserBets([FromBody] VerifyUserBetsRequest request)
     {
         return Ok(await Mediator.Send(request));
     }

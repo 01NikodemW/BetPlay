@@ -100,8 +100,6 @@ const BetCard: FC<BetCardProps> = ({ mainPage }) => {
     }
   );
 
-  // console.log("selectedBets", selectedBets);
-
   const handleCreateBettingSlip = () => {
     const bets = selectedBets.map((bet) => {
       return {

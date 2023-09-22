@@ -59,6 +59,27 @@ public class BettingSlipRepository : IBettingSlipRepository
         await _context.SaveChangesAsync();
     }
 
+    public async Task VerifyUserBets()
+    {
+        var userAuth0Id = _httpContextAccessor.HttpContext?.User.Claims
+            .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+        var user = await _context.Users
+            .Include(u => u.BettingSlips)
+            .FirstOrDefaultAsync(x => x.Auth0Id == userAuth0Id);
+
+        if (user == null)
+            throw new InvalidOperationException("User not found.");
+
+        var bettingSlips = user.BettingSlips.Where(x => x.Status == BettingSlipStatus.Pending);
+
+        foreach (var bettingSlip in bettingSlips)
+        {
+            await VerifyBettingSlip(bettingSlip.Id);
+        }
+
+        return;
+    }
+
 
     public async Task VerifyBettingSlip(Guid id)
     {
@@ -97,8 +118,6 @@ public class BettingSlipRepository : IBettingSlipRepository
 
         _context.BettingSlips.Update(bettingSlip);
         await _context.SaveChangesAsync();
-
-        throw new NotImplementedException();
     }
 
     public async Task<IEnumerable<BettingSlip>> GetUserBettingSlips()

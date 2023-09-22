@@ -21,7 +21,7 @@ public class GetBetsByFixtureIdRequestHandler : IRequestHandler<GetBetsByFixture
 
         return new GetBetsByFixtureIdResponse
         {
-            Bet = bets
+            Bets = bets.Bookmakers[0].Bets
         };
     }
 }

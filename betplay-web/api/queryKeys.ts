@@ -5,4 +5,5 @@ export const queryKeys = {
   getUsersData: "getUsersData",
   bets: "bets",
   createBettingSlip: "createBettingSlip",
+  getBetsByFixtureId: "getBetsByFixtureId",
 };

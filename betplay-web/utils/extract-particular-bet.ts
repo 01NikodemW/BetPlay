@@ -1,15 +1,8 @@
-import { Bet, BetsResponse } from "@/types/bets/bets-response";
+import { Bet } from "@/types/bets/bets-response";
 
 export const extractParticularBet = (
-  betObject: BetsResponse,
+  bets: Bet[],
   betName: string
 ): Bet | null => {
-  for (let bookmaker of betObject.bookmakers) {
-    for (let bet of bookmaker.bets) {
-      if (bet.name === betName) {
-        return bet;
-      }
-    }
-  }
-  return null;
+  return bets.find((bet) => bet.name === betName) || null;
 };
