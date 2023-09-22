@@ -20,3 +20,31 @@ export const getBettingSlipDate = (date: string) => {
 
   return humanReadable;
 };
+
+export const getDayMonthYear = (dateString: string) => {
+  if (!dateString) {
+    return "";
+  }
+  const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  return new Date(dateString)
+    .toLocaleString("de-DE", {
+      timeZone: userTimeZone,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+    .replace(/\//g, ".");
+};
+
+export const getHourMinute = (dateString: string) => {
+  if (!dateString) {
+    return "";
+  }
+  const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  return new Date(dateString).toLocaleString("en-US", {
+    timeZone: userTimeZone,
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+};

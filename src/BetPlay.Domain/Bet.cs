@@ -9,20 +9,24 @@ public class Bet : Entity
         BettingSlips = new List<BettingSlipBet>();
     }
 
-    public Bet(CreateBet createBet)
+    public Bet(BetToCreateDto createBet)
     {
         Name = createBet.Name;
         Value = createBet.Value;
         Odd = createBet.Odd;
         FixtureId = createBet.FixtureId;
-        Status = BetStatus.Pending;
+        HomeTeam = createBet.HomeTeam;
+        AwayTeam = createBet.AwayTeam;
+        Status = (Dto.Bets.BetStatus)BetStatus.Pending;
     }
 
     public string Name { get; set; } = default!;
     public string Value { get; set; } = default!;
     public float Odd { get; set; }
     public int FixtureId { get; set; }
-    public BetStatus Status { get; set; }
+    public string HomeTeam { get; set; } = default!;
+    public string AwayTeam { get; set; } = default!;
+    public Dto.Bets.BetStatus Status { get; set; }
 
     public virtual IEnumerable<BettingSlipBet> BettingSlips { get; set; }
 }

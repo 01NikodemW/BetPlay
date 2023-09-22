@@ -30,17 +30,13 @@ const Navbar = () => {
 
   useEffect(() => {
     if (user != null) {
-      console.log("here")
       if (isAuthenticated) {
-        const token = getAccessTokenSilently().then((x) => {
-          localStorage.setItem("betPlayToken", x);
-          console.log("x", x);
+        getAccessTokenSilently().then((x) => {
+          localStorage.setItem("accessToken", x);
         });
       }
     }
-  }, [user, isAuthenticated]);
-
-  console.log("user", user);
+  }, [user, isAuthenticated, getAccessTokenSilently]);
 
   const checkCurrentPage = (page: string) => {
     const path = router.pathname;
@@ -77,13 +73,15 @@ const Navbar = () => {
           </MenuNavigationItem>
         ))}
       </MenuNavigationWrapper>
-      <Button
-        onClick={() => {
-          logout();
-        }}
-      >
-        logout
-      </Button>
+      {isAuthenticated && (
+        <Button
+          onClick={() => {
+            logout();
+          }}
+        >
+          logout
+        </Button>
+      )}
       <StyledAvatar>
         <StyledIconButton
           onClick={() => {

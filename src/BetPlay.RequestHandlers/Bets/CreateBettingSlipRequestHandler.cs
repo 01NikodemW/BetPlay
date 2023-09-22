@@ -17,7 +17,7 @@ public class CreateBettingSlipRequestHandler : IRequestHandler<CreateBettingSlip
     public async Task<CreateBettingSlipResponse> Handle(CreateBettingSlipRequest request,
         CancellationToken cancellationToken)
     {
-        await _bettingSlipRepository.CreateBettingSlip(request.Bets);
+        await _bettingSlipRepository.CreateBettingSlip(request.Stake, request.Bets);
 
         return new CreateBettingSlipResponse
         {

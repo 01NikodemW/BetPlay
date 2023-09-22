@@ -3,6 +3,7 @@ using System;
 using BetPlay.Infrastructure.EfCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BetPlay.Infrastructure.EfCore.Migrations
 {
     [DbContext(typeof(BetPlayDbContext))]
-    partial class BetPlayDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230921183728_add-users-balance")]
+    partial class addusersbalance
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
@@ -23,16 +26,8 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("AwayTeam")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("FixtureId")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("HomeTeam")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -62,13 +57,13 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
 
-                    b.Property<float>("Stake")
-                        .HasColumnType("REAL");
-
                     b.Property<int>("Status")
                         .HasColumnType("INTEGER");
 
                     b.Property<float>("TotalOdds")
+                        .HasColumnType("REAL");
+
+                    b.Property<float>("TotalStake")
                         .HasColumnType("REAL");
 
                     b.Property<Guid>("UserId")
@@ -365,27 +360,27 @@ namespace BetPlay.Infrastructure.EfCore.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("030e9245-e21f-4e1d-a56f-37fa68f07684"),
+                            Id = new Guid("d94cb024-6d45-4c25-b92b-090aa041c721"),
                             LeagueId = 78
                         },
                         new
                         {
-                            Id = new Guid("9f6dbb95-0e1b-49af-a11c-c021ba063314"),
+                            Id = new Guid("2d0bc04d-f4e1-43c7-8853-4d7ecd2a81d5"),
                             LeagueId = 39
                         },
                         new
                         {
-                            Id = new Guid("5401ff8e-81ad-4086-b222-520690c8e0f2"),
+                            Id = new Guid("7e06f45d-7f81-43ec-91ab-617fe278e4e4"),
                             LeagueId = 140
                         },
                         new
                         {
-                            Id = new Guid("a908d2d6-a565-4b87-93b3-b58323ac3336"),
+                            Id = new Guid("61d1ca68-4cdb-49c1-8ff6-a73c96a8f7cd"),
                             LeagueId = 135
                         },
                         new
                         {
-                            Id = new Guid("a7cabcf3-0266-441e-a403-8b2db7c70a55"),
+                            Id = new Guid("b73fc2b0-9c7a-4dcd-830e-e029cda103f2"),
                             LeagueId = 61
                         });
                 });

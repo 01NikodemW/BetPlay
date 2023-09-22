@@ -6,5 +6,6 @@ namespace BetPlay.Requests.Bets;
 
 public class CreateBettingSlipRequest : IRequest<CreateBettingSlipResponse>
 {
-    public IEnumerable<CreateBet> Bets { get; set; } = default!;
+    public float Stake { get; set; }
+    public IEnumerable<BetToCreateDto> Bets { get; set; } = default!;
 }

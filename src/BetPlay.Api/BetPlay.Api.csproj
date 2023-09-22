@@ -8,22 +8,22 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Auth0.AspNetCore.Authentication" Version="1.3.1"/>
-        <PackageReference Include="MediatR" Version="12.0.1"/>
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.5"/>
+        <PackageReference Include="Auth0.AspNetCore.Authentication" Version="1.3.1" />
+        <PackageReference Include="MediatR" Version="12.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.5" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\BetPlay.ApiSport.Dto\BetPlay.ApiSport.Dto.csproj"/>
-        <ProjectReference Include="..\BetPlay.Infrastructure.EfCore\BetPlay.Infrastructure.EfCore.csproj"/>
-        <ProjectReference Include="..\BetPlay.Options\BetPlay.Options.csproj"/>
-        <ProjectReference Include="..\BetPlay.RequestHandlers\BetPlay.RequestHandlers.csproj"/>
-        <ProjectReference Include="..\BetPlay.Requests\BetPlay.Requests.csproj"/>
+        <ProjectReference Include="..\BetPlay.ApiSport.Dto\BetPlay.ApiSport.Dto.csproj" />
+        <ProjectReference Include="..\BetPlay.Infrastructure.EfCore\BetPlay.Infrastructure.EfCore.csproj" />
+        <ProjectReference Include="..\BetPlay.Options\BetPlay.Options.csproj" />
+        <ProjectReference Include="..\BetPlay.RequestHandlers\BetPlay.RequestHandlers.csproj" />
+        <ProjectReference Include="..\BetPlay.Requests\BetPlay.Requests.csproj" />
     </ItemGroup>
 
 </Project>

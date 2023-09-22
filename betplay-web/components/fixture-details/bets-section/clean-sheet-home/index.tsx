@@ -3,13 +3,13 @@ import { BetContainer, BetHeader } from "../styles";
 import { useTranslation } from "react-i18next";
 import { BetOptionsBox } from "./styles";
 import BetWithName from "@/components/read-to-use/bet-with-name";
-import { BetsResponse } from "@/types/bets/bets-response";
+import { Bet } from "@/types/bets/bets-response";
 import { extractParticularBet } from "@/utils/extract-particular-bet";
 import { UserBet } from "@/types/user-bet";
 import { FixtureDetails } from "@/types/fixture-details/fixture-details";
 
 interface CleanSheetHomeProps {
-  bets: BetsResponse;
+  bets: Bet[];
   selectedBets: UserBet[];
   setSelectedBets: (bets: UserBet[]) => void;
   fixture: FixtureDetails;
