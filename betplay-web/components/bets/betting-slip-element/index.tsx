@@ -14,7 +14,6 @@ import {
   OddValueTypography,
   DateBox,
 } from "./styles";
-import { exampleBettingSlip } from "@/pages/api/temporary-api-responses";
 import { Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import HourglassBottomIcon from "@mui/icons-material/HourglassBottom";
@@ -23,7 +22,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { FC, useState } from "react";
 import { BettingSlipBet } from "@/types/bets/betting-slip-bet";
 import { BettingSlip as BettingSlipType } from "@/types/bets/betting-slip";
-import { getBettingSlipDate } from "@/utils/time";
+import { getDayMonthYear, getHourMinute } from "@/utils/time";
 
 interface BettingSlipElementProps {
   bettingSlip: BettingSlipType;
@@ -35,9 +34,7 @@ const BettingSlipElement: FC<BettingSlipElementProps> = ({ bettingSlip }) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   const handleClick = () => {
-    if (exampleBettingSlip.bets.length !== 0) {
-      setIsExpanded(!isExpanded);
-    }
+    setIsExpanded(!isExpanded);
   };
 
   const generateValue = (bet: BettingSlipBet) => {
@@ -87,7 +84,7 @@ const BettingSlipElement: FC<BettingSlipElementProps> = ({ bettingSlip }) => {
     <BettingSlipBox>
       <TopSectionBox onClick={handleClick}>
         <BetsStatusBox>
-          {exampleBettingSlip.bets.map((bet) => {
+          {bettingSlip.bets.map((bet) => {
             return (
               <BetStatusIcon
                 key={bet.id}
@@ -97,21 +94,21 @@ const BettingSlipElement: FC<BettingSlipElementProps> = ({ bettingSlip }) => {
               </BetStatusIcon>
             );
           })}
-          {exampleBettingSlip.bets.length > 6 && (
+          {bettingSlip.bets.length > 6 && (
             <Typography variant="body2">
-              {exampleBettingSlip.bets.length} {t("bets")}
+              {bettingSlip.bets.length} {t("bets")}
             </Typography>
           )}
         </BetsStatusBox>
         <BettingSlipTypography
-          status={exampleBettingSlip.status.toLocaleLowerCase()}
+          status={bettingSlip.status.toLocaleLowerCase()}
           variant="body2"
         >
-          {exampleBettingSlip.status}
+          {t(bettingSlip.status)}
         </BettingSlipTypography>
       </TopSectionBox>
       <SingleBetsContainer expanded={isExpanded ? "true" : "false"} id="koko">
-        {exampleBettingSlip.bets.map((bet, index) => (
+        {bettingSlip.bets.map((bet, index) => (
           <SingleBetBox key={index} last={"true"}>
             <SingleBetTopTypography variant="h6">
               {bet.homeTeam + " - " + bet.awayTeam}
@@ -135,28 +132,27 @@ const BettingSlipElement: FC<BettingSlipElementProps> = ({ bettingSlip }) => {
         <TypographyBox>
           <Typography>{t("Stake")}</Typography>
           <Typography>
-            {exampleBettingSlip.totalStake}
+            {bettingSlip.totalStake}
             {" zł"}
           </Typography>
         </TypographyBox>
         <TypographyBox>
           <Typography>{t("Odd")}</Typography>
-          <Typography>{exampleBettingSlip.totalOdds}</Typography>
+          <Typography>{bettingSlip.totalOdds}</Typography>
         </TypographyBox>
         <TypographyBox>
           <Typography variant="h6">{t("Potential prize")}</Typography>
           <Typography variant="h6">
-            {exampleBettingSlip.totalOdds *
-              exampleBettingSlip.totalStake *
-              0.88}
+            {bettingSlip.totalOdds * bettingSlip.totalStake * 0.88}
             {" zł"}
           </Typography>
         </TypographyBox>
       </BottomSectionBox>
       <DateBox onClick={handleClick}>
         <Typography variant="caption">
-          {/* {getBettingSlipDate(bettingSlip.date)} */}
-          {"30.08.2023 - 17:27"}
+          {getDayMonthYear(bettingSlip.date) +
+            " - " +
+            getHourMinute(bettingSlip.date)}
         </Typography>
       </DateBox>
     </BettingSlipBox>

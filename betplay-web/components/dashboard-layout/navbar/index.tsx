@@ -38,9 +38,6 @@ const Navbar = () => {
     }
   }, [user, isAuthenticated, getAccessTokenSilently]);
 
-  console.log("user", user);
-  console.log("isAuthenticated", isAuthenticated);
-
   const checkCurrentPage = (page: string) => {
     const path = router.pathname;
     return path.includes(page) ? "true" : "false";

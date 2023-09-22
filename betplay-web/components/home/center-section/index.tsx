@@ -57,8 +57,6 @@ const CenterSection = () => {
     queryFn: () => getUserData(),
   });
 
-  console.log("userData", userData);
-
   return (
     <CenterSectionContainer>
       <ButtonBox>

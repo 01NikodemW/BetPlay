@@ -4,6 +4,8 @@ export type CreateBettingSlipRequest = {
     value: string;
     odd: number;
     fixtureId: number;
+    homeTeam: string;
+    awayTeam: string;
   }[];
   stake: number;
 };

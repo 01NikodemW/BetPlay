@@ -1,8 +1,11 @@
 using BetPlay.Dto.Account;
+using BetPlay.Dto.Bets;
 
 namespace BetPlay.Responses.Account;
 
 public class GetUserDataResponse
 {
-    public UserDto User { get; set; } = default!;
+    public string Auth0Id { get; set; }
+    public float Balance { get; set; }
+    public List<BettingSlipDto> BettingSlips { get; set; }
 }

@@ -53,23 +53,24 @@ public class AccountRepository : IAccountRepository
 
         var userDto = new UserDto
         {
-            // Id = user.Id,
             Auth0Id = user.Auth0Id,
             Balance = user.Balance,
             BettingSlips = user.BettingSlips.Select(bs => new BettingSlipDto
             {
-                // Id = bs.Id,
+                Id = bs.Id,
                 TotalStake = bs.Stake,
                 TotalOdds = bs.TotalOdds,
                 Status = bs.Status,
                 Date = bs.Date,
                 Bets = bs.Bets.Select(bsb => new BetDto
                 {
-                    // Id = bsb.Bet.Id,
+                    Id = bsb.Bet.Id,
                     Name = bsb.Bet.Name,
                     Value = bsb.Bet.Value,
                     Odd = bsb.Bet.Odd,
                     FixtureId = bsb.Bet.FixtureId,
+                    HomeTeam = bsb.Bet.HomeTeam,
+                    AwayTeam = bsb.Bet.AwayTeam,
                     Status = bsb.Bet.Status
                 }).ToList()
             }).ToList()

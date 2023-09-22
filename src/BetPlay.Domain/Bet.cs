@@ -15,6 +15,8 @@ public class Bet : Entity
         Value = createBet.Value;
         Odd = createBet.Odd;
         FixtureId = createBet.FixtureId;
+        HomeTeam = createBet.HomeTeam;
+        AwayTeam = createBet.AwayTeam;
         Status = (Dto.Bets.BetStatus)BetStatus.Pending;
     }
 
@@ -22,6 +24,8 @@ public class Bet : Entity
     public string Value { get; set; } = default!;
     public float Odd { get; set; }
     public int FixtureId { get; set; }
+    public string HomeTeam { get; set; } = default!;
+    public string AwayTeam { get; set; } = default!;
     public Dto.Bets.BetStatus Status { get; set; }
 
     public virtual IEnumerable<BettingSlipBet> BettingSlips { get; set; }

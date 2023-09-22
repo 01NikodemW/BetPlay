@@ -1,4 +1,4 @@
-using BetPlay.Dto.Account;
+using BetPlay.Dto.Bets;
 using BetPlay.Infrastructure.ApiSport;
 using BetPlay.Requests.Account;
 using BetPlay.Responses.Account;
@@ -20,10 +20,11 @@ public class GetUserDataRequestHandler : IRequestHandler<GetUserDataRequest, Get
         CancellationToken cancellationToken)
     {
         var userData = await _accountRepository.GetUserData();
-
         return new GetUserDataResponse
         {
-            User = userData.Adapt<UserDto>()
+            Auth0Id = userData.Auth0Id,
+            Balance = userData.Balance,
+            BettingSlips = userData.BettingSlips.Adapt<List<BettingSlipDto>>(),
         };
     }
 }

@@ -31,6 +31,9 @@ import { CreateBettingSlipRequest } from "@/types/api/bets/create-betting-slip-r
 import { useMutation } from "@tanstack/react-query";
 import { createBettingSlip } from "@/api/bets/api";
 import toast from "react-hot-toast";
+import { CLIENT_PUBLIC_FILES_PATH } from "next/dist/shared/lib/constants";
+import { queryClient } from "@/api/queryClient";
+import { queryKeys } from "@/api/queryKeys";
 
 // Moved outside of the component
 const calculateTotalOdds = (bets: UserBet[]) => {
@@ -92,9 +95,12 @@ const BetCard: FC<BetCardProps> = ({ mainPage }) => {
     {
       onSuccess: () => {
         toast.success(t("Betting slip successfully created"));
+        queryClient.invalidateQueries([queryKeys.getUsersData]);
       },
     }
   );
+
+  // console.log("selectedBets", selectedBets);
 
   const handleCreateBettingSlip = () => {
     const bets = selectedBets.map((bet) => {
@@ -102,6 +108,8 @@ const BetCard: FC<BetCardProps> = ({ mainPage }) => {
         fixtureId: bet.fixtureId,
         name: bet.betType,
         value: bet.value.toString(),
+        homeTeam: bet.homeTeam,
+        awayTeam: bet.awayTeam,
         odd: Number(bet.odd),
       };
     });

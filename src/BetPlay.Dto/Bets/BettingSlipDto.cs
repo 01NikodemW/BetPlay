@@ -2,7 +2,7 @@ namespace BetPlay.Dto.Bets;
 
 public class BettingSlipDto
 {
-    // public Guid Id { get; set; }
+    public Guid Id { get; set; }
     public float TotalStake { get; set; }
     public float TotalOdds { get; set; }
     public BettingSlipStatus Status { get; set; }
