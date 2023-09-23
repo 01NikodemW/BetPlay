@@ -63,15 +63,19 @@ export const TeamLogo = styled(Box)<FlagBox>(
   })
 );
 
+export const ScoreTypography = styled(Typography)(({ theme }) => ({
+  paddingLeft: "12px",
+  paddingRight: "12px",
+  color: theme.palette.text.primary,
+  whiteSpace: "nowrap",
+}));
+
 export const TeamNameTypography = styled(Typography)<{
   isawayteam?: string;
 }>(({ isawayteam, theme }) => ({
   textAlign: isawayteam === "true" ? "right" : "left",
   [theme.breakpoints.down("phone")]: {
     fontSize: rem(16),
-    // wordWrap: "break-word", 
-    // overflowWrap: "break-word",
-    // hyphens: "auto",
   },
 }));
 

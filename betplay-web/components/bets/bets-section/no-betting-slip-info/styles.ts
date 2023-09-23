@@ -10,8 +10,6 @@ export const InfoContainer = styled(Box)(() => ({
   padding: "16px",
 }));
 
-export const TopTypography = styled(Typography)(() => ({}));
-
 export const BottomTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));

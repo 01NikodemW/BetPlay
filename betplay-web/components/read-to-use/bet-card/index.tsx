@@ -31,7 +31,6 @@ import { CreateBettingSlipRequest } from "@/types/api/bets/create-betting-slip-r
 import { useMutation } from "@tanstack/react-query";
 import { createBettingSlip } from "@/api/bets/api";
 import toast from "react-hot-toast";
-import { CLIENT_PUBLIC_FILES_PATH } from "next/dist/shared/lib/constants";
 import { queryClient } from "@/api/queryClient";
 import { queryKeys } from "@/api/queryKeys";
 

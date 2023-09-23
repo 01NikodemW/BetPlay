@@ -23,6 +23,7 @@ import { FC, useState } from "react";
 import { BettingSlipBet } from "@/types/bets/betting-slip-bet";
 import { BettingSlip as BettingSlipType } from "@/types/bets/betting-slip";
 import { getDayMonthYear, getHourMinute } from "@/utils/time";
+import { betStatus } from "@/pages/api/const-values";
 
 interface BettingSlipElementProps {
   bettingSlip: BettingSlipType;
@@ -38,16 +39,31 @@ const BettingSlipElement: FC<BettingSlipElementProps> = ({ bettingSlip }) => {
   };
 
   const generateValue = (bet: BettingSlipBet) => {
+    if (/^\d+:\d+$/.test(bet.value)) {
+      return bet.value;
+    }
     switch (bet.value) {
       case "Home":
-        return bet.homeTeam as string;
+        return t(bet.awayTeam as string);
       case "Away":
-        return bet.awayTeam as string;
+        return t(bet.awayTeam as string);
       default:
-        return bet.value as string;
+        return t(bet.value as string);
     }
   };
 
+  const generatePrizeText = () => {
+    switch (bettingSlip.status) {
+      case betStatus.Pending:
+        return t("Potential prize");
+      case betStatus.Won:
+        return t("Prize");
+      case betStatus.Lost:
+        return t("Prize");
+      default:
+        return "";
+    }
+  };
   const BetStatusDot: FC<{ status: string }> = ({ status }) => {
     switch (status) {
       case "won":
@@ -107,7 +123,7 @@ const BettingSlipElement: FC<BettingSlipElementProps> = ({ bettingSlip }) => {
           {t(bettingSlip.status)}
         </BettingSlipTypography>
       </TopSectionBox>
-      <SingleBetsContainer expanded={isExpanded ? "true" : "false"} id="koko">
+      <SingleBetsContainer expanded={isExpanded ? "true" : "false"}>
         {bettingSlip.bets.map((bet, index) => (
           <SingleBetBox key={index} last={"true"}>
             <SingleBetTopTypography variant="h6">
@@ -120,7 +136,7 @@ const BettingSlipElement: FC<BettingSlipElementProps> = ({ bettingSlip }) => {
                   status={bet.status.toLocaleLowerCase()}
                   variant="subtitle2"
                 >
-                  {t(generateValue(bet))}
+                  {generateValue(bet)}
                 </OddValueTypography>
               </OddTypeBox>
               <Typography variant="subtitle2">{bet.odd}</Typography>
@@ -141,9 +157,11 @@ const BettingSlipElement: FC<BettingSlipElementProps> = ({ bettingSlip }) => {
           <Typography>{bettingSlip.totalOdds}</Typography>
         </TypographyBox>
         <TypographyBox>
-          <Typography variant="h6">{t("Potential prize")}</Typography>
+          <Typography variant="h6">{generatePrizeText()}</Typography>
           <Typography variant="h6">
-            {bettingSlip.totalOdds * bettingSlip.totalStake * 0.88}
+            {bettingSlip.status === betStatus.Lost
+              ? 0
+              : bettingSlip.totalOdds * bettingSlip.totalStake * 0.88}
             {" zł"}
           </Typography>
         </TypographyBox>

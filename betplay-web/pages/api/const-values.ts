@@ -32,3 +32,13 @@ export const varTypes = {
   goalCancelled: "Goal Cancelled",
   penaltyConfirmed: "Penalty Confirmed",
 };
+
+
+
+export const betStatus = {
+  Won: "Won",
+  Lost: "Lost",
+  Pending: "Pending",
+};
+
+

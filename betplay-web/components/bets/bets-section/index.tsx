@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import { BetsSectionContainer, StyledTab, StyledTabs } from "./styles";
 import { useTranslation } from "react-i18next";
 import BettingSlipsSection from "./betting-slips-section";
-import { exampleBettingSlips } from "@/pages/api/temporary-api-responses";
 import NoBettingSlipInfo from "./no-betting-slip-info";
 import { queryKeys } from "@/api/queryKeys";
 import { useQuery } from "@tanstack/react-query";
 import { getUserData } from "@/api/user/api";
-import { BettingSlip } from "@/types/bets/betting-slip";
 import LoadingInfo from "@/components/read-to-use/loading-info";
 
 const tabValue = {
@@ -23,15 +21,7 @@ const BetsSection = () => {
     setTab(newValue);
   };
 
-  // const pendingBettingSlips = exampleBettingSlips.filter(
-  //   (bettingSlip) => bettingSlip.status === "Pending"
-  // );
-
-  // const finishedBettingSlips = exampleBettingSlips.filter(
-  //   (bettingSlip) =>
-  //     bettingSlip.status === "Won" || bettingSlip.status === "Lost"
-  // );
-
+  //TODO: Remove this when the API is ready
   const statusToString = (status: number): string => {
     switch (status) {
       case 0:
@@ -41,10 +31,10 @@ const BetsSection = () => {
       case 2:
         return "Lost";
       default:
-        return ""; // Or throw an error or any default value you prefer
+        return "";
     }
   };
-  
+
   const transformBettingSlip = (bettingSlip: any) => {
     const transformedBets = bettingSlip.bets.map((bet: any) => ({
       ...bet,
@@ -56,24 +46,36 @@ const BetsSection = () => {
       bets: transformedBets,
     };
   };
-  
+
   const getPendingBets = () => {
     return userData.bettingSlips
       .filter((bettingSlip: any) => bettingSlip.status === 0)
       .map(transformBettingSlip);
   };
-  
+
   const getFinishedBets = () => {
     return userData.bettingSlips
-      .filter((bettingSlip: any) => bettingSlip.status === 1 || bettingSlip.status === 2)
+      .filter(
+        (bettingSlip: any) =>
+          bettingSlip.status === 1 || bettingSlip.status === 2
+      )
       .map(transformBettingSlip);
   };
-  
 
   const { data: userData, isFetching: isUserDataFetching } = useQuery({
     queryKey: [queryKeys.getUsersData],
     queryFn: () => getUserData(),
   });
+
+  const renderBettingInfoBasedOnTab = () => {
+    const betsToDisplay =
+      tab === tabValue.pending ? getPendingBets() : getFinishedBets();
+
+    if (betsToDisplay.length === 0) {
+      return <NoBettingSlipInfo />;
+    }
+    return <BettingSlipsSection bettingSlips={betsToDisplay} />;
+  };
 
   return (
     <BetsSectionContainer id="koko">
@@ -86,23 +88,7 @@ const BetsSection = () => {
         <StyledTab label={t("Finished")} value={tabValue.finished} />
       </StyledTabs>
 
-      {isUserDataFetching && <LoadingInfo />}
-
-      {!isUserDataFetching && tab === tabValue.pending && (
-        <BettingSlipsSection bettingSlips={getPendingBets()} />
-      )}
-
-      {!isUserDataFetching &&
-        tab === tabValue.pending &&
-        getPendingBets().length === 0 && <NoBettingSlipInfo />}
-
-      {!isUserDataFetching && tab === tabValue.finished && (
-        <BettingSlipsSection bettingSlips={getFinishedBets()} />
-      )}
-
-      {!isUserDataFetching &&
-        tab === tabValue.finished &&
-        getFinishedBets().length === 0 && <NoBettingSlipInfo />}
+      {isUserDataFetching ? <LoadingInfo /> : renderBettingInfoBasedOnTab()}
     </BetsSectionContainer>
   );
 };

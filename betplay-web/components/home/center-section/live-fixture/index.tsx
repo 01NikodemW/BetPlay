@@ -16,7 +16,6 @@ import {
 import { StyledContrastOutlinedButton } from "@/components/read-to-use/styles";
 import { Fixture } from "@/types/fixture";
 import { FC } from "react";
-import { leagueWithDetailsIds } from "@/pages/api/const-values";
 import { useRouter } from "next/router";
 
 interface LiveFixtureProps {
@@ -69,10 +68,10 @@ const LiveFixture: FC<LiveFixtureProps> = ({ fixture }) => {
         {/* {leagueWithDetailsIds.includes(
           fixture.fixtureLeague.league.leagueId
         ) && ( */}
-          <StyledContrastOutlinedButton onClick={handleButtonClick}>
-            {t("View details")}
-          </StyledContrastOutlinedButton>
-         {/* )} */}
+        <StyledContrastOutlinedButton onClick={handleButtonClick}>
+          {t("View details")}
+        </StyledContrastOutlinedButton>
+        {/* )} */}
       </BottomSection>
     </FixtureCard>
   );

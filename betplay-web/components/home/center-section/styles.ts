@@ -1,4 +1,4 @@
-import { Box, Button, IconButton, Typography } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
 export const CenterSectionContainer = styled(Box)(({ theme }) => ({
@@ -22,7 +22,7 @@ export const CenterSectionContainer = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const ButtonBox = styled(Box)(({ theme }) => ({
+export const ButtonBox = styled(Box)(() => ({
   position: "relative",
   width: "128px",
   height: "32px",
