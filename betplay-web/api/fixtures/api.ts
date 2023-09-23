@@ -32,3 +32,17 @@ export async function getFixturesById(fixtureId: number) {
 
   return response.data.fixture;
 }
+
+export async function getLiveFixtures() {
+  const response = await axiosInstance.post(
+    "/Fixtures/GetAllLiveFixtures",
+    {},
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  return response.data;
+}
