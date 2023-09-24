@@ -56,9 +56,11 @@ const CenterSection: FC<CenterSectionProps> = ({ selectedLeagueIds }) => {
     <CenterSectionContainer>
       <ButtonBox>
         <LeftButton
+          aria-label="PreviousDate"
           onClick={() => setDate(dayjs(date).subtract(1, "day").toISOString())}
         />
         <RightButton
+          aria-label="NextDate"
           onClick={() => setDate(dayjs(date).add(1, "day").toISOString())}
         />
         <ButtonText>{"<" + generateDate(date) + ">"}</ButtonText>

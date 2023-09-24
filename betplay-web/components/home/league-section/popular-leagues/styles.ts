@@ -16,10 +16,6 @@ export const LeagueWrapper = styled(Box)(() => ({
   alignItems: "center",
 }));
 
-interface FlagBox {
-  src: string;
-}
-
 export const FlagBoxWrapper = styled(Box)(() => ({
   display: "flex",
   alignItems: "center",
@@ -27,28 +23,31 @@ export const FlagBoxWrapper = styled(Box)(() => ({
   width: "50px",
 }));
 
-export const NationFlagBox = styled(Box)<FlagBox>(({ src }) => ({
-  backgroundImage: `url(${src})`,
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  width: "20px",
-  height: "20px",
-  borderRadius: "50%",
-}));
+// interface FlagBox {
+//   src: string;
+// }
 
-export const LeagueFlagBox = styled(Box)<FlagBox>(({ src, theme }) => ({
-  backgroundImage: `url(${src})`,
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  backgroundColor: theme.palette.background.paper,
-  width: "24px",
-  height: "24px",
-  padding: "10px",
-  borderRadius: "50%",
-  border: "1px solid #fff",
-  position: "absolute",
-  left: "16px",
-}));
+// export const NationFlagBox = styled(Box)(() => ({
+//   backgroundSize: "cover",
+//   backgroundPosition: "center",
+//   width: "20px",
+//   height: "20px",
+//   borderRadius: "50%",
+// }));
+
+// export const LeagueFlagBox = styled(Box)<FlagBox>(({ src, theme }) => ({
+//   backgroundImage: `url(${src})`,
+//   backgroundSize: "cover",
+//   backgroundPosition: "center",
+//   backgroundColor: theme.palette.background.paper,
+//   width: "24px",
+//   height: "24px",
+//   padding: "10px",
+//   borderRadius: "50%",
+//   border: "1px solid #fff",
+//   position: "absolute",
+//   left: "16px",
+// }));
 
 interface LeagueNameButtonProps {
   isselected: string;

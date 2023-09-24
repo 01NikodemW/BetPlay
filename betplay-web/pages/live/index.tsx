@@ -7,6 +7,7 @@ import LeagueSection from "@/components/home/league-section";
 import BetCard from "@/components/read-to-use/bet-card";
 import CenterSection from "@/components/live/center-section";
 import { useState } from "react";
+import Head from "next/head";
 
 const Live: NextPageWithLayout = () => {
   const { t } = useTranslation();
@@ -15,7 +16,11 @@ const Live: NextPageWithLayout = () => {
 
   return (
     <>
-      <NextSeo title={`${t("Live")} | BetPlay`} />
+      <Head>
+        <title>{`${t("Live")} | BetPlay`}</title>
+        <meta content="BetPlay Live Page" name="description" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+      </Head>
       <HomeSectionContainer>
         <LeagueSection
           selectedLeagueIds={selectedLeagueIds}

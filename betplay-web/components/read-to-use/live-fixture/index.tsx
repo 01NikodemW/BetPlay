@@ -4,7 +4,6 @@ import {
   TopSection,
   BottomSection,
   TeamsSection,
-  TeamLogo,
   TeamContainer,
   TeamNameTypography,
   DateAndRoundTypography,
@@ -17,6 +16,7 @@ import { StyledContrastOutlinedButton } from "@/components/read-to-use/styles";
 import { Fixture } from "@/types/fixture";
 import { FC } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 interface LiveFixtureProps {
   fixture: Fixture;
@@ -52,14 +52,32 @@ const LiveFixture: FC<LiveFixtureProps> = ({ fixture }) => {
             <TeamNameTypography variant="h5">
               {t(fixture.homeName)}
             </TeamNameTypography>
-            <TeamLogo ismarginright="false" src={fixture.homeLogo} />
+            {/* <TeamLogo ismarginright="false" src={fixture.homeLogo} /> */}
+            <Image
+              alt="Away team logo"
+              height={24}
+              src={fixture.homeLogo}
+              style={{
+                borderRadius: "60%",
+              }}
+              width={24}
+            />
           </TeamContainer>
 
           <ScoreTypography variant="body1">
             {fixture.goalsHomeTeam} - {fixture.goalsAwayTeam}
           </ScoreTypography>
           <TeamContainer>
-            <TeamLogo ismarginright="true" src={fixture.awayLogo} />
+            {/* <TeamLogo ismarginright="true" src={fixture.awayLogo} /> */}
+            <Image
+              alt="Away team logo"
+              height={24}
+              src={fixture.awayLogo}
+              style={{
+                borderRadius: "60%",
+              }}
+              width={24}
+            />
             <TeamNameTypography isawayteam="true" variant="h5">
               {t(fixture.awayName)}
             </TeamNameTypography>

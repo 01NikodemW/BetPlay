@@ -74,6 +74,7 @@ export const TeamNameTypography = styled(Typography)<{
   isawayteam?: string;
 }>(({ isawayteam, theme }) => ({
   textAlign: isawayteam === "true" ? "right" : "left",
+  ...(isawayteam === "true" ? { marginLeft: "8px" } : { marginRight: "8px" }),
   [theme.breakpoints.down("phone")]: {
     fontSize: rem(16),
   },

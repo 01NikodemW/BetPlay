@@ -104,6 +104,7 @@ const Navbar = () => {
       {!accessToken && (
         <StyledAvatar>
           <StyledIconButton
+            aria-label="AvatarLoggedOut"
             onClick={() => {
               loginWithRedirect();
             }}
@@ -114,7 +115,7 @@ const Navbar = () => {
       )}
       {accessToken && (
         <StyledAvatar>
-          <StyledIconButton onClick={handleClick}>
+          <StyledIconButton aria-label="AvatarLoggedIn" onClick={handleClick}>
             <StyledAvatarIcon />
           </StyledIconButton>
           <StyledMenu
