@@ -9,16 +9,13 @@ namespace BetPlay.Api.Controllers;
 
 public class AccountController : BetPlayControllerBase
 {
-    private readonly IAccountRepository _accountRepository;
-
-    public AccountController(IMediator mediator, IAccountRepository accountRepository) : base(mediator)
+    public AccountController(IMediator mediator) : base(mediator)
     {
-        _accountRepository = accountRepository;
     }
 
 
     [Authorize]
-    [HttpPost("login")]
+    [HttpPost("[action]")]
     public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest request)
     {
         return Ok(await Mediator.Send(request));

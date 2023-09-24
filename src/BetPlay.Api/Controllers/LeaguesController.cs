@@ -10,18 +10,13 @@ public class LeaguesController : BetPlayControllerBase
     {
     }
 
-    // [HttpGet("[action]")]
-    // public async Task<IActionResult> GetTopFiveLeagues()
-    // {
-    //     return Ok(await Mediator.Send(new GetTopFiveLeaguesRequest()));
-    // }
-    
+
     [HttpPost("[action]")]
     public async Task<IActionResult> GetLeagueById([FromBody] GetLeagueByIdRequest request)
     {
         return Ok(await Mediator.Send(request));
     }
-    
+
     [HttpPost("[action]")]
     public async Task<IActionResult> GetLeaguesByCountry([FromBody] GetLeaguesByCountryRequest request)
     {

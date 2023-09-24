@@ -4,6 +4,8 @@ import {
   Box,
   Button,
   IconButton,
+  Menu,
+  MenuItem,
   Typography,
 } from "@mui/material";
 import { styled } from "@mui/system";
@@ -86,6 +88,7 @@ export const MenuNavigationItem = styled(Button)<{ current: string }>(
 export const StyledAvatar = styled(Avatar)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
   width: "100px",
+
   [theme.breakpoints.down("smallTablet")]: {
     width: "auto",
   },
@@ -99,5 +102,29 @@ export const StyledAvatarIcon = styled(PersonIcon)(({ theme }) => ({
 export const StyledIconButton = styled(IconButton)(() => ({
   "&:hover": {
     backgroundColor: "transparent",
+  },
+}));
+
+export const StyledMenu = styled(Menu)(({ theme }) => ({
+  "& .MuiPaper-root": {
+    borderRadius: "4px",
+
+    border: `1px solid ${theme.palette.secondary.main}`,
+  },
+  "& .MuiList-root": {
+    padding: 0,
+  },
+}));
+
+export const StyledMenuItem = styled(MenuItem)<{
+  last: string;
+}>(({ theme, last }) => ({
+  fontSize: rem(16),
+  padding: "8px 20px",
+  borderBottom:
+    last === "true" ? "" : `1px solid ${theme.palette.secondary.main}`,
+  "&:hover": {
+    backgroundColor: theme.palette.secondary.main,
+    color: theme.palette.primary.contrastText,
   },
 }));

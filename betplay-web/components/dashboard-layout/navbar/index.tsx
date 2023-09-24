@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   NavbarContainer,
   PlayText,
@@ -9,34 +9,33 @@ import {
   StyledAvatar,
   StyledAvatarIcon,
   StyledIconButton,
+  StyledMenuItem,
+  StyledMenu,
 } from "./styles";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
-import { Button } from "@mui/material";
+import { useMutation } from "@tanstack/react-query";
+import { createUser } from "@/api/user/api";
 
 const Navbar = () => {
   const { t } = useTranslation();
   const router = useRouter();
   const tabs = ["home", "live", "bets"];
 
-  const {
-    loginWithRedirect,
-    logout,
-    user,
-    isAuthenticated,
-    getAccessTokenSilently,
-  } = useAuth0();
+  const { loginWithRedirect, logout, isAuthenticated, getAccessTokenSilently } =
+    useAuth0();
+
+  const createUserMutation = useMutation((token: string) => createUser(token));
 
   useEffect(() => {
-    if (user != null) {
-      if (isAuthenticated) {
-        getAccessTokenSilently().then((x) => {
-          localStorage.setItem("accessToken", x);
-        });
-      }
+    if (isAuthenticated) {
+      getAccessTokenSilently().then((x) => {
+        localStorage.setItem("accessToken", x);
+        createUserMutation.mutate(x);
+      });
     }
-  }, [user, isAuthenticated, getAccessTokenSilently]);
+  }, [isAuthenticated, getAccessTokenSilently]);
 
   const checkCurrentPage = (page: string) => {
     const path = router.pathname;
@@ -56,6 +55,14 @@ const Navbar = () => {
         return "Home";
     }
   };
+
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+    setMenuOpen(true);
+  };
+
   return (
     <NavbarContainer>
       <LogoWrapper>
@@ -73,24 +80,43 @@ const Navbar = () => {
           </MenuNavigationItem>
         ))}
       </MenuNavigationWrapper>
-      {isAuthenticated && (
-        <Button
-          onClick={() => {
-            logout();
-          }}
-        >
-          logout
-        </Button>
+
+      {!isAuthenticated && (
+        <StyledAvatar>
+          <StyledIconButton
+            onClick={() => {
+              loginWithRedirect();
+            }}
+          >
+            <StyledAvatarIcon />
+          </StyledIconButton>
+        </StyledAvatar>
       )}
-      <StyledAvatar>
-        <StyledIconButton
-          onClick={() => {
-            loginWithRedirect();
-          }}
-        >
-          <StyledAvatarIcon />
-        </StyledIconButton>
-      </StyledAvatar>
+      {isAuthenticated && (
+        <StyledAvatar>
+          <StyledIconButton onClick={handleClick}>
+            <StyledAvatarIcon />
+          </StyledIconButton>
+          <StyledMenu
+            anchorEl={anchorEl}
+            open={menuOpen}
+            onClose={() => {
+              setMenuOpen(false);
+            }}
+          >
+            <StyledMenuItem last="false">{t("Settings")}</StyledMenuItem>
+            <StyledMenuItem
+              last="true"
+              onClick={() => {
+                logout();
+                localStorage.removeItem("accessToken");
+              }}
+            >
+              {t("Log out")}
+            </StyledMenuItem>
+          </StyledMenu>
+        </StyledAvatar>
+      )}
     </NavbarContainer>
   );
 };

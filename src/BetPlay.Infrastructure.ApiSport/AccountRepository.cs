@@ -20,20 +20,26 @@ public class AccountRepository : IAccountRepository
     }
 
 
-    public async Task CreateUser(string Auth0Id)
+    public async Task CreateUser()
     {
         var userAuth0Id = _httpContextAccessor.HttpContext?.User.Claims
             .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+        if (userAuth0Id == null)
+        {
+            throw new InvalidOperationException("Wrong user token");
+        }
+
         var user = await _context.Users.FirstOrDefaultAsync(x => x.Auth0Id == userAuth0Id);
         if (user != null)
-            throw new InvalidOperationException("User already exists.");
+            return;
+
         var newUser = new User
         {
-            Auth0Id = Auth0Id,
+            Auth0Id = userAuth0Id,
             Balance = 100
         };
         _context.Users.Add(newUser);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 
     public async Task<UserDto> GetUserData()

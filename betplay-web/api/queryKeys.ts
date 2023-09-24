@@ -6,4 +6,5 @@ export const queryKeys = {
   bets: "bets",
   createBettingSlip: "createBettingSlip",
   getBetsByFixtureId: "getBetsByFixtureId",
+  createUser: "createUser",
 };
