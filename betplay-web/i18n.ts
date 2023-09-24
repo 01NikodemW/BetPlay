@@ -382,6 +382,7 @@ const resources = {
       "Regular Season - 36": "Runda 36",
       "Regular Season - 37": "Runda 37",
       "Regular Season - 38": "Runda 38",
+      'No fixtures were found': 'Nie znaleziono meczów',
     },
   },
 };

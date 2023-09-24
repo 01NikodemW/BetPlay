@@ -6,16 +6,22 @@ import DashboardLayout from "@/components/dashboard-layout";
 import LeagueSection from "@/components/home/league-section";
 import BetCard from "@/components/read-to-use/bet-card";
 import CenterSection from "@/components/live/center-section";
+import { useState } from "react";
 
 const Live: NextPageWithLayout = () => {
   const { t } = useTranslation();
+
+  const [selectedLeagueIds, setSelectedLeagueIds] = useState<number[]>([]);
 
   return (
     <>
       <NextSeo title={`${t("Live")} | BetPlay`} />
       <HomeSectionContainer>
-        <LeagueSection />
-        <CenterSection />
+        <LeagueSection
+          selectedLeagueIds={selectedLeagueIds}
+          setSelectedLeagueIds={setSelectedLeagueIds}
+        />
+        <CenterSection selectedLeagueIds={selectedLeagueIds} />
         <BetCard mainPage={true} />
       </HomeSectionContainer>
     </>
