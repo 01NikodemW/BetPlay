@@ -95,6 +95,7 @@ export const LeagueWrapper = styled(Box)(() => ({
 
 export const LeagueNameButton = styled(Button)<{ isselected: string }>(
   ({ theme, isselected }) => ({
+    textAlign: "left",
     "&:hover": {
       textDecoration: "none",
       backgroundColor: "transparent",

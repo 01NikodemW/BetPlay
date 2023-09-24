@@ -3,7 +3,6 @@ import {
   AllLeaguesHeader,
   CountriesContainer,
   CountryNameText,
-  LeagueFlagBox,
   LeagueNameButton,
   LeagueWrapper,
   NationFlagBox,
@@ -91,7 +90,6 @@ const AllLeagues: FC<AllLeaguesProps> = ({
                 leaguesMapping[country.name as keyof LeaguesMappingType] || []
               ).map((league) => (
                 <LeagueWrapper key={league.leagueId}>
-                  <LeagueFlagBox src={league.logo || ""} />
                   <LeagueNameButton
                     isselected={
                       selectedLeagueIds.includes(league.leagueId)

@@ -34,7 +34,6 @@ import toast from "react-hot-toast";
 import { queryClient } from "@/api/queryClient";
 import { queryKeys } from "@/api/queryKeys";
 
-// Moved outside of the component
 const calculateTotalOdds = (bets: UserBet[]) => {
   const product = bets.reduce((acc, bet) => acc * parseFloat(bet.odd), 1);
   return (product * 0.88).toFixed(2);
@@ -51,6 +50,7 @@ interface BetCardProps {
 const BetCard: FC<BetCardProps> = ({ mainPage }) => {
   const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [circleIconClicked, setCircleIconClicked] = useState<boolean>(false);
   const { stake, setStake, selectedBets } = useUserBets();
   const betCount = selectedBets.length;
