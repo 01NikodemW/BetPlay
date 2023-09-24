@@ -21,15 +21,21 @@ public class FixturesController : BetPlayControllerBase
     {
         return Ok(await Mediator.Send(request));
     }
-    
+
     [HttpPost("[action]")]
     public async Task<IActionResult> GetAllLiveFixtures([FromBody] GetAllLiveFixturesRequest request)
     {
         return Ok(await Mediator.Send(request));
     }
-    
+
     [HttpPost("[action]")]
     public async Task<IActionResult> GetFixturesByDate([FromBody] GetFixturesByDateRequest request)
+    {
+        return Ok(await Mediator.Send(request));
+    }
+
+    [HttpPost("[action]")]
+    public async Task<IActionResult> GetLiveFixturesByLeagueIds([FromBody] GetLiveFixturesByLeagueIdsRequest request)
     {
         return Ok(await Mediator.Send(request));
     }

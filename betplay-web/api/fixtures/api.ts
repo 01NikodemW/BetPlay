@@ -1,8 +1,9 @@
-import { GetFixturesByDateAndLeagueIdsRequestData } from "@/types/api/fixtures/GetFixturesByDateAndLeagueIdsRequestData";
+import { GetFixturesByDateAndLeagueIdsRequest } from "@/types/api/fixtures/get-fixtures-by-date-and-league-ids-request";
 import { axiosInstance } from "../axios-instance";
+import { GetLiveFixturesByLeagueIdsRequest } from "@/types/api/fixtures/get-live-fixtures-by-league-ids-request";
 
 export async function getFixturesByDateAndLeagueIds(
-  date: GetFixturesByDateAndLeagueIdsRequestData
+  date: GetFixturesByDateAndLeagueIdsRequest
 ) {
   const response = await axiosInstance.post(
     "/Fixtures/GetFixturesByDate",
@@ -31,4 +32,20 @@ export async function getFixturesById(fixtureId: number) {
   );
 
   return response.data.fixture;
+}
+
+export async function getLiveFixturesByLeagueIds(
+  date: GetLiveFixturesByLeagueIdsRequest
+) {
+  const response = await axiosInstance.post(
+    "/Fixtures/GetLiveFixturesByLeagueIds",
+    date,
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  return response.data;
 }

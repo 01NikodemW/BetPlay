@@ -9,7 +9,6 @@ import {
   isMatchResult,
   onBetButtonClick,
 } from "@/utils/bets";
-import { Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 interface BetWithNameProps {
@@ -49,10 +48,6 @@ const BetWithName: FC<BetWithNameProps> = ({
     );
   };
 
-  // const isMatchResult = (str: string) => {
-  //   return str.length <= 5 && str.includes(":");
-  // };
-
   return (
     <BetWithNameButton
       isselected={checkIfContainsBet(selectedBets, userBet) ? "true" : "false"}
@@ -62,8 +57,8 @@ const BetWithName: FC<BetWithNameProps> = ({
       onClick={handleClick}
     >
       <TopTypography
-        variant="body1"
         selected={checkIfContainsBet(selectedBets, userBet) ? "true" : "false"}
+        variant="body1"
       >
         {isMatchResult(userBet.value as string)
           ? userBet.value

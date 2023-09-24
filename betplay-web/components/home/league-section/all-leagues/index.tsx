@@ -3,7 +3,6 @@ import {
   AllLeaguesHeader,
   CountriesContainer,
   CountryNameText,
-  LeagueFlagBox,
   LeagueNameButton,
   LeagueWrapper,
   NationFlagBox,
@@ -11,12 +10,40 @@ import {
   StyledAccordionSummary,
 } from "./styles";
 import { useTranslation } from "react-i18next";
-import { countries, albaniaLeagues } from "@/pages/api/temporary-api-responses";
+import {
+  countriesForAllLeagues,
+  englandLeagues,
+  franceLeagues,
+  germanyLeagues,
+  italyLeagues,
+  polandLeagues,
+  spainLeagues,
+  worldLeagues,
+} from "@/pages/api/temporary-api-responses";
 import { AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { FC } from "react";
-import { Country } from "@/types/country";
+import { League } from "@/types/league";
 
+type LeaguesMappingType = {
+  Spain: League[];
+  Italy: League[];
+  France: League[];
+  England: League[];
+  Germany: League[];
+  Poland: League[];
+  World: League[];
+};
+
+const leaguesMapping: LeaguesMappingType = {
+  Spain: spainLeagues,
+  Italy: italyLeagues,
+  France: franceLeagues,
+  England: englandLeagues,
+  Germany: germanyLeagues,
+  Poland: polandLeagues,
+  World: worldLeagues,
+};
 interface AllLeaguesProps {
   selectedLeagueIds: number[];
   handleLeagueClick: (leagueId: number) => () => void;
@@ -28,7 +55,13 @@ const AllLeagues: FC<AllLeaguesProps> = ({
 }) => {
   const { t } = useTranslation();
 
-  const sortCountriesByLanguage = (countries: Country[]) => {
+  const sortCountriesByLanguage = (
+    countries: {
+      name: string;
+      flag: string | null;
+      code: string | null;
+    }[]
+  ) => {
     const sortedCountries = [...countries];
 
     sortedCountries.sort((a, b) => {
@@ -40,7 +73,7 @@ const AllLeagues: FC<AllLeaguesProps> = ({
     return sortedCountries;
   };
 
-  const sortedCountries = sortCountriesByLanguage(countries);
+  const sortedCountries = sortCountriesByLanguage(countriesForAllLeagues);
 
   return (
     <AllLeaguesCard>
@@ -49,24 +82,26 @@ const AllLeagues: FC<AllLeaguesProps> = ({
         {sortedCountries.map((country, index) => (
           <StyledAccordion key={index}>
             <StyledAccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <NationFlagBox src={country.flag} />
+              <NationFlagBox src={country.flag || ""} />
               <CountryNameText>{t(country.name)}</CountryNameText>
             </StyledAccordionSummary>
             <AccordionDetails>
-              {country.name === "Albania" &&
-                albaniaLeagues.map((league) => (
-                  <LeagueWrapper key={league.id}>
-                    <LeagueFlagBox src={league.logo} />
-                    <LeagueNameButton
-                      isselected={
-                        selectedLeagueIds.includes(league.id) ? "true" : "false"
-                      }
-                      onClick={handleLeagueClick(league.id)}
-                    >
-                      {league.name}
-                    </LeagueNameButton>
-                  </LeagueWrapper>
-                ))}
+              {(
+                leaguesMapping[country.name as keyof LeaguesMappingType] || []
+              ).map((league) => (
+                <LeagueWrapper key={league.leagueId}>
+                  <LeagueNameButton
+                    isselected={
+                      selectedLeagueIds.includes(league.leagueId)
+                        ? "true"
+                        : "false"
+                    }
+                    onClick={handleLeagueClick(league.leagueId)}
+                  >
+                    {league.name}
+                  </LeagueNameButton>
+                </LeagueWrapper>
+              ))}
             </AccordionDetails>
           </StyledAccordion>
         ))}

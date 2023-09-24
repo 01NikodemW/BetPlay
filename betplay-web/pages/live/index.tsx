@@ -4,18 +4,18 @@ import { HomeSectionContainer } from "./styles";
 import { NextPageWithLayout } from "../_app";
 import DashboardLayout from "@/components/dashboard-layout";
 import LeagueSection from "@/components/home/league-section";
-import CenterSection from "@/components/home/center-section";
 import BetCard from "@/components/read-to-use/bet-card";
+import CenterSection from "@/components/live/center-section";
 import { useState } from "react";
 
-const Index: NextPageWithLayout = () => {
+const Live: NextPageWithLayout = () => {
   const { t } = useTranslation();
 
   const [selectedLeagueIds, setSelectedLeagueIds] = useState<number[]>([]);
 
   return (
     <>
-      <NextSeo title={`${t("Home")} | BetPlay`} />
+      <NextSeo title={`${t("Live")} | BetPlay`} />
       <HomeSectionContainer>
         <LeagueSection
           selectedLeagueIds={selectedLeagueIds}
@@ -28,6 +28,6 @@ const Index: NextPageWithLayout = () => {
   );
 };
 
-Index.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
+Live.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
 
-export default Index;
+export default Live;

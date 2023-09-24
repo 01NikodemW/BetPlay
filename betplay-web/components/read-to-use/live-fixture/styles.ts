@@ -64,8 +64,6 @@ export const TeamLogo = styled(Box)<FlagBox>(
       width: "24px",
       height: "24px",
     },
-
-  
   })
 );
 export const TeamNameTypography = styled(Typography)<{
@@ -76,9 +74,9 @@ export const TeamNameTypography = styled(Typography)<{
 
   [theme.breakpoints.down("phone")]: {
     fontSize: rem(16),
-    wordWrap: "break-word", // 1
-    overflowWrap: "break-word", // 2
-    hyphens: "auto", // 4 - Note: browser support varies
+    wordWrap: "break-word",
+    overflowWrap: "break-word",
+    hyphens: "auto",
   },
 }));
 
@@ -86,7 +84,7 @@ export const ScoreTypography = styled(Typography)(({ theme }) => ({
   paddingLeft: "12px",
   paddingRight: "12px",
   color: theme.palette.background.default,
-  whiteSpace: 'nowrap'
+  whiteSpace: "nowrap",
 }));
 
 export const LiveDetailsBox = styled(Box)(() => ({

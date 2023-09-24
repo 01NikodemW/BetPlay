@@ -8,6 +8,7 @@ import {
   TeamContainer,
   TeamNameTypography,
   TimeTypography,
+  ScoreTypography
 } from "./styles";
 
 import { StyledOutlinedButton } from "@/components/read-to-use/styles";
@@ -15,6 +16,7 @@ import { Typography } from "@mui/material";
 import { Fixture } from "@/types/fixture";
 import { FC } from "react";
 import { useRouter } from "next/router";
+import { checkIfFixtureIsFinished } from "@/utils/check-fixture-status";
 
 interface FixtureProps {
   fixture: Fixture;
@@ -42,7 +44,8 @@ const Fixture: FC<FixtureProps> = ({ fixture }) => {
     <FixtureCard>
       <TopSection>
         <Typography variant="body2">
-          {t(fixture.fixtureLeague.league?.name)}, {t(fixture.fixtureLeague.round)}
+          {t(fixture.fixtureLeague.league?.name)},{" "}
+          {t(fixture.fixtureLeague.round)}
         </Typography>
       </TopSection>
       <BottomSection>
@@ -53,9 +56,16 @@ const Fixture: FC<FixtureProps> = ({ fixture }) => {
             </TeamNameTypography>
             <TeamLogo ismarginright="false" src={fixture.homeLogo} />
           </TeamContainer>
-          <TimeTypography variant="body2">
-            {convertToUserTimezone(fixture.date)}
-          </TimeTypography>
+          {!checkIfFixtureIsFinished(fixture) && (
+            <TimeTypography variant="body2">
+              {convertToUserTimezone(fixture.date)}
+            </TimeTypography>
+          )}
+          {checkIfFixtureIsFinished(fixture) && (
+            <ScoreTypography variant="body1">
+              {fixture.goalsHomeTeam} - {fixture.goalsAwayTeam}
+            </ScoreTypography>
+          )}
           <TeamContainer>
             <TeamLogo ismarginright="true" src={fixture.awayLogo} />
             <TeamNameTypography isawayteam="true" variant="h5">

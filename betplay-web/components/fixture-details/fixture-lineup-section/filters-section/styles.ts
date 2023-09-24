@@ -1,4 +1,3 @@
-import { darkThemeOptions } from "@/theme/dark-theme-options";
 import { rem } from "@/utils/px-to-rem";
 import { Box, Grid, Typography } from "@mui/material";
 import { styled } from "@mui/system";
@@ -32,7 +31,7 @@ export const StyledTypography = styled(Typography)<{ selected: string }>(
         ? theme.palette.primary.contrastText
         : theme.palette.background.default !== "#2a2a2a" && selected === "true"
         ? theme.palette.text.primary
-        :    theme.palette.text.primary,
+        : theme.palette.text.primary,
     fontSize: rem(20),
     fontWeight: 600,
     [theme.breakpoints.down("phone")]: {

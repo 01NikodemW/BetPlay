@@ -1,6 +1,4 @@
 import { checkIfFixtureIsLive } from "@/utils/check-fixture-status";
-import Fixture from "./fixture";
-import LiveFixture from "./live-fixture";
 import {
   ButtonBox,
   ButtonText,
@@ -8,22 +6,27 @@ import {
   LeftButton,
   RightButton,
 } from "./styles";
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
 import { queryKeys } from "@/api/queryKeys";
 import { getFixturesByDateAndLeagueIds } from "@/api/fixtures/api";
 import LoadingInfo from "@/components/read-to-use/loading-info";
-import { getUserData } from "@/api/user/api";
+import LiveFixture from "@/components/read-to-use/live-fixture";
+import Fixture from "@/components/read-to-use/fixture";
+import NoFixturesFound from "@/components/read-to-use/no-fixtures-info";
 
-const CenterSection = () => {
+interface CenterSectionProps {
+  selectedLeagueIds: number[];
+}
+
+const CenterSection: FC<CenterSectionProps> = ({ selectedLeagueIds }) => {
   const [date, setDate] = useState<string>(
     dayjs().subtract(0, "day").toISOString()
   );
 
   const { t } = useTranslation();
-  const leagueIds = [960, 39];
 
   const generateDate = (date: string) => {
     const formattedDate = dayjs(date).format("DD-MM-YYYY");
@@ -40,21 +43,13 @@ const CenterSection = () => {
     }
   };
 
-  const { data: fixtures, isFetching } = useQuery({
-    queryKey: [queryKeys.getFixturesByDate, date],
+  const { data: fixtures, isFetching: isFixturesFetching } = useQuery({
+    queryKey: [queryKeys.getFixturesByDate, date, selectedLeagueIds],
     queryFn: () =>
       getFixturesByDateAndLeagueIds({
         date,
-        leagueIds,
+        leagueIds: selectedLeagueIds,
       }),
-    placeholderData: {
-      data: [],
-    },
-  });
-
-  const { data: userData, isFetching: isUserDataFetching } = useQuery({
-    queryKey: [queryKeys.getUsersData],
-    queryFn: () => getUserData(),
   });
 
   return (
@@ -68,20 +63,18 @@ const CenterSection = () => {
         />
         <ButtonText>{"<" + generateDate(date) + ">"}</ButtonText>
       </ButtonBox>
-      {/* {leagueFixtures.map((fixture) => (
-        <React.Fragment key={fixture.fixtureId}>
-          {checkIfFixtureIsLive(fixture) && <LiveFixture fixture={fixture} />}
-          {!checkIfFixtureIsLive(fixture) && <Fixture fixture={fixture} />}
-        </React.Fragment>
-      ))} */}
-      {isFetching && <LoadingInfo />}
-      {!isFetching &&
+      {isFixturesFetching && <LoadingInfo />}
+      {!isFixturesFetching &&
+        fixtures.fixtures.length > 0 &&
         fixtures.fixtures.map((fixture: Fixture) => (
           <React.Fragment key={fixture.fixtureId}>
             {checkIfFixtureIsLive(fixture) && <LiveFixture fixture={fixture} />}
             {!checkIfFixtureIsLive(fixture) && <Fixture fixture={fixture} />}
           </React.Fragment>
         ))}
+      {!isFixturesFetching && fixtures.fixtures.length === 0 && (
+        <NoFixturesFound />
+      )}
     </CenterSectionContainer>
   );
 };

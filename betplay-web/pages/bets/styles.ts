@@ -10,5 +10,5 @@ export const BetsSectionContainer = styled(Box)(({ theme }) => ({
   },
 }));
 
-const DashboardStyles = () => null;
-export default DashboardStyles;
+const BetsStyles = () => null;
+export default BetsStyles;
