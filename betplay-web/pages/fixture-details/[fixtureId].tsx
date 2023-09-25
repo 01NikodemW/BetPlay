@@ -42,7 +42,6 @@ const Index: NextPageWithLayout = () => {
         <FixtureLineupSection fixture={fixture} />
       )}
       <FixtureStatsSection fixture={fixture} />
-      {/* {!checkIfFixtureIsFinished(fixture) && <BetsSection fixture={fixture} />} */}
       <BetsSection fixture={fixture} />
     </FixtureDetailsBox>
   );

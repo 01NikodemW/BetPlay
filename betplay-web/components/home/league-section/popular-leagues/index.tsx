@@ -23,9 +23,7 @@ const PopularLeagues: FC<PopularLeaguesProps> = ({
 
   return (
     <PopularLeaguesCard>
-      <PopularLeaguesHeader variant="h6">
-        {t("The most popular")}
-      </PopularLeaguesHeader>
+      <PopularLeaguesHeader>{t("The most popular")}</PopularLeaguesHeader>
       {popularLeagues.map((league, index) => (
         <LeagueWrapper key={index}>
           <FlagBoxWrapper>

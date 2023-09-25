@@ -16,9 +16,11 @@ import {
 import { useAuth0 } from "@auth0/auth0-react";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { createUser } from "@/api/user/api";
 import { useSettings } from "@/context/settings-context";
+import { queryKeys } from "@/api/queryKeys";
+import { verifyUserBets } from "@/api/bets/api";
 
 const Navbar = () => {
   const { t } = useTranslation();
@@ -72,6 +74,7 @@ const Navbar = () => {
     if (isAuthenticated) {
       getAccessTokenSilently().then((x) => {
         localStorage.setItem("accessToken", x);
+        setAccessToken(x);
         createUserMutation.mutate(x);
       });
     }
@@ -80,6 +83,13 @@ const Navbar = () => {
   useEffect(() => {
     setAccessToken(localStorage.getItem("accessToken"));
   }, []);
+
+  useQuery({
+    queryKey: [queryKeys.verifyUserBets],
+    queryFn: () => verifyUserBets(),
+    enabled: Boolean(accessToken),
+    refetchInterval: 300000,
+  });
 
   const settings = useSettings();
 

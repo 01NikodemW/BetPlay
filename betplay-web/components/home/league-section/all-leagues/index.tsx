@@ -77,7 +77,7 @@ const AllLeagues: FC<AllLeaguesProps> = ({
 
   return (
     <AllLeaguesCard>
-      <AllLeaguesHeader variant="h6">{t("All")}</AllLeaguesHeader>
+      <AllLeaguesHeader >{t("All")}</AllLeaguesHeader>
       <CountriesContainer>
         {sortedCountries.map((country, index) => (
           <StyledAccordion key={index}>

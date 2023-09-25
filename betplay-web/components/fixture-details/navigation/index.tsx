@@ -69,6 +69,7 @@ const Navigation: FC<NavigationProps> = ({ fixture }) => {
     <FixtureNavigationBox>
       {!checkIfBeforeFixtureStart(fixture) && (
         <StyledIconButton
+          aria-label="event-tree-section"
           visible={activeSection === "event-tree-section" ? "true" : "false"}
           onClick={handleButtonClick("event-tree-section")}
         >
@@ -77,6 +78,7 @@ const Navigation: FC<NavigationProps> = ({ fixture }) => {
       )}
       {!checkIfBeforeFixtureStart(fixture) && (
         <StyledIconButton
+          aria-label="lineup-section"
           visible={activeSection === "lineup-section" ? "true" : "false"}
           onClick={handleButtonClick("lineup-section")}
         >
@@ -84,6 +86,7 @@ const Navigation: FC<NavigationProps> = ({ fixture }) => {
         </StyledIconButton>
       )}
       <StyledIconButton
+        aria-label="stats-section"
         visible={activeSection === "stats-section" ? "true" : "false"}
         onClick={handleButtonClick("stats-section")}
       >
@@ -91,6 +94,7 @@ const Navigation: FC<NavigationProps> = ({ fixture }) => {
       </StyledIconButton>
       {!checkIfFixtureIsFinished(fixture) && (
         <StyledIconButton
+          aria-label="bets-section"
           visible={activeSection === "bets-section" ? "true" : "false"}
           onClick={handleButtonClick("bets-section")}
         >

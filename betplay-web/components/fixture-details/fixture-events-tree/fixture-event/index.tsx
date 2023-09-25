@@ -25,6 +25,22 @@ const FixtureEvent: FC<FixtureEventProps> = ({
   const homeTeamId = fixture.teams.home.id;
   const awayTeamId = fixture.teams.away.id;
 
+  const possibleEvents = [
+    "Normal Goal",
+    "Penalty",
+    "Own Goal",
+    "Missed Penalty",
+    "Yellow Card",
+    "Red Card",
+    "Substitution 1",
+    "Substitution 2",
+    "Substitution 3",
+    "Substitution 4",
+    "Substitution 5",
+    "Substitution 6",
+  ];
+  if (!possibleEvents.includes(event.detail)) return null;
+
   return (
     <FixtureEventBox>
       <LeftSideBox>

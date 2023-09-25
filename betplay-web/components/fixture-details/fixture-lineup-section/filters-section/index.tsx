@@ -57,7 +57,7 @@ const FiltersSection: FC<FiltersSectionProps> = ({
             }}
           >
             <StyledTypography
-              selected={currentFilter === filter ? "true" : "false"}
+              selected={currentFilter === filter}
             >
               {t(filter)}
             </StyledTypography>

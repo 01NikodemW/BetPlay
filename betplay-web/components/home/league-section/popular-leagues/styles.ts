@@ -8,6 +8,7 @@ export const PopularLeaguesCard = styled(Card)(() => ({
 
 export const PopularLeaguesHeader = styled(Typography)(() => ({
   marginBottom: "16px",
+  fontWeight: "bold",
 }));
 
 export const LeagueWrapper = styled(Box)(() => ({

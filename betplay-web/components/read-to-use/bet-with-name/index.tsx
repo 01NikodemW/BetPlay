@@ -50,23 +50,21 @@ const BetWithName: FC<BetWithNameProps> = ({
 
   return (
     <BetWithNameButton
-      isselected={checkIfContainsBet(selectedBets, userBet) ? "true" : "false"}
+      selected={checkIfContainsBet(selectedBets, userBet)}
       sx={{
         visibility: invisible ? "hidden" : "visible",
       }}
       onClick={handleClick}
     >
       <TopTypography
-        selected={checkIfContainsBet(selectedBets, userBet) ? "true" : "false"}
+        selected={checkIfContainsBet(selectedBets, userBet)}
         variant="body1"
       >
         {isMatchResult(userBet.value as string)
           ? userBet.value
           : t(generateValue())}
       </TopTypography>
-      <BottomTypography
-        selected={checkIfContainsBet(selectedBets, userBet) ? "true" : "false"}
-      >
+      <BottomTypography selected={checkIfContainsBet(selectedBets, userBet)}>
         {userBet.odd}
       </BottomTypography>
     </BetWithNameButton>
