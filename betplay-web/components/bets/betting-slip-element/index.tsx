@@ -161,7 +161,7 @@ const BettingSlipElement: FC<BettingSlipElementProps> = ({ bettingSlip }) => {
           <Typography variant="h6">
             {bettingSlip.status === betStatus.Lost
               ? 0
-              : bettingSlip.totalOdds * bettingSlip.totalStake * 0.88}
+              : (bettingSlip.totalOdds * bettingSlip.totalStake).toFixed(2)}
             {" zł"}
           </Typography>
         </TypographyBox>

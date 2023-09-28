@@ -28,15 +28,16 @@ import { testIfPositiveInteger } from "@/utils/input-validators";
 import { isMatchResult } from "@/utils/bets";
 import CloseIcon from "@mui/icons-material/Close";
 import { CreateBettingSlipRequest } from "@/types/api/bets/create-betting-slip-request";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { createBettingSlip } from "@/api/bets/api";
 import toast from "react-hot-toast";
 import { queryClient } from "@/api/queryClient";
 import { queryKeys } from "@/api/queryKeys";
+import { getUserData } from "@/api/user/api";
 
 const calculateTotalOdds = (bets: UserBet[]) => {
   const product = bets.reduce((acc, bet) => acc * parseFloat(bet.odd), 1);
-  return (product * 0.88).toFixed(2);
+  return product.toFixed(2);
 };
 
 const calculateTotalStake = (bets: UserBet[], stake: number) => {
@@ -51,8 +52,9 @@ const BetCard: FC<BetCardProps> = ({ mainPage }) => {
   const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [inputError, setInputError] = useState<boolean>(false);
   const [circleIconClicked, setCircleIconClicked] = useState<boolean>(false);
-  const { stake, setStake, selectedBets } = useUserBets();
+  const { stake, setStake, selectedBets, setSelectedBets } = useUserBets();
   const betCount = selectedBets.length;
   const totalOdds = useMemo(
     () => calculateTotalOdds(selectedBets),
@@ -72,6 +74,7 @@ const BetCard: FC<BetCardProps> = ({ mainPage }) => {
   const handleStakeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (testIfPositiveInteger(e.target.value)) {
       setStake(Number(e.target.value));
+      setInputError(Number(e.target.value) > userData.balance);
     }
   };
 
@@ -89,11 +92,19 @@ const BetCard: FC<BetCardProps> = ({ mainPage }) => {
     theme.breakpoints.down("tablet")
   );
 
+  const { data: userData, isFetching: isUserDataFetching } = useQuery({
+    queryKey: [queryKeys.getUsersData],
+    queryFn: () => getUserData(),
+  });
+
   const createBettingSlipMutation = useMutation(
     (values: CreateBettingSlipRequest) => createBettingSlip(values),
     {
       onSuccess: () => {
         toast.success(t("Betting slip successfully created"));
+        setSelectedBets([]);
+        setStake(0);
+
         queryClient.invalidateQueries([queryKeys.getUsersData]);
       },
     }
@@ -182,6 +193,10 @@ const BetCard: FC<BetCardProps> = ({ mainPage }) => {
       </StyledButton>
 
       <StyledTextField
+        error={inputError}
+        helperText={
+          inputError && t("Insufficient amount of money in the account")
+        }
         InputProps={{
           endAdornment: <InputAdornment position="end">zł</InputAdornment>,
         }}
@@ -197,7 +212,16 @@ const BetCard: FC<BetCardProps> = ({ mainPage }) => {
         <Typography variant="subtitle1">{t("Potential prize")}</Typography>
         <Typography variant="subtitle1">{totalStake}</Typography>
       </SecondTextBox>
-      <Button variant="contained" onClick={handleCreateBettingSlip}>
+      <Button
+        disabled={
+          stake === 0 ||
+          selectedBets.length === 0 ||
+          inputError ||
+          isUserDataFetching
+        }
+        variant="contained"
+        onClick={handleCreateBettingSlip}
+      >
         {t("Make a bet")}
       </Button>
     </BetContainer>

@@ -72,6 +72,8 @@ export const TeamNameTypography = styled(Typography)<{
   textAlign: isawayteam === "true" ? "right" : "left",
   color: theme.palette.background.default,
 
+  ...(isawayteam === "true" ? { marginLeft: "8px" } : { marginRight: "8px" }),
+
   [theme.breakpoints.down("phone")]: {
     fontSize: rem(16),
     wordWrap: "break-word",
@@ -93,7 +95,7 @@ export const LiveDetailsBox = styled(Box)(() => ({
 }));
 
 export const LiveText = styled(Typography)(({ theme }) => ({
-  color: theme.palette.background.default,
+  color: theme.palette.background.paper,
   backgroundColor: theme.palette.error.main,
   paddingLeft: "4px",
   borderRadius: "6px",

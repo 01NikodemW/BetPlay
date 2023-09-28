@@ -11368,7 +11368,7 @@ export const popularLeagues = [
     id: 135,
     name: "Serie A",
     type: "League",
-    logo: "https://media-1.api-sports.io/football/leagues/135.png",
+    logo: "https://vectorseek.com/wp-content/uploads/2023/06/Serie-A-2022-Logo-Vector.jpg",
     country: {
       name: "Italy",
       code: "IT",
@@ -11390,7 +11390,7 @@ export const popularLeagues = [
     id: 61,
     name: "Ligue 1",
     type: "League",
-    logo: "https://media-1.api-sports.io/football/leagues/61.png",
+    logo: "https://logodownload.org/wp-content/uploads/2019/09/ligue-1-logo-0.png",
     country: {
       name: "France",
       code: "FR",

@@ -15,6 +15,7 @@ export const AllLeaguesCard = styled(Card)(() => ({
 
 export const AllLeaguesHeader = styled(Typography)(() => ({
   marginBottom: "16px",
+  fontWeight: "bold",
 }));
 
 export const CountriesContainer = styled(Box)(() => ({}));

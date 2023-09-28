@@ -17,7 +17,8 @@ const resources = {
       "The most popular": "Najpopularniejsze",
       All: "Wszystkie",
       "View details": "Zobacz szczegóły",
-
+      "Insufficient amount of money in the account":
+        "Niewystarczająca ilość środków na koncie",
       "Shots on Goal": "Strzały celne",
       "Shots off Goal": "Strzały niecelne",
       "Total Shots": "Strzały",
@@ -382,7 +383,9 @@ const resources = {
       "Regular Season - 36": "Runda 36",
       "Regular Season - 37": "Runda 37",
       "Regular Season - 38": "Runda 38",
-      'No fixtures were found': 'Nie znaleziono meczów',
+      "No fixtures were found": "Nie znaleziono meczów",
+      Settings: "Ustawienia",
+      "Log out": "Wyloguj się",
     },
   },
 };

@@ -1,15 +1,14 @@
 import { FC } from "react";
 import {
   FlagBoxWrapper,
-  LeagueFlagBox,
   LeagueNameButton,
   LeagueWrapper,
-  NationFlagBox,
   PopularLeaguesCard,
   PopularLeaguesHeader,
 } from "./styles";
 import { useTranslation } from "react-i18next";
 import { popularLeagues } from "@/pages/api/temporary-api-responses";
+import Image from "next/image";
 
 interface PopularLeaguesProps {
   selectedLeagueIds: number[];
@@ -24,14 +23,28 @@ const PopularLeagues: FC<PopularLeaguesProps> = ({
 
   return (
     <PopularLeaguesCard>
-      <PopularLeaguesHeader variant="h6">
-        {t("The most popular")}
-      </PopularLeaguesHeader>
+      <PopularLeaguesHeader>{t("The most popular")}</PopularLeaguesHeader>
       {popularLeagues.map((league, index) => (
         <LeagueWrapper key={index}>
           <FlagBoxWrapper>
-            <NationFlagBox src={league.country.flag} />
-            <LeagueFlagBox src={league.logo} />
+            <Image
+              alt="Country flag"
+              height={20}
+              src={league.country.flag}
+              style={{
+                borderRadius: "60%",
+              }}
+              width={20}
+            />
+            <Image
+              alt="League flag"
+              height={20}
+              src={league.logo}
+              style={{
+                borderRadius: "60%",
+              }}
+              width={20}
+            />
           </FlagBoxWrapper>
           <LeagueNameButton
             isselected={

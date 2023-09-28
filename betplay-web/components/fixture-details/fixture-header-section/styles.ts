@@ -28,7 +28,7 @@ export const LeagueWrapper = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   border: `2px solid ${theme.palette.neutral[200]}`,
-  backgroundColor: theme.palette.neutral[100],
+  backgroundColor: theme.palette.background.default,
   borderRadius: "24px",
   padding: "8px 16px",
 }));
@@ -65,7 +65,7 @@ export const LeagueLogo = styled(Box)<{
 
 export const LeagueTypography = styled(Typography)(({ theme }) => ({
 
-  color: theme.palette.primary.contrastText,
+  color: theme.palette.text.primary,
   fontSize: rem(16),
   [theme.breakpoints.down("smallPhone")]: {
     fontSize: rem(14),

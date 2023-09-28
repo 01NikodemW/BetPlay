@@ -5,7 +5,6 @@ import {
   CountryNameText,
   LeagueNameButton,
   LeagueWrapper,
-  NationFlagBox,
   StyledAccordion,
   StyledAccordionSummary,
 } from "./styles";
@@ -24,6 +23,7 @@ import { AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { FC } from "react";
 import { League } from "@/types/league";
+import Image from "next/image";
 
 type LeaguesMappingType = {
   Spain: League[];
@@ -77,12 +77,20 @@ const AllLeagues: FC<AllLeaguesProps> = ({
 
   return (
     <AllLeaguesCard>
-      <AllLeaguesHeader variant="h6">{t("All")}</AllLeaguesHeader>
+      <AllLeaguesHeader >{t("All")}</AllLeaguesHeader>
       <CountriesContainer>
         {sortedCountries.map((country, index) => (
           <StyledAccordion key={index}>
             <StyledAccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <NationFlagBox src={country.flag || ""} />
+              <Image
+                alt="Country flag"
+                height={24}
+                src={country.flag || ""}
+                style={{
+                  borderRadius: "60%",
+                }}
+                width={24}
+              />
               <CountryNameText>{t(country.name)}</CountryNameText>
             </StyledAccordionSummary>
             <AccordionDetails>

@@ -15,7 +15,7 @@ const neutral = {
 };
 
 const button = {
-  main: "#F160D2",
+  main: "#f03ac9",
   light: "#FF78E2",
   dark: "#3832A0",
   disabled: "#FF829E",
@@ -25,8 +25,6 @@ const button = {
 const menu = {
   main: "#393939",
 };
-
-
 
 const divider = "#C6C6C6";
 
@@ -40,7 +38,7 @@ const primary = {
 //////////////////////////////
 
 const secondary = {
-  main: "#F160D2",
+  main: "#f03ac9",
   light: "#FF78E2", //TODO: pick lighter color
   dark: "#0B815A", //TODO: pick darker color
   contrastText: "#FFFFFF",

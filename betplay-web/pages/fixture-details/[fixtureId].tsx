@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 
-import { NextSeo } from "next-seo";
 import { NextPageWithLayout } from "../_app";
 import DashboardLayout from "@/components/dashboard-layout";
 
@@ -15,6 +14,7 @@ import { useQuery } from "@tanstack/react-query";
 import { queryKeys } from "@/api/queryKeys";
 import { getFixturesById } from "@/api/fixtures/api";
 import { checkIfBeforeFixtureStart } from "@/utils/check-fixture-status";
+import Head from "next/head";
 
 const Index: NextPageWithLayout = () => {
   const router = useRouter();
@@ -30,7 +30,11 @@ const Index: NextPageWithLayout = () => {
 
   return (
     <FixtureDetailsBox>
-      <NextSeo title={`${fixtureId}  | BetPlay`} />
+      <Head>
+        <title>{`BetPlay`}</title>
+        <meta content="BetPlay Bets Page" name="description" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+      </Head>
       <Navigation fixture={fixture} />
       <FixtureHeaderSection fixture={fixture} />
       <FixtureEventsTree fixture={fixture} />
@@ -38,7 +42,6 @@ const Index: NextPageWithLayout = () => {
         <FixtureLineupSection fixture={fixture} />
       )}
       <FixtureStatsSection fixture={fixture} />
-      {/* {!checkIfFixtureIsFinished(fixture) && <BetsSection fixture={fixture} />} */}
       <BetsSection fixture={fixture} />
     </FixtureDetailsBox>
   );

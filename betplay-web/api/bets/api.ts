@@ -23,3 +23,18 @@ export async function getBetsByFixtureId(data: GetBetsByFixtureIdRequest) {
 
   return response.data;
 }
+
+export async function verifyUserBets() {
+  const response = await axiosInstance.post(
+    "/Bets/VerifyUserBets",
+    {},
+    {
+      headers: {
+        "Content-Type": "application/json",
+        ...getJWTHeader(),
+      },
+    }
+  );
+
+  return response.data;
+}

@@ -24,12 +24,12 @@ export const FilterBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const StyledTypography = styled(Typography)<{ selected: string }>(
+export const StyledTypography = styled(Typography)<{ selected: boolean }>(
   ({ theme, selected }) => ({
     color:
-      theme.palette.background.default === "#2a2a2a" && selected === "true"
+      theme.palette.background.default === "#2a2a2a" && selected
         ? theme.palette.primary.contrastText
-        : theme.palette.background.default !== "#2a2a2a" && selected === "true"
+        : theme.palette.background.default !== "#2a2a2a" && selected
         ? theme.palette.text.primary
         : theme.palette.text.primary,
     fontSize: rem(20),

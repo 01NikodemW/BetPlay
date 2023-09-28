@@ -6,7 +6,7 @@ import {
   LeftButton,
   RightButton,
 } from "./styles";
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
@@ -16,17 +16,36 @@ import LoadingInfo from "@/components/read-to-use/loading-info";
 import LiveFixture from "@/components/read-to-use/live-fixture";
 import Fixture from "@/components/read-to-use/fixture";
 import NoFixturesFound from "@/components/read-to-use/no-fixtures-info";
+import { useRouter } from "next/router";
 
 interface CenterSectionProps {
   selectedLeagueIds: number[];
 }
 
 const CenterSection: FC<CenterSectionProps> = ({ selectedLeagueIds }) => {
-  const [date, setDate] = useState<string>(
-    dayjs().subtract(0, "day").toISOString()
-  );
-
   const { t } = useTranslation();
+  const router = useRouter();
+
+  const [date, setDate] = useState<string>(dayjs().format("YYYY-MM-DD"));
+
+  useEffect(() => {
+    const queryDate = Array.isArray(router.query.date)
+      ? router.query.date[0]
+      : router.query.date;
+
+    if (queryDate) {
+      setDate(queryDate);
+    }
+  }, [router.query]);
+
+  const { data: fixtures, isFetching: isFixturesFetching } = useQuery({
+    queryKey: [queryKeys.getFixturesByDate, date, selectedLeagueIds],
+    queryFn: () =>
+      getFixturesByDateAndLeagueIds({
+        date,
+        leagueIds: selectedLeagueIds,
+      }),
+  });
 
   const generateDate = (date: string) => {
     const formattedDate = dayjs(date).format("DD-MM-YYYY");
@@ -43,23 +62,45 @@ const CenterSection: FC<CenterSectionProps> = ({ selectedLeagueIds }) => {
     }
   };
 
-  const { data: fixtures, isFetching: isFixturesFetching } = useQuery({
-    queryKey: [queryKeys.getFixturesByDate, date, selectedLeagueIds],
-    queryFn: () =>
-      getFixturesByDateAndLeagueIds({
-        date,
-        leagueIds: selectedLeagueIds,
-      }),
-  });
-
   return (
     <CenterSectionContainer>
       <ButtonBox>
         <LeftButton
-          onClick={() => setDate(dayjs(date).subtract(1, "day").toISOString())}
+          aria-label="PreviousDate"
+          onClick={() => {
+            const newDate = dayjs(date).subtract(1, "day").format("YYYY-MM-DD");
+            setDate(newDate);
+            router.replace(
+              {
+                pathname: router.pathname,
+                query: {
+                  ...router.query,
+                  date: newDate,
+                },
+              },
+              undefined,
+              { shallow: true }
+            );
+          }}
         />
         <RightButton
-          onClick={() => setDate(dayjs(date).add(1, "day").toISOString())}
+          aria-label="NextDate"
+          onClick={() => {
+            const newDate = dayjs(date).add(1, "day").format("YYYY-MM-DD");
+            setDate(newDate);
+
+            router.replace(
+              {
+                pathname: router.pathname,
+                query: {
+                  ...router.query,
+                  date: newDate,
+                },
+              },
+              undefined,
+              { shallow: true }
+            );
+          }}
         />
         <ButtonText>{"<" + generateDate(date) + ">"}</ButtonText>
       </ButtonBox>

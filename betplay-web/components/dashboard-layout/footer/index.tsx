@@ -46,19 +46,19 @@ const Footer = () => {
       </MobileWrapper>
 
       <SocialMediaIconsWrapper>
-        <StyledIconButton>
+        <StyledIconButton aria-label="Instagram">
           <InstagramIcon />
         </StyledIconButton>
-        <StyledIconButton>
+        <StyledIconButton aria-label="Facebook">
           <FacebookOutlinedIcon />
         </StyledIconButton>
-        <StyledIconButton>
+        <StyledIconButton aria-label="YouTube">
           <YouTubeIcon />
         </StyledIconButton>
-        <StyledIconButton>
+        <StyledIconButton aria-label="Twitter">
           <TwitterIcon />
         </StyledIconButton>
-        <StyledIconButton>
+        <StyledIconButton aria-label="LinkedIn">
           <LinkedInIcon />
         </StyledIconButton>
       </SocialMediaIconsWrapper>

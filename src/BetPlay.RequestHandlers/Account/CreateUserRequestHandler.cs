@@ -9,23 +9,17 @@ namespace BetPlay.RequestHandlers.Account;
 
 public class CreateUserRequestHandler : IRequestHandler<CreateUserRequest, CreateUserResponse>
 {
-    public readonly IAccountRepository _accountRepository;
-    public readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly IAccountRepository _accountRepository;
 
-    public CreateUserRequestHandler(IAccountRepository accountRepository, IHttpContextAccessor httpContextAccessor)
+    public CreateUserRequestHandler(IAccountRepository accountRepository)
     {
         _accountRepository = accountRepository;
-        _httpContextAccessor = httpContextAccessor;
     }
 
     public async Task<CreateUserResponse> Handle(CreateUserRequest request,
         CancellationToken cancellationToken)
     {
-        var Auth0UserId = _httpContextAccessor.HttpContext.User.FindFirst(
-            ClaimTypes.NameIdentifier)?.Value;
-
-        await _accountRepository.CreateUser(Auth0UserId!);
-
+        await _accountRepository.CreateUser();
         return new CreateUserResponse();
     }
 }

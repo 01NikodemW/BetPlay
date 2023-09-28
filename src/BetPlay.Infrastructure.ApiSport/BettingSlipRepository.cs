@@ -55,6 +55,8 @@ public class BettingSlipRepository : IBettingSlipRepository
             bettingSlip.Bets.Add(new BettingSlipBet { Bet = bet });
         }
 
+        user.Balance -= stake;
+
         _context.BettingSlips.Add(bettingSlip);
         await _context.SaveChangesAsync();
     }
@@ -74,14 +76,14 @@ public class BettingSlipRepository : IBettingSlipRepository
 
         foreach (var bettingSlip in bettingSlips)
         {
-            await VerifyBettingSlip(bettingSlip.Id);
+            await VerifyBettingSlip(bettingSlip.Id, user);
         }
 
         return;
     }
 
 
-    public async Task VerifyBettingSlip(Guid id)
+    private async Task VerifyBettingSlip(Guid id, User user)
     {
         var bettingSlip = await _context.BettingSlips.FindAsync(id);
         if (bettingSlip == null)
@@ -106,6 +108,7 @@ public class BettingSlipRepository : IBettingSlipRepository
         if (bets.All(x => x.Status == BetStatus.Won))
         {
             bettingSlip.Status = BettingSlipStatus.Won;
+            user.Balance += bettingSlip.Stake * bettingSlip.TotalOdds ;
         }
         else if (bets.Any(x => x.Status == BetStatus.Lost))
         {
@@ -118,21 +121,6 @@ public class BettingSlipRepository : IBettingSlipRepository
 
         _context.BettingSlips.Update(bettingSlip);
         await _context.SaveChangesAsync();
-    }
-
-    public async Task<IEnumerable<BettingSlip>> GetUserBettingSlips()
-    {
-        var userAuth0Id = _httpContextAccessor.HttpContext?.User.Claims
-            .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
-        var user = await _context.Users
-            .Include(u => u.BettingSlips)
-            .ThenInclude(bs => bs.Bets)
-            .ThenInclude(bsb => bsb.Bet)
-            .FirstOrDefaultAsync(x => x.Auth0Id == userAuth0Id);
-        if (user == null)
-            throw new InvalidOperationException("User not found.");
-        var bettingSlips = user.BettingSlips;
-        return bettingSlips;
     }
 
 

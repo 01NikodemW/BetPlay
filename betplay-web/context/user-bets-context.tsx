@@ -20,7 +20,7 @@ type Props = {
 
 export const UserBetsProvider = ({ children }: Props) => {
   const [selectedBets, setSelectedBets] = useState<UserBet[]>([]);
-  const [stake, setStake] = useState<number>(5);
+  const [stake, setStake] = useState<number>(0);
 
   return (
     <UserBetsContext.Provider
@@ -43,3 +43,5 @@ export const useUserBets = (): UserBetsContextType => {
   }
   return context;
 };
+
+
