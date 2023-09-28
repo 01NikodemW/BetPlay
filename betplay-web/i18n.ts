@@ -17,7 +17,8 @@ const resources = {
       "The most popular": "Najpopularniejsze",
       All: "Wszystkie",
       "View details": "Zobacz szczegóły",
-
+      "Insufficient amount of money in the account":
+        "Niewystarczająca ilość środków na koncie",
       "Shots on Goal": "Strzały celne",
       "Shots off Goal": "Strzały niecelne",
       "Total Shots": "Strzały",
