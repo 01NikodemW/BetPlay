@@ -9,6 +9,8 @@ import {
   HeaderBox,
   HeaderTypography,
   MobileBetButton,
+  PossibleBetPrize,
+  PossibleBetPrizeTypography,
   SecondTextBox,
   StyledButton,
   StyledTextField,
@@ -17,8 +19,10 @@ import {
 import { useUserBets } from "@/context/user-bets-context";
 import { useTranslation } from "react-i18next";
 import {
+  Box,
   Button,
   InputAdornment,
+  Modal,
   Theme,
   Typography,
   useMediaQuery,
@@ -30,10 +34,10 @@ import CloseIcon from "@mui/icons-material/Close";
 import { CreateBettingSlipRequest } from "@/types/api/bets/create-betting-slip-request";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { createBettingSlip } from "@/api/bets/api";
-import toast from "react-hot-toast";
 import { queryClient } from "@/api/queryClient";
 import { queryKeys } from "@/api/queryKeys";
 import { getUserData } from "@/api/user/api";
+import { ModalStyle, StyledOutlinedButton } from "../styles";
 
 const calculateTotalOdds = (bets: UserBet[]) => {
   const product = bets.reduce((acc, bet) => acc * parseFloat(bet.odd), 1);
@@ -101,11 +105,8 @@ const BetCard: FC<BetCardProps> = ({ mainPage }) => {
     (values: CreateBettingSlipRequest) => createBettingSlip(values),
     {
       onSuccess: () => {
-        toast.success(t("Betting slip successfully created"));
-        setSelectedBets([]);
-        setStake(0);
-
         queryClient.invalidateQueries([queryKeys.getUsersData]);
+        setModalOpen(true);
       },
     }
   );
@@ -128,6 +129,50 @@ const BetCard: FC<BetCardProps> = ({ mainPage }) => {
 
     createBettingSlipMutation.mutate(values);
   };
+
+  if (modalOpen) {
+    return (
+      <Modal
+        open={modalOpen}
+        onClose={() => {
+          setModalOpen(false);
+          setSelectedBets([]);
+          setStake(0);
+        }}
+      >
+        <Box sx={ModalStyle}>
+          <Typography
+            sx={{
+              textAlign: "center",
+            }}
+            variant="h5"
+          >
+            {t("Your betting slip has been successfully registered")}
+          </Typography>
+          <PossibleBetPrizeTypography>
+            {t("Potential prize")}
+          </PossibleBetPrizeTypography>
+          <PossibleBetPrize>
+            {totalStake} {"zł"}
+          </PossibleBetPrize>
+          <StyledOutlinedButton
+            sx={{
+              alignSelf: "center",
+              width: "100%",
+            }}
+            variant="contained"
+            onClick={() => {
+              setModalOpen(false);
+              setSelectedBets([]);
+              setStake(0);
+            }}
+          >
+            {t("Close")}
+          </StyledOutlinedButton>
+        </Box>
+      </Modal>
+    );
+  }
 
   if (betCount === 0) {
     return null;

@@ -19,6 +19,8 @@ const resources = {
       "View details": "Zobacz szczegóły",
       "Insufficient amount of money in the account":
         "Niewystarczająca ilość środków na koncie",
+      "Your betting slip has been successfully registered":
+        "Twój kupon został pomyślnie zarejestrowany",
       "Shots on Goal": "Strzały celne",
       "Shots off Goal": "Strzały niecelne",
       "Total Shots": "Strzały",
@@ -26,6 +28,7 @@ const resources = {
       "Shots insidebox": "Strzały w polu karnym",
       "Shots outsidebox": "Strzały poza polem karnym",
       Fouls: "Faule",
+      Close: "Zamknij",
       "Corner Kicks": "Rzuty rożne",
       Offsides: "Spalone",
       "Ball Possession": "Posiadanie piłki",

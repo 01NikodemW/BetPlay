@@ -1,3 +1,4 @@
+import { rem } from "@/utils/px-to-rem";
 import {
   Box,
   Button,
@@ -136,4 +137,14 @@ export const MobileBetButton = styled(Button)(({ theme }) => ({
   right: "16px",
   bottom: "64px",
   zIndex: 2000,
+}));
+
+export const PossibleBetPrizeTypography = styled(Typography)(() => ({
+  marginTop: "8px",
+  textAlign: "center",
+}));
+
+export const PossibleBetPrize = styled(Typography)(() => ({
+  fontSize: rem(32),
+  marginBottom: "8px",
 }));
