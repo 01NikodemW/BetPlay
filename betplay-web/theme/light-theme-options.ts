@@ -17,8 +17,8 @@ const neutral = {
 const button = {
   main: "#f03ac9",
   light: "#FF78E2",
-  dark: "#3832A0",
-  disabled: "#FF829E",
+  dark: "#cc31ab",
+  disabled: "#FF78E2",
   contrastText: "#FFFFFF",
 };
 
@@ -154,7 +154,7 @@ export const lightThemeOptions: ThemeOptions = {
             },
             //disabled
             "&.Mui-disabled": {
-              backgroundColor: button.disabled,
+              backgroundColor: button.dark,
             },
           },
         },
