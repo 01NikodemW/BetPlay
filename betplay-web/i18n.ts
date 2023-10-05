@@ -389,6 +389,7 @@ const resources = {
       "No fixtures were found": "Nie znaleziono meczów",
       Settings: "Ustawienia",
       "Log out": "Wyloguj się",
+      "Log in": "Zaloguj się",
     },
   },
 };

@@ -26,7 +26,8 @@ export const SettingsProvider = ({ children }: Props) => {
 
   useEffect(() => {
     const storedSettings = JSON.parse(localStorage.getItem("settings") || "{}");
-    const localThemeMode = storedSettings.themeMode || "light";
+    // const localThemeMode = storedSettings.themeMode || "light";
+    const localThemeMode = "light";
     setThemeMode(localThemeMode);
   }, []);
 
