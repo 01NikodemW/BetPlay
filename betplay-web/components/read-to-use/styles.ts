@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { styled } from "@mui/system";
 import { rem } from "@/utils/px-to-rem";
 
@@ -58,3 +58,9 @@ export const ModalStyle = {
   alignItems: "center",
   flexDirection: "column",
 };
+
+export const CenterBox = styled(Box)(() => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}));

@@ -6,5 +6,5 @@ export type RefactoredExactScoreBets = {
   home: BetValue[];
   draw: BetValue[];
   Away: BetValue[];
-  [key: string]: any; // Add this line
+  [key: string]: any;
 };

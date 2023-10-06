@@ -8,4 +8,5 @@ export const queryKeys = {
   getBetsByFixtureId: "getBetsByFixtureId",
   createUser: "createUser",
   verifyUserBets: "verifyUserBets",
+  getAllBettingSlips: "getAllBettingSlips",
 };

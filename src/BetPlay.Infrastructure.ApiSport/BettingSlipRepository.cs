@@ -83,6 +83,22 @@ public class BettingSlipRepository : IBettingSlipRepository
     }
 
 
+    public async Task<IEnumerable<BettingSlipWithoutBetsDto>> GetAllBettingSlips()
+    {
+        var bettingSlips = await _context.BettingSlips.ToListAsync();
+
+
+        return bettingSlips.Select(bs => new BettingSlipWithoutBetsDto
+        {
+            Id = bs.Id,
+            TotalStake = bs.Stake,
+            TotalOdds = bs.TotalOdds,
+            Status = (BetPlay.Dto.Bets.BettingSlipStatus)bs.Status,
+            Date = bs.Date
+        });
+    }
+
+
     private async Task VerifyBettingSlip(Guid id, User user)
     {
         var bettingSlip = await _context.BettingSlips.FindAsync(id);
@@ -108,7 +124,7 @@ public class BettingSlipRepository : IBettingSlipRepository
         if (bets.All(x => x.Status == BetStatus.Won))
         {
             bettingSlip.Status = BettingSlipStatus.Won;
-            user.Balance += bettingSlip.Stake * bettingSlip.TotalOdds ;
+            user.Balance += bettingSlip.Stake * bettingSlip.TotalOdds;
         }
         else if (bets.Any(x => x.Status == BetStatus.Lost))
         {
@@ -122,7 +138,6 @@ public class BettingSlipRepository : IBettingSlipRepository
         _context.BettingSlips.Update(bettingSlip);
         await _context.SaveChangesAsync();
     }
-
 
     private async Task VerifyBet(Bet bet, List<FixtureResponseApiDto> fixtures)
     {
@@ -161,7 +176,6 @@ public class BettingSlipRepository : IBettingSlipRepository
         _context.Bets.Update(bet);
         await _context.SaveChangesAsync();
     }
-
 
     private void VerifyMatchWinner(FixtureResponseApiDto fixture, Bet bet)
     {
