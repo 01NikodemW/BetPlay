@@ -8,4 +8,6 @@ public interface IBettingSlipRepository
     Task CreateBettingSlip(float stake, IEnumerable<BetToCreateDto> bets);
 
     Task VerifyUserBets();
+
+    Task<IEnumerable<BettingSlipWithoutBetsDto>> GetAllBettingSlips();
 }

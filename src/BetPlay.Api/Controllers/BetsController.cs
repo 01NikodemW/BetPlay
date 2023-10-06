@@ -32,4 +32,10 @@ public class BetsController : BetPlayControllerBase
     {
         return Ok(await Mediator.Send(request));
     }
+
+    [HttpPost("[action]")]
+    public async Task<IActionResult> GetAllBettingSlips([FromBody] GetAllBettingSlipsRequest request)
+    {
+        return Ok(await Mediator.Send(request));
+    }
 }

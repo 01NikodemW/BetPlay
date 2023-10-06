@@ -38,3 +38,18 @@ export async function verifyUserBets() {
 
   return response.data;
 }
+
+export async function getAllBettingSlips() {
+  const response = await axiosInstance.post(
+    "/Bets/GetAllBettingSlips",
+    {},
+    {
+      headers: {
+        "Content-Type": "application/json",
+        ...getJWTHeader(),
+      },
+    }
+  );
+
+  return response.data;
+}
