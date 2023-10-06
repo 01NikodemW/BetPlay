@@ -33,9 +33,11 @@ interface LinearChartProps {
   valuesOne: number[];
   valuesTwo: number[];
   valuesThree: number[];
+  valuesFour: number[];
   datasetOneName: string;
   datasetTwoName: string;
-  datasetTwoThree: string;
+  datasetThreeName: string;
+  datasetFourName: string;
   labels: string[];
   title: string;
 }
@@ -46,9 +48,11 @@ const LinearChart: FC<LinearChartProps> = ({
   valuesOne,
   valuesTwo,
   valuesThree,
+  valuesFour,
   datasetOneName,
   datasetTwoName,
-  datasetTwoThree,
+  datasetThreeName,
+  datasetFourName,
 }) => {
   const { t } = useTranslation();
 
@@ -68,10 +72,16 @@ const LinearChart: FC<LinearChartProps> = ({
         backgroundColor: "#2E7D32",
       },
       {
-        label: t(datasetTwoThree),
+        label: t(datasetThreeName),
         data: valuesThree,
         borderColor: "red",
         backgroundColor: "red",
+      },
+      {
+        label: t(datasetFourName),
+        data: valuesFour,
+        borderColor: "#FFBF4C",
+        backgroundColor: "#FFBF4C",
       },
     ],
   };

@@ -20,6 +20,7 @@ const getBetsData = (bettingSlips: BettingSlipWithoutBets[], date: any) => {
     all: filteredBets.length,
     won: filteredBets.filter((bet) => bet.status === 1).length,
     lost: filteredBets.filter((bet) => bet.status === 2).length,
+    pending: filteredBets.filter((bet) => bet.status === 0).length,
   };
 
   return results;
@@ -38,6 +39,7 @@ const getBetsDataMonthly = (
     all: filteredBets.length,
     won: filteredBets.filter((bet) => bet.status === 1).length,
     lost: filteredBets.filter((bet) => bet.status === 2).length,
+    pending: filteredBets.filter((bet) => bet.status === 0).length,
   };
 
   return results;
@@ -137,11 +139,13 @@ const ChartSection = () => {
         </StyledFormControl>
       </StyledBox>
       <LinearChart
+        datasetFourName={"Pending"}
         datasetOneName={"All"}
+        datasetThreeName={"Lost"}
         datasetTwoName={"Won"}
-        datasetTwoThree={"Lost"}
         labels={data.map((item) => item.date)}
         title={generateTitle()}
+        valuesFour={data.map((item) => item.pending)}
         valuesOne={data.map((item) => item.all)}
         valuesThree={data.map((item) => item.lost)}
         valuesTwo={data.map((item) => item.won)}
