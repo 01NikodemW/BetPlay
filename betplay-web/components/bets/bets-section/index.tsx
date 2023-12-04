@@ -77,6 +77,8 @@ const BetsSection = () => {
     return <BettingSlipsSection bettingSlips={betsToDisplay} />;
   };
 
+  if (isUserDataFetching) return <LoadingInfo />;
+
   return (
     <BetsSectionContainer id="koko">
       <StyledTabs

@@ -88,7 +88,7 @@ const Navbar = () => {
     queryKey: [queryKeys.verifyUserBets],
     queryFn: () => verifyUserBets(),
     enabled: Boolean(accessToken),
-    refetchInterval: 300000,
+    refetchInterval: 30000000,
   });
 
   const settings = useSettings();
