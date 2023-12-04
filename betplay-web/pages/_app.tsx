@@ -31,7 +31,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         <UserBetsProvider>
           <Auth0Provider
             authorizationParams={{
-              redirect_uri: "http://localhost:3000/home",
+              redirect_uri: "https://bet-play.vercel.app/home",
               audience: "https://betplay-api.com",
             }}
             clientId="mfEZx3cM04vvGSRolHLFMYplGGb1LkkS"
